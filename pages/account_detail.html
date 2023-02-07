@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main">
+
+    </div>
+</body>
+
+<script>
+
+    //left side container
+
+    let welcome = document.createElement("div");
+    welcome.setAttribute("class", "welcome");
+    document.querySelector(".main").append(welcome);
+
+
+
+    let top_image = document.createElement("div");
+    top_image.setAttribute("class", "top_image");
+    welcome.append(top_image);
+
+
+    let image = document.createElement("img");
+    image.setAttribute("src", "assets/img/money.gif");
+    image.setAttribute("alt", "Net Bliz");
+    top_image.append(image);
+
+    let changing = document.createElement("h3");
+    changing.setAttribute("class","changing");
+    // document.getElementById("fname").innerText = localStorage.getItem("fname");
+    top_image.append(changing);
+
+    let balance=document.createElement("button");
+    balance.innerText=("Complete your profile");
+    top_image.append(balance);
+
+
+
+    let middle_content = document.createElement("div");
+    middle_content.setAttribute("class", "middle_content");
+    welcome.append(middle_content);
+
+
+    
+
+    let dirction = document.createElement("div");
+    dirction.setAttribute("class", "dirction");
+    welcome.append(dirction);
+
+
+
+
+
+
+    //Right side container
+
+    let content_list = document.createElement("div");
+    content_list.setAttribute("class", "content_list");
+    document.querySelector(".main").append(content_list);
+
+
+    // 1 child of  Right side container
+
+    let customer = document.createElement("div");
+    customer.setAttribute("class", "customer");
+    customer.innerText = "Customer Details";
+    content_list.append(customer);
+
+    let name_of_type = document.createElement("div");
+    name_of_type.setAttribute("class", "key");
+    customer.append(name_of_type);
+
+    let data = document.createElement("div");
+    data.setAttribute("class", "value");
+    customer.append(data);
+
+    let head = [
+
+        {
+            "label": "Name",
+
+        },
+
+        {
+            "label": "Date of Birth",
+
+        },
+
+        {
+            "label": "PAN.No",
+
+        },
+
+        {
+            "label": "Aadhaar NO",
+
+        },
+
+        {
+            "label": "Occupation",
+
+        }
+
+
+    ]
+
+    for (let i = 0; i < 5; i++) {
+
+        let heading = document.createElement("h3");
+        heading.setAttribute("class", "heading");
+        heading.innerText = head[i]["label"];
+        name_of_type.append(heading);
+
+    }
+
+    //name of the top is end
+
+
+
+    let fetch = [
+
+        {
+            "id": "fname",
+
+        },
+
+        {
+            "id": "dob"
+
+        },
+
+        {
+            "id": "pan",
+
+        },
+
+        {
+            "id": "aadhar",
+
+        },
+
+        {
+            "id": "occupation",
+
+        }
+
+
+    ]
+
+    for (let i = 0; i < 5; i++) {
+
+        let volume = document.createElement("h6");
+        volume.setAttribute("id", fetch[i]["id"]);
+        data.append(volume);
+
+    }
+
+
+    document.getElementById("fname").innerText = localStorage.getItem("fname");
+    document.getElementById("dob").innerText = localStorage.getItem("dob");
+    document.getElementById("pan").innerText = localStorage.getItem("pan");
+    document.getElementById("aadhar").innerText = localStorage.getItem("aadhar");
+    document.getElementById("occupation").innerText = localStorage.getItem("occupation");
+
+
+    // let get_value =document.createElement("h6")
+
+
+
+    let speak = document.createElement("div");
+    speak.setAttribute("class", "speak");
+    content_list.append(speak);
+
+
+
+
+    const last_object = [
+
+        {
+            "name": "Email ID",
+            "id": "email"
+
+        },
+
+
+        {
+            "name": "Phone number",
+            "id": "phone"
+
+        },
+
+
+        {
+            "name": "Address",
+            "id": "address"
+
+        },
+
+
+        {
+            "name": "District",
+            "id": "district"
+
+        },
+
+        {
+            "name": "State",
+            "id": "state"
+
+        },
+
+        {
+            "name": "Pin Code",
+            "id": "pincode"
+
+        },
+
+    ]
+
+    for (let i = 0; i < 6; i++) {
+
+        let child = document.createElement("div");
+        child.setAttribute("class", "child");
+        speak.append(child);
+
+
+        let key2 = document.createElement("h3");
+        key2.setAttribute("class", "key2");
+        key2.innerText = last_object[i]["name"];
+        child.append(key2);
+
+        let complete = document.createElement("h6");
+        complete.setAttribute("id", last_object[i]["id"]);
+        child.append(complete);
+
+    }
+
+</script>
+
+</html>

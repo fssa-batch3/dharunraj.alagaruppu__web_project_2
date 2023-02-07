@@ -1,0 +1,186 @@
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 100vh;
+    align-items: center;
+    background-color: #3edac5;
+
+}
+
+.welcome {
+
+    width: 22%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.welcome img {
+    width: 100%;
+    margin: 0px auto;
+}
+
+.welcome button {
+    background-color: #415082;
+    color: white;
+    font-size: 99%;
+    font-weight: bolder;
+    width: 80%;
+    border-radius: 20px;
+    border: 0px;
+    padding: 4%;
+    margin: 50px auto;
+
+}
+
+.sing_up {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 65%;
+    background-color: #f7f9fb;
+    border-bottom-left-radius: 250px;
+    border-top-left-radius: 250px;
+    padding: .001%;
+
+}
+
+
+.for_button {
+    /* background-color: rgba(0,98,211,255); */
+    padding: 1.5%;
+    border-radius: 60px;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    width: 90%;
+}
+
+.for_button .back_blue {
+    background-color: #31c9b5;
+    color: white;
+    display: flex;
+    width: 40%;
+    border-radius: 20px;
+    padding: 3px;
+    margin: 2%;
+    justify-content: center;
+
+}
+
+.for_button .top_button {
+    background-color: #31c9b5;
+    color: white;
+    border: 0px;
+    border-radius: 20px;
+    padding: 10px;
+    /* font-size: 15px; */
+    width: 90%;
+    font-weight: bolder;
+
+}
+
+.for_button .top_button:hover,
+.hover {
+    background-color: white;
+    color: black;
+}
+
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.bottom_form{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.gender{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-right: 160px;
+
+}
+
+/* .align_gen{
+    display: flex;
+    flex-direction: column;
+} */
+.dob_child{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.require{
+    display: flex;
+    flex-wrap: wrap;
+}
+.btm_btn {
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+}
+
+.bottom_button {
+    background-color: #31c9b5;
+    color: white;
+    padding: 10px;
+    width: 150px;
+    border: none;
+    font-size: 15px;
+    border-radius: 20px;
+    font-weight: bolder;
+    margin: 20px;
+}
+
+.bottom_button:hover {
+    background-color: #415082;
+    color: white;
+    font-weight: bolder;
+
+}
+
+/* All page imput box and select box style */
+input {
+    /* border-radius: 7px; */
+    border: 0px;
+    box-shadow: 0px 1px rgb(85, 84, 84);
+    margin: 30px;
+    padding: 10px;
+    width: 27%;
+    background: #f7f9fb;
+}
+
+input:focus {
+    outline: none;
+}
+
+/* All page input type radio only style */
+input[type="radio"] {
+
+    box-shadow: none;
+    width: 50px;
+    margin: 0px;
+    font-size: 20px;
+}
+
+input[type="radio"][label] {
+    font-size: 15px;
+}
+
+input[type="date"]{
+    width: 40%;
+}

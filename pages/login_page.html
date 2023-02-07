@@ -69,28 +69,6 @@
         start.setAttribute("class", "start");
         content_of_log_in.append(start);
 
-        let right_container = document.createElement("div");
-        right_container.setAttribute("class", "right_container");
-        content_of_log_in.append(right_container);
-
-        let form = document.createElement("form");
-        // form.setAttribute("method", "post");
-        form.setAttribute("id", "singupform")
-        right_container.append(form);
-
-        let gif = document.createElement("img");
-        gif.setAttribute("src", "../assets/img/Online-Bank-Account-Zil.gif");
-        gif.setAttribute("alt", "give and back");
-        right_container.append(gif);
-
-
-
-        let bottom_button = document.createElement("div");
-        bottom_button.setAttribute("class", "btm_btn");
-        content_of_log_in.append(bottom_button);
-
-        //ridht side main divider end
-
 
         let heading1 = document.createElement("h1");
         heading1.setAttribute("class", "tag_h1");
@@ -103,6 +81,17 @@
         start.append(heading2);
 
 
+
+        let right_container = document.createElement("div");
+        right_container.setAttribute("class", "right_container");
+        content_of_log_in.append(right_container);
+
+
+
+        let form = document.createElement("form");
+        // form.setAttribute("method", "post");
+        form.setAttribute("id", "singupform")
+        right_container.append(form);
 
         const obj = [
 
@@ -164,9 +153,19 @@
         let next = document.createElement("button");
         next.setAttribute("type","submit");
         next.setAttribute("class", "bottom_button");
-        // next.setAttribute("onclick", "login()")
         next.innerText = ("Login");
         form.append(next);
+
+        let gif = document.createElement("img");
+        gif.setAttribute("src", "../assets/img/Online-Bank-Account-Zil.gif");
+        gif.setAttribute("alt", "give and back");
+        right_container.append(gif);
+
+        let bottom_button = document.createElement("div");
+        bottom_button.setAttribute("class", "btm_btn");
+        content_of_log_in.append(bottom_button);
+
+        //ridht side main divider end
 
 
         const singupform_page = document.getElementById("singupform");
@@ -203,7 +202,8 @@
           
         // }
     </script>
-    
+
+
 </body>
 
 </html>

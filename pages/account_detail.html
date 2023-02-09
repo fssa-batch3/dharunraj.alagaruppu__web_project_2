@@ -5,61 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Account Details</title>
+    <link rel="stylesheet" href="../assets/css/account.css">
 </head>
 
 <body>
+
     <div class="main">
 
     </div>
+
 </body>
 
 <script>
-
-    //left side container
-
-    let welcome = document.createElement("div");
-    welcome.setAttribute("class", "welcome");
-    document.querySelector(".main").append(welcome);
-
-
-
-    let top_image = document.createElement("div");
-    top_image.setAttribute("class", "top_image");
-    welcome.append(top_image);
-
-
-    let image = document.createElement("img");
-    image.setAttribute("src", "assets/img/money.gif");
-    image.setAttribute("alt", "Net Bliz");
-    top_image.append(image);
-
-    let changing = document.createElement("h3");
-    changing.setAttribute("class","changing");
-    // document.getElementById("fname").innerText = localStorage.getItem("fname");
-    top_image.append(changing);
-
-    let balance=document.createElement("button");
-    balance.innerText=("Complete your profile");
-    top_image.append(balance);
-
-
-
-    let middle_content = document.createElement("div");
-    middle_content.setAttribute("class", "middle_content");
-    welcome.append(middle_content);
-
-
-    
-
-    let dirction = document.createElement("div");
-    dirction.setAttribute("class", "dirction");
-    welcome.append(dirction);
-
-
-
-
-
 
     //Right side container
 
@@ -72,7 +30,7 @@
 
     let customer = document.createElement("div");
     customer.setAttribute("class", "customer");
-    customer.innerText = "Customer Details";
+    // customer.innerText = "Customer Details";
     content_list.append(customer);
 
     let name_of_type = document.createElement("div");
@@ -193,13 +151,6 @@
 
 
         {
-            "name": "Phone number",
-            "id": "phone"
-
-        },
-
-
-        {
             "name": "Address",
             "id": "address"
 
@@ -224,6 +175,12 @@
 
         },
 
+        {
+            "name": "Phone number",
+            "id": "phone"
+
+        }
+
     ]
 
     for (let i = 0; i < 6; i++) {
@@ -238,11 +195,52 @@
         key2.innerText = last_object[i]["name"];
         child.append(key2);
 
-        let complete = document.createElement("h6");
+        let complete = document.createElement("input");
         complete.setAttribute("id", last_object[i]["id"]);
         child.append(complete);
 
     }
+
+    
+    //left side container
+
+    let welcome = document.createElement("div");
+    welcome.setAttribute("class", "welcome");
+    document.querySelector(".main").append(welcome);
+
+
+
+    let top_image = document.createElement("div");
+    top_image.setAttribute("class", "top_image");
+    welcome.append(top_image);
+
+
+    let image = document.createElement("img");
+    image.setAttribute("src", "assets/img/money.gif");
+    image.setAttribute("alt", "Net Bliz");
+    top_image.append(image);
+
+    let changing = document.createElement("h3");
+    changing.setAttribute("class","changing");
+    // document.getElementById("fname").innerText = localStorage.getItem("fname");
+    top_image.append(changing);
+
+    let balance=document.createElement("button");
+    balance.innerText=("Complete your profile");
+    top_image.append(balance);
+
+
+
+    let middle_content = document.createElement("div");
+    middle_content.setAttribute("class", "middle_content");
+    welcome.append(middle_content);
+
+
+    
+
+    let dirction = document.createElement("div");
+    dirction.setAttribute("class", "dirction");
+    welcome.append(dirction);
 
 </script>
 

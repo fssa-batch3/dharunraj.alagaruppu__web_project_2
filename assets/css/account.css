@@ -1,0 +1,48 @@
+.main{
+    display: flex;
+    justify-content: space-around;
+    height: 100vh;
+}
+
+.main .content_list{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 0.1px 0.1px 5px black;
+
+
+}
+
+.main .content_list .customer{ 
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.main .content_list .customer .key{
+    width: 30%;
+    border: 1px solid black;
+
+}
+
+.main .content_list .customer .value{
+
+    border: 1px solid black;
+    width: 60%;;
+}
+
+.speak{
+    width: 80%;
+}
+
+.speak .child{
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+}
+
+.speak .child .key2 #email{
+ 
+    border: 1px solid black;
+}

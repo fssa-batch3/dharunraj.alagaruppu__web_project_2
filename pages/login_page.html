@@ -47,7 +47,7 @@
         // welcome.append(account);
 
         let a = document.createElement("a");
-        a.setAttribute("href","../index.html");
+        a.setAttribute("href", "../index.html");
         welcome.append(a)
 
 
@@ -151,8 +151,9 @@
         }
 
         let next = document.createElement("button");
-        next.setAttribute("type","submit");
+        next.setAttribute("type", "submit");
         next.setAttribute("class", "bottom_button");
+        next.setAttribute("onclick", "login()")
         next.innerText = ("Login");
         form.append(next);
 
@@ -167,40 +168,29 @@
 
         //ridht side main divider end
 
+        function login() {
 
-        const singupform_page = document.getElementById("singupform");
-
-        singupform_page.onsubmit = e => {
-
-            // let full_name = document.getElementById("fullname").value
-            // let email= document.getElementById("email").value
-            // let pass=document.getElementById("password").value
+            let fullname = document.getElementById("fullname").value
+            let email = document.getElementById("email").value
+            let password = document.getElementById("password").value
 
 
-            // let name=localStorage.getItem("fname")
-            // let email_co=localStorage.getItem("email")
-            // let password=localStorage.getItem("password")
+            let name = localStorage.getItem("fname")
+            let e_mail = localStorage.getItem("email")
+            let pass_word = localStorage.getItem("password")
 
 
 
-            let object = {};
+            if (fullname == name && email == e_mail  && password==pass_word) {
 
-            object["fullname"]=document.getElementById("fullname").value
-            object["email"]=document.getElementById("email").value
-            object["password"]=document.getElementById("password").value
+                window.location.href = "home.html"
 
-            let store= JSON.parse(localStorage.getItem("array")) || []; //store = []
-            store.push(object);//[{name, email, pass}]
-            localStorage.setItem("array",JSON.stringify(store)); // array :  [{name, email, pass}]
+            }
 
-            window.location.href = "homepage.html"
-           
-
+            else {
+                alert("Invalid pattern")
+            }
         }
-
-        // function login(){
-          
-        // }
     </script>
 
 

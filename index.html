@@ -11,6 +11,8 @@
 
 <body>
 
+
+    <!-- <button onclick="signup()">register</button> -->
     <div class="main">
 
     </div>
@@ -184,7 +186,6 @@
         // Form is started this point
 
         let form = document.createElement("form");
-        // form.setAttribute("method", "post");
         content_of_singnup.append(form);
 
 
@@ -285,8 +286,6 @@
         bottom_button.setAttribute("class", "btm_btn");
         form.append(bottom_button);
 
-
-
         let next = document.createElement("button");
         next.setAttribute("class", "bottom_button");
         next.innerText = ("Next >>");
@@ -295,11 +294,13 @@
 
 
 
-        let btn = document.querySelector(".bottom_button")
-        btn.addEventListener("onSubmit", function (e) {
-            e.target.preventDefault;
-            signup();
-        })
+        // let btn = document.querySelector(".bottom_button");
+        // btn.addEventListener(
+        //     "onSubmit", function (e) {
+        //         e.target.preventDefault();
+        //         signup();
+        //     }
+        // )
 
 
         function signup() {
@@ -314,31 +315,53 @@
             const new_pass = document.getElementById("new_pass").value
             const confirm = document.getElementById("confirm").value
 
+            if (first_name != "" && last_name != "" && email!=="" && new_pass != "" && confirm != "" && phone != "") {
 
-            if (first_name != "" && last_name != "" && email != "" && new_pass != "" && confirm != "" && phone != "") {
-                localStorage.setItem("fname", first_name)
-                localStorage.setItem("lname", last_name)
-                localStorage.setItem("email", email)
-                localStorage.setItem("phone", phone)
-                localStorage.setItem("aadhar", aadhar)
-                localStorage.setItem("pan", pan)
-                localStorage.setItem("new_pass", new_pass)
-                localStorage.setItem("confirm", confirm)
-                window.location.href = "pages/login_page.html"
 
+            let object = {};
+
+            object["fname"] = document.getElementById("fname").value
+            object["lname"] = document.getElementById("lname").value
+            object["email"] = document.getElementById("email").value
+            object["phone"] = document.getElementById("phone").value
+            object["aadhar"] = document.getElementById("aadhar").value
+            object["pan"] = document.getElementById("pan").value
+            object["new_pass"] = document.getElementById("new_pass").value
+            object["confirm"] = document.getElementById("confirm").value
+
+
+            let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
+            store.push(object);//[{name, email, pass}]
+            localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
+
+
+            // localStorage.setItem("fname", first_name)
+            // localStorage.setItem("lname", last_name)
+            // localStorage.setItem("email", email)
+            // localStorage.setItem("phone", phone)
+            // localStorage.setItem("aadhar", aadhar)
+            // localStorage.setItem("pan", pan)
+            // localStorage.setItem("new_pass", new_pass)
+            // localStorage.setItem("confirm", confirm)
+
+
+            window.location.href = "pages/login_page.html"
+               
             }
             else {
-                alert("Please fill all the fields")
-
+                 alert
             }
+
+
+
+
 
 
         }
 
+
+
     </script>
-
-
-    <!-- <a href="pages/login_page.html"></a> -->
 </body>
 
 </html>

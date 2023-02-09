@@ -5,7 +5,7 @@
 }
 
 .main .content_list{
-    width: 60%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -14,35 +14,33 @@
 
 }
 
-.main .content_list .customer{ 
+.main .content_list .customer , .speak{ 
     display: flex;
     justify-content: space-between;
 
 }
 
-.main .content_list .customer .key{
+.main .content_list  .key{
     width: 30%;
-    border: 1px solid black;
+    margin-left: 50px;
 
 }
 
-.main .content_list .customer .value{
+.main .content_list  .value{
 
-    border: 1px solid black;
-    width: 60%;;
-}
-
-.speak{
-    width: 80%;
-}
-
-.speak .child{
-    border: 1px solid black;
+    width: 60%;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
+    margin-bottom: 13px;
 }
 
-.speak .child .key2 #email{
- 
-    border: 1px solid black;
+input {
+    width: 80%;
+    border: 0px;
+   border-bottom:1px solid black;
+}
+
+input:focus {
+    outline: none;
 }

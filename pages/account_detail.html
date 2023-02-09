@@ -33,13 +33,10 @@
     // customer.innerText = "Customer Details";
     content_list.append(customer);
 
+
     let name_of_type = document.createElement("div");
     name_of_type.setAttribute("class", "key");
     customer.append(name_of_type);
-
-    let data = document.createElement("div");
-    data.setAttribute("class", "value");
-    customer.append(data);
 
     let head = [
 
@@ -73,16 +70,19 @@
 
     for (let i = 0; i < 5; i++) {
 
-        let heading = document.createElement("h3");
+        let heading = document.createElement("h4");
         heading.setAttribute("class", "heading");
         heading.innerText = head[i]["label"];
         name_of_type.append(heading);
 
     }
 
-    //name of the top is end
 
 
+
+    let data = document.createElement("div");
+    data.setAttribute("class", "value");
+    customer.append(data);
 
     let fetch = [
 
@@ -122,34 +122,24 @@
 
     }
 
-    let show = JSON.parse(localStorage.getItem('array'));
-        for (let i=0; i <= show.length; i++){
 
-        document.getElementById("fname").value = show[i]["fname"]; //show[1][name]
-        document.getElementById("email").value = show[i]["email"];
-        document.getElementById("dob").value = show[i]["dob"];
-        document.getElementById("pan").value = show[i]["pan"];
-        document.getElementById("aadhar").value = show[i]["aadhar"];
-        document.getElementById("occupation").value = show[i]["occupation"];
-
-         }
-
-
-    // document.getElementById("fname").innerText = localStorage.getItem("fname");
-    // document.getElementById("dob").innerText = localStorage.getItem("dob");
-    // document.getElementById("pan").innerText = localStorage.getItem("pan");
-    // document.getElementById("aadhar").innerText = localStorage.getItem("aadhar");
-    // document.getElementById("occupation").innerText = localStorage.getItem("occupation");
-
-    // let get_value =document.createElement("h6")
 
     let speak = document.createElement("div");
     speak.setAttribute("class", "speak");
     content_list.append(speak);
 
 
+    
+    let collect1 = document.createElement("div");
+    collect1.setAttribute("class", "key");
+    speak.append(collect1);
 
 
+    let collect2 = document.createElement("div");
+    collect2.setAttribute("class", "value");
+    speak.append(collect2);
+
+    
     const last_object = [
 
         {
@@ -172,11 +162,11 @@
 
         },
 
-        {
-            "name": "State",
-            "id": "state"
+        // {
+        //     "name": "State",
+        //     "id": "state"
 
-        },
+        // },
 
         {
             "name": "Pin Code",
@@ -192,25 +182,28 @@
 
     ]
 
-    for (let i = 0; i < 6; i++) {
-
-        let child = document.createElement("div");
-        child.setAttribute("class", "child");
-        speak.append(child);
+    for (let i = 0; i < 5; i++) {
 
 
-        let key2 = document.createElement("h3");
-        key2.setAttribute("class", "key2");
-        key2.innerText = last_object[i]["name"];
-        child.append(key2);
+
+        let personal = document.createElement("h4");
+        personal.setAttribute("class", "heading");
+        personal.innerText = last_object[i]["name"];
+        collect1.append(personal);
 
         let complete = document.createElement("input");
         complete.setAttribute("id", last_object[i]["id"]);
-        child.append(complete);
+        collect2.append(complete);
 
     }
 
-    
+
+
+
+    //name of the top is end
+
+
+
     //left side container
 
     let welcome = document.createElement("div");
@@ -230,12 +223,13 @@
     top_image.append(image);
 
     let changing = document.createElement("h3");
-    changing.setAttribute("class","changing");
+    changing.setAttribute("class", "changing");
     // document.getElementById("fname").innerText = localStorage.getItem("fname");
     top_image.append(changing);
 
-    let balance=document.createElement("button");
-    balance.innerText=("Complete your profile");
+
+    let balance = document.createElement("button");
+    balance.innerText = ("Complete your profile");
     top_image.append(balance);
 
 
@@ -245,7 +239,7 @@
     welcome.append(middle_content);
 
 
-    
+
 
     let dirction = document.createElement("div");
     dirction.setAttribute("class", "dirction");
@@ -254,3 +248,16 @@
 </script>
 
 </html>
+
+// let show = JSON.parse(localStorage.getItem('array'));
+
+// for (let i=0; i <= show.length; i++){ // document.getElementById("fname").value=show[i]["fname"]; //show[1][name] //
+    document.getElementById("email").value=show[i]["email"]; // document.getElementById("dob").value=show[i]["dob"]; //
+    document.getElementById("pan").value=show[i]["pan"]; // document.getElementById("aadhar").value=show[i]["aadhar"];
+    // document.getElementById("occupation").value=show[i]["occupation"]; // } //
+    document.getElementById("fname").innerText=localStorage.getItem("fname"); //
+    document.getElementById("dob").innerText=localStorage.getItem("dob"); //
+    document.getElementById("pan").innerText=localStorage.getItem("pan"); //
+    document.getElementById("aadhar").innerText=localStorage.getItem("aadhar"); //
+    document.getElementById("occupation").innerText=localStorage.getItem("occupation"); // let
+    get_value=document.createElement("h6")

@@ -116,23 +116,32 @@
 
     for (let i = 0; i < 5; i++) {
 
-        let volume = document.createElement("h6");
+        let volume = document.createElement("input");
         volume.setAttribute("id", fetch[i]["id"]);
         data.append(volume);
 
     }
 
+    let show = JSON.parse(localStorage.getItem('array'));
+        for (let i=0; i <= show.length; i++){
 
-    document.getElementById("fname").innerText = localStorage.getItem("fname");
-    document.getElementById("dob").innerText = localStorage.getItem("dob");
-    document.getElementById("pan").innerText = localStorage.getItem("pan");
-    document.getElementById("aadhar").innerText = localStorage.getItem("aadhar");
-    document.getElementById("occupation").innerText = localStorage.getItem("occupation");
+        document.getElementById("fname").value = show[i]["fname"]; //show[1][name]
+        document.getElementById("email").value = show[i]["email"];
+        document.getElementById("dob").value = show[i]["dob"];
+        document.getElementById("pan").value = show[i]["pan"];
+        document.getElementById("aadhar").value = show[i]["aadhar"];
+        document.getElementById("occupation").value = show[i]["occupation"];
 
+         }
+
+
+    // document.getElementById("fname").innerText = localStorage.getItem("fname");
+    // document.getElementById("dob").innerText = localStorage.getItem("dob");
+    // document.getElementById("pan").innerText = localStorage.getItem("pan");
+    // document.getElementById("aadhar").innerText = localStorage.getItem("aadhar");
+    // document.getElementById("occupation").innerText = localStorage.getItem("occupation");
 
     // let get_value =document.createElement("h6")
-
-
 
     let speak = document.createElement("div");
     speak.setAttribute("class", "speak");

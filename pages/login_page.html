@@ -170,26 +170,33 @@
 
         function login() {
 
+
+
             let fullname = document.getElementById("fullname").value
             let email = document.getElementById("email").value
             let password = document.getElementById("password").value
+            const attach = JSON.parse(localStorage.getItem("store"))
+            let check;
+
+            attach.find(element => {
+                if (element["name"] == fullname && element["e_mail"] == element["email"] && pass_word == password) {
+
+                    return check = 1
+                    window.location.href = "home.html"
+
+                }
+
+                else {
+                    return check = 0
+                    alert("Invalid pattern")
+                }
+
+            })
 
 
-            let name = localStorage.getItem("fname")
-            let e_mail = localStorage.getItem("email")
-            let pass_word = localStorage.getItem("password")
 
 
 
-            if (fullname == name && email == e_mail  && password==pass_word) {
-
-                window.location.href = "home.html"
-
-            }
-
-            else {
-                alert("Invalid pattern")
-            }
         }
     </script>
 

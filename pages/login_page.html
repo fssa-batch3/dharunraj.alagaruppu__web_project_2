@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In page</title>
     <link rel="stylesheet" href="../../assets/css/log_in.css">
+    
 
 </head>
 
@@ -175,27 +176,24 @@
             let fullname = document.getElementById("fullname").value
             let email = document.getElementById("email").value
             let password = document.getElementById("password").value
-            const attach = JSON.parse(localStorage.getItem("store"))
+            const attach = JSON.parse(localStorage.getItem("array"))
+            
             let check;
 
             attach.find(element => {
                 if (element["name"] == fullname && element["e_mail"] == element["email"] && pass_word == password) {
 
-                    return check = 1
+                    return check == 1
                     window.location.href = "home.html"
 
                 }
 
                 else {
-                    return check = 0
+                    return check == 0
                     alert("Invalid pattern")
                 }
 
             })
-
-
-
-
 
         }
     </script>

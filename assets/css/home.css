@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,200;1,400&display=swap');
+
+* {
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    /* font-family: 'open sans' , sans-serif; */
+    font-family: 'Tangerine', serif;
+
+}
+
+body {
+    background-color: #ebefff;
+}
+
+.main .sidebar {
+    background-color: #374cc7;
+    position: sticky;
+    /* top: 1%; */
+    bottom: 1%;
+    width: 20%;
+    height: 100%;
+    padding: 2%;
+    transition: all 0.5s ease;
+    border-radius: 20px;
+}
+
+.main .sidebar .profile {
+    /* margin-bottom: 30px; */
+    text-align: center;
+}
+
+.main .sidebar .profile img {
+    display: block;
+    width: 80%;
+    height: 70%;
+    border-radius: 50%;
+    box-shadow: 1px 1px 12px 1px white;
+    margin: 0 auto;
+}
+
+.main .sidebar .profile h3 {
+    color: white;
+    margin: 20px 0.5px;
+}
+
+.main .sidebar ul li a {
+    display: block;
+    padding: 15%;
+    border-bottom: .1px solid white;
+    color: white;
+    font-size: 16px;
+}
+
+.main .sidebar ul li a .icons {
+    color: white;
+    width: 30px;
+    display: inline-block;
+
+}
+
+
+.main .sidebar ul li a:hover,
+.main .sidebar ul li a:active {
+    color: #374cc7;
+    background-color: white;
+    border-right: 2px solid #374cc7;
+
+
+}
+
+.main .sidebar ul li a .icons:hover .icons,
+.main .sidebar ul li a .icons:active .icons {
+    color: #374cc7;
+
+}
+
+.main .sidebar ul li a:active::before,
+.main .sidebar ul li a::before {
+    display: block;
+}
+
+.select {
+    width: calc(100% - 20%); 
+    margin-left: 20%;
+    transition: all 0.5s ease;
+}
+
+.sectect .nav_bar{
+    background-color: #103ced;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    padding: 0.30px;
+}
+
+.sectect .nav_bar .actions a{
+    font-size: 28px;
+    color: white;
+
+
+}

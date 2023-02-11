@@ -1,5 +1,6 @@
 body{
-    background-color: #3edac5;
+    background-color: rgb(62, 218, 197);
+    color: #d9dae8;
 }
 .main {
     display: flex;
@@ -7,6 +8,7 @@ body{
     justify-content: space-around;
     height: 100vh;
     align-items: center;
+    /* background: linear-gradient(to right #3649bd #00b4ff); */
     background-color: #3edac5;
 
 }
@@ -49,7 +51,6 @@ body{
     border-bottom-left-radius: 250px;
     border-top-left-radius: 250px;
     padding: .001%;
-
 }
 
 
@@ -84,6 +85,8 @@ body{
     /* font-size: 15px; */
     width: 90%;
     font-weight: bolder;
+    cursor: pointer;
+    transition: all 1s;
 
 }
 
@@ -99,7 +102,7 @@ form {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    width: 80%;
+    width: 97%;
 
 }
 
@@ -109,7 +112,7 @@ form {
 }
 
 
-.gender{
+/* .gender{
     width: 30%;
     display: flex;
     justify-content: center;
@@ -117,7 +120,7 @@ form {
     margin-top: 30px;
     margin-right: 160px;
 
-}
+} */
 
 /* .align_gen{
     display: flex;
@@ -149,6 +152,8 @@ form {
     border-radius: 20px;
     font-weight: bolder;
     margin: 20px;
+    cursor: pointer;
+    transition: all 2s;
 }
 
 .bottom_button:hover {
@@ -189,3 +194,11 @@ input[type="radio"][label] {
 input[type="date"]{
     width: 40%;
 }
+
+.gender{
+    width: 30%;
+    margin:30px;
+    padding: 10px;
+
+}
+

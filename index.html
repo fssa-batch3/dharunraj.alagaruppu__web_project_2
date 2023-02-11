@@ -95,7 +95,11 @@
                 "name": "fname",
                 "id": "fname",
                 "placeholder": "First Name *",
-                "required": "required"
+                "required": "required",
+
+                "pattern": "[a-z]{25}",
+                "tittle": "Your pattern un accectable",
+                "aria": "First name"
 
             },
 
@@ -107,7 +111,11 @@
                 "type": "text",
                 "name": "lname",
                 "id": "lname",
-                "placeholder": "Last Name *"
+                "placeholder": "Last Name *",
+
+                "pattern": "[a-zA-Z]{25}",
+                "tittle": "Your pattern un accectable",
+
             },
 
             {
@@ -119,7 +127,11 @@
                 "name": "email",
                 "id": "email",
                 "placeholder": "Email.Id *",
-                "min":"1"
+
+                "pattern": "[a-zA-Z]{25}",
+                "tittle": "Your pattern un accectable",
+
+
 
 
             },
@@ -132,7 +144,11 @@
                 "type": "number",
                 "name": "phone",
                 "id": "phone",
-                "placeholder": "Phone No *"
+                "placeholder": "Phone No *",
+
+                "pattern": "[0-9]{10}",
+                "tittle": "Your pattern un accectable",
+
             },
 
 
@@ -144,7 +160,11 @@
                 "type": "number",
                 "name": "aadhar",
                 "id": "aadhar",
-                "placeholder": "Aadhar Number *"
+                "placeholder": "Aadhar Number *",
+
+                "pattern": "[0-9]{12}",
+                "tittle": "Your pattern un accectable",
+
             },
 
             {
@@ -155,7 +175,11 @@
                 "type": "text",
                 "name": "pan",
                 "id": "pan",
-                "placeholder": "PAN Number *"
+                "placeholder": "PAN Number *",
+
+                "pattern": "[0-9]{18}",
+                "tittle": "Your pattern un accectable",
+
             },
 
             {
@@ -163,10 +187,14 @@
                 "for": "new_pass",
                 "text": "",
 
-                "type": "text",
+                "type": "password",
                 "name": "new_pass",
                 "id": "new_pass",
-                "placeholder": "Create password *"
+                "placeholder": "Create password *",
+
+                "pattern": "[0-9]{25}",
+                "tittle": "Your pattern un accectable",
+
             },
 
             {
@@ -174,10 +202,14 @@
                 "for": "confirm",
                 "text": "",
 
-                "type": "text",
+                "type": "password",
                 "name": "confirm",
                 "id": "confirm",
-                "placeholder": "Confirm password *"
+                "placeholder": "Confirm password *",
+
+                "pattern": "[0-9]{25}",
+                "tittle": "Your pattern un accectable",
+
             }
 
         ]
@@ -200,8 +232,14 @@
             input_box.setAttribute("name", obj[i]["name"]);
             input_box.setAttribute("id", obj[i]["id"]);
             input_box.setAttribute("placeholder", obj[i]["placeholder"]);
+            input_box.setAttribute("min-length", obj[i]["min"]);
+            input_box.setAttribute("max-length", obj[i]["max"]);
+            input_box.setAttribute("pattern", obj[i]["pattern"]);
             input_box.setAttribute("required", "");
-            
+            input_box.setAttribute("pattern", obj[i]["pattern"]);
+
+
+
 
             form.append(input_box);
 
@@ -216,53 +254,54 @@
         let next = document.createElement("button");
         next.setAttribute("class", "bottom_button");
         next.innerText = ("Next >>");
-        next.setAttribute("onclick", "signup()")
+        next.setAttribute("onclick", "signup()");
         bottom_button.append(next);
 
 
 
-       
+
 
         function signup() {
 
 
-            const first_name = document.getElementById("fname").value
-            const last_name = document.getElementById("lname").value
-            const email = document.getElementById("email").value
-            const phone = document.getElementById("phone").value
-            const aadhar = document.getElementById("aadhar").value
-            const pan = document.getElementById("pan").value
-            const new_pass = document.getElementById("new_pass").value
-            const confirm = document.getElementById("confirm").value
+            const first_name = document.getElementById("fname").value.trim()
+            const last_name = document.getElementById("lname").value.trim()
+            const email = document.getElementById("email").value.trim()
+            const phone = document.getElementById("phone").value.trim()
+            const aadhar = document.getElementById("aadhar").value.trim()
+            const pan = document.getElementById("pan").value.trim()
+            const new_pass = document.getElementById("new_pass").value.trim()
+            const confirm = document.getElementById("confirm").value.trim()
 
-            if (first_name != "" && last_name != "" && email!=="" && new_pass != "" && confirm != "" && phone != "") {
-
-
-            let object = {};
-
-            object["fname"] = document.getElementById("fname").value
-            object["lname"] = document.getElementById("lname").value
-            object["email"] = document.getElementById("email").value
-            object["phone"] = document.getElementById("phone").value
-            object["aadhar"] = document.getElementById("aadhar").value
-            object["pan"] = document.getElementById("pan").value
-            object["new_pass"] = document.getElementById("new_pass").value
-            object["confirm"] = document.getElementById("confirm").value
+            if (first_name != "" && last_name != "" && email !== "" && new_pass != "" && confirm != "" && phone != "") {
 
 
-            let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
-            store.push(object);//[{name, email, pass}]
-            localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
+                let object = {};
+
+                object["fname"] = document.getElementById("fname").value
+                object["lname"] = document.getElementById("lname").value
+                object["email"] = document.getElementById("email").value
+                object["phone"] = document.getElementById("phone").value
+                object["aadhar"] = document.getElementById("aadhar").value
+                object["pan"] = document.getElementById("pan").value
+                object["new_pass"] = document.getElementById("new_pass").value
+                object["confirm"] = document.getElementById("confirm").value
 
 
-         
+
+                let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
+                store.push(object);//[{name, email, pass}]
+                localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
 
 
-            window.location.href = "pages/login_page.html"
-               
+
+
+
+                window.location.href = "./pages/regsister.html"
+
             }
             else {
-                 alert
+                alert(welcome)
             }
 
 
@@ -275,11 +314,9 @@
 
 
     </script>
+
 </body>
-
-</html>
-
-// localStorage.setItem("fname", first_name)
+<!-- // localStorage.setItem("fname", first_name)
 // localStorage.setItem("lname", last_name)
 // localStorage.setItem("email", email)
 // localStorage.setItem("phone", phone)
@@ -364,4 +401,6 @@
 // gen_label2.setAttribute("for", "gend");
 // gen_label2.innerText = "Female";
 // // gen_label2.innerText=("Female")
-// ladi_div.append(gen_label2);
+// ladi_div.append(gen_label2); -->
+
+</html>

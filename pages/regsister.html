@@ -33,8 +33,8 @@
             <div class="for_button">
 
                 <div class="back_blue">
-                    <a href="../index.html"><button class="top_button" id="hover">Personal</button></a> 
-                  <button class="top_button">Salary</button>
+                    <a href="../index.html"><button class="top_button" id="hover">Personal</button></a>
+                    <button class="top_button">Salary</button>
                 </div>
 
             </div>
@@ -42,7 +42,7 @@
             <form>
 
                 <label for="age"></label>
-                <input type="number"  class="form-floating mb-3" id="age" name="age" placeholder="Your age">
+                <input type="number" class="form-floating mb-3" id="age" name="age" placeholder="Your age">
 
                 <div class="gender">
                     <label for="gender">Gender :
@@ -71,9 +71,8 @@
 
 
                 <div class="btm_btn">
-                    <button class="bottom_button">submit</button>
+                    <button class="bottom_button" onclick=" regsister()">submit</button>
                 </div>
-
 
 
             </form>
@@ -84,6 +83,50 @@
     </div>
 
 
+
+    <script>
+
+        let arr = JSON.parse(localStorage.getItem("array"));
+
+
+
+
+        function regsister() {
+
+            const age = document.getElementById("age").value.trim()
+            const door = document.getElementById("door").value.trim()
+            const street = document.getElementById("street").value.trim()
+            const district = document.getElementById("district").value.trim()
+            const pincode = document.getElementById("pincode").value.trim()
+            const nominee = document.getElementById("nominee").value.trim()
+            const nominee_age = document.getElementById("nominee_age").value.trim()
+
+
+
+
+        }
+
+            // let object = {};
+
+            // object["age"] = document.getElementById("age").value
+            // object["door"] = document.getElementById("door").value
+            // object["street"] = document.getElementById("street").value
+            // object["district"] = document.getElementById("district").value
+            // object["pincode"] = document.getElementById("pincode").value
+            // object["nominee"] = document.getElementById("nominee").value
+            // object["nominee_age"] = document.getElementById("nominee_age").value
+
+
+
+            // let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
+            // store.push(object);//[{name, email, pass}]
+            // localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
+
+
+            window.location.href = "./login.html"
+
+        
+    </script>
 </body>
 
 </html>

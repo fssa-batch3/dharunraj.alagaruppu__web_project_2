@@ -1,6 +1,6 @@
 body{
     background-color: rgb(62, 218, 197);
-    color: #d9dae8;
+    color: #2d2e30;
 }
 .main {
     display: flex;
@@ -55,7 +55,7 @@ body{
 
 
 .for_button {
-    /* background-color: rgba(0,98,211,255); */
+
     padding: 1.5%;
     border-radius: 60px;
     display: flex;
@@ -68,11 +68,11 @@ body{
     background-color: #31c9b5;
     color: white;
     display: flex;
-    width: 40%;
+    width: 35%;
     border-radius: 20px;
-    padding: 3px;
+    padding: 4px;
     margin: 2%;
-    justify-content: center;
+    justify-content: space-around;
 
 }
 
@@ -81,9 +81,8 @@ body{
     color: white;
     border: 0px;
     border-radius: 20px;
-    padding: 10px;
-    /* font-size: 15px; */
-    width: 90%;
+    padding: 12px 48px;
+    width: 100%;
     font-weight: bolder;
     cursor: pointer;
     transition: all 1s;

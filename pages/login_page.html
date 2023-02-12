@@ -89,9 +89,10 @@
 
 
 
-        let form = document.createElement("form");
+        let form = document.createElement("div");
         // form.setAttribute("method", "post");
         form.setAttribute("id", "singupform")
+
         right_container.append(form);
 
         const obj = [
@@ -176,24 +177,39 @@
             let fullname = document.getElementById("fullname").value
             let email = document.getElementById("email").value
             let password = document.getElementById("password").value
+
+
             const attach = JSON.parse(localStorage.getItem("array"))
             
             let check;
 
-            attach.find(element => {
-                if (element["name"] == fullname && element["e_mail"] == element["email"] && pass_word == password) {
+            attach.forEach(element => {
+                if (element["fname"] == fullname && element["email"] == email && element["new_pass"] == password) {
 
-                    return check == 1
-                    window.location.href = "home.html"
+                    return check = 1
+                    console.log("logged");
 
                 }
 
                 else {
-                    return check == 0
-                    alert("Invalid pattern")
+                   console.log("invalid");
+            
+                    return check = 0
                 }
 
-            })
+            });
+
+if(check==1){
+    let first_name;
+            first_name = fullname;
+            console.log(first_name);
+         
+
+            localStorage.setItem("first_name", first_name)
+    window.location.href= "account_detail.html"
+
+} 
+
 
         }
     </script>

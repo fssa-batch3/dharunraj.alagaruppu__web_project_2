@@ -12,6 +12,7 @@
 <body>
 
     <div class="main">
+        <p id="para"></p>
 
     </div>
 
@@ -217,10 +218,10 @@
     welcome.append(top_image);
 
 
-    let image = document.createElement("img");
-    image.setAttribute("src", "assets/img/money.gif");
-    image.setAttribute("alt", "Net Bliz");
-    top_image.append(image);
+    // let image = document.createElement("img");
+    // image.setAttribute("src", "assets/img/money.gif");
+    // image.setAttribute("alt", "Net Bliz");
+    // top_image.append(image);
 
     let changing = document.createElement("h3");
     changing.setAttribute("class", "changing");
@@ -242,29 +243,45 @@
     dirction.setAttribute("class", "dirction");
     welcome.append(dirction);
 
+    
+
     let show = JSON.parse(localStorage.getItem('array'));
+
+    let account_name = localStorage.getItem("first_name");
+    console.log(account_name);
+ let check;
+    show.find(e=>{
+        if(e["fname"]===account_name){
+            let current_user = e
+            console.log(e);
+            document.getElementById("fname").value= current_user["fname"]
+      
+        }
+    }
+    )
+
 
     // let check_login = localStorage.getItem("lemail")
 
-    for (let i = 0; i <= show.length; i++) {
+    // for (let i = 0; i <= show.length; i++) {
 
-        if (show[i].email === check_login) {
-            document.getElementById("fname").value = show[i]["fname"]; //show[1][name]
-            document.getElementById("email").value = show[i]["email"];
-            document.getElementById("dob").value = show[i]["dob"];
-            document.getElementById("pan").value = show[i]["pan"];
-            document.getElementById("aadhar").value = show[i]["aadhar"];
-            document.getElementById("occupation").value = show[i]["occupation"]; // } 
-            document.getElementById("fname").innerText = localStorage.getItem("fname");
-            document.getElementById("dob").innerText = localStorage.getItem("dob");
-            document.getElementById("pan").innerText = localStorage.getItem("pan");
-            document.getElementById("aadhar").innerText = localStorage.getItem("aadhar");
-            document.getElementById("occupation").innerText = localStorage.getItem("occupation"); // let
-            get_value = document.createElement("h6")
-        }
+    //     if (show[i].email === check_login) {
+    //         document.getElementById("fname").value = show[i]["fname"]; //show[1][name]
+    //         document.getElementById("email").value = show[i]["email"];
+    //         document.getElementById("dob").value = show[i]["dob"];
+    //         document.getElementById("pan").value = show[i]["pan"];
+    //         document.getElementById("aadhar").value = show[i]["aadhar"];
+    //         document.getElementById("occupation").value = show[i]["occupation"]; // } 
+    //         document.getElementById("fname").innerText = localStorage.getItem("fname");
+    //         document.getElementById("dob").innerText = localStorage.getItem("dob");
+    //         document.getElementById("pan").innerText = localStorage.getItem("pan");
+    //         document.getElementById("aadhar").innerText = localStorage.getItem("aadhar");
+    //         document.getElementById("occupation").innerText = localStorage.getItem("occupation"); // let
+    //         get_value = document.createElement("h6")
+    //     }
 
 
-    }
+    
 </script>
 
 </html>

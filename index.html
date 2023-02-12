@@ -41,12 +41,12 @@
 
         let a = document.createElement("a");
         a.setAttribute("href", "./pages/login_page.html");
-        welcome.append(a)
+        welcome.append(a);
 
         let button = document.createElement("button");
         button.setAttribute("class", "welcome_button");
         button.innerText = "Login";
-        a.append(button)
+        a.append(button);
 
         // left half page is end
 
@@ -70,16 +70,24 @@
         back_blue.setAttribute("class", "back_blue");
         for_button.append(back_blue);
 
+        let Personal_a = document.createElement("a");
+        a.setAttribute("href", "#");
+        back_blue.append(Personal_a);
+
+        let Address_a = document.createElement("a");
+        a.setAttribute("href", "./pages/regsister.html");
+        back_blue.append(Address_a);
+
         let input_button = document.createElement("button");
         input_button.setAttribute("class", "top_button");
         input_button.setAttribute("id", "hover");
         input_button.innerText = ("Personal");
-        back_blue.append(input_button);
+        Personal_a.append(input_button);
 
         let input_button2 = document.createElement("button");
         input_button2.setAttribute("class", "top_button");
-        input_button2.innerText = ("Salary");
-        back_blue.append(input_button2);
+        input_button2.innerText = ("Address");
+        Address_a.append(input_button2);
 
 
 
@@ -236,10 +244,7 @@
             input_box.setAttribute("max-length", obj[i]["max"]);
             input_box.setAttribute("pattern", obj[i]["pattern"]);
             input_box.setAttribute("required", "");
-            input_box.setAttribute("pattern", obj[i]["pattern"]);
-
-
-
+            // input_box.setAttribute("pattern", obj[i]["pattern"]);
 
             form.append(input_box);
 
@@ -263,15 +268,15 @@
 
         function signup() {
 
-
             const first_name = document.getElementById("fname").value.trim()
-            const last_name = document.getElementById("lname").value.trim()
-            const email = document.getElementById("email").value.trim()
-            const phone = document.getElementById("phone").value.trim()
-            const aadhar = document.getElementById("aadhar").value.trim()
-            const pan = document.getElementById("pan").value.trim()
-            const new_pass = document.getElementById("new_pass").value.trim()
-            const confirm = document.getElementById("confirm").value.trim()
+                const last_name = document.getElementById("lname").value.trim()
+                const email = document.getElementById("email").value.trim()
+                const phone = document.getElementById("phone").value.trim()
+                const aadhar = document.getElementById("aadhar").value.trim()
+                const pan = document.getElementById("pan").value.trim()
+                const new_pass = document.getElementById("new_pass").value.trim()
+                const confirm = document.getElementById("confirm").value.trim()
+
 
             if (first_name != "" && last_name != "" && email !== "" && new_pass != "" && confirm != "" && phone != "") {
 
@@ -293,21 +298,15 @@
                 store.push(object);//[{name, email, pass}]
                 localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
 
-
-
-
-
-                window.location.href = "./pages/regsister.html"
+                window.location.href = "./pages/login_page.html"
 
             }
+
             else {
-                alert(welcome)
+
+                alert(sorry)
+
             }
-
-
-
-
-
 
         }
 
@@ -316,6 +315,33 @@
     </script>
 
 </body>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- // localStorage.setItem("fname", first_name)
 // localStorage.setItem("lname", last_name)
 // localStorage.setItem("email", email)
@@ -402,5 +428,3 @@
 // gen_label2.innerText = "Female";
 // // gen_label2.innerText=("Female")
 // ladi_div.append(gen_label2); -->
-
-</html>

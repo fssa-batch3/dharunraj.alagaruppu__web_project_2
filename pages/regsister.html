@@ -101,29 +101,31 @@
             const nominee = document.getElementById("nominee").value.trim()
             const nominee_age = document.getElementById("nominee_age").value.trim()
 
+             arr.push(obj)
 
-
+        console.log(obj)
 
         }
 
-            // let object = {};
+       
 
-            // object["age"] = document.getElementById("age").value
-            // object["door"] = document.getElementById("door").value
-            // object["street"] = document.getElementById("street").value
-            // object["district"] = document.getElementById("district").value
-            // object["pincode"] = document.getElementById("pincode").value
-            // object["nominee"] = document.getElementById("nominee").value
-            // object["nominee_age"] = document.getElementById("nominee_age").value
+            let object = {};
 
-
-
-            // let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
-            // store.push(object);//[{name, email, pass}]
-            // localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
+            object["age"] = document.getElementById("age").value
+            object["door"] = document.getElementById("door").value
+            object["street"] = document.getElementById("street").value
+            object["district"] = document.getElementById("district").value
+            object["pincode"] = document.getElementById("pincode").value
+            object["nominee"] = document.getElementById("nominee").value
+            object["nominee_age"] = document.getElementById("nominee_age").value
 
 
-            window.location.href = "./login.html"
+
+            let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
+            store.push(object);//[{name, email, pass}]
+            localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
+
+
 
         
     </script>

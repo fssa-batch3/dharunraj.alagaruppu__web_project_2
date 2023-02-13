@@ -13,39 +13,46 @@
 <body>
     <div class="main">
         <div class="sidebar">
-            <div class="profile">
+            <!-- <div class="profile">
                 <img src="../assets/img/sign up.jpg" alt="profile">
                 <h3>Dharunraj</h3>
-            </div>
+            </div> -->
 
             <ul>
-                <li><a href="href="">
-                    <span class=" icons"> <i class="fas fa-home"></i> </span>
+                <li>
+                    <a href="href=" #">
+                        <span class=" icons"> <i class="fas fa-home"></i> </span>
                         <span class=" link_of_pages">Home</span>
+                    </a>
+                </li>
+
+                <li><a href="href=" #">
+                        <span class=" icons"> <i class="fas fa-home"></i> </span>
+                        <span class=" link_of_pages">Account Details</span>
                     </a></li>
 
-                <li><a href="href="">
-                    <span class=" icons"> <i class="fas fa-home"></i></span>
+                <li><a href="href=" #">
+                        <span class=" icons"> <i class="fas fa-home"></i></span>
                         <span class=" link_of_pages">Fund Transfer</span>
                     </a></li>
 
-                <li><a href="href="">
-                    <span class=" icons"> <i class="fas fa-home"></i></span>
+                <li><a href="href=" #">
+                        <span class=" icons"> <i class="fas fa-home"></i></span>
                         <span class=" link_of_pages">Balance </span>
                     </a></li>
 
-                <li><a href="href="">
-                    <span class=" icons"><i class="fas fa-home"></i></span>
+                <li><a href="href=" #">
+                        <span class=" icons"><i class="fas fa-home"></i></span>
                         <span class=" link_of_pages">history</span>
                     </a></li>
 
-                <li><a href="href="">
-                    <span class=" icons"><i class="fas fa-home"></i></span>
+                <li><a href="href=" #">
+                        <span class=" icons"><i class="fas fa-home"></i></span>
                         <span class=" link_of_pages">Loan</span>
                     </a></li>
 
-                <li><a href="href="">
-                    <span class=" icons"><i class="fas fa-home"></i></span>
+                <li><a href="href=" #">
+                        <span class=" icons"><i class="fas fa-home"></i></span>
                         <span>Other feature</span></a></li>
             </ul>
 
@@ -56,14 +63,29 @@
                 <div class="actions">
                     <a href=""><i class="fas fa-bars"></i></a>
                 </div>
+
+                <div class="welcome">
+                    <span>Welcome,</span>
+                    <span class="profile_name"></span>
+
+                </div>
+                <label for="search"></label>
+                <input type="search"class= "form-control" id="search" name="search">
+
+                <div class="profile">
+                    <img src="" alt="">
+                    <span>customer</span>
+                </div>
             </div>
+
+
         </div>
     </div>
 
     <script>
 
-        let actions=document.querySelector(".actions");
-        actions.addEventListener("click" , function(){
+        let actions = document.querySelector(".actions");
+        actions.addEventListener("click", function () {
             document.querySelector("body").classList.toggle("active");
         })
     </script>

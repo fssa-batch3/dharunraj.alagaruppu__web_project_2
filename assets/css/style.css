@@ -1,7 +1,8 @@
-body{
+body {
     background-color: rgb(62, 218, 197);
     color: #2d2e30;
 }
+
 .main {
     display: flex;
     flex-wrap: wrap;
@@ -57,23 +58,22 @@ body{
 .for_button {
 
     padding: 1.5%;
-    border-radius: 60px;
     display: flex;
     justify-content: flex-end;
-    flex-wrap: wrap;
     width: 90%;
+
 }
 
 .for_button .back_blue {
     background-color: #31c9b5;
     color: white;
     display: flex;
-    width: 35%;
+    /* width: 50%; */
     border-radius: 20px;
-    padding: 4px;
+    padding: 3px;
     margin: 2%;
     justify-content: space-around;
-
+    /* border: 1px solid black; */
 }
 
 .for_button .top_button {
@@ -105,7 +105,7 @@ form {
 
 }
 
-.bottom_form{
+.bottom_form {
     display: flex;
     justify-content: space-around;
 }
@@ -125,16 +125,17 @@ form {
     display: flex;
     flex-direction: column;
 } */
-.dob_child{
+.dob_child {
     width: 60%;
     display: flex;
     justify-content: center;
 }
 
-.require{
+.require {
     display: flex;
     flex-wrap: wrap;
 }
+
 .btm_btn {
     display: flex;
     justify-content: center;
@@ -190,14 +191,13 @@ input[type="radio"][label] {
     font-size: 15px;
 }
 
-input[type="date"]{
+input[type="date"] {
     width: 40%;
 }
 
-.gender{
+.gender {
     width: 30%;
-    margin:30px;
+    margin: 30px;
     padding: 10px;
 
 }
-

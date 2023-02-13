@@ -243,19 +243,22 @@
     dirction.setAttribute("class", "dirction");
     welcome.append(dirction);
 
-    
+
 
     let show = JSON.parse(localStorage.getItem('array'));
 
     let account_name = localStorage.getItem("first_name");
     console.log(account_name);
- let check;
-    show.find(e=>{
-        if(e["fname"]===account_name){
+    let check;
+
+    show.find(e => {
+
+        if (e["fname"] === account_name) {
+
             let current_user = e
             console.log(e);
-            document.getElementById("fname").value= current_user["fname"]
-      
+            document.getElementById("fname").value = current_user["fname"]
+            
         }
     }
     )
@@ -271,7 +274,7 @@
     //         document.getElementById("dob").value = show[i]["dob"];
     //         document.getElementById("pan").value = show[i]["pan"];
     //         document.getElementById("aadhar").value = show[i]["aadhar"];
-    //         document.getElementById("occupation").value = show[i]["occupation"]; // } 
+    //         document.getElementById("occupation").value = show[i]["occupation"]; // }
     //         document.getElementById("fname").innerText = localStorage.getItem("fname");
     //         document.getElementById("dob").innerText = localStorage.getItem("dob");
     //         document.getElementById("pan").innerText = localStorage.getItem("pan");
@@ -281,7 +284,7 @@
     //     }
 
 
-    
+
 </script>
 
 </html>

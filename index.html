@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Landing Page</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -40,7 +40,7 @@
         welcome.append(pickup);
 
         let a = document.createElement("a");
-        a.setAttribute("href","./pages/login_page.html");
+        a.setAttribute("href", "./pages/login_page.html");
         welcome.append(a);
 
         let button = document.createElement("button");
@@ -105,7 +105,7 @@
                 "placeholder": "First Name *",
                 "required": "required",
 
-                "pattern": "[a-z]{25}",
+                "pattern": "[a-z]{1-25}",
                 "tittle": "Your pattern un accectable",
                 "aria": "First name"
 
@@ -121,7 +121,7 @@
                 "id": "lname",
                 "placeholder": "Last Name *",
 
-                "pattern": "[a-zA-Z]{25}",
+                "pattern": "[a-zA-Z]{1-25}",
                 "tittle": "Your pattern un accectable",
 
             },
@@ -136,7 +136,7 @@
                 "id": "email",
                 "placeholder": "Email.Id *",
 
-                "pattern": "[a-zA-Z]{25}",
+                "pattern": "[a-zA-Z]{10-30}",
                 "tittle": "Your pattern un accectable",
 
 
@@ -154,7 +154,7 @@
                 "id": "phone",
                 "placeholder": "Phone No *",
 
-                "pattern": "[0-9]{10}",
+                "pattern": "[0-9]{10-10}",
                 "tittle": "Your pattern un accectable",
 
             },
@@ -170,7 +170,7 @@
                 "id": "aadhar",
                 "placeholder": "Aadhar Number *",
 
-                "pattern": "[0-9]{12}",
+                "pattern": "[0-9]{12-12}",
                 "tittle": "Your pattern un accectable",
 
             },
@@ -185,7 +185,7 @@
                 "id": "pan",
                 "placeholder": "PAN Number *",
 
-                "pattern": "[0-9]{18}",
+                "pattern": "[0-9]{15-18}",
                 "tittle": "Your pattern un accectable",
 
             },
@@ -200,7 +200,7 @@
                 "id": "new_pass",
                 "placeholder": "Create password *",
 
-                "pattern": "[0-9]{25}",
+                "pattern": "[0-9a-zA-Z]{8-25}",
                 "tittle": "Your pattern un accectable",
 
             },
@@ -215,7 +215,7 @@
                 "id": "confirm",
                 "placeholder": "Confirm password *",
 
-                "pattern": "[0-9]{25}",
+                "pattern": "[0-9A-Za-z]{8-25}",
                 "tittle": "Your pattern un accectable",
 
             }
@@ -240,8 +240,8 @@
             input_box.setAttribute("name", obj[i]["name"]);
             input_box.setAttribute("id", obj[i]["id"]);
             input_box.setAttribute("placeholder", obj[i]["placeholder"]);
-            input_box.setAttribute("min-length", obj[i]["min"]);
-            input_box.setAttribute("max-length", obj[i]["max"]);
+            // input_box.setAttribute("min-length", obj[i]["min"]);
+            // input_box.setAttribute("max-length", obj[i]["max"]);
             input_box.setAttribute("pattern", obj[i]["pattern"]);
             input_box.setAttribute("required", "");
             // input_box.setAttribute("pattern", obj[i]["pattern"]);
@@ -269,36 +269,36 @@
         function signup() {
 
             const first_name = document.getElementById("fname").value.trim()
-                const last_name = document.getElementById("lname").value.trim()
-                const email = document.getElementById("email").value.trim()
-                const phone = document.getElementById("phone").value.trim()
-                const aadhar = document.getElementById("aadhar").value.trim()
-                const pan = document.getElementById("pan").value.trim()
-                const new_pass = document.getElementById("new_pass").value.trim()
-                const confirm = document.getElementById("confirm").value.trim()
+            const last_name = document.getElementById("lname").value.trim()
+            const email = document.getElementById("email").value.trim()
+            const phone = document.getElementById("phone").value.trim()
+            const aadhar = document.getElementById("aadhar").value.trim()
+            const pan = document.getElementById("pan").value.trim()
+            const new_pass = document.getElementById("new_pass").value.trim()
+            const confirm = document.getElementById("confirm").value.trim()
 
 
-            if (first_name != "" && last_name != "" && email !== "" && new_pass != "" && confirm != "" && phone != "") {
+            if (first_name != "" && last_name != "" && email !== "" && new_pass != "" && confirm != "" && phone != "" && new_pass === confirm) {
 
 
-                let object = {};
+                let obj = {};
 
-                object["fname"] = document.getElementById("fname").value
-                object["lname"] = document.getElementById("lname").value
-                object["email"] = document.getElementById("email").value
-                object["phone"] = document.getElementById("phone").value
-                object["aadhar"] = document.getElementById("aadhar").value
-                object["pan"] = document.getElementById("pan").value
-                object["new_pass"] = document.getElementById("new_pass").value
-                object["confirm"] = document.getElementById("confirm").value
+                obj["fname"] = document.getElementById("fname").value
+                obj["lname"] = document.getElementById("lname").value
+                obj["email"] = document.getElementById("email").value
+                obj["phone"] = document.getElementById("phone").value
+                obj["aadhar"] = document.getElementById("aadhar").value
+                obj["pan"] = document.getElementById("pan").value
+                obj["new_pass"] = document.getElementById("new_pass").value
+                obj["confirm"] = document.getElementById("confirm").value
 
 
 
                 let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
-                store.push(object);//[{name, email, pass}]
+                store.push(obj);//[{name, email, pass}]
                 localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
 
-                window.location.href = "./pages/login_page.html"
+                window.location.href = "../pages/login_page.html"
 
             }
 

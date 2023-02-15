@@ -5,15 +5,18 @@
     font-family: 'Libre Baskerville', sans-serif;
 }
 
+body {
+    scroll-behavior: smooth;
+}
+
 header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 1%;
-    margin: 30px;
-    width: 90%;
-    margin: 0px auto;
+    margin: 3% auto;
+    width: 86%;
 }
 
 
@@ -26,8 +29,8 @@ header {
 
 .full_link {
     /* border: 1px solid black; */
-    padding: 1%;
-    width: 30%;
+    /* padding: 1%; */
+    width: 50%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -35,9 +38,8 @@ header {
 
 .full_link a {
     margin: 1%;
-    font-size: 18px;
+    font-size: 19px;
     color: #1a237e;
-    padding: 20px;
 }
 
 .full_link a:hover {
@@ -64,19 +66,18 @@ header {
     /* border: 1px solid black; */
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
-    margin: 7%;
-    /* text-align: justify; */
+    margin: 3% 0%;
 }
 
 .intro .content {
-    width: 50%;
+    width: 31%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
-    padding: 4%;
+    /* align-items: center; */
+    padding: 2%;
     /* border: 1px solid black; */
 }
 
@@ -91,14 +92,8 @@ header {
 .intro .content p {
     color: #1a237e;
     font-size: 20px;
-    line-height: 32px;
-}
+    text-align: justify;
 
-.intro .content .change {
-    display: flex;
-    justify-content: space-evenly;
-    /* border: 1px solid black; */
-    width: 100%;
 }
 
 .intro .content a {
@@ -110,12 +105,13 @@ header {
     font-weight: 400;
     letter-spacing: .5px;
     font-family: 'Open Sans', sans-serif;
-    margin: 30px;
-
+    width: 40%;
+    text-align: center;
+    margin: 20px 0px;
 }
 
 .intro img {
-    width: 40%;
+    width: 45%;
     height: 65%;
 }
 
@@ -143,7 +139,7 @@ header {
 }
 
 .about .feature .feature_details {
-    border: 1px solid green;
+    border: 1.2px solid green;
     width: 27%;
     padding: 4%;
     color: #1a237e;
@@ -161,7 +157,7 @@ header {
 }
 
 .about .feature .feature_details p {
-    padding: 10% ;
+    padding: 10%;
     color: #1a237e;
     font-size: 20px;
     padding: 40px 0px;
@@ -235,4 +231,48 @@ header {
 
 .only_back img {
     width: 40%;
+}
+
+footer .back_foot {
+    background-color: #7086ff;
+    width: 78%;
+    margin: 7% auto;
+    color: black;
+    padding: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15px;
+}
+
+footer .back_foot .icon_social,
+footer .direct {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0px auto;
+    /* border: 1px solid black; */
+}
+
+footer .back_foot .icon_social img {
+    width: 50px;
+
+}
+
+footer h3 {
+    margin: 4%;
+}
+
+footer .direct a {
+
+    background-color: white;
+    color: black;
+    padding: 15px 14%;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    font-family: 'Open Sans', sans-serif;
+
 }

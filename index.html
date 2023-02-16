@@ -5,444 +5,203 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Intro Page</title>
+    <link rel="stylesheet" href="../assets/css/landing.css">
 </head>
 
 <body>
 
+    <header>
+        <div class="title">
 
-    <!-- <button onclick="signup()">register</button> -->
-    <div class="main">
+            <a href="#">NET BANKING</a>
+        </div>
+        <div class="full_link">
+            <a href="#">Intro</a>
+            <a href="#about">Feature</a>
+            <a href="#start_build">where</a>
+            <a href="#only_back">how</a>
+            <div class="register">
+                <a href="#">Register</a>
+            </div>
+        </div>
 
-    </div>
 
-    <script>
+    </header>
 
-        // left page is start
+    <main>
 
-        let welcome = document.createElement("div");
-        welcome.setAttribute("class", "welcome");
-        document.querySelector(".main").append(welcome);    //main 1st child is start
+        <div class="intro" id="intro">
 
+            <div class="content">
 
-        let image = document.createElement("img");
-        image.setAttribute("src", "assets/img/money.gif");
-        image.setAttribute("alt", "Net Bliz");
-        document.querySelector(".welcome").append(image);
+                <h1>Net banking always with you !!</h1>
 
-        let heading = document.createElement("h1");
-        heading.innerText = "welcome!!";
-        welcome.append(heading);
+                <p>Fun filled insights from FinForAll by NetBanking helps you make smarter financial decisons</p>
+                <p>These are new-age banks without any physical location, present entirely online.</p>
+                <p>It's also known as an online bank, internet-only bank, virtual bank or digital bank</p>
 
-        let pickup = document.createElement("h3");
-        pickup.innerText = "You are 30 seconds away to experiencing your new Banking World ";
-        welcome.append(pickup);
+                <a href="#">Login</a>
+            </div>
 
-        let a = document.createElement("a");
-        a.setAttribute("href", "./pages/login_page.html");
-        welcome.append(a);
+            <img src="../assets/img/202101-Talent-Trends-1_bi4qgd.gif" alt="intro">
 
-        let button = document.createElement("button");
-        button.setAttribute("class", "welcome_button");
-        button.innerText = "Login";
-        a.append(button);
+        </div>
 
-        // left half page is end
+        <div class="about" id="about">
+            <div>
+                <h1>Three special Feature are available in <br> our Net Banking website</h1>
+            </div>
 
+            <div class="feature">
 
+                <div class="feature_details">
+                    <h2>
+                        Fund Transfer
+                    </h2>
 
-        //container for button , form , button
+                    <p>
+                        A transfer is usually initiated from one bank or financial institution to another. Rather than
+                        cash, the participating institutions share information about the recipient.
+                    </p>
+                    <!-- 
+                    <div class="img_align">
+                        <img src="../assets/img/5dca97cd7789674d06d7495a_plan-box-img3.png" alt="leaf">
+                    </div> -->
 
-        let content_of_singnup = document.createElement("div");
-        content_of_singnup.setAttribute("class", "sing_up");
-        document.querySelector(".main").append(content_of_singnup);     //main 2st child is start
+                </div>
 
+                <div class="feature_details">
+                    <h2>
+                        History Checking
+                    </h2>
 
-        // Nice buttons start
+                    <p>
+                        A Payment History page appears as shown in Figure This page displays the biller name,
+                        Internet transaction reference number,bill amount, and biller transaction reference
+                        details.
+                    </p>
+                    <!-- <div class="img_align">
+                        <img src="../assets/img/5dca97cd7789674d06d7495a_plan-box-img3.png" alt="leaf">
+                    </div> -->
+                </div>
 
+                <div class="feature_details">
+                    <h2>
+                        Balance Enqurie
+                    </h2>
 
-        let for_button = document.createElement("div");
-        for_button.setAttribute("class", "for_button");
-        content_of_singnup.append(for_button);
+                    <p>
+                        Digital technology has simplified several chores that previously required both time and effort.
+                        You don't need to go to the bank to do financial or banking transactions.
 
-        let back_blue = document.createElement("div");
-        back_blue.setAttribute("class", "back_blue");
-        for_button.append(back_blue);
+                    </p>
 
-        let Personal_a = document.createElement("a");
-        a.setAttribute("href", "#");
-        back_blue.append(Personal_a);
+                </div>
 
-        let Address_a = document.createElement("a");
-        a.setAttribute("href", "./pages/regsister.html");
-        back_blue.append(Address_a);
+            </div>
 
-        let input_button = document.createElement("button");
-        input_button.setAttribute("class", "top_button");
-        input_button.setAttribute("id", "hover");
-        input_button.innerText = ("Personal");
-        Personal_a.append(input_button);
+        </div>
 
-        let input_button2 = document.createElement("button");
-        input_button2.setAttribute("class", "top_button");
-        input_button2.innerText = ("Address");
-        Address_a.append(input_button2);
+        <div class="start_build" id="start_build">
 
+            <img src="../assets/img/hero-img.png" alt="2nd image">
 
+            <div class="open_account">
 
+                <span class="heading">In 5 minutes to start banking with your own account </span>
 
-        const obj = [
+                <div class="box_content">
 
-            {
+                    <div class="content_text">
+                        <h2> <span>1</span> Build an account</h2>
 
-                "for": "fname",
-                "text": "",
+                        <p>Enter your name , email and phone number for the account . If you have a pan please ensure to
+                            give</p>
 
-                "type": "text",
-                "name": "fname",
-                "id": "fname",
-                "placeholder": "First Name *",
-                "required": "required",
+                        <h2><span>2</span> Transfer best in class</h2>
 
-                "pattern": "[A-Za-z]{10}",
-                "tittle": "Your pattern un acceptable",
-                "aria": "First name"
+                        <p>Send money Instantly with Net Banking Online Money Transfer Service. Simple & secure way to
+                            transfer money to bank account</p>
 
-            },
+                        <h2><span>3</span> Secure watch assets</h2>
 
-            {
+                        <p>100% digital banking with no pain. Zero balance accounts, no hidden fees. Master your money,
+                            reap rewards</p>
+                    </div>
 
-                "for": "lname",
-                "text": "",
 
-                "type": "text",
-                "name": "lname",
-                "id": "lname",
-                "placeholder": "Last Name *",
+                </div>
 
-                "pattern": "[a-zA-Z]{1,15}",
-                "tittle": "Your pattern un accectable",
+            </div>
 
-            },
+        </div>
 
-            {
+        <div class="start_build only_back" id="only_back">
 
-                "for": "email",
-                "text": "",
 
-                "type": "email",
-                "name": "email",
-                "id": "email",
-                "placeholder": "Email.Id *",
-                "tittle": "Your pattern un accectable",
+            <div class="open_account">
 
+                <span class="heading">In 5 minutes to start banking with your own account </span>
 
+                <div class="box_content">
 
+                    <div class="content_text">
+                        <h2> <span>></span> Build an account</h2>
 
-            },
+                        <p>Enter your name , email and phone number for the account . If you have a pan please ensure to
+                            give</p>
 
-            {
+                        <h2><span>></span> Transfer best in class</h2>
 
-                "for": "phone",
-                "text": "",
+                        <p>Send money Instantly with Net Banking Online Money Transfer Service. Simple & secure way to
+                            transfer money to bank account</p>
 
-                "type": "number",
-                "name": "phone",
-                "id": "phone",
-                "placeholder": "Phone No *",
+                        <h2><span>></span> Secure watch assets</h2>
 
-                "pattern": "[0-9]{10,10}",
-                "tittle": "Your pattern un accectable",
+                        <p>100% digital banking with no pain. Zero balance accounts, no hidden fees. Master your money,
+                            reap rewards</p>
+                    </div>
+                </div>
 
-            },
+            </div>
 
+            <img src="../assets/img/2020-YIR-08-Talent-Acquisition-SMALL3_bunlgn.gif" alt="4th image">
 
-            {
 
-                "for": "aadhar",
-                "text": "",
+        </div>
 
-                "type": "number",
-                "name": "aadhar",
-                "id": "aadhar",
-                "placeholder": "Aadhar Number *",
+    </main>
 
-                "pattern": "[0-9]{12,12}",
-                "tittle": "Your pattern un accectable",
+    <footer>
 
-            },
+        <div class="back_foot">
 
-            {
+            <div class="direct">
 
-                "for": "pan",
-                "text": "",
+                <a href="">Register</a>
+                <a href="">Login</a>
+            </div>
 
-                "type": "text",
-                "name": "pan",
-                "id": "pan",
-                "placeholder": "PAN Number *",
+            <h3>@ 2023 Net Banking</h3>
 
-                "pattern": "[0-9]{15,20}",
-                "tittle": "Your pattern un accectable",
 
-            },
 
-            {
+            <div class="icon_social">
 
-                "for": "new_pass",
-                "text": "",
+                <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in">
+                <img src="../assets/img/icons8-facebook-100.png" alt="facebook">
+                <img src="../assets/img/icons8-instagram-100.png" alt="insta">
+                <img src="../assets/img/icons8-twitter-100.png" alt="teitter">
 
-                "type": "password",
-                "name": "new_pass",
-                "id": "new_pass",
-                "placeholder": "Create password *",
+            </div>
 
-                "pattern": "[0-9a-zA-Z]{8,20}",
-                "tittle": "Your pattern un accectable",
 
-            },
+        </div>
 
-            {
+    </footer>
 
-                "for": "confirm",
-                "text": "",
-
-                "type": "password",
-                "name": "confirm",
-                "id": "confirm",
-                "placeholder": "Confirm password *",
-
-                "pattern": "[0-9A-Za-z]{8,20}",
-                "tittle": "Your pattern un accectable",
-
-            }
-
-        ]
-
-
-        // Form is started this point
-
-        let form = document.createElement("form");
-        content_of_singnup.append(form);
-
-        for (let i = 0; i < 8; i++) {
-
-            let label_text = document.createElement("label");
-            label_text.setAttribute("for", obj[i]["for"]);
-            label_text.innerText = obj[i]["text"];
-            form.append(label_text);
-
-            let input_box = document.createElement("input");
-            input_box.setAttribute("type", obj[i]["type"]);
-            input_box.setAttribute("name", obj[i]["name"]);
-            input_box.setAttribute("id", obj[i]["id"]);
-            input_box.setAttribute("placeholder", obj[i]["placeholder"]);
-            // input_box.setAttribute("min-length", obj[i]["min"]);
-            // input_box.setAttribute("max-length", obj[i]["max"]);
-            if(i<2){
-            input_box.setAttribute("pattern",obj[i]["pattern"]);
-        }
-        else if(i==2){
-            console.log("none");
-        }
-        else{
-            input_box.setAttribute("pattern",obj[i]["pattern"]);
-        }
-            input_box.setAttribute("required", "");
-            // input_box.setAttribute("pattern", obj[i]["pattern"]);
-
-            form.append(input_box);
-
-        }
-
-        //gender radio over....
-
-        let bottom_button = document.createElement("div");
-        bottom_button.setAttribute("class", "btm_btn");
-        form.append(bottom_button);
-
-        let next = document.createElement("button");
-        next.setAttribute("class", "bottom_button");
-        next.innerText = ("Next >>");
-        // next.setAttribute("onclick", "signup()");
-        bottom_button.append(next);
-
-
-
-        let form_check=document.querySelector("form");
-        form_check.addEventListener("submit",e=>{
-            e.preventDefault();
-            signup();
-
-        })
-
-        function signup() {
-
-            const first_name = document.getElementById("fname").value.trim()
-            const last_name = document.getElementById("lname").value.trim()
-            const email = document.getElementById("email").value.trim()
-            const phone = document.getElementById("phone").value.trim()
-            const aadhar = document.getElementById("aadhar").value.trim()
-            const pan = document.getElementById("pan").value.trim()
-            const new_pass = document.getElementById("new_pass").value.trim()
-            const confirm = document.getElementById("confirm").value.trim()
-
-
-            if (first_name != "" && last_name != "" && email !== "" && new_pass != "" && confirm != "" && phone != "") {
-                if(new_pass==confirm){
-
-                let obj = {};
-
-                obj["fname"] = document.getElementById("fname").value
-                obj["lname"] = document.getElementById("lname").value
-                obj["email"] = document.getElementById("email").value
-                obj["phone"] = document.getElementById("phone").value
-                obj["aadhar"] = document.getElementById("aadhar").value
-                obj["pan"] = document.getElementById("pan").value
-                obj["new_pass"] = document.getElementById("new_pass").value
-                obj["confirm"] = document.getElementById("confirm").value
-
-        // if(new_pass==confirm){
-
-                let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
-                store.push(obj);//[{name, email, pass}]
-                localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
-
-                window.location.href = "../pages/login_page.html"
-            // }
-            // else{
-            //     alert("password not matched")
-            // }
-            }
-            else{
-                alert("password not matched")
-            }
-            }
-
-            else {
-
-                alert("sorry")
-
-            }
-
-        }
-
-
-
-    </script>
 
 </body>
 
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- // localStorage.setItem("fname", first_name)
-// localStorage.setItem("lname", last_name)
-// localStorage.setItem("email", email)
-// localStorage.setItem("phone", phone)
-// localStorage.setItem("aadhar", aadhar)
-// localStorage.setItem("pan", pan)
-// localStorage.setItem("new_pass", new_pass)
-// localStorage.setItem("confirm", confirm)
-
-// let btn = document.querySelector(".bottom_button");
-// btn.addEventListener(
-//     "onSubmit", function (e) {
-//         e.target.preventDefault();
-//         signup();
-//     }
-// )
-
-
-//date of birth
-
-// let bottom_form = document.createElement("div");
-// bottom_form.setAttribute("class", "bottom_form");
-// content_of_singnup.append(bottom_form);
-
-// let dob_child = document.createElement("div");
-// dob_child.setAttribute("class", "dob_child");
-
-// bottom_form.append(dob_child);
-
-// let dob_label = document.createElement("label");
-// dob_label.setAttribute("for", "dob");
-// dob_child.append(dob_label);
-
-// let dob = document.createElement("input");
-// dob.setAttribute("type", "date");
-// dob.setAttribute("name", "dob");
-// dob.setAttribute("id", "dob");
-// dob_child.append(dob);
-
-
-//Gender label and input
-
-// let div_of_gender = document.createElement("div");
-// div_of_gender.setAttribute("class", "gender");
-// bottom_form.append(div_of_gender);
-
-// let heading_gender = document.createElement("h4");
-// heading_gender.innerText = "Gender:";
-// div_of_gender.append(heading_gender);
-
-// let require = document.createElement("div");
-// require.setAttribute("class", "require");
-// div_of_gender.append(require);
-
-
-// let gen_div = document.createElement("div");
-// gen_div.setAttribute("class", "align_gen");
-// require.append(gen_div);
-
-// let ladi_div = document.createElement("div");
-// ladi_div.setAttribute("class", "align_gen");
-// div_of_gender.append(ladi_div);
-
-
-// let gender_input = document.createElement("input");
-// gender_input.setAttribute("type", "radio");
-// gender_input.setAttribute("name", "gender");
-// gender_input.setAttribute("id", "gender");
-// gen_div.append(gender_input);
-
-// let gen_label = document.createElement("label");
-// gen_label.setAttribute("for", "gender");
-// gen_label.innerText = "Male";
-// gen_div.append(gen_label);
-
-// let gender_input2 = document.createElement("input");
-// gender_input2.setAttribute("type", "radio");
-// gender_input2.setAttribute("name", "gender");
-// gender_input2.setAttribute("id", "gend");
-// ladi_div.append(gender_input2);
-
-// let gen_label2 = document.createElement("label");
-// gen_label2.setAttribute("for", "gend");
-// gen_label2.innerText = "Female";
-// // gen_label2.innerText=("Female")
-// ladi_div.append(gen_label2); -->

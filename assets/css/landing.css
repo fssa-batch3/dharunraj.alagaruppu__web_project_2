@@ -3,6 +3,7 @@
     text-decoration: none;
     box-sizing: border-box;
     font-family: 'Libre Baskerville', sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -68,23 +69,23 @@ header {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    margin: 3% 0%;
+    margin: 2.5% 0%;
 }
 
 .intro .content {
     width: 31%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     /* align-items: center; */
-    padding: 2%;
+    padding: 1%;
     /* border: 1px solid black; */
 }
 
 .intro .content h1 {
     font-size: 60px;
     font-weight: 700;
-    line-height: 60px;
+    /* line-height: 60px; */
     color: #1a237e;
     /* border: 1px solid black; */
 }

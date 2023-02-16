@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
 
-
+<a href=></a>
     <!-- <button onclick="signup()">register</button> -->
     <div class="main">
 
@@ -40,7 +40,7 @@
         welcome.append(pickup);
 
         let a = document.createElement("a");
-        a.setAttribute("href", "./pages/login_page.html");
+        a.setAttribute("href", "./login_page.html");
         welcome.append(a);
 
         let button = document.createElement("button");
@@ -309,7 +309,7 @@
                 store.push(obj);//[{name, email, pass}]
                 localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
 
-                window.location.href = "../pages/login_page.html"
+                window.location.href = "./login_page.html"
             // }
             // else{
             //     alert("password not matched")

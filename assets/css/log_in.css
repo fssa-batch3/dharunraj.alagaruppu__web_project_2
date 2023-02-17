@@ -4,20 +4,22 @@
     justify-content: space-around;
     height: 100vh;
     align-items: center;
-    background-color: #cbfbff;
+    background-color: #f5f6ff;
+    color:  #1a237e;
+    /* background-color: #cbfbff; */
+    /* background-image: linear-gradient(to right, #7587f8, #4ec6fa); */
 }
 
 .welcome {
 
     width: 22%;
-    color: black;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     text-align: center;
     background-color: white;
     padding: 30px;
-    box-shadow: 0.1px 0.1px 3px rgb(17, 17, 17);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 20px;
 }
 
@@ -27,7 +29,7 @@
 }
 
 .welcome button {
-    background-color: #107aad;
+    background-color:  #1a237e;
     color: white;
     font-size: 99%;
     font-weight: bolder;
@@ -46,7 +48,8 @@
     width: 60%;
     background-color: white;
     border-radius: 20px;
-    box-shadow: 0.1px 0.1px 3px rgb(12, 12, 12);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+   
 
 }
 
@@ -89,10 +92,11 @@ label{
 input {
     border-radius: 7px;
     border: 0px;
-    box-shadow: 0px 0.5px 2px rgb(85, 84, 84);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    /* box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px; */
     margin: 30px;
     padding: 10px;
-    width: 60%;
+    width: 80%;
 }
 
 input:focus {
@@ -106,7 +110,7 @@ input:focus {
 
 
 .bottom_button {
-    background-color:  #107aad;
+    background-color:  #1a237e;
     color: white;
     padding: 10px;
     width: 30%;

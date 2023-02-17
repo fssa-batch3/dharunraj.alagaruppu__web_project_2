@@ -90,9 +90,9 @@
 
 
 
-        let form = document.createElement("div");
+        let form = document.createElement("form");
         // form.setAttribute("method", "post");
-        form.setAttribute("id", "singupform")
+        // form.setAttribute("id", "singupform")
 
         right_container.append(form);
 
@@ -161,7 +161,8 @@
         let next = document.createElement("button");
         next.setAttribute("type", "submit");
         next.setAttribute("class", "bottom_button");
-        next.setAttribute("onclick", "login()")
+        next.setAttribute("id","button_1")
+        // next.setAttribute("onclick", "login()")
         next.innerText = ("Login");
         form.append(next);
 
@@ -176,48 +177,107 @@
 
         //ridht side main divider end
 
+       
         function login() {
 
 
 
-            let fullname = document.getElementById("fullname").value
-            let email = document.getElementById("email").value
-            let password = document.getElementById("password").value
+let fullname = document.getElementById("fullname").value
+let email = document.getElementById("email").value
+let password = document.getElementById("password").value
 
 
-            const attach = JSON.parse(localStorage.getItem("array"))
-            
-            let check;
+const attach = JSON.parse(localStorage.getItem("array"))
 
-            attach.forEach(element => {
-                if (element["fname"] == fullname && element["email"] == email && element["new_pass"] == password) {
+let check;
 
-                    return check = 1
-                    console.log("logged");
+attach.forEach(element => {
+    if (element["fname"] == fullname && element["email"] == email && element["new_pass"] == password) {
 
-                }
+        return check = 1
+        alert("logged");
+        
 
-                else {
-                   console.log("invalid");
-            
-                    return check = 0
-                }
+    }
 
-            });
+    else {
+        console.log(element);
+        console.log(fullname, email, password);
+        
+        return check = 0
+       alert("invalid");
+
+    }
+
+});
 
 if(check==1){
-    let first_name;
-            first_name = fullname;
-            console.log(first_name);
-         
+let first_name;
+first_name = fullname;
+console.log(first_name);
 
-            localStorage.setItem("first_name", first_name)
-    window.location.href= "account_detail.html"
+
+localStorage.setItem("first_name", first_name)
+window.location.href= "account_detail.html"
 
 } 
 
 
-        }
+}
+let button_click = document.getElementById("button_1")
+button_click.addEventListener("click",     
+        function () {
+
+
+
+let fullname = document.getElementById("fullname").value
+let email = document.getElementById("email").value
+let password = document.getElementById("password").value
+
+
+const attach = JSON.parse(localStorage.getItem("array"))
+
+let check;
+
+attach.forEach(element => {
+    if (element["fname"] == fullname && element["email"] == email && element["new_pass"] == password) {
+
+        return check = 1
+        alert("logged");
+        
+
+    }
+
+    else {
+        console.log(element);
+        console.log(fullname, email, password);
+        
+        return check = 0
+       alert("invalid");
+
+    }
+
+});
+
+if(check==1){
+let first_name;
+first_name = fullname;
+console.log(first_name);
+
+
+localStorage.setItem("first_name", first_name)
+
+window.location.href= "account_detail.html"
+
+
+} 
+
+
+} )
+button_click.addEventListener("click",e=>{
+    e.preventDefault();
+})
+
     </script>
 
 

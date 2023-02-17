@@ -1,6 +1,6 @@
 body {
-    background-color: rgb(62, 218, 197);
-    color: #2d2e30;
+    /* background-image: linear-gradient(to right, #7587f8, #4ec6fa); */
+
 }
 
 .main {
@@ -9,32 +9,46 @@ body {
     justify-content: space-around;
     height: 100vh;
     align-items: center;
-    /* background: linear-gradient(to right #3649bd #00b4ff); */
-    background-color: #3edac5;
-
+    /* background-image: linear-gradient(to right, #7587f8, #4ec6fa); */
+    background-color: #f5f6ff;
 }
 
 .welcome {
 
     width: 24%;
-    color: white;
+    color: #1a237e;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     text-align: center;
+    /* background-color: #f2f2f2; */
+    background-color: white;
+    box-shadow: 1px 1px .1px #f2f2f2;
+    border-radius: 30px;
+    padding: 5% 0%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+
 }
 
 .welcome img {
-    width: 100%;
+    width: 70%;
     margin: 0px auto;
+    /* color: #1a237e; */
+    border-bottom-left-radius: 250px;
+    border-top-left-radius: 250px;
+    border-top-right-radius: 250px;
+    border-bottom-right-radius: 250px;
+    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+
 }
 
 .welcome button {
-    background-color: #415082;
-    color: white;
-    font-size: 99%;
+    background-color: #1a237e;
+    color: #ebedee;
     font-weight: bolder;
-    width: 80%;
+    width: 60%;
     border-radius: 20px;
     border: 0px;
     padding: 4%;
@@ -43,19 +57,25 @@ body {
 }
 
 .sing_up {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
     width: 65%;
     background-color: #f7f9fb;
+    background-color: white;
     border-bottom-left-radius: 250px;
     border-top-left-radius: 250px;
+    border-top-right-radius: 250px;
+    border-bottom-right-radius: 250px;
+
+
     padding: .001%;
 }
 
 
-.for_button {
+/* .for_button {
 
     padding: 1.5%;
     display: flex;
@@ -68,12 +88,12 @@ body {
     background-color: #31c9b5;
     color: white;
     display: flex;
-    /* width: 50%; */
+    width: 50%;
     border-radius: 20px;
     padding: 3px;
     margin: 2%;
     justify-content: space-around;
-    /* border: 1px solid black; */
+    border: 1px solid black;
 }
 
 .for_button .top_button {
@@ -93,7 +113,7 @@ body {
 .hover {
     background-color: white;
     color: black;
-}
+} */
 
 
 form {
@@ -102,7 +122,8 @@ form {
     align-items: center;
     justify-content: center;
     width: 97%;
-
+    margin: 5% 0%;
+    /* color: #ebedee; */
 }
 
 .bottom_form {
@@ -143,7 +164,7 @@ form {
 }
 
 .bottom_button {
-    background-color: #31c9b5;
+    background-color: #1a237e;
     color: white;
     padding: 10px;
     width: 150px;
@@ -157,10 +178,8 @@ form {
 }
 
 .bottom_button:hover {
-    background-color: #415082;
-    color: white;
+    color: #ebedee;
     font-weight: bolder;
-
 }
 
 /* All page imput box and select box style */
@@ -171,7 +190,7 @@ input {
     margin: 30px;
     padding: 10px;
     width: 30%;
-    background: #f7f9fb;
+    /* background: #f7f9fb; */
 }
 
 input:focus {

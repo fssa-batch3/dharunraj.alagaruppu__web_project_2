@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>register Page</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
@@ -14,6 +14,7 @@
 <a href=></a>
     <!-- <button onclick="signup()">register</button> -->
     <div class="main">
+
 
     </div>
 
@@ -27,7 +28,7 @@
 
 
         let image = document.createElement("img");
-        image.setAttribute("src", "assets/img/money.gif");
+        image.setAttribute("src", "../assets/img/image_processing20201202-31245-1hyedqz.gif");
         image.setAttribute("alt", "Net Bliz");
         document.querySelector(".welcome").append(image);
 
@@ -62,32 +63,32 @@
         // Nice buttons start
 
 
-        let for_button = document.createElement("div");
-        for_button.setAttribute("class", "for_button");
-        content_of_singnup.append(for_button);
+        // let for_button = document.createElement("div");
+        // for_button.setAttribute("class", "for_button");
+        // content_of_singnup.append(for_button);
 
-        let back_blue = document.createElement("div");
-        back_blue.setAttribute("class", "back_blue");
-        for_button.append(back_blue);
+        // let back_blue = document.createElement("div");
+        // back_blue.setAttribute("class", "back_blue");
+        // for_button.append(back_blue);
 
-        let Personal_a = document.createElement("a");
-        a.setAttribute("href", "#");
-        back_blue.append(Personal_a);
+        // let Personal_a = document.createElement("a");
+        // a.setAttribute("href", "#");
+        // back_blue.append(Personal_a);
 
-        let Address_a = document.createElement("a");
-        a.setAttribute("href", "./login_page.html");
-        back_blue.append(Address_a);
+        // let Address_a = document.createElement("a");
+        // a.setAttribute("href", "./login_page.html");
+        // back_blue.append(Address_a);
 
-        let input_button = document.createElement("button");
-        input_button.setAttribute("class", "top_button");
-        input_button.setAttribute("id", "hover");
-        input_button.innerText = ("Personal");
-        Personal_a.append(input_button);
+        // let input_button = document.createElement("button");
+        // input_button.setAttribute("class", "top_button");
+        // input_button.setAttribute("id", "hover");
+        // input_button.innerText = ("Personal");
+        // Personal_a.append(input_button);
 
-        let input_button2 = document.createElement("button");
-        input_button2.setAttribute("class", "top_button");
-        input_button2.innerText = ("Address");
-        Address_a.append(input_button2);
+        // let input_button2 = document.createElement("button");
+        // input_button2.setAttribute("class", "top_button");
+        // input_button2.innerText = ("Address");
+        // Address_a.append(input_button2);
 
 
 
@@ -183,7 +184,7 @@
                 "id": "pan",
                 "placeholder": "PAN Number *",
 
-                "pattern": "[0-9]{15,20}",
+                "pattern": "[0-9a-zA-Z]{15,20}",
                 "tittle": "Your pattern un accectable",
 
             },
@@ -264,7 +265,7 @@
 
         let next = document.createElement("button");
         next.setAttribute("class", "bottom_button");
-        next.innerText = ("Next >>");
+        next.innerText = ("Register");
         // next.setAttribute("onclick", "signup()");
         bottom_button.append(next);
 

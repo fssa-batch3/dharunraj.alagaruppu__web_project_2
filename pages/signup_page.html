@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>register Page</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/sign_up.css">
 </head>
 
 <body>
 
-<a href=></a>
+    <a href=></a>
     <!-- <button onclick="signup()">register</button> -->
     <div class="main">
 
@@ -241,15 +241,15 @@
             input_box.setAttribute("placeholder", obj[i]["placeholder"]);
             // input_box.setAttribute("min-length", obj[i]["min"]);
             // input_box.setAttribute("max-length", obj[i]["max"]);
-            if(i<2){
-            input_box.setAttribute("pattern",obj[i]["pattern"]);
-        }
-        else if(i==2){
-            console.log("none");
-        }
-        else{
-            input_box.setAttribute("pattern",obj[i]["pattern"]);
-        }
+            if (i < 2) {
+                input_box.setAttribute("pattern", obj[i]["pattern"]);
+            }
+            else if (i == 2) {
+                console.log("none");
+            }
+            else {
+                input_box.setAttribute("pattern", obj[i]["pattern"]);
+            }
             input_box.setAttribute("required", "");
             // input_box.setAttribute("pattern", obj[i]["pattern"]);
 
@@ -271,8 +271,8 @@
 
 
 
-        let form_check=document.querySelector("form");
-        form_check.addEventListener("submit",e=>{
+        let form_check = document.querySelector("form");
+        form_check.addEventListener("submit", e => {
             e.preventDefault();
             signup();
 
@@ -291,39 +291,34 @@
 
 
             if (first_name != "" && last_name != "" && email !== "" && new_pass != "" && confirm != "" && phone != "") {
-                if(new_pass==confirm){
+                if (new_pass == confirm) {
 
-                let obj = {};
+                    let obj = {};
 
-                obj["fname"] = document.getElementById("fname").value
-                obj["lname"] = document.getElementById("lname").value
-                obj["email"] = document.getElementById("email").value
-                obj["phone"] = document.getElementById("phone").value
-                obj["aadhar"] = document.getElementById("aadhar").value
-                obj["pan"] = document.getElementById("pan").value
-                obj["new_pass"] = document.getElementById("new_pass").value
-                obj["confirm"] = document.getElementById("confirm").value
+                    obj["fname"] = document.getElementById("fname").value
+                    obj["lname"] = document.getElementById("lname").value
+                    obj["email"] = document.getElementById("email").value
+                    obj["phone"] = document.getElementById("phone").value
+                    obj["aadhar"] = document.getElementById("aadhar").value
+                    obj["pan"] = document.getElementById("pan").value
+                    obj["new_pass"] = document.getElementById("new_pass").value
+                    obj["confirm"] = document.getElementById("confirm").value
 
-        // if(new_pass==confirm){
+                    let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
+                    store.push(obj);//[{name, email, pass}]
+                    localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
 
-                let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
-                store.push(obj);//[{name, email, pass}]
-                localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
+                    window.location.href = "./login_page.html"
 
-                window.location.href = "./login_page.html"
-            // }
-            // else{
-            //     alert("password not matched")
-            // }
-            }
-            else{
-                alert("password not matched")
-            }
+                }
+                else {
+                    alert(" OOPS!! password not matched")
+                }
             }
 
             else {
 
-                alert("sorry")
+                alert("Can you please give the corect data")
 
             }
 

@@ -12,7 +12,6 @@
 <body>
 
     <div class="main">
-        <p id="para"></p>
 
     </div>
 
@@ -20,14 +19,33 @@
 
 <script>
 
+
+
+
     //Right side container
 
     let content_list = document.createElement("div");
     content_list.setAttribute("class", "content_list");
     document.querySelector(".main").append(content_list);
 
+    // 1 child of  Right side container.....
 
-    // 1 child of  Right side container
+    let welcome = document.createElement("div");
+    welcome.setAttribute("class", "name_img");
+    content_list.append(welcome);
+
+    let image_user = document.createElement("img");
+    image_user.setAttribute("src", "../assets/img/icons8-user-100.png");
+    image_user.setAttribute("alt", "icon");
+    welcome.append(image_user);
+
+
+    //User name is adding by getitem.....
+
+    let user_name = document.createElement("h1");
+    user_name.setAttribute("id", "fi_name");
+    welcome.append(user_name);
+
 
     let customer = document.createElement("div");
     customer.setAttribute("class", "customer");
@@ -43,33 +61,64 @@
 
         {
             "label": "Name",
+            "id": "fname",
 
         },
 
         {
-            "label": "Date of Birth",
+            "label": "DOB",
+            "id": "dob",
 
         },
 
         {
-            "label": "PAN.No",
+            "label": "PAN.no",
+            "id": "pan",
 
         },
 
         {
-            "label": "Aadhaar NO",
+            "label": "Phone.no",
+            "id": "phone",
 
         },
 
         {
-            "label": "Occupation",
+            "label": "Aadhaar.no",
+            "id": "aadhar",
 
-        }
+        },
+
+        {
+            "label": "Email id",
+            "id": "email",
+
+        },
+
+
+        {
+            "label": "District",
+            "id": "district",
+
+        },
+
+        {
+            "label": "Pin code",
+            "id": "pincode",
+
+        },
+
+        {
+            "label": "State",
+            "id": "state",
+
+        },
+
 
 
     ]
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 9; i++) {
 
         let heading = document.createElement("h4");
         heading.setAttribute("class", "heading");
@@ -78,177 +127,34 @@
 
     }
 
+    let content = document.createElement("div");
+    content.setAttribute("class", "value");
+    customer.append(content);
 
 
-
-    let data = document.createElement("div");
-    data.setAttribute("class", "value");
-    customer.append(data);
-
-    let fetch = [
-
-        {
-            "id": "fname",
-
-        },
-
-        {
-            "id": "dob"
-
-        },
-
-        {
-            "id": "pan",
-
-        },
-
-        {
-            "id": "aadhar",
-
-        },
-
-        {
-            "id": "occupation",
-
-        }
-
-
-    ]
-
-    for (let i = 0; i < 5; i++) {
-
-        let volume = document.createElement("input");
-        volume.setAttribute("id", fetch[i]["id"]);
-        data.append(volume);
+    for (let i = 0; i < 9; i++) {
+        let detail = document.createElement("input");
+        detail.setAttribute("id", head[i]["id"]);
+        content.append(detail);
 
     }
 
 
-
-    let speak = document.createElement("div");
-    speak.setAttribute("class", "speak");
-    content_list.append(speak);
-
-
-
-    let collect1 = document.createElement("div");
-    collect1.setAttribute("class", "key");
-    speak.append(collect1);
-
-
-    let collect2 = document.createElement("div");
-    collect2.setAttribute("class", "value");
-    speak.append(collect2);
-
-
-    const last_object = [
-
-        {
-            "name": "Email ID",
-            "id": "email"
-
-        },
-
-
-        {
-            "name": "Address",
-            "id": "address"
-
-        },
-
-
-        {
-            "name": "District",
-            "id": "district"
-
-        },
-
-        // {
-        //     "name": "State",
-        //     "id": "state"
-
-        // },
-
-        {
-            "name": "Pin Code",
-            "id": "pincode"
-
-        },
-
-        {
-            "name": "Phone number",
-            "id": "phone"
-
-        }
-
-    ]
-
-    for (let i = 0; i < 5; i++) {
+    let back_button = document.createElement("a");
+    back_button.setAttribute("class", "back_button");
+    back_button.setAttribute("href", "./home.html")
+    back_button.innerText = ("Back to home");
+    content_list.append(back_button);
 
 
 
-        let personal = document.createElement("h4");
-        personal.setAttribute("class", "heading");
-        personal.innerText = last_object[i]["name"];
-        collect1.append(personal);
-
-        let complete = document.createElement("input");
-        complete.setAttribute("id", last_object[i]["id"]);
-        collect2.append(complete);
-
-    }
-
-
-
-
-    //name of the top is end
-
-
-
-    //left side container
-
-    let welcome = document.createElement("div");
-    welcome.setAttribute("class", "welcome");
-    document.querySelector(".main").append(welcome);
-
-
-
-    let top_image = document.createElement("div");
-    top_image.setAttribute("class", "top_image");
-    welcome.append(top_image);
-
-
-    // let image = document.createElement("img");
-    // image.setAttribute("src", "assets/img/money.gif");
-    // image.setAttribute("alt", "Net Bliz");
-    // top_image.append(image);
-
-    let changing = document.createElement("h3");
-    changing.setAttribute("class", "changing");
-    // document.getElementById("fname").innerText = localStorage.getItem("fname");
-    top_image.append(changing);
-
-
-    let balance = document.createElement("button");
-    balance.innerText = ("Complete your profile");
-    top_image.append(balance);
-
-
-
-    let middle_content = document.createElement("div");
-    middle_content.setAttribute("class", "middle_content");
-    welcome.append(middle_content);
-
-    let dirction = document.createElement("div");
-    dirction.setAttribute("class", "dirction");
-    welcome.append(dirction);
 
 
 
     let show = JSON.parse(localStorage.getItem('array'));
 
     let account_name = localStorage.getItem("first_name");
-    console.log(account_name);
+
     let check;
 
     show.find(e => {
@@ -257,31 +163,22 @@
 
             let current_user = e
             console.log(e);
+
+            document.querySelectorAll("#fi_name").innerText = e["fname"]
+
+
             document.getElementById("fname").value = current_user["fname"]
-            
+            document.getElementById("pan").value = current_user["pan"]
+            document.getElementById("aadhar").value = current_user["aadhar"]
+            document.getElementById("phone").value = current_user["phone"]
+            document.getElementById("email").value = current_user["email"]
+
         }
     }
     )
 
 
-    // let check_login = localStorage.getItem("lemail")
 
-    // for (let i = 0; i <= show.length; i++) {
-
-    //     if (show[i].email === check_login) {
-    //         document.getElementById("fname").value = show[i]["fname"]; //show[1][name]
-    //         document.getElementById("email").value = show[i]["email"];
-    //         document.getElementById("dob").value = show[i]["dob"];
-    //         document.getElementById("pan").value = show[i]["pan"];
-    //         document.getElementById("aadhar").value = show[i]["aadhar"];
-    //         document.getElementById("occupation").value = show[i]["occupation"]; // }
-    //         document.getElementById("fname").innerText = localStorage.getItem("fname");
-    //         document.getElementById("dob").innerText = localStorage.getItem("dob");
-    //         document.getElementById("pan").innerText = localStorage.getItem("pan");
-    //         document.getElementById("aadhar").innerText = localStorage.getItem("aadhar");
-    //         document.getElementById("occupation").innerText = localStorage.getItem("occupation"); // let
-    //         get_value = document.createElement("h6")
-    //     }
 
 
 
@@ -301,3 +198,62 @@
     document.getElementById("aadhar").innerText=localStorage.getItem("aadhar"); //
     document.getElementById("occupation").innerText=localStorage.getItem("occupation"); // let
     get_value=document.createElement("h6") -->
+
+
+<!-- // let check_login = localStorage.getItem("lemail")
+
+    // for (let i = 0; i <= show.length; i++) {
+
+    //     if (show[i].email === check_login) {
+    //         document.getElementById("fname").value = show[i]["fname"]; //show[1][name]
+    //         document.getElementById("email").value = show[i]["email"];
+    //         document.getElementById("dob").value = show[i]["dob"];
+    //         document.getElementById("pan").value = show[i]["pan"];
+    //         document.getElementById("aadhar").value = show[i]["aadhar"];
+    //         document.getElementById("occupation").value = show[i]["occupation"]; // }
+    //         document.getElementById("fname").innerText = localStorage.getItem("fname");
+    //         document.getElementById("dob").innerText = localStorage.getItem("dob");
+    //         document.getElementById("pan").innerText = localStorage.getItem("pan");
+    //         document.getElementById("aadhar").innerText = localStorage.getItem("aadhar");
+    //         document.getElementById("occupation").innerText = localStorage.getItem("occupation"); // let
+    //         get_value = document.createElement("h6")
+    //     } -->
+
+<!--     
+    //left side container
+
+    // let welcome = document.createElement("div");
+    // welcome.setAttribute("class", "welcome");
+    // document.querySelector(".main").append(welcome);
+
+
+
+    // let top_image = document.createElement("div");
+    // top_image.setAttribute("class", "top_image");
+    // welcome.append(top_image);
+
+
+    // let image = document.createElement("img");
+    // image.setAttribute("src", "assets/img/money.gif");
+    // image.setAttribute("alt", "Net Bliz");
+    // top_image.append(image);
+
+    // let changing = document.createElement("h3");
+    // changing.setAttribute("class", "changing");
+    // document.getElementById("fname").innerText = localStorage.getItem("fname");
+    // top_image.append(changing);
+
+
+    // let balance = document.createElement("button");
+    // balance.innerText = ("Complete your profile");
+    // top_image.append(balance);
+
+
+
+    // let middle_content = document.createElement("div");
+    // middle_content.setAttribute("class", "middle_content");
+    // welcome.append(middle_content);
+
+    // let dirction = document.createElement("div");
+    // dirction.setAttribute("class", "dirction");
+    // welcome.append(dirction); -->

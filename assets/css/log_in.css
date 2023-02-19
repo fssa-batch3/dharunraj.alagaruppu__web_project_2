@@ -5,7 +5,7 @@
     height: 100vh;
     align-items: center;
     background-color: #f5f6ff;
-    color:  #1a237e;
+    color: #1a237e;
     /* background-color: #cbfbff; */
     /* background-image: linear-gradient(to right, #7587f8, #4ec6fa); */
 }
@@ -29,7 +29,7 @@
 }
 
 .welcome button {
-    background-color:  #1a237e;
+    background-color: #1a237e;
     color: white;
     font-size: 99%;
     font-weight: bolder;
@@ -49,27 +49,27 @@
     background-color: white;
     border-radius: 20px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-   
+
 
 }
 
-.sign_in img{
+.sign_in img {
     width: 200px;
 }
 
-.right_container{
+.right_container {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
- .right_container img{
-height: 100%;
-width: 40%;
- }
+.right_container img {
+    height: 100%;
+    width: 40%;
+}
 
 
-.start{
+.start {
     /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
@@ -85,7 +85,7 @@ form {
     /* border: 2px solid black; */
 }
 
-label{
+label {
     font-size: 20px;
 }
 
@@ -103,17 +103,17 @@ input:focus {
     outline: none;
 }
 
-.btm_btn{
+.btm_btn {
     display: flex;
     justify-content: center;
 }
 
 
 .bottom_button {
-    background-color:  #1a237e;
+    background-color: #1a237e;
     color: white;
     padding: 10px;
-    width: 30%;
+    width: 50%;
     border: none;
     font-size: 15px;
     border-radius: 20px;
@@ -122,10 +122,9 @@ input:focus {
 
 }
 
-.bottom_button:hover , .welcome button:hover{
-    background-color: #415082;
+.bottom_button:hover,
+.welcome button:hover {
+    background-color: #425eb1;
     color: white;
     font-weight: bolder;
-
 }
-

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In page</title>
     <link rel="stylesheet" href="../../assets/css/log_in.css">
-    
+
 
 </head>
 
@@ -49,7 +49,7 @@
         // welcome.append(account);
 
         let a = document.createElement("a");
-        a.setAttribute("href","./signup_page.html");
+        a.setAttribute("href", "./signup_page.html");
         welcome.append(a)
 
 
@@ -107,7 +107,7 @@
                 "name": "fullname",
                 "id": "fullname",
                 "placeholder": "",
-                "required":"required"
+                "required": "required"
 
             },
 
@@ -121,7 +121,7 @@
                 "name": "email",
                 "id": "email",
                 "placeholder": "",
-                "required":"required",
+                "required": "required",
 
             },
 
@@ -135,7 +135,7 @@
                 "name": "password",
                 "id": "password",
                 "placeholder": "",
-                "required":"required",
+                "required": "required",
 
             },
         ]
@@ -161,7 +161,7 @@
         let next = document.createElement("button");
         next.setAttribute("type", "submit");
         next.setAttribute("class", "bottom_button");
-        next.setAttribute("id","button_1")
+        next.setAttribute("id", "button_1")
         // next.setAttribute("onclick", "login()")
         next.innerText = ("Login");
         form.append(next);
@@ -177,107 +177,109 @@
 
         //ridht side main divider end
 
-       
-        function login() {
+
+        // Function is started............
+
+        // function login() 
+
+
+        //     let fullname = document.getElementById("fullname").value
+        //     let email = document.getElementById("email").value
+        //     let password = document.getElementById("password").value
+
+
+        //     const attach = JSON.parse(localStorage.getItem("array"))
+
+        //     let check;
+
+        //     attach.forEach(element => {
+
+        //         if (element["fname"] == fullname && element["email"] == email && element["new_pass"] == password) {
+
+        //             return check = 1
+        //             alert("logged");
+        //         }
+
+        //         else {
+        //             console.log(element);
+        //             console.log(fullname, email, password);
+
+        //             return check = 0
+        //             alert("invalid");
+        //         }
+
+        //     });
+
+        //     if (check == 1) {
+        //         let first_name;
+
+        //         first_name = fullname;
+        //         console.log(first_name);
+
+
+        //         localStorage.setItem("first_name", first_name);
+
+        //         window.location.href = "account_detail.html"
+
+        //     }
+
+
+        // }
+
+
+        let button_click = document.getElementById("button_1")
+        button_click.addEventListener("click",
+            function (e) {
+
+                e.preventDefault()
+
+                let fullname = document.getElementById("fullname").value
+                let email = document.getElementById("email").value
+                let password = document.getElementById("password").value
+
+
+                const attach = JSON.parse(localStorage.getItem("array"))
+
+                let check;
+                // 
+                attach.forEach(element => {
+                    if (element["fname"] == fullname && element["email"] == email && element["new_pass"] == password) {
+
+                        return check = 1;
+                    }
+
+                    else {
+
+                        // console.log(element);
+                        // console.log(fullname, email, password);
+
+                        return check = 0;
+
+                    }
+
+                });
+
+                if (check == 1) {
+                    let first_name;
+                    first_name = fullname;
+                    console.log(first_name);
+
+
+                    localStorage.setItem("first_name", first_name);
+
+                    alert("logged");
+                    window.location.href = "account_detail.html"
 
 
 
-let fullname = document.getElementById("fullname").value
-let email = document.getElementById("email").value
-let password = document.getElementById("password").value
+
+                }
+                else {
+                    alert("invalid");
+                }
 
 
-const attach = JSON.parse(localStorage.getItem("array"))
-
-let check;
-
-attach.forEach(element => {
-    if (element["fname"] == fullname && element["email"] == email && element["new_pass"] == password) {
-
-        return check = 1
-        alert("logged");
-        
-
-    }
-
-    else {
-        console.log(element);
-        console.log(fullname, email, password);
-        
-        return check = 0
-       alert("invalid");
-
-    }
-
-});
-
-if(check==1){
-let first_name;
-first_name = fullname;
-console.log(first_name);
-
-
-localStorage.setItem("first_name", first_name)
-window.location.href= "account_detail.html"
-
-} 
-
-
-}
-let button_click = document.getElementById("button_1")
-button_click.addEventListener("click",     
-        function () {
-
-
-
-let fullname = document.getElementById("fullname").value
-let email = document.getElementById("email").value
-let password = document.getElementById("password").value
-
-
-const attach = JSON.parse(localStorage.getItem("array"))
-
-let check;
-
-attach.forEach(element => {
-    if (element["fname"] == fullname && element["email"] == email && element["new_pass"] == password) {
-
-        return check = 1
-        alert("logged");
-        
-
-    }
-
-    else {
-        console.log(element);
-        console.log(fullname, email, password);
-        
-        return check = 0
-       alert("invalid");
-
-    }
-
-});
-
-if(check==1){
-let first_name;
-first_name = fullname;
-console.log(first_name);
-
-
-localStorage.setItem("first_name", first_name)
-
-window.location.href= "account_detail.html"
-
-
-} 
-
-
-} )
-button_click.addEventListener("click",e=>{
-    e.preventDefault();
-})
-
+            })
     </script>
 
 

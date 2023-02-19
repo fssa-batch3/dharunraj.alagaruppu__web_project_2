@@ -1,44 +1,96 @@
-.main{
-    display: flex;
-    justify-content: space-around;
-    height: 100vh;
+* {
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    /* font-family: 'Libre Baskerville', sans-serif; */
+    scroll-behavior: smooth;
 }
 
-.main .content_list{
+.main {
+    display: flex;
+    justify-content: space-around;
+    height: 95vh;
+    color:#c0cdf0;
+    font-style: italic;
+    /* font-family: 'Libre Baskerville', sans-serif; */
+
+}
+
+.main .content_list {
+    width: 28%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background-color: #c0cdf0;
+
+
+}
+
+.main .content_list .name_img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main .content_list img {
+    width: 25%;
+    margin: 0% auto;
+    border: 1px solid #3a3b3d;
+    border-radius: 50%;
+    padding: 2%;
+}
+
+.main .content_list .customer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.main .content_list .key {
     width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    box-shadow: 0.1px 0.1px 5px black;
-}
-
-.main .content_list .customer , .speak{ 
-    display: flex;
-    justify-content: space-between;
-
-}
-
-.main .content_list  .key{
-    width: 30%;
     margin-left: 50px;
-
+    font-size: 21px;
+    color: #3a3b3d;
 }
 
-.main .content_list  .value{
+.main .content_list .value {
 
-    width: 60%;
+    width: 45%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    margin-bottom: 13px;
+    justify-content: space-evenly;
 }
 
 input {
-    width: 80%;
+    width: 90%;
     border: 0px;
-   border-bottom:1px solid black;
+    /* border-bottom: 1px solid #1a237e; */
+    background-color: #c0cdf0;
+    font-size: 18px;
+    color:  #3a3b3d;
+
 }
 
 input:focus {
     outline: none;
+}
+
+.back_button{
+    text-align: center;
+    background-color: #566ef3;
+    color: white;
+    padding: 13px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    font-family: 'Open Sans', sans-serif;
+    width: 70%;
+    margin: 0% auto;
+}
+
+.back_button:hover{
+    color: white;
+    background-color: #2945d0;
 }

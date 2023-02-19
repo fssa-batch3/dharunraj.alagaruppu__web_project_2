@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/common_style.css">
+</head>
+
+<body>
+
+    
+
+
+    <header>
+        <div class="title">
+            <a href="">NET BANKING</a>
+        </div>
+
+        <div class="full_link">
+            <div>
+                <a href="#">Home</a>
+            </div>
+
+
+            <div>
+                <a href="./fund_transfer.html">Transfer</a>
+            </div>
+
+
+            <div>
+                <a href="./balance_enquire.html">Balance</a>
+            </div>
+
+            <div>
+                <a href="./history.html">History</a>
+            </div>
+
+
+
+
+
+            <div class="logout">
+                <a href="../index.html">Log Out</a>
+            </div>
+        </div>
+
+
+    </header> 
+    
+    <main>
+
+        <div class="welcome">
+
+            <div class="welcome_sms">
+                <span>Welcome,</span>
+                <span id="fname"></span>
+            </div>
+
+            <div class="search">
+                <img src="../assets/img/icons8-search.gif" alt="search">
+                <label for="search"></label>
+                <input type="search" class="form-control" id="search" name="search" placeholder="Search here">
+
+            </div>
+
+            <div class="profile">
+                <img src="../assets/img/icons8-user-100.png" alt="account">
+                <div class="detail">
+                    <span id="fname"></span>
+                    <span>customer</span>
+                </div>
+               
+            </div>
+
+        </div>
+
+    </main>
+
+    </body>
+
+    <script>
+
+let show = JSON.parse(localStorage.getItem('array'));
+
+let account_name = localStorage.getItem("first_name");
+console.log(account_name);
+let check;
+
+show.find(e => {//[{0},{1},......]
+    if (e["fname"] === account_name) { //e=arr[0]
+
+        // let current_user = e //arr[5]["fname"]
+        // console.log(e);
+
+        document.querySelectorAll("#fname")[0].innerText = e["fname"]//[0,1]
+        document.querySelectorAll("#fname")[1].innerText = e["fname"]
+
+    }
+}
+)
+    </script>
+
+</html>

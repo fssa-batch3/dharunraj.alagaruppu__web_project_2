@@ -24,7 +24,7 @@
 
 
             <div>
-                <a href="#">Transfer</a>
+                <a class="current_page" href="#">Transfer</a>
             </div>
 
 
@@ -41,8 +41,34 @@
             </div>
         </div>
 
-
     </header>
+
+    <div class="container">
+        <img src="../assets/img/resive-removebg-preview (1).png" alt="fund">
+
+        <form>
+
+
+
+            <label for="from"> From Account Number </label>
+            <input type="text" id="from" name="from" required>
+
+            <label for="to"> Benificiary Account </label>
+            <input type="text" id="to" name="to" required>
+
+            <label for="ifsc"> Benificiary IFSC </label>
+            <input type="text" id="ifsc" name="ifsc" required>
+
+            <label for="amount"> Transfer Amount </label>
+            <input type="number" id="amount" name="amount" required min="1">
+
+            <label for="remark"> Remarks ( Optional )</label>
+            <input type="text" id="remark" name="remark">
+
+            <button>Send</button>
+        </form>
+
+    </div>
 </body>
 
 </html>

@@ -1,0 +1,53 @@
+
+.content1 img{
+    width: 15%;
+    border-radius: 50%;
+}
+
+.parent , .parent2{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+#math{
+    width: 25px;
+    margin: 5px;
+}
+
+
+.parent .amount , .content1 , .amount1{
+    display: flex;
+    align-items: center;
+}
+
+/* amount size */
+.fund{
+    margin: 1%;
+}
+
+/* minus font color */
+.amount{
+    color: rgb(203, 20, 20);
+}
+
+/* plus amount color */
+.amount1{
+    color: rgb(8, 54, 8);  
+}
+
+
+#minus , #plus{
+    font-size: 20px;
+}
+
+/* inbetween dotted line */
+.history{
+    border-bottom: 2px dotted black;
+    width: 75%;
+    margin: 0% auto;
+}
+
+
+

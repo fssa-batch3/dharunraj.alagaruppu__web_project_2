@@ -10,11 +10,11 @@
 header {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     padding: .5%;
     margin: 1% auto;
-    width: 100%;
+    width: 89%;
     /* background-color:  #f5f6ff; */
 
     /* border: 1px solid black; */
@@ -46,15 +46,15 @@ header {
     font-size: 19px;
     color: #1a237e;
     border: none;
-    padding: 1%;
+    padding: 10% 1%;
 
 }
 
-.full_link a:hover {
-    /* color: #1a237e; */
-    /* border-bottom: 2px solid #1a237e; */
+.full_link a:hover , .full_link .current_page{
+
     color: #2a48ee;
     border-bottom: 2px solid #2a48ee;
+    
 }
 
 .logout a {

@@ -29,11 +29,12 @@ header {
     font-weight: 600;
     color: #2241ed;
     letter-spacing: 1px;
+    list-style: none;
+    text-decoration: none;
 }
 
 .full_link {
-    /* border: 1px solid black; */
-    /* padding: 1% 4%; */
+   
     margin: 1%;
     width: 65%;
     display: flex;
@@ -72,4 +73,48 @@ header {
     background-color: #2945d0;
     color: white;
     border: none;
+}
+
+footer .back_foot {
+    background-color: #7086ff;
+    width: 78%;
+    margin: 7% auto;
+    color: black;
+    padding: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15px;
+}
+
+footer .back_foot .icon_social,
+footer .direct {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0px auto;
+    /* border: 1px solid black; */
+}
+
+footer .back_foot .icon_social img {
+    width: 50px;
+
+}
+
+footer h3 {
+    margin: 4%;
+}
+
+footer .direct a {
+
+    background-color: white;
+    color: black;
+    padding: 15px 14%;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    font-family: 'Open Sans', sans-serif;
+
 }

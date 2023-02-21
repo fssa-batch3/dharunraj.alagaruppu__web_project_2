@@ -1,53 +1,59 @@
-
-.content1 img{
+.content1 img {
     width: 15%;
     border-radius: 50%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-right: 15px;
 }
 
-.parent , .parent2{
+ body a {
+    text-decoration: none;
+}
+
+.parent,
+.parent2 {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
 
-#math{
+#math {
     width: 25px;
     margin: 5px;
 }
 
 
-.parent .amount , .content1 , .amount1{
+.parent .amount,
+.content1,
+.amount1 {
     display: flex;
     align-items: center;
 }
 
 /* amount size */
-.fund{
+.fund {
     margin: 1%;
 }
 
 /* minus font color */
-.amount{
+.amount {
     color: rgb(203, 20, 20);
 }
 
 /* plus amount color */
-.amount1{
-    color: rgb(8, 54, 8);  
+.amount1 {
+    color: rgb(8, 54, 8);
 }
 
 
-#minus , #plus{
+#minus,
+#plus {
     font-size: 20px;
 }
 
 /* inbetween dotted line */
-.history{
+.history {
     border-bottom: 2px dotted black;
     width: 75%;
     margin: 0% auto;
 }
-
-
-

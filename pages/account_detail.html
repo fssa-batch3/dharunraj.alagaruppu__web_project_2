@@ -6,13 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Details</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/account.css">
 </head>
 
 <body>
 
     <div class="main">
-
+   
     </div>
 
 </body>
@@ -28,91 +31,145 @@
     content_list.setAttribute("class", "content_list");
     document.querySelector(".main").append(content_list);
 
-    // 1 child of  Right side container.....
-
-    let welcome = document.createElement("div");
-    welcome.setAttribute("class", "name_img");
-    content_list.append(welcome);
-
-    let image_user = document.createElement("img");
-    image_user.setAttribute("src", "../assets/img/icons8-user-100.png");
-    image_user.setAttribute("alt", "icon");
-    welcome.append(image_user);
 
 
-    //User name is adding by getitem.....
-
-    let user_name = document.createElement("h1");
-    user_name.setAttribute("id", "fi_name");
-    welcome.append(user_name);
 
 
-    let customer = document.createElement("div");
-    customer.setAttribute("class", "customer");
-    // customer.innerText = "Customer Details";
-    content_list.append(customer);
 
 
-    let name_of_type = document.createElement("div");
-    name_of_type.setAttribute("class", "key");
-    customer.append(name_of_type);
+    let simple_detail = document.createElement("div");
+    simple_detail.setAttribute("class", "simple_detail");
+    document.querySelector(".main").append(simple_detail);
+
+
+    let profile_name = document.createElement("h2");
+    profile_name.setAttribute("id", "fi_name");
+    simple_detail.append(profile_name);
+
+    let simple_image = document.createElement("img");
+    simple_image.setAttribute("class", "simple_image");
+    simple_image.setAttribute("src", "../assets/img/icons8-user-100.png");
+    simple_image.setAttribute("alt", "icon");
+    simple_detail.append(simple_image);
+
+    let simple_upload = document.createElement("input");
+    simple_upload.setAttribute("type", "file");
+    simple_upload.setAttribute("id", "simple_upload");
+    simple_upload.setAttribute("name", "simple_upload");
+    simple_detail.append(simple_upload);
+
+    let simple_text = document.createElement("p");
+    simple_text.setAttribute("class", "simple_text");
+    simple_text.innerText = "Upload a new avatar.Larger image will be resized automatically .";
+    simple_detail.append(simple_text);
+
+
+
+
+    let edit_profile = document.createElement("div");
+    edit_profile.setAttribute("class", "edit_profile");
+    document.querySelector(".main").append(edit_profile);
+
+
+    let heading_profile = document.createElement("div");
+    heading_profile.setAttribute("class", "heading_profile");
+    edit_profile.append(heading_profile);
+
+    let heading = document.createElement("h2");
+    heading.setAttribute("class", "heading");
+    heading.innerText = ("Edit Profile");
+    heading_profile.append(heading);
+
+
+
+    let form_profile = document.createElement("div");
+    form_profile.setAttribute("class", "form_profile");
+    edit_profile.append(form_profile);
+
 
     let head = [
 
         {
             "label": "Name",
             "id": "fname",
-
-        },
-
-        {
-            "label": "DOB",
-            "id": "dob",
-
-        },
-
-        {
-            "label": "PAN.no",
-            "id": "pan",
+            "for": "fname",
+            "place_holder":"Name"
 
         },
 
         {
             "label": "Phone.no",
             "id": "phone",
+            "for": "phone",
+            "place_holder":"Phone.no"
+
 
         },
 
         {
             "label": "Aadhaar.no",
             "id": "aadhar",
+            "for": "aadhar",
+            "place_holder":"Aadhaar.no"
+
 
         },
+
+        {
+            "label": "PAN.no",
+            "id": "pan",
+            "for": "pan",
+            "place_holder":"PAN.no"
+
+
+
+        },
+
 
         {
             "label": "Email id",
             "id": "email",
+            "for": "email",
+            "place_holder":"Email id"
+
 
         },
 
+        {
+            "label": "DOB",
+            "id": "dob",
+            "for": "dob",
+            "place_holder":"DOB"
+
+
+        },
 
         {
             "label": "District",
             "id": "district",
+            "for": "district",
+            "place_holder":"District"
+
 
         },
 
         {
             "label": "Pin code",
             "id": "pincode",
+            "for": "pincode",
+            "place_holder":"Pin code"
+
 
         },
 
         {
             "label": "State",
             "id": "state",
-
+            "for": "state",
+            "place_holder":"State"
+            
         },
+
 
 
 
@@ -120,31 +177,192 @@
 
     for (let i = 0; i < 9; i++) {
 
-        let heading = document.createElement("h4");
-        heading.setAttribute("class", "heading");
-        heading.innerText = head[i]["label"];
-        name_of_type.append(heading);
+        let contant_profile = document.createElement("div");
+        contant_profile.setAttribute("class", "form-floating mb-3");
+        form_profile.append(contant_profile);
+
+        // let label_profile = document.createElement("label");
+        // label_profile.setAttribute("for","label_profile");
+        // label_profile.innerText=("Firstname");
+        // contant_profile.append(label_profile);
+
+        // let input_profile= document.createElement("input");
+        // input_profile.setAttribute("id", "label_profile");
+        // input_profile.setAttribute("name", "label_profile");
+        // input_profile.setAttribute("type", "text");
+        // contant_profile.append(input_profile);
+        let input_profile = document.createElement("input");
+        input_profile.setAttribute("id", head[i]["id"]);
+        input_profile.setAttribute("placeholder", head[i]["place_holder"]);
+
+        input_profile.setAttribute("type","text")
+        input_profile.setAttribute("class","form-control input input1");
+        contant_profile.append(input_profile);
+
+        let label_profile = document.createElement("label");
+        label_profile.setAttribute("for", head[i]["for"]);
+        label_profile.innerText = head[i]["label"];
+        
+        contant_profile.append(label_profile);
+
+
+ 
+
 
     }
-
-    let content = document.createElement("div");
-    content.setAttribute("class", "value");
-    customer.append(content);
-
-
-    for (let i = 0; i < 9; i++) {
-        let detail = document.createElement("input");
-        detail.setAttribute("id", head[i]["id"]);
-        content.append(detail);
-
-    }
-
 
     let back_button = document.createElement("a");
     back_button.setAttribute("class", "back_button");
     back_button.setAttribute("href", "./home.html")
     back_button.innerText = ("Back to home");
-    content_list.append(back_button);
+    edit_profile.append(back_button);
+    // document.querySelector(".main").append(back_button);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // let welcome = document.createElement("div");
+    // welcome.setAttribute("class", "name_img");
+    // content_list.append(welcome);
+
+    // let image_user = document.createElement("img");
+    // image_user.setAttribute("src", "../assets/img/icons8-user-100.png");
+    // image_user.setAttribute("alt", "icon");
+    // welcome.append(image_user);
+
+
+    // //User name is adding by getitem.....
+
+    // let user_name = document.createElement("h1");
+    // user_name.setAttribute("id", "fi_name");
+    // welcome.append(user_name);
+
+
+    // let customer = document.createElement("div");
+    // customer.setAttribute("class", "customer");
+    // // customer.innerText = "Customer Details";
+    // content_list.append(customer);
+
+
+    // let name_of_type = document.createElement("div");
+    // name_of_type.setAttribute("class", "key");
+    // customer.append(name_of_type);
+
+    // let head = [
+
+    //     {
+    //         "label": "Name",
+    //         "id": "fname",
+
+    //     },
+
+    //     {
+    //         "label": "DOB",
+    //         "id": "dob",
+
+    //     },
+
+    //     {
+    //         "label": "PAN.no",
+    //         "id": "pan",
+
+    //     },
+
+    //     {
+    //         "label": "Phone.no",
+    //         "id": "phone",
+
+    //     },
+
+    //     {
+    //         "label": "Aadhaar.no",
+    //         "id": "aadhar",
+
+    //     },
+
+    //     {
+    //         "label": "Email id",
+    //         "id": "email",
+
+    //     },
+
+
+    //     {
+    //         "label": "District",
+    //         "id": "district",
+
+    //     },
+
+    //     {
+    //         "label": "Pin code",
+    //         "id": "pincode",
+
+    //     },
+
+    //     {
+    //         "label": "State",
+    //         "id": "state",
+
+    //     },
+
+
+
+    // ]
+
+    // for (let i = 0; i < 9; i++) {
+
+    //     let heading = document.createElement("h4");
+    //     heading.setAttribute("class", "heading");
+    //     heading.innerText = head[i]["label"];
+    //     name_of_type.append(heading);
+
+    // }
+
+    // let content = document.createElement("div");
+    // content.setAttribute("class", "value");
+    // customer.append(content);
+
+
+    // for (let i = 0; i < 9; i++) {
+    //     let detail = document.createElement("input");
+    //     detail.setAttribute("id", head[i]["id"]);
+    //     content.append(detail);
+
+    // }
+
+
+    // let back_button = document.createElement("a");
+    // back_button.setAttribute("class", "back_button");
+    // back_button.setAttribute("href", "./home.html")
+    // back_button.innerText = ("Back to home");
+    // content_list.append(back_button);
 
 
 
@@ -164,14 +382,16 @@
             let current_user = e
             console.log(e);
 
-            document.querySelectorAll("#fi_name").innerText = e["fname"]
+            document.querySelectorAll("#fi_name")[0].innerText = e["fname"]
 
 
             document.getElementById("fname").value = current_user["fname"]
-            document.getElementById("pan").value = current_user["pan"]
-            document.getElementById("aadhar").value = current_user["aadhar"]
             document.getElementById("phone").value = current_user["phone"]
             document.getElementById("email").value = current_user["email"]
+            document.getElementById("pan").value = current_user["pan"]
+            document.getElementById("aadhar").value = current_user["aadhar"]
+
+
 
         }
     }
@@ -185,75 +405,3 @@
 </script>
 
 </html>
-
-<!-- // let show = JSON.parse(localStorage.getItem('array'));
-
-// for (let i=0; i <= show.length; i++){ // document.getElementById("fname").value=show[i]["fname"]; //show[1][name] //
-    document.getElementById("email").value=show[i]["email"]; // document.getElementById("dob").value=show[i]["dob"]; //
-    document.getElementById("pan").value=show[i]["pan"]; // document.getElementById("aadhar").value=show[i]["aadhar"];
-    // document.getElementById("occupation").value=show[i]["occupation"]; // } //
-    document.getElementById("fname").innerText=localStorage.getItem("fname"); //
-    document.getElementById("dob").innerText=localStorage.getItem("dob"); //
-    document.getElementById("pan").innerText=localStorage.getItem("pan"); //
-    document.getElementById("aadhar").innerText=localStorage.getItem("aadhar"); //
-    document.getElementById("occupation").innerText=localStorage.getItem("occupation"); // let
-    get_value=document.createElement("h6") -->
-
-
-<!-- // let check_login = localStorage.getItem("lemail")
-
-    // for (let i = 0; i <= show.length; i++) {
-
-    //     if (show[i].email === check_login) {
-    //         document.getElementById("fname").value = show[i]["fname"]; //show[1][name]
-    //         document.getElementById("email").value = show[i]["email"];
-    //         document.getElementById("dob").value = show[i]["dob"];
-    //         document.getElementById("pan").value = show[i]["pan"];
-    //         document.getElementById("aadhar").value = show[i]["aadhar"];
-    //         document.getElementById("occupation").value = show[i]["occupation"]; // }
-    //         document.getElementById("fname").innerText = localStorage.getItem("fname");
-    //         document.getElementById("dob").innerText = localStorage.getItem("dob");
-    //         document.getElementById("pan").innerText = localStorage.getItem("pan");
-    //         document.getElementById("aadhar").innerText = localStorage.getItem("aadhar");
-    //         document.getElementById("occupation").innerText = localStorage.getItem("occupation"); // let
-    //         get_value = document.createElement("h6")
-    //     } -->
-
-<!--     
-    //left side container
-
-    // let welcome = document.createElement("div");
-    // welcome.setAttribute("class", "welcome");
-    // document.querySelector(".main").append(welcome);
-
-
-
-    // let top_image = document.createElement("div");
-    // top_image.setAttribute("class", "top_image");
-    // welcome.append(top_image);
-
-
-    // let image = document.createElement("img");
-    // image.setAttribute("src", "assets/img/money.gif");
-    // image.setAttribute("alt", "Net Bliz");
-    // top_image.append(image);
-
-    // let changing = document.createElement("h3");
-    // changing.setAttribute("class", "changing");
-    // document.getElementById("fname").innerText = localStorage.getItem("fname");
-    // top_image.append(changing);
-
-
-    // let balance = document.createElement("button");
-    // balance.innerText = ("Complete your profile");
-    // top_image.append(balance);
-
-
-
-    // let middle_content = document.createElement("div");
-    // middle_content.setAttribute("class", "middle_content");
-    // welcome.append(middle_content);
-
-    // let dirction = document.createElement("div");
-    // dirction.setAttribute("class", "dirction");
-    // welcome.append(dirction); -->

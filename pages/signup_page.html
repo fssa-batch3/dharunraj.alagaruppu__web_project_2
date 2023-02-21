@@ -184,7 +184,7 @@
                 "id": "pan",
                 "placeholder": "PAN Number *",
 
-                "pattern": "[0-9a-zA-Z]{15,20}",
+                "pattern": "[0-9a-zA-Z]{8,11}",
                 "tittle": "Your pattern un accectable",
 
             },
@@ -239,6 +239,8 @@
             input_box.setAttribute("name", obj[i]["name"]);
             input_box.setAttribute("id", obj[i]["id"]);
             input_box.setAttribute("placeholder", obj[i]["placeholder"]);
+            input_box.setAttribute("title", obj[i]["tittle"]);
+
             // input_box.setAttribute("min-length", obj[i]["min"]);
             // input_box.setAttribute("max-length", obj[i]["max"]);
             if (i < 2) {

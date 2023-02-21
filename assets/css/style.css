@@ -6,6 +6,9 @@
     scroll-behavior: smooth;
 }
 
+a{
+    text-decoration: none;
+}
 
 header {
     display: flex;

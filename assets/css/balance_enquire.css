@@ -1,0 +1,97 @@
+main {
+    background-color: #f5f6ff;
+    height: 100vh;
+}
+
+main .intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+main .intro img {
+    width: 50%;
+    border: 1px solid black;
+    padding: 0% 10%;
+}
+
+.container1 .content1 {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* the tick image style */
+#tick {
+    width: 10%;
+    animation-name: tick;
+    animation-duration: 3s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+
+/* tick image animation */
+@keyframes tick {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    50% {
+        transform: scale(1.5, 1.5);
+    }
+}
+
+.account {
+    /* border: 1px solid black; */
+    padding: 3%;
+    margin: 5% auto 15% auto;
+    width: 80%;
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 25px;
+}
+
+.account .heading,
+.type_account {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.account .type_account input {
+    padding: 2%;
+    margin: 2% 0%;
+   font-size: 20px;
+}
+
+.account span {
+    font-size: 23px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.back_button {
+    display: flex;
+    justify-content: start;
+    
+}
+
+.back_button a {
+    background-color: #2a48ee;
+    color: white;
+    padding: 13px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    font-family: 'Open Sans', sans-serif;
+    margin: 3% ;
+}

@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fund Transfer</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/common_style.css">
     <link rel="stylesheet" href="../assets/css/fund_transfer.css">
 </head>
@@ -43,32 +46,92 @@
 
     </header>
 
-    <div class="container">
-        <img src="../assets/img/resive-removebg-preview (1).png" alt="fund">
+    <div class="for_back">
+        <div class="right_contant">
 
-        <form>
+            <img src="../assets/img/resive-removebg-preview (1).png" alt="fund">
+
+            <form>
+
+                <h1>Bank Account to fund transfer</h1>
+
+                <label for="from"> From Account Number </label>
+                <input class="form-control" type="text" id="from" name="from" required>
+
+                <label for="to"> Benificiary Account </label>
+                <input class="form-control input" type="text" id="to" name="to" required placeholder="asdf">
+
+                <label for="ifsc"> Benificiary IFSC </label>
+                <input class="form-control" type="text" id="ifsc" name="ifsc" required>
+
+                <label for="amount"> Transfer Amount </label>
+                <input class="form-control" type="number" id="amount" name="amount" required min="1"> <br>
+
+                <button type="button" class="btn btn-primary">Send</button>
+
+            </form>
+
+        </div>
 
 
+        <div class="right_contant left_photo">
 
-            <label for="from"> From Account Number </label>
-            <input type="text" id="from" name="from" required>
+            <form>
 
-            <label for="to"> Benificiary Account </label>
-            <input type="text" id="to" name="to" required>
+                <h1>Phone Number to Money Transfer</h1>
 
-            <label for="ifsc"> Benificiary IFSC </label>
-            <input type="text" id="ifsc" name="ifsc" required>
+                <!-- <p>This content fully consider Benificiary Details</p> -->
 
-            <label for="amount"> Transfer Amount </label>
-            <input type="number" id="amount" name="amount" required min="1">
+                <label for="phone"> Phone number </label>
+                <input class="form-control" type="number" id="phone" name="phone" required>
 
-            <label for="remark"> Remarks ( Optional )</label>
-            <input type="text" id="remark" name="remark">
+                <label for="to_num"> Benificiary Ph.No </label>
+                <input class="form-control" type="number" id="to_num" name="to_num" required>
 
-            <button>Send</button>
-        </form>
+                <label for="to_email"> Benificiary Email id</label>
+                <input class="form-control" type="email" id="to_email" name="to_email" required>
+
+                <label for="to_amount"> Transfer Amount </label>
+                <input class="form-control" type="number" id="to_amount" name="to_amount" required min="1"> <br>
+
+                <button type="button" class="btn btn-primary">Send</button>
+
+            </form>
+
+            <img src="../assets/img/9176210_6617-removebg-preview.png" alt="fund1">
+
+        </div>
 
     </div>
+
+    <footer>
+
+        <div class="back_foot">
+
+            <div class="direct">
+
+                <a href="./pages/signup_page.html">Register</a>
+                <a href="./pages/login_page.html">Login</a>
+            </div>
+
+            <h3>@ 2023 Net Banking</h3>
+
+
+
+            <div class="icon_social">
+
+                <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in">
+                <img src="../assets/img/icons8-facebook-100.png" alt="facebook">
+                <img src="../assets/img/icons8-instagram-100.png" alt="insta">
+                <img src="../assets/img/icons8-twitter-100.png" alt="teitter">
+
+            </div>
+
+
+        </div>
+
+    </footer>
+
 </body>
 
 </html>

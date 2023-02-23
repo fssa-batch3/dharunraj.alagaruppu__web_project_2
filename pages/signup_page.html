@@ -10,9 +10,6 @@
 </head>
 
 <body>
-
-    <a href=></a>
-    <!-- <button onclick="signup()">register</button> -->
     <div class="main">
 
 
@@ -282,150 +279,67 @@
 
         function signup() {
 
-            const first_name = document.getElementById("fname").value.trim()
-            const last_name = document.getElementById("lname").value.trim()
-            const email = document.getElementById("email").value.trim()
-            const phone = document.getElementById("phone").value.trim()
-            const aadhar = document.getElementById("aadhar").value.trim()
-            const pan = document.getElementById("pan").value.trim()
-            const new_pass = document.getElementById("new_pass").value.trim()
-            const confirm = document.getElementById("confirm").value.trim()
+            let first_name = document.getElementById("fname").value.trim()
+            let last_name = document.getElementById("lname").value.trim()
+            let email = document.getElementById("email").value.trim()
+            let phone = document.getElementById("phone").value.trim()
+            let aadhar = document.getElementById("aadhar").value.trim()
+            let pan = document.getElementById("pan").value.trim()
+            let new_pass = document.getElementById("new_pass").value.trim()
+            let confirm = document.getElementById("confirm").value.trim()
 
 
             if (first_name != "" && last_name != "" && email !== "" && new_pass != "" && confirm != "" && phone != "") {
 
-                if (new_pass == confirm) {
+                let obj = {};
 
-                    let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
+                obj["fname"] = first_name
+                obj["lname"] = last_name
+                obj["email"] = email
+                obj["phone"] = phone
+                obj["aadhar"] = aadhar
+                obj["pan"] = pan
+                obj["new_pass"] = new_pass
+                obj["confirm"] = confirm
 
-                    let res;
-                    if (store) {
-                        store.find((e) => {
+                let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
 
-                            if (e["email"] != email) {
-                                return res = 1;
-                            }
-                            else {
-                                return res = 0;
-                            }
-                        })
+                let res = 0;
+                for (let i = 0; i < store.length; i++) {
 
-                        if (res = 1) {
-
-                            let obj = {};
-
-                            obj["fname"] = document.getElementById("fname").value
-                            obj["lname"] = document.getElementById("lname").value
-                            obj["email"] = document.getElementById("email").value
-                            obj["phone"] = document.getElementById("phone").value
-                            obj["aadhar"] = document.getElementById("aadhar").value
-                            obj["pan"] = document.getElementById("pan").value
-                            obj["new_pass"] = document.getElementById("new_pass").value
-                            obj["confirm"] = document.getElementById("confirm").value
-
-
-                            store.push(obj);//[{name, email, pass}]
-
-                            localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
-
-                            window.location.href = "./login_page.html"
-
-                        }
-
-                        else {
-
-                            alert("email already registered")
-
-                        }
-
-
+                    if (store[i]["email"] === email) {
+                        res = 1;
+                        break;
                     }
+                }
 
+                if (res == 1) {
+                    alert("email already registered")
 
                 }
 
                 else {
+
+                    store.push(obj);//[{name, email, pass}]
+
+                    localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
+
+                    alert("successfully logged in")
+
+                    window.location.href = "./login_page.html"
+
+
+                }
+
+                if (new_pass != confirm) {
                     alert("Oops !! password and confirm password doesn't match.")
                 }
-                
-
-
             }
 
             else {
                 alert("Can't get a data.Please give a value")
             }
         }
-
-
-
-// let store = JSON.parse(localStorage.getItem("array"));
-
-
-
-            // let store = JSON.parse(localStorage.getItem("array"))
-            // let res;
-            // if (store) {
-            //     store.find((e) => {
-            //         if (e["email"] != email) {
-            //             return res = 1;
-            //         }
-            //         else {
-            //             alert("email already registered")
-            //         }
-            //     })
-            //     if (res != 1) {
-            //         alert("email already registered")
-            //     } else {
-            //         // store.push(obj)
-            //         // localStorage.setItem("array", JSON.stringify(arr))
-            //         // window.location.href = "./login_page.html"
-            //     }
-            // }
-
-
-                //             let store = JSON.parse(localStorage.getItem("array"))
-                //             let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
-
-                //             store.push(obj);//[{name, email, pass}]
-                //             localStorage.setItem("array", JSON.stringify(store));
-
-                //             if (store != "") {
-                //                 store.find((e) => {
-
-                //                     if (e["email"] != email) {
-
-
-
-                //                         let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
-
-                //                         store.push(obj);//[{name, email, pass}]
-                //                         localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
-                //                         window.location.href = "./login_page.html"
-
-                //                     }
-                //                     else {
-                //                         alert("email already registered")
-                //                     }
-                //                 })
-
-                //             }
-                //             else {
-                //                 alert(" OOPS!! password not matched")
-                //             }
-                //         }
-
-                //         else {
-
-                //             alert("Can you please give the correct data")
-
-                //         }
-
-                //     }
-
-
-
-
 
 
     </script>

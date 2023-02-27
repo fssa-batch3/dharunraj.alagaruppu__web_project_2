@@ -69,11 +69,6 @@
 
             </div>
 
-            <!-- <div class="form-floating mb-3 search">
-                <input type="search" class="form-control input" id="search" placeholder="Search">
-                <label for="search">Search</label>
-            </div> -->
-
             <a href="../pages/account_detail.html">
                 <div class="profile">
                     <img src="../assets/img/icons8-user-100.png" alt="account">
@@ -111,14 +106,13 @@
                     <p>Remember to double-check your account number . Banks may not flag wrrors untol you transfer funds
                     </p>
 
-                    <button type="button" class="btn btn-primary">Link Your Bank</button>
-
+                    <button type="button" class="btn btn-primary" onclick="link_bank()">Link Your Bank</button>
                 </form>
             </div>
 
         </div>
 
-        <div class="bank_account">
+        <div class="bank_account" id="bank_account">
 
             <div class="bank">
                 <img src="../assets/img/account.png" alt="account">
@@ -131,153 +125,8 @@
                     <input class="form-control" type="text" id="ifsc_give" name="ifsc_give" required>
                 </div>
             </div>
-            <!-- <div class="plus">
-            <h6>+ add account</h6>
-            </div> -->
-        </div>
-
-
-
-        <!-- 
-        <div class="intro" id="intro">
-
-            <div class="content">
-
-                <h1>Net banking always with you !!</h1>
-
-                <p>Fun filled insights from FinForAll by NetBanking helps you make smarter financial decisons</p>
-                <p>These are new-age banks without any physical location, present entirely online.</p>
-                <p>It's also known as an online bank, internet-only bank, virtual bank or digital bank</p>
-
-                 <a href="./pages/login_page.html">Login</a> 
-            </div>
-
-            <img src="../assets/img/202101-Talent-Trends-1_bi4qgd.gif" alt="intro">
 
         </div>
-
-        <div class="about" id="about">
-            <div>
-                <h1>Three special Feature are available in <br> our Net Banking website</h1>
-            </div>
-
-            <div class="feature">
-
-                <div class="feature_details">
-                    <h2>
-                        Fund Transfer
-                    </h2>
-
-                    <p>
-                        A transfer is usually initiated from one bank or financial institution to another. Rather than
-                        cash, the participating institutions share information about the recipient.
-                    </p>
-                    
-                    <div class="img_align">
-                        <img src="../assets/img/5dca97cd7789674d06d7495a_plan-box-img3.png" alt="leaf">
-                    </div>
-
-                </div>
-
-                <div class="feature_details">
-                    <h2>
-                        History Checking
-                    </h2>
-
-                    <p>
-                        A Payment History page appears as shown in Figure This page displays the biller name,
-                        Internet transaction reference number,bill amount, and biller transaction reference
-                        details.
-                    </p>
-                    <div class="img_align">
-                        <img src="../assets/img/5dca97cd7789674d06d7495a_plan-box-img3.png" alt="leaf">
-                    </div>
-                </div>
-
-                <div class="feature_details">
-                    <h2>
-                        Balance Enqurie
-                    </h2>
-
-                    <p>
-                        Digital technology has simplified several chores that previously required both time and effort.
-                        You don't need to go to the bank to do financial or banking transactions.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="start_build" id="start_build">
-
-            <img src="../assets/img/hero-img.png" alt="2nd image">
-
-            <div class="open_account">
-
-                <span class="heading">In 5 minutes to start banking with your own account </span>
-
-                <div class="box_content">
-
-                    <div class="content_text">
-                        <h2> <span>1</span> Build an account</h2>
-
-                        <p>Enter your name , email and phone number for the account . If you have a pan please ensure to
-                            give</p>
-
-                        <h2><span>2</span> Transfer best in class</h2>
-
-                        <p>Send money Instantly with Net Banking Online Money Transfer Service. Simple & secure way to
-                            transfer money to bank account</p>
-
-                        <h2><span>3</span> Secure watch assets</h2>
-
-                        <p>100% digital banking with no pain. Zero balance accounts, no hidden fees. Master your money,
-                            reap rewards</p>
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="start_build only_back" id="only_back">
-
-
-            <div class="open_account">
-
-                <span class="heading">In 5 minutes to start banking with your own account </span>
-
-                <div class="box_content">
-
-                    <div class="content_text">
-                        <h2> <span>></span> Build an account</h2>
-
-                        <p>Enter your name , email and phone number for the account . If you have a pan please ensure to
-                            give</p>
-
-                        <h2><span>></span> Transfer best in class</h2>
-
-                        <p>Send money Instantly with Net Banking Online Money Transfer Service. Simple & secure way to
-                            transfer money to bank account</p>
-
-                        <h2><span>></span> Secure watch assets</h2>
-
-                        <p>100% digital banking with no pain. Zero balance accounts, no hidden fees. Master your money,
-                            reap rewards</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <img src="../assets/img/2020-YIR-08-Talent-Acquisition-SMALL3_bunlgn.gif" alt="4th image">
-
-
-        </div>  -->
 
     </main>
 
@@ -308,35 +157,107 @@
         </div>
 
     </footer>
+    <script>
+
+        function link_bank() {
+
+            let account = document.getElementById("account").value.trim();
+            let ifsc = document.getElementById("ifsc").value.trim();
+            // let account_give=document.querySelectorAll("input")[1].value
+            // let ifsc_give=document.querySelectorAll("input")[2].value;
 
 
 
+            if (account != "" && ifsc != "") {
+
+                let account_store = {
+                    "account": account,
+                    "ifsc": ifsc,
+                }
+
+                let add_account = JSON.parse(localStorage.getItem("account_detail")) ?? []; //account = []
 
 
-    </main>
+                let res = 0;
+                for (let i = 0; i < add_account.length; i++) {
+
+                    if (add_account[i]["ifsc"] === ifsc && add_account[i]["account"]) {
+                        res = 1;
+                        break;
+                    }
+                }
+
+                if (res == 1) {
+                    alert(" Invalid IFSC")
+
+                }
+
+                else {
+
+                    add_account.push(account_store);//[{name, email, pass}]
+
+                    localStorage.setItem("account_details", JSON.stringify(account_store)); // account_details  :  [{name, email, pass}]
+
+                    alert("Thanks for add account")
+
+                    window.location.href = "#bank_account"
+
+                }
+
+
+            }
+
+            else {
+                alert("Sorry can't get a value")
+            }
+        }
+
+
+
+        let bank_account = JSON.parse(localStorage.getItem("account_details")) ?? [];
+        let account_show = localStorage.getItem("account");
+        let ifsc_show = localStorage.getItem("ifsc");
+        console.log(ifsc_show)
+
+        let bank_detail;
+
+        bank_account.find(e => {
+
+            if (e["account"] === account_show && e["ifsc"] === ifsc_show) {
+
+                document.querySelectorAll("#account_give")[0].value = e["account"]
+                document.querySelectorAll("#ifsc_give")[1].value = e["ifsc_give"]
+
+            }
+
+        })
+
+
+
+        let show = JSON.parse(localStorage.getItem('array'));
+
+        let account_name = localStorage.getItem("first_name");
+        console.log(account_name);
+        let check;
+
+        show.find(e => { //[{0},{1},......]
+            if (e["fname"] === account_name) { //e=arr[0]
+
+                // let current_user = e //arr[5]["fname"]
+                // console.log(e);
+
+                document.querySelectorAll("#fname")[0].innerText = e["fname"] + ","//[0,1]
+                document.querySelectorAll("#fname")[1].innerText = e["fname"]
+
+            }
+        })
+
+
+    </script>
+
 
 </body>
 
-<script>
 
-    let show = JSON.parse(localStorage.getItem('array'));
-
-    let account_name = localStorage.getItem("first_name");
-    console.log(account_name);
-    let check;
-
-    show.find(e => {//[{0},{1},......]
-        if (e["fname"] === account_name) { //e=arr[0]
-
-            // let current_user = e //arr[5]["fname"]
-            // console.log(e);
-
-            document.querySelectorAll("#fname")[0].innerText = e["fname"] + ","//[0,1]
-            document.querySelectorAll("#fname")[1].innerText = e["fname"]
-
-        }
-    })
-
-</script>
 
 </html>

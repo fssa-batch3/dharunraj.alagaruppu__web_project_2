@@ -214,23 +214,24 @@
 
 
 
-        let bank_account = JSON.parse(localStorage.getItem("account_details")) ?? [];
-        let account_show = localStorage.getItem("account");
-        let ifsc_show = localStorage.getItem("ifsc");
-        console.log(ifsc_show)
+        // let bank_account = JSON.parse(localStorage.getItem("account_details")) ?? [];
+        // let account_show = localStorage.getItem("account");
+        // let ifsc_show = localStorage.getItem("ifsc");
+        // console.log(ifsc_show)
 
-        let bank_detail;
+        // let bank_detail;
 
-        bank_account.find(e => {
+        // bank_account.find(e => {
 
-            if (e["account"] === account_show && e["ifsc"] === ifsc_show) {
+        //     if (e["account"] === account_show && e["ifsc"] === ifsc_show) {
 
-                document.querySelectorAll("#account_give")[0].value = e["account"]
-                document.querySelectorAll("#ifsc_give")[1].value = e["ifsc_give"]
+        //         document.querySelectorAll("#account_give")[0].value = e["account"]
+        //         document.querySelectorAll("#ifsc_give")[1].value = e["ifsc_give"]
 
-            }
+        //     }
 
-        })
+        // })
+
 
 
 
@@ -240,15 +241,16 @@
         console.log(account_name);
         let check;
 
-        show.find(e => { //[{0},{1},......]
-            if (e["fname"] === account_name) { //e=arr[0]
+        show.forEach(element => { //[{0},{1},......]
+            if (element["fname"] === account_name) { //e=arr[0]
 
                 // let current_user = e //arr[5]["fname"]
                 // console.log(e);
 
-                document.querySelectorAll("#fname")[0].innerText = e["fname"] + ","//[0,1]
-                document.querySelectorAll("#fname")[1].innerText = e["fname"]
+                document.querySelectorAll("#fname")[0].innerText = element["fname"] + ","//[0,1]
+                document.querySelectorAll("#fname")[1].innerText = element["fname"]
 
+                localStorage.setItem("array",JSON.stringify("show"));
             }
         })
 

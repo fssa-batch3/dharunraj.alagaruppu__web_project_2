@@ -72,7 +72,7 @@ input {
 
 .edit_profile .heading_profile {
 
-    border-bottom: 1px solid gray;
+    /* border-bottom: 1px solid gray; */
     width: 100%;
 }
 
@@ -98,6 +98,13 @@ input:focus {
     outline: none;
 }
 
+.click_button{
+    width: 100%;
+    margin: 0% auto;
+    /* border-top: 1px solid black; */
+    display: flex;
+    justify-content: space-around;
+}
 .back_button {
     text-align: center;
     background-color: #566ef3;

@@ -116,7 +116,7 @@ a{
     text-align: justify;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: start;
     margin: 1% 3%;
     padding: 3%;
@@ -157,6 +157,7 @@ a{
     justify-content: start;
     align-items: center;
 }
+
 
 .bank_account .bank {
     background-color: white;

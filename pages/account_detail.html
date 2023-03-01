@@ -62,8 +62,12 @@
     simple_text.innerText = "Upload a new avatar.Larger image will be resized automatically .";
     simple_detail.append(simple_text);
 
-
-
+    let delete_button = document.createElement("a");
+    delete_button.setAttribute("class", "back_button");
+    // back_button.setAttribute("href", "./home.html")
+    delete_button.innerText = ("Delete");
+    simple_detail.append(delete_button);
+   
 
     let edit_profile = document.createElement("div");
     edit_profile.setAttribute("class", "edit_profile");
@@ -92,7 +96,8 @@
             "label": "Name",
             "id": "fname",
             "for": "fname",
-            "place_holder": "Name"
+            "place_holder": "Name",
+            "disable":"disable"
 
         },
 
@@ -193,6 +198,8 @@
         let input_profile = document.createElement("input");
         input_profile.setAttribute("id", head[i]["id"]);
         input_profile.setAttribute("placeholder", head[i]["place_holder"]);
+        input_profile.setAttribute("disable", head[i]["disable"]);
+
 
         input_profile.setAttribute("type", "text")
         input_profile.setAttribute("class", "form-control input input1");
@@ -205,16 +212,18 @@
         contant_profile.append(label_profile);
 
 
-
-
-
     }
+
+    let click_button = document.createElement("div");
+    click_button.setAttribute("class", "click_button");
+    edit_profile.append(click_button);
+
 
     let back_button = document.createElement("a");
     back_button.setAttribute("class", "back_button");
     back_button.setAttribute("href", "./home.html")
     back_button.innerText = ("Back to home");
-    edit_profile.append(back_button);
+    click_button.append(back_button);
     // document.querySelector(".main").append(back_button);
 
 
@@ -222,15 +231,11 @@
     edit_button.setAttribute("class", "back_button");
     // back_button.setAttribute("href", "")
     edit_button.innerText = ("Edit");
-    edit_profile.append(edit_button);
+    click_button.append(edit_button);
 
 
 
-    let delete_button = document.createElement("a");
-    delete_button.setAttribute("class", "back_button");
-    // back_button.setAttribute("href", "./home.html")
-    delete_button.innerText = ("delete");
-    edit_profile.append(delete_button);
+   
 
 
 
@@ -420,9 +425,11 @@
             alert("Username or password field could not be empty")
         }
     });
+
+
+
     delete_button.addEventListener("click" ,() => {
 
-         {
             for (let i = 0; i <  show.length; i++) {
             if(document.getElementById("email").value == show[i]["email"]){
                 show.splice(i,1)
@@ -430,17 +437,7 @@
                 window.location.href="../index.html";
             }
             }
-        }
     })
-
-
-
-
-
-
-
-
-
 
 
 </script>

@@ -82,20 +82,30 @@
 
         </div>
 
+        <!-- link bank account 1st container ** -->
+
         <div class="back_link">
 
             <img src="../assets/img/202101-Talent-Trends-2_xxpjxy.gif" alt="intro">
             <div class="link_bank">
 
                 <h2>Link a bank account</h2>
-                <p>you'll need to link and confirm to our bank account before you can receive Payment with Banking.
+                <p>You'll need to link and confirm to our bank account before you can receive Payment with Banking.
                     We'll automatically withdraw the funds in your netbanking account to the bank account </p>
                 <form>
-                    <label for="account"> Account Number </label>
+                    <label for="account"> Account number </label>
                     <input class="form-control" type="text" id="account" name="account" required>
 
-                    <label for="ifsc"> IFSC Code </label>
+                    <label for="ifsc"> IFSC code </label>
                     <input class="form-control" type="text" id="ifsc" name="ifsc" required>
+
+                    <label for="phone">Phone number</label>
+                    <input class="form-control" type="number" id="phone" name="phone" required>
+
+                    <label for="pincode"> Pin code</label>
+                    <input class="form-control" type="text" id="pincode" name="pincode" required>
+
+
 
                     <h5>Account name</h5>
 
@@ -107,15 +117,20 @@
                     </p>
 
                     <button type="button" class="btn btn-primary" onclick="link_bank()">Link Your Bank</button>
+
                 </form>
             </div>
 
         </div>
 
-        <div class="bank_account" id="bank_account">
+
+        <!-- Show account details and hide some time ** -->
+
+        <div class="bank_account remove_hide" id="bank_account">
 
             <div class="bank">
                 <img src="../assets/img/account.png" alt="account">
+
                 <div>
                     <label for="account_give">Account Number </label>
                     <input class="form-control" type="text" id="account_give" name="account_give" required>
@@ -124,6 +139,17 @@
                     <label for="ifsc_give">IFSC Code</label> <br>
                     <input class="form-control" type="text" id="ifsc_give" name="ifsc_give" required>
                 </div>
+
+                <div>
+                    <label for="phone_give">IFSC Code</label> <br>
+                    <input class="form-control" type="number" id="phone_give" name="phone_give" required>
+                </div>
+
+                <div>
+                    <label for="pincode_give">IFSC Code</label> <br>
+                    <input class="form-control" type="text" id="pincode_give" name="pincode_give" required>
+                </div>
+
             </div>
 
         </div>
@@ -157,82 +183,8 @@
         </div>
 
     </footer>
+
     <script>
-
-        function link_bank() {
-
-            let account = document.getElementById("account").value.trim();
-            let ifsc = document.getElementById("ifsc").value.trim();
-            // let account_give=document.querySelectorAll("input")[1].value
-            // let ifsc_give=document.querySelectorAll("input")[2].value;
-
-
-
-            if (account != "" && ifsc != "") {
-
-                let account_store = {
-                    "account": account,
-                    "ifsc": ifsc,
-                }
-
-                let add_account = JSON.parse(localStorage.getItem("account_detail")) ?? []; //account = []
-
-
-                let res = 0;
-                for (let i = 0; i < add_account.length; i++) {
-
-                    if (add_account[i]["ifsc"] === ifsc && add_account[i]["account"]) {
-                        res = 1;
-                        break;
-                    }
-                }
-
-                if (res == 1) {
-                    alert(" Invalid IFSC")
-
-                }
-
-                else {
-
-                    add_account.push(account_store);//[{name, email, pass}]
-
-                    localStorage.setItem("account_details", JSON.stringify(account_store)); // account_details  :  [{name, email, pass}]
-
-                    alert("Thanks for add account")
-
-                    window.location.href = "#bank_account"
-
-                }
-
-
-            }
-
-            else {
-                alert("Sorry can't get a value")
-            }
-        }
-
-
-
-        // let bank_account = JSON.parse(localStorage.getItem("account_details")) ?? [];
-        // let account_show = localStorage.getItem("account");
-        // let ifsc_show = localStorage.getItem("ifsc");
-        // console.log(ifsc_show)
-
-        // let bank_detail;
-
-        // bank_account.find(e => {
-
-        //     if (e["account"] === account_show && e["ifsc"] === ifsc_show) {
-
-        //         document.querySelectorAll("#account_give")[0].value = e["account"]
-        //         document.querySelectorAll("#ifsc_give")[1].value = e["ifsc_give"]
-
-        //     }
-
-        // })
-
-
 
 
         let show = JSON.parse(localStorage.getItem('array'));
@@ -249,12 +201,80 @@
 
                 document.querySelectorAll("#fname")[0].innerText = element["fname"] + ","//[0,1]
                 document.querySelectorAll("#fname")[1].innerText = element["fname"]
+                document.querySelectorAll("#ac_name").value = element["fname"]
 
-                localStorage.setItem("array",JSON.stringify("show"));
+
+                localStorage.setItem("array", JSON.stringify(show));
             }
         })
 
+        function link_bank() {
 
+            let account = document.getElementById("account").value.trim();
+            let ifsc = document.getElementById("ifsc").value.trim();
+            let phone = document.getElementById("phone").value.trim()
+            let pincode = document.getElementById("pincode").value.trim()
+
+
+            // let account_give=document.querySelectorAll("input")[1].value
+            // let ifsc_give=document.querySelectorAll("input")[2].value;
+
+
+
+            if (account != "" && ifsc != "" && phone != "" && pincode != "") {
+
+                let account_store = {
+                    "account": account,
+                    "ifsc": ifsc,
+                    "phone": phone,
+                    "pincode": pincode,
+                }
+
+                let add_account = JSON.parse(localStorage.getItem("account_details")) ?? []; //account = []
+
+
+                let res = 0;
+
+                for (let i = 0; i < add_account.length; i++) {
+
+                    if (add_account[i]["ifsc"] === ifsc && add_account[i]["account"] === account && add_account[i]["phone"] === phone && add_account[i]["pincode"] === pincode) {
+                        res = 1;
+                        break;
+                    }
+                }
+
+                if (res == 1) {
+                    alert(" Invalid IFSC")
+
+                }
+
+                else {
+
+                    add_account.push(account_store);//[{name, email, pass}]
+
+                    localStorage.setItem("account_details", JSON.stringify(add_account)); // account_details  :  [{name, email, pass}]
+
+                    alert("Thanks for add account");
+
+                    window.location.href = "#bank_account"
+
+                }
+
+
+            }
+
+            else {
+                alert("Sorry can't get a value")
+            }
+        }
+
+
+        // let account_give = document.getElementById("account_give").value.trim();
+        // let ifsc_give = document.getElementById("ifsc_give").value.trim();
+        // let phone_give = document.getElementById("phone_give").value.trim()
+        // let pincode_give = document.getElementById("pincode_give").value.trim()
+
+        // let add_account = JSON.parse(localStorage.getItem("account_details")) ?? []; //account = []
     </script>
 
 

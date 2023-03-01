@@ -66,8 +66,8 @@ a{
     background-color: white;
     border-bottom-left-radius: 250px;
     border-top-left-radius: 250px;
-    border-top-right-radius: 250px;
-    border-bottom-right-radius: 250px;
+    /* border-top-right-radius: 250px;
+    border-bottom-right-radius: 250px; */
 
 
     padding: .001%;

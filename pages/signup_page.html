@@ -11,6 +11,7 @@
 
 <body>
     <div class="main">
+       
 
     </div>
 
@@ -271,8 +272,8 @@
 
         let form_check = document.querySelector("form");
         form_check.addEventListener("submit", e => {
-            e.preventDefault();
-            signup();
+            e.preventDefault()
+            signup()
 
         })
 
@@ -298,16 +299,21 @@
                 obj["phone"] = phone
                 obj["aadhar"] = aadhar
                 obj["pan"] = pan
+                obj["dob"] = ""
+                obj["state"] = ""
+                obj["district"] = ""
+                obj["pincode"] = ""
+                obj["doorno"] = ""
                 obj["new_pass"] = new_pass
                 obj["confirm"] = confirm
 
                 let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
 
-                let res = 0;
+                let res;
                 for (let i = 0; i < store.length; i++) {
 
                     if (store[i]["email"] === email) {
-                        res = 1;
+                        return res = 1;
                         break;
                     }
                 }

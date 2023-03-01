@@ -15,7 +15,6 @@
 <body>
 
     <div class="main">
-   
     </div>
 
 </body>
@@ -93,7 +92,7 @@
             "label": "Name",
             "id": "fname",
             "for": "fname",
-            "place_holder":"Name"
+            "place_holder": "Name"
 
         },
 
@@ -101,7 +100,7 @@
             "label": "Phone.no",
             "id": "phone",
             "for": "phone",
-            "place_holder":"Phone.no"
+            "place_holder": "Phone.no"
 
 
         },
@@ -110,7 +109,7 @@
             "label": "Aadhaar.no",
             "id": "aadhar",
             "for": "aadhar",
-            "place_holder":"Aadhaar.no"
+            "place_holder": "Aadhaar.no"
 
 
         },
@@ -119,7 +118,7 @@
             "label": "PAN.no",
             "id": "pan",
             "for": "pan",
-            "place_holder":"PAN.no"
+            "place_holder": "PAN.no"
 
 
 
@@ -130,7 +129,7 @@
             "label": "Email id",
             "id": "email",
             "for": "email",
-            "place_holder":"Email id"
+            "place_holder": "Email id"
 
 
         },
@@ -139,7 +138,7 @@
             "label": "DOB",
             "id": "dob",
             "for": "dob",
-            "place_holder":"DOB"
+            "place_holder": "DOB"
 
 
         },
@@ -148,7 +147,7 @@
             "label": "District",
             "id": "district",
             "for": "district",
-            "place_holder":"District"
+            "place_holder": "District"
 
 
         },
@@ -157,7 +156,7 @@
             "label": "Pin code",
             "id": "pincode",
             "for": "pincode",
-            "place_holder":"Pin code"
+            "place_holder": "Pin code"
 
 
         },
@@ -166,8 +165,8 @@
             "label": "State",
             "id": "state",
             "for": "state",
-            "place_holder":"State"
-            
+            "place_holder": "State"
+
         },
 
 
@@ -195,18 +194,18 @@
         input_profile.setAttribute("id", head[i]["id"]);
         input_profile.setAttribute("placeholder", head[i]["place_holder"]);
 
-        input_profile.setAttribute("type","text")
-        input_profile.setAttribute("class","form-control input input1");
+        input_profile.setAttribute("type", "text")
+        input_profile.setAttribute("class", "form-control input input1");
         contant_profile.append(input_profile);
 
         let label_profile = document.createElement("label");
         label_profile.setAttribute("for", head[i]["for"]);
         label_profile.innerText = head[i]["label"];
-        
+
         contant_profile.append(label_profile);
 
 
- 
+
 
 
     }
@@ -219,11 +218,19 @@
     // document.querySelector(".main").append(back_button);
 
 
+    let edit_button = document.createElement("a");
+    edit_button.setAttribute("class", "back_button");
+    // back_button.setAttribute("href", "")
+    edit_button.innerText = ("Edit");
+    edit_profile.append(edit_button);
 
 
 
-
-
+    let delete_button = document.createElement("a");
+    delete_button.setAttribute("class", "back_button");
+    // back_button.setAttribute("href", "./home.html")
+    delete_button.innerText = ("delete");
+    edit_profile.append(delete_button);
 
 
 
@@ -369,31 +376,67 @@
 
 
 
-    let show = JSON.parse(localStorage.getItem('array'));
+    let show = JSON.parse(localStorage.getItem('array')); // sign up details [{}]
 
-    let account_name = localStorage.getItem("first_name");
+    let account_name = localStorage.getItem("first_name"); // login user detail 
 
-    let check;
-
-    show.find(e => {
+    let current_user;
+    show.find(e => { // parameterized e-->show[0],[1]
 
         if (e["fname"] === account_name) {
 
-            let current_user = e
-            console.log(e);
-
-            document.querySelectorAll("#fi_name")[0].innerText = e["fname"]
-
-
-            document.getElementById("fname").value = current_user["fname"]
-            document.getElementById("phone").value = current_user["phone"]
-            document.getElementById("email").value = current_user["email"]
-            document.getElementById("pan").value = current_user["pan"]
-            document.getElementById("aadhar").value = current_user["aadhar"]
+            return current_user = e
+            // console.log(e);
 
         }
     }
     )
+    document.querySelectorAll("#fi_name")[0].innerText = current_user["fname"] //[0]
+
+
+    document.getElementById("fname").value = current_user["fname"] //show[0]["fname"] //dharun
+    document.getElementById("phone").value = current_user["phone"] //
+    document.getElementById("email").value = current_user["email"]
+    document.getElementById("pan").value = current_user["pan"]
+    document.getElementById("aadhar").value = current_user["aadhar"]
+
+    console.log(current_user)
+
+    edit_button.addEventListener("click", () => {
+
+        for (let i = 0; i < show.length; i++) {
+
+            if (document.getElementById("email").value == show[i]["email"]) {
+                show[i].pan = document.getElementById("pan").value;
+                show[i].aadhar = document.getElementById("aadhar").value;
+            }
+        }
+
+        if (document.getElementById("pan").value != "" && document.getElementById("aadhar").value != "") {
+            localStorage.setItem('array', JSON.stringify(show))
+            alert("Successfully your profile updated")
+        }
+        else {
+            alert("Username or password field could not be empty")
+        }
+    });
+    delete_button.addEventListener("click" ,() => {
+
+         {
+            for (let i = 0; i <  show.length; i++) {
+            if(document.getElementById("email").value == show[i]["email"]){
+                show.splice(i,1)
+                localStorage.setItem("array", JSON.stringify(show));
+                window.location.href="../index.html";
+            }
+            }
+        }
+    })
+
+
+
+
+
 
 
 

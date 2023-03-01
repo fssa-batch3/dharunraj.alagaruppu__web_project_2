@@ -243,17 +243,13 @@
                 let check;
                 // 
                 attach.forEach(element => {
-                    if (element["fname"] == fullname && element["email"] == email && element["new_pass"] == password) {
-
-                        return check = 1;
-                    }
-
-                    else {
-
-                        // console.log(element);
-                        // console.log(fullname, email, password);
-
-                        return check = 0;
+                               
+                    if ( element["email"] == email && element["new_pass"] == password) {//a[0];a[1]
+                        // console.log(element)
+                            
+                    
+                        return check = 1; //
+                        
 
                     }
 
@@ -265,7 +261,7 @@
                     console.log(first_name);
 
 
-                    localStorage.setItem("first_name", first_name);
+                    localStorage.setItem("first_name", first_name); //login user details
 
                     alert("logged");
                     window.location.href = "account_detail.html"

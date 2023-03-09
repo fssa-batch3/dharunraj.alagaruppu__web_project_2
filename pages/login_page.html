@@ -233,9 +233,9 @@
 
                 e.preventDefault()
 
-                let fullname = document.getElementById("fullname").value
-                let email = document.getElementById("email").value
-                let password = document.getElementById("password").value
+                let fullname = document.getElementById("fullname").value.trim()
+                let email = document.getElementById("email").value.trim()
+                let password = document.getElementById("password").value.trim()
 
 
                 const attach = JSON.parse(localStorage.getItem("array"))
@@ -243,28 +243,34 @@
                 let check;
                 // 
                 attach.forEach(element => {
-                               
-                    if ( element["email"] == email && element["new_pass"] == password) {//a[0];a[1]
+
+                    if (element["fname"] === fullname && element["email"] === email && element["new_pass"] === password) {//a[0];a[1]
                         // console.log(element)
-                            
-                    
+
+
                         return check = 1; //
-                        
+
 
                     }
 
                 });
 
                 if (check == 1) {
-                    let first_name;
-                    first_name = fullname;
+
+                    let first_name = fullname;
+
+                    // let email = email;
+
                     console.log(first_name);
 
 
                     localStorage.setItem("first_name", first_name); //login user details
 
+                    localStorage.setItem("email", email); //login user details
+
+
                     alert("logged");
-                    window.location.href = "account_detail.html"
+                    window.location.href = "home.html"
 
                 }
                 else {

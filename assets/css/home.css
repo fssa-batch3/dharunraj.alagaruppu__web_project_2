@@ -161,10 +161,15 @@ a{
 
 .bank_account .bank {
     background-color: white;
-    width: 25%;
-    padding: 3%;
+    width: 22%;
+    padding: 2%;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 25px;
+    margin-right: 3%;
+    display: flex; 
+    flex-wrap: wrap;
+     align-items: center;
+     /* display: none; */
 }
 
 .bank_account .bank img {
@@ -173,7 +178,8 @@ a{
 
 .bank_account .bank input {
     display: block;
-    width: 70%;
+    width: 90%;
+
 }
 
 .welcome {

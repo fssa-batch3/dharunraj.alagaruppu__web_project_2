@@ -32,10 +32,6 @@
 
 
 
-
-
-
-
     let simple_detail = document.createElement("div");
     simple_detail.setAttribute("class", "simple_detail");
     document.querySelector(".main").append(simple_detail);
@@ -185,16 +181,6 @@
         contant_profile.setAttribute("class", "form-floating mb-3");
         form_profile.append(contant_profile);
 
-        // let label_profile = document.createElement("label");
-        // label_profile.setAttribute("for","label_profile");
-        // label_profile.innerText=("Firstname");
-        // contant_profile.append(label_profile);
-
-        // let input_profile= document.createElement("input");
-        // input_profile.setAttribute("id", "label_profile");
-        // input_profile.setAttribute("name", "label_profile");
-        // input_profile.setAttribute("type", "text");
-        // contant_profile.append(input_profile);
         let input_profile = document.createElement("input");
         input_profile.setAttribute("id", head[i]["id"]);
         input_profile.setAttribute("placeholder", head[i]["place_holder"]);
@@ -249,7 +235,16 @@
 
 
 
+// let label_profile = document.createElement("label");
+        // label_profile.setAttribute("for","label_profile");
+        // label_profile.innerText=("Firstname");
+        // contant_profile.append(label_profile);
 
+        // let input_profile= document.createElement("input");
+        // input_profile.setAttribute("id", "label_profile");
+        // input_profile.setAttribute("name", "label_profile");
+        // input_profile.setAttribute("type", "text");
+        // contant_profile.append(input_profile);
 
 
 
@@ -385,10 +380,13 @@
 
     let account_name = localStorage.getItem("first_name"); // login user detail 
 
+    let email_compare = localStorage.getItem("email");
+
+
     let current_user;
     show.find(e => { // parameterized e-->show[0],[1]
 
-        if (e["fname"] === account_name) {
+        if (e["email"] === email_compare) {
 
             return current_user = e
             // console.log(e);
@@ -400,12 +398,15 @@
 
 
     document.getElementById("fname").value = current_user["fname"] //show[0]["fname"] //dharun
-    document.getElementById("phone").value = current_user["phone"] //
+    document.getElementById("phone").value = current_user["phone"] 
     document.getElementById("email").value = current_user["email"]
     document.getElementById("pan").value = current_user["pan"]
     document.getElementById("aadhar").value = current_user["aadhar"]
 
     console.log(current_user)
+
+
+    
 
     edit_button.addEventListener("click", () => {
 

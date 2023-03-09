@@ -116,41 +116,40 @@
                     <p>Remember to double-check your account number . Banks may not flag wrrors untol you transfer funds
                     </p>
 
-                    <button type="button" class="btn btn-primary" onclick="link_bank()">Link Your Bank</button>
+                    <button class="btn btn-primary">Link Your Bank</button>
 
                 </form>
             </div>
 
         </div>
 
-
-        <!-- Show account details and hide some time ** -->
-
         <div class="bank_account remove_hide" id="bank_account">
 
-            <div class="bank">
+            <!-- <div class="bank">
                 <img src="../assets/img/account.png" alt="account">
 
                 <div>
                     <label for="account_give">Account Number </label>
                     <input class="form-control" type="text" id="account_give" name="account_give" required>
                 </div>
+
+
                 <div>
                     <label for="ifsc_give">IFSC Code</label> <br>
                     <input class="form-control" type="text" id="ifsc_give" name="ifsc_give" required>
                 </div>
 
                 <div>
-                    <label for="phone_give">IFSC Code</label> <br>
+                    <label for="phone_give">Phone no</label> <br>
                     <input class="form-control" type="number" id="phone_give" name="phone_give" required>
                 </div>
 
                 <div>
-                    <label for="pincode_give">IFSC Code</label> <br>
+                    <label for="pincode_give">Pincode</label> <br>
                     <input class="form-control" type="text" id="pincode_give" name="pincode_give" required>
                 </div>
 
-            </div>
+            </div> -->
 
         </div>
 
@@ -187,26 +186,36 @@
     <script>
 
 
+        // Header name 
+
         let show = JSON.parse(localStorage.getItem('array'));
 
         let account_name = localStorage.getItem("first_name");
-        console.log(account_name);
+
+        let email_compare = localStorage.getItem("email");
+
+        let btn_submit=document.querySelector("form");
+        btn_submit.addEventListener("submit",()=>{
+
+            link_bank();
+        })
+
+
         let check;
 
         show.forEach(element => { //[{0},{1},......]
-            if (element["fname"] === account_name) { //e=arr[0]
 
-                // let current_user = e //arr[5]["fname"]
-                // console.log(e);
+            if (element["email"] === email_compare) { //e=arr[0]
 
                 document.querySelectorAll("#fname")[0].innerText = element["fname"] + ","//[0,1]
                 document.querySelectorAll("#fname")[1].innerText = element["fname"]
-                document.querySelectorAll("#ac_name").value = element["fname"]
-
 
                 localStorage.setItem("array", JSON.stringify(show));
             }
         })
+
+
+
 
         function link_bank() {
 
@@ -214,11 +223,7 @@
             let ifsc = document.getElementById("ifsc").value.trim();
             let phone = document.getElementById("phone").value.trim()
             let pincode = document.getElementById("pincode").value.trim()
-
-
-            // let account_give=document.querySelectorAll("input")[1].value
-            // let ifsc_give=document.querySelectorAll("input")[2].value;
-
+            let email_compare = localStorage.getItem("email");
 
 
             if (account != "" && ifsc != "" && phone != "" && pincode != "") {
@@ -228,6 +233,7 @@
                     "ifsc": ifsc,
                     "phone": phone,
                     "pincode": pincode,
+                    "email_compare": email_compare
                 }
 
                 let add_account = JSON.parse(localStorage.getItem("account_details")) ?? []; //account = []
@@ -237,7 +243,7 @@
 
                 for (let i = 0; i < add_account.length; i++) {
 
-                    if (add_account[i]["ifsc"] === ifsc && add_account[i]["account"] === account && add_account[i]["phone"] === phone && add_account[i]["pincode"] === pincode) {
+                    if (add_account[i]["ifsc"] === ifsc && add_account[i]["account"] === account) {
                         res = 1;
                         break;
                     }
@@ -254,12 +260,12 @@
 
                     localStorage.setItem("account_details", JSON.stringify(add_account)); // account_details  :  [{name, email, pass}]
 
+
                     alert("Thanks for add account");
 
                     window.location.href = "#bank_account"
 
                 }
-
 
             }
 
@@ -269,12 +275,182 @@
         }
 
 
-        // let account_give = document.getElementById("account_give").value.trim();
-        // let ifsc_give = document.getElementById("ifsc_give").value.trim();
-        // let phone_give = document.getElementById("phone_give").value.trim()
-        // let pincode_give = document.getElementById("pincode_give").value.trim()
+        // function link_account() {
 
-        // let add_account = JSON.parse(localStorage.getItem("account_details")) ?? []; //account = []
+            let account_detail = JSON.parse(localStorage.getItem("account_details"))
+
+
+        for (let i = 0; i < account_detail.length; i++) {
+
+            let account = document.getElementById("account").value.trim();
+            let ifsc = document.getElementById("ifsc").value.trim();
+            let phone = document.getElementById("phone").value.trim()
+            let pincode = document.getElementById("pincode").value.trim()
+
+            let bank_div = document.querySelector("#bank_account");
+
+            let bank = document.createElement("div");
+            bank.setAttribute("class", "bank");
+            bank_div.append(bank);
+
+            let image = document.createElement("img");
+            image.setAttribute("src", "../assets/img/account.png")
+            image.setAttribute("alt", "hello");
+            bank.append(image);
+
+
+
+
+
+            let data = [
+
+                {
+                    "label": "Account no",
+                    "for": "account_give",
+
+
+                    "type": "text",
+                    "id": "account_give",
+                    "class": "account_give form-control input_size",
+                    "name": "account_give",
+                    "place_holder": "Account no",
+                    "disable": "disable",
+
+
+                },
+
+                {
+                    "label": "IFSC Code",
+                    "for": "ifsc_give",
+
+                    "type": "text",
+                    "id": "ifsc_give",
+                    "class": "ifsc_give form-control input_size",
+                    "name": "ifsc_give",
+                    "place_holder": "IFSC Code",
+                    "disable": "disable",
+
+
+                },
+
+                // {
+                //     "label": "Phone no",
+                //     "for": "phone_give",
+
+                //     "type": "number",
+                //     "id": "phone_give",
+                //     "name": "phone_give",
+                //     "place_holder": "phone_give",
+                //     "disable": "disable",
+
+
+                // },
+
+
+
+                // {
+                //     "label": "Pin code",
+                //     "for": "pincode_give",
+
+                //     "type": "number",
+                //     "id": "pincode_give",
+                //     "name": "pincode_give",
+                //     "place_holder": "Pin code",
+                //     "disable": "disable",
+
+
+
+                // },
+
+
+
+            ]
+
+
+
+            for (let i = 0; i < 2; i++) {
+
+
+                let contant = document.createElement("div");
+                contant.setAttribute("class", "form-floating mb-3");
+                bank.append(contant);
+
+                let input = document.createElement("input");
+                input.setAttribute("type", data[i]["type"]);
+                // input.setAttribute("class", "form-control input_size ")
+                input.setAttribute("id", data[i]["id"]);
+                input.setAttribute("class", data[i]["class"]);
+                input.setAttribute("name", data[i]["name"]);
+                input.setAttribute("placeholder", data[i]["place_holder"]);
+                input.setAttribute("disable", data[i]["disable"]);
+                contant.append(input);
+
+
+                let label = document.createElement("label");
+                label.innerText = data[i]["label"];
+                label.setAttribute("for", data[i]["for"]);
+                contant.append(label);
+
+
+            }
+
+            let btn = document.createElement("a");
+            btn.setAttribute("href", "../index.html");
+            btn.innerText = "Remove bank account"
+            bank.append(btn);
+
+           
+
+        }
+
+
+
+
+        function show1() {
+
+            let account_details = JSON.parse(localStorage.getItem("account_details"))
+
+            let email_compare = localStorage.getItem("email");
+
+            let k = 0
+            account_details.forEach(e => {
+
+                if (email_compare == e["email_compare"]) {
+
+                    document.getElementsByClassName("account_give")[k].value = e["account"]
+                    document.getElementsByClassName("ifsc_give")[k].value = e["ifsc"]
+
+                    // console.log(k);
+
+                    k++
+                }
+
+            })
+        }
+
+        show1();
+
+
+
+        // document.getElementById("account_give").value[0] = account_details["account"][0]
+
+
+            // document.getElementById("account_give").value = value_change["account"]
+            // document.getElementById("ifsc_give").value = value_change["ifsc"]
+            // document.getElementById("phone_give").value = value_change["phone"]
+            // document.getElementById("pincode_give").value = value_change["pincode"]
+
+         // }
+
+
+
+            // document.getElementById("account_give").value = account_details["account"][0]
+            // document.getElementById("account_give")[1].value = account
+            // document.getElementById("ifsc_give").value = ifsc
+            // document.getElementById("phone_give").value = phone
+            // document.getElementById("pincode_give").value = pincode
+
+
     </script>
 
 

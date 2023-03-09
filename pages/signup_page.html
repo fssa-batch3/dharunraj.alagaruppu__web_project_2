@@ -297,21 +297,7 @@
                 }
 
                 else {
-                    let obj = {};
-
-                    obj["fname"] = first_name
-                    obj["lname"] = last_name
-                    obj["email"] = email
-                    obj["phone"] = phone
-                    obj["aadhar"] = aadhar
-                    obj["pan"] = pan
-                    obj["dob"] = ""
-                    obj["state"] = ""
-                    obj["district"] = ""
-                    obj["pincode"] = ""
-                    obj["doorno"] = ""
-                    obj["new_pass"] = new_pass
-                    obj["confirm"] = confirm
+                   
 
                     let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
 
@@ -319,7 +305,7 @@
                     for (let i = 0; i < store.length; i++) {
 
                         if (store[i]["email"] === email) {
-                            return res = 1;
+                            res = 1;
                             break;
                         }
                     }
@@ -332,33 +318,30 @@
                     else {
                         let obj = {};
 
-                    obj["fname"] = first_name
-                    obj["lname"] = last_name
-                    obj["email"] = email
-                    obj["phone"] = phone
-                    obj["aadhar"] = aadhar
-                    obj["pan"] = pan
-                    obj["dob"] = ""
-                    obj["state"] = ""
-                    obj["district"] = ""
-                    obj["pincode"] = ""
-                    obj["doorno"] = ""
-                    obj["new_pass"] = new_pass
-                    obj["confirm"] = confirm
+                        obj["fname"] = first_name
+                        obj["lname"] = last_name
+                        obj["email"] = email
+                        obj["phone"] = phone
+                        obj["aadhar"] = aadhar
+                        obj["pan"] = pan
+                        obj["dob"] = ""
+                        obj["state"] = ""
+                        obj["district"] = ""
+                        obj["pincode"] = ""
+                        obj["doorno"] = ""
+                        obj["new_pass"] = new_pass
+                        obj["confirm"] = confirm
 
                         store.push(obj);//[{name, email, pass}]
 
                         localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
 
-                        alert("successfully logged in");
+                        alert("successfully signup");
 
                         window.location.href = "./login_page.html"
 
-
                     }
                 }
-
-
 
             }
 

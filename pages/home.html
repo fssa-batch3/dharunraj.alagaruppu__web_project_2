@@ -194,8 +194,8 @@
 
         let email_compare = localStorage.getItem("email");
 
-        let btn_submit=document.querySelector("form");
-        btn_submit.addEventListener("submit",()=>{
+        let btn_submit = document.querySelector("form");
+        btn_submit.addEventListener("submit", () => {
 
             link_bank();
         })
@@ -277,7 +277,7 @@
 
         // function link_account() {
 
-            let account_detail = JSON.parse(localStorage.getItem("account_details"))
+        let account_detail = JSON.parse(localStorage.getItem("account_details"))
 
 
         for (let i = 0; i < account_detail.length; i++) {
@@ -395,16 +395,17 @@
             }
 
             let btn = document.createElement("a");
-            btn.setAttribute("href", "../index.html");
+            btn.setAttribute("href", "#");
+            btn.setAttribute("id","remove_bk")
             btn.innerText = "Remove bank account"
             bank.append(btn);
 
-           
+
 
         }
 
 
-
+let btn=document.getElementById("remove_bk")
 
         function show1() {
 
@@ -420,6 +421,7 @@
                     document.getElementsByClassName("account_give")[k].value = e["account"]
                     document.getElementsByClassName("ifsc_give")[k].value = e["ifsc"]
 
+
                     // console.log(k);
 
                     k++
@@ -431,24 +433,20 @@
         show1();
 
 
+        btn.addEventListener("click", () => {
 
-        // document.getElementById("account_give").value[0] = account_details["account"][0]
-
-
-            // document.getElementById("account_give").value = value_change["account"]
-            // document.getElementById("ifsc_give").value = value_change["ifsc"]
-            // document.getElementById("phone_give").value = value_change["phone"]
-            // document.getElementById("pincode_give").value = value_change["pincode"]
-
-         // }
+            let account_details = JSON.parse(localStorage.getItem("account_details"))
 
 
+            for (let i = 0; i < account_details.length; i++) {
+                if (document.getElementById("account_give").value == account_details[i]["account"] && document.getElementById("ifsc_give").value == account_details[i]["ifsc"]) {
+                    account_details.splice(i, 1)
+                    localStorage.setItem("account_details", JSON.stringify(account_details));
+                    // window.location.href = "../index.html";
+                }
+            }
+        })
 
-            // document.getElementById("account_give").value = account_details["account"][0]
-            // document.getElementById("account_give")[1].value = account
-            // document.getElementById("ifsc_give").value = ifsc
-            // document.getElementById("phone_give").value = phone
-            // document.getElementById("pincode_give").value = pincode
 
 
     </script>

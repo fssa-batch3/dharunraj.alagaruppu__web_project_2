@@ -42,16 +42,30 @@
     simple_detail.append(profile_name);
 
     let simple_image = document.createElement("img");
-    simple_image.setAttribute("class", "simple_image");
+    simple_image.setAttribute("id", "simple_image");
     simple_image.setAttribute("src", "../assets/img/icons8-user-100.png");
     simple_image.setAttribute("alt", "icon");
     simple_detail.append(simple_image);
+
+
+
+    let file_uplad = document.createElement("div");
+    file_uplad.setAttribute("class", "file_uplad");
+    simple_detail.append(file_uplad);
 
     let simple_upload = document.createElement("input");
     simple_upload.setAttribute("type", "file");
     simple_upload.setAttribute("id", "simple_upload");
     simple_upload.setAttribute("name", "simple_upload");
-    simple_detail.append(simple_upload);
+    file_uplad.append(simple_upload);
+
+    let simple_label = document.createElement("label");
+    simple_label.setAttribute("for", "simple_upload");
+    simple_label.setAttribute("id", "label_file");
+    simple_label.innerText = ("Change profile");
+    file_uplad.append(simple_label);
+
+
 
     let simple_text = document.createElement("p");
     simple_text.setAttribute("class", "simple_text");
@@ -63,7 +77,7 @@
     // back_button.setAttribute("href", "./home.html")
     delete_button.innerText = ("Delete");
     simple_detail.append(delete_button);
-   
+
 
     let edit_profile = document.createElement("div");
     edit_profile.setAttribute("class", "edit_profile");
@@ -93,7 +107,7 @@
             "id": "fname",
             "for": "fname",
             "place_holder": "Name",
-            "disable":"disable"
+            "disable": "disable"
 
         },
 
@@ -175,7 +189,7 @@
 
     ]
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < head.length; i++) {
 
         let contant_profile = document.createElement("div");
         contant_profile.setAttribute("class", "form-floating mb-3");
@@ -221,159 +235,6 @@
 
 
 
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let label_profile = document.createElement("label");
-        // label_profile.setAttribute("for","label_profile");
-        // label_profile.innerText=("Firstname");
-        // contant_profile.append(label_profile);
-
-        // let input_profile= document.createElement("input");
-        // input_profile.setAttribute("id", "label_profile");
-        // input_profile.setAttribute("name", "label_profile");
-        // input_profile.setAttribute("type", "text");
-        // contant_profile.append(input_profile);
-
-
-
-
-
-
-
-
-
-
-    // let welcome = document.createElement("div");
-    // welcome.setAttribute("class", "name_img");
-    // content_list.append(welcome);
-
-    // let image_user = document.createElement("img");
-    // image_user.setAttribute("src", "../assets/img/icons8-user-100.png");
-    // image_user.setAttribute("alt", "icon");
-    // welcome.append(image_user);
-
-
-    // //User name is adding by getitem.....
-
-    // let user_name = document.createElement("h1");
-    // user_name.setAttribute("id", "fi_name");
-    // welcome.append(user_name);
-
-
-    // let customer = document.createElement("div");
-    // customer.setAttribute("class", "customer");
-    // // customer.innerText = "Customer Details";
-    // content_list.append(customer);
-
-
-    // let name_of_type = document.createElement("div");
-    // name_of_type.setAttribute("class", "key");
-    // customer.append(name_of_type);
-
-    // let head = [
-
-    //     {
-    //         "label": "Name",
-    //         "id": "fname",
-
-    //     },
-
-    //     {
-    //         "label": "DOB",
-    //         "id": "dob",
-
-    //     },
-
-    //     {
-    //         "label": "PAN.no",
-    //         "id": "pan",
-
-    //     },
-
-    //     {
-    //         "label": "Phone.no",
-    //         "id": "phone",
-
-    //     },
-
-    //     {
-    //         "label": "Aadhaar.no",
-    //         "id": "aadhar",
-
-    //     },
-
-    //     {
-    //         "label": "Email id",
-    //         "id": "email",
-
-    //     },
-
-
-    //     {
-    //         "label": "District",
-    //         "id": "district",
-
-    //     },
-
-    //     {
-    //         "label": "Pin code",
-    //         "id": "pincode",
-
-    //     },
-
-    //     {
-    //         "label": "State",
-    //         "id": "state",
-
-    //     },
-
-
-
-    // ]
-
-    // for (let i = 0; i < 9; i++) {
-
-    //     let heading = document.createElement("h4");
-    //     heading.setAttribute("class", "heading");
-    //     heading.innerText = head[i]["label"];
-    //     name_of_type.append(heading);
-
-    // }
-
-    // let content = document.createElement("div");
-    // content.setAttribute("class", "value");
-    // customer.append(content);
-
-
-    // for (let i = 0; i < 9; i++) {
-    //     let detail = document.createElement("input");
-    //     detail.setAttribute("id", head[i]["id"]);
-    //     content.append(detail);
-
-    // }
-
-
-    // let back_button = document.createElement("a");
-    // back_button.setAttribute("class", "back_button");
-    // back_button.setAttribute("href", "./home.html")
-    // back_button.innerText = ("Back to home");
-    // content_list.append(back_button);
-
-
-
-
 
 
     let show = JSON.parse(localStorage.getItem('array')); // sign up details [{}]
@@ -398,15 +259,18 @@
 
 
     document.getElementById("fname").value = current_user["fname"] //show[0]["fname"] //dharun
-    document.getElementById("phone").value = current_user["phone"] 
+    document.getElementById("phone").value = current_user["phone"]
     document.getElementById("email").value = current_user["email"]
     document.getElementById("pan").value = current_user["pan"]
     document.getElementById("aadhar").value = current_user["aadhar"]
+    document.getElementById("dob").value = current_user["dob"]
+
+    
 
     console.log(current_user)
 
 
-    
+
 
     edit_button.addEventListener("click", () => {
 
@@ -429,15 +293,42 @@
 
 
 
-    delete_button.addEventListener("click" ,() => {
+    delete_button.addEventListener("click", () => {
 
-            for (let i = 0; i <  show.length; i++) {
-            if(document.getElementById("email").value == show[i]["email"]){
-                show.splice(i,1)
+        for (let i = 0; i < show.length; i++) {
+            if (document.getElementById("email").value == show[i]["email"]) {
+                // confirm("comfortable with it")
+                show.splice(i, 1)
                 localStorage.setItem("array", JSON.stringify(show));
-                window.location.href="../index.html";
+                window.location.href = "../index.html";
             }
-            }
+        }
+    })
+
+
+    let input_img = document.querySelector("#simple_upload");
+
+    let image = document.querySelector("#simple_image");
+
+
+    input_img.addEventListener("change", function () {
+
+
+
+        let change_photo = this.files[0];
+
+        if (change_photo) {
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+
+                image.setAttribute("src", reader.result);
+            })
+
+            reader.readAsDataURL(change_photo);
+        }
+
+
     })
 
 

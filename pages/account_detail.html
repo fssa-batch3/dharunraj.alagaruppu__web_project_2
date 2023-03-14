@@ -43,7 +43,7 @@
 
     let simple_image = document.createElement("img");
     simple_image.setAttribute("id", "simple_image");
-    simple_image.setAttribute("src", "../assets/img/icons8-user-100.png");
+    simple_image.setAttribute("src", " ");
     simple_image.setAttribute("alt", "icon");
     simple_detail.append(simple_image);
 
@@ -264,8 +264,13 @@
     document.getElementById("pan").value = current_user["pan"]
     document.getElementById("aadhar").value = current_user["aadhar"]
     document.getElementById("dob").value = current_user["dob"]
+    document.getElementById("district").value = current_user["district"]
+    document.getElementById("pincode").value = current_user["pincode"]
+    document.getElementById("state").value = current_user["state"]
 
-    
+
+
+
 
     console.log(current_user)
 
@@ -277,21 +282,32 @@
         for (let i = 0; i < show.length; i++) {
 
             if (document.getElementById("email").value == show[i]["email"]) {
+
+                console.log(show[i]);
+
                 show[i].pan = document.getElementById("pan").value;
                 show[i].aadhar = document.getElementById("aadhar").value;
+                show[i].dob = document.getElementById("dob").value;
+                show[i].district = document.getElementById("district").value;
+                show[i].pincode = document.getElementById("pincode").value;
+                show[i].state = document.getElementById("state").value;
+                // show[i].image=document.getElementById("simple_image").getAttribute("src")
+                // show[i].image=document.querySelector("")
+
+
             }
         }
 
-        if (document.getElementById("pan").value != "" && document.getElementById("aadhar").value != "") {
+        if (document.getElementById("pan").value != "" && document.getElementById("aadhar").value != "" && document.getElementById("fname").value != "") {
             localStorage.setItem('array', JSON.stringify(show))
             alert("Successfully your profile updated")
         }
         else {
-            alert("Username or password field could not be empty")
+            alert("Your name or some fields could not be empty")
         }
     });
 
-
+    console.log(document.getElementById("simple_image").getAttribute("src"), "efrdcvzx");
 
     delete_button.addEventListener("click", () => {
 
@@ -323,14 +339,21 @@
             reader.addEventListener("load", function () {
 
                 image.setAttribute("src", reader.result);
+                let us1 = JSON.parse(localStorage.getItem("array"))
+                us1[0]["image"] = image.getAttribute("src")
+                localStorage.setItem("array", JSON.stringify(us1))
             })
 
             reader.readAsDataURL(change_photo);
-        }
 
+        }
 
     })
 
+
+    let us1 = JSON.parse(localStorage.getItem("array"))
+        let new_src= us1[0]["image"] 
+        image.setAttribute("src",new_src)
 
 </script>
 

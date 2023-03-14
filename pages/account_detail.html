@@ -74,7 +74,7 @@
 
     let delete_button = document.createElement("a");
     delete_button.setAttribute("class", "back_button");
-    // back_button.setAttribute("href", "./home.html")
+       // back_button.setAttribute("href", "./home.html")
     delete_button.innerText = ("Delete");
     simple_detail.append(delete_button);
 
@@ -340,6 +340,14 @@
 
                 image.setAttribute("src", reader.result);
                 let us1 = JSON.parse(localStorage.getItem("array"))
+
+                us1.forEach(element => {
+                    
+                    
+                });
+
+
+
                 us1[0]["image"] = image.getAttribute("src")
                 localStorage.setItem("array", JSON.stringify(us1))
             })

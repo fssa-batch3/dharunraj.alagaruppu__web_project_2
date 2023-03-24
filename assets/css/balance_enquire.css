@@ -57,31 +57,26 @@ main .intro img {
     border-radius: 25px;
 }
 
-.account .heading,
-.type_account {
+.account .balance_data {
     display: flex;
     justify-content: space-between;
-
+    align-items: center;
+    padding: 0% 3%;
 }
 
-.account .type_account input {
-    padding: 2%;
-    margin: 2% 0%;
-   font-size: 20px;
+.account_number , .account_type , .account_balance {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
 .account span {
-    font-size: 23px;
-}
-
-input:focus {
-    outline: none;
+    font-size: 17px;
 }
 
 .back_button {
     display: flex;
     justify-content: start;
-    
+
 }
 
 .back_button a {
@@ -93,5 +88,5 @@ input:focus {
     font-weight: 500;
     letter-spacing: .5px;
     font-family: 'Open Sans', sans-serif;
-    margin: 3% ;
+    margin: 3%;
 }

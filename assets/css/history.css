@@ -1,4 +1,74 @@
-.content1 img {
+.type_fund img {
+    width: 7%;
+    border-radius: 50%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-right: 15px;
+}
+
+ body a {
+    text-decoration: none;
+}
+
+.send_data,
+.type_fund,.balance_data {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+img {
+    width: 25px;
+    margin: 5px;
+}
+
+
+.send_data .amount,
+.type_fund,
+.amount1 {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+/* amount size */
+.transfer_type {
+    margin: 1%;
+}
+
+/* minus font color */
+.amount {
+    color: rgb(203, 20, 20);
+}
+
+/* plus amount color */
+.amount1 {
+    color: rgb(8, 54, 8);
+}
+
+
+#minus,
+#plus {
+    font-size: 20px;
+}
+
+/* inbetween dotted line */
+.history {
+    border-bottom: 2px dotted black;
+    width: 75%;
+    margin: 0% auto;
+}
+
+main{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 123456789876543234567890987654345678 */
+
+/* .content1 img {
     width: 15%;
     border-radius: 50%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -31,29 +101,29 @@
 }
 
 /* amount size */
-.fund {
+/* .fund {
     margin: 1%;
-}
+} */
 
 /* minus font color */
-.amount {
+/* .amount {
     color: rgb(203, 20, 20);
-}
+} */
 
 /* plus amount color */
-.amount1 {
+/* .amount1 {
     color: rgb(8, 54, 8);
-}
+} */
 
 
-#minus,
+/* #minus,
 #plus {
     font-size: 20px;
-}
+} */
 
 /* inbetween dotted line */
-.history {
+/* .history {
     border-bottom: 2px dotted black;
     width: 75%;
     margin: 0% auto;
-}
+}  */

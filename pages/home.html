@@ -92,6 +92,7 @@
                 <h2>Link a bank account</h2>
                 <p>You'll need to link and confirm to our bank account before you can receive Payment with Banking.
                     We'll automatically withdraw the funds in your netbanking account to the bank account </p>
+
                 <form>
                     <label for="account"> Account number </label>
                     <input class="form-control" type="text" id="account" name="account" required>
@@ -195,6 +196,7 @@
         let email_compare = localStorage.getItem("email");
 
         let btn_submit = document.querySelector("form");
+
         btn_submit.addEventListener("submit", () => {
 
             link_bank();
@@ -215,6 +217,36 @@
         })
 
 
+        // function balance_genarater() {
+        //     let account = document.getElementById("account").value.trim();
+        //     let balance = Math.floor(Math.random() * 50000);;
+        //     let email_compare = localStorage.getItem("email");
+
+
+        //     let table_obj ={
+        //         "ac.no":"",
+        //         "ac.type":"",
+        //         "ac.balance":"",
+        //         "email_compare":email_compare
+        //     }
+
+        //     let table_balance =JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
+
+        //     let result = 0;
+        //     table_balance.forEach(e =>{
+
+        //         if(e["email_compare"]==email){
+
+        //             table_balance.push(table_obj) ;
+        //             localStorage.setItem("bal_enquire").JSON.stringify(table_balance)
+
+        //         }
+        //     })
+
+
+        // }
+
+
 
 
         function link_bank() {
@@ -224,7 +256,7 @@
             let phone = document.getElementById("phone").value.trim()
             let pincode = document.getElementById("pincode").value.trim()
             let email_compare = localStorage.getItem("email");
-
+            let balance = Math.floor(Math.random() * 10000);;
 
             if (account != "" && ifsc != "" && phone != "" && pincode != "") {
 
@@ -233,24 +265,34 @@
                     "ifsc": ifsc,
                     "phone": phone,
                     "pincode": pincode,
-                    "email_compare": email_compare
+                    "email_compare": email_compare,
+                    "balance": balance
+                }
+
+                let table_obj = {
+                    "ac_no": account,
+                    "ac_type": "",
+                    "ac_balance": balance,
+                    "email_compare": email_compare,
                 }
 
                 let add_account = JSON.parse(localStorage.getItem("account_details")) ?? []; //account = []
+
+                let table_balance = JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
 
 
                 let res = 0;
 
                 for (let i = 0; i < add_account.length; i++) {
 
-                    if (add_account[i]["ifsc"] === ifsc && add_account[i]["account"] === account) {
+                    if (add_account[i]["account"] === account) {
                         res = 1;
                         break;
                     }
                 }
 
                 if (res == 1) {
-                    alert(" Invalid IFSC")
+                    alert(" Invalid account number")
 
                 }
 
@@ -258,8 +300,13 @@
 
                     add_account.push(account_store);//[{name, email, pass}]
 
+                    table_balance.push(table_obj);
+
                     localStorage.setItem("account_details", JSON.stringify(add_account)); // account_details  :  [{name, email, pass}]
 
+                    localStorage.setItem("bal_enquire", JSON.stringify(table_balance));
+
+                    // link_account()
 
                     alert("Thanks for add account");
 
@@ -274,183 +321,316 @@
             }
         }
 
+        //         a=[1,2,1,2,2];
+        // let count=0
+        // for (let i=0;i<a.length;i++){
+        //     if(a[i]==2){
+        // count++;
+        // // console.log(count);
+        //     }
+
+        // }
+        // console.log(count);
+
 
         // function link_account() {
 
         let account_detail = JSON.parse(localStorage.getItem("account_details"))
+        // console.log(account_detail)
+        // let list = 0
+        // console.log(list)
 
+        let k = 0
 
-        for (let i = 0; i < account_detail.length; i++) {
+        account_detail.forEach(e => {
 
-            let account = document.getElementById("account").value.trim();
-            let ifsc = document.getElementById("ifsc").value.trim();
-            let phone = document.getElementById("phone").value.trim()
-            let pincode = document.getElementById("pincode").value.trim()
+            if (e["email_compare"] == email_compare) {
 
-            let bank_div = document.querySelector("#bank_account");
+                document.getElementById("bank_account").style.display = "flex";
 
-            let bank = document.createElement("div");
-            bank.setAttribute("class", "bank");
-            bank_div.append(bank);
+                // list++
 
-            let image = document.createElement("img");
-            image.setAttribute("src", "../assets/img/account.png")
-            image.setAttribute("alt", "hello");
-            bank.append(image);
+                let account = document.getElementById("account").value.trim();
+                let ifsc = document.getElementById("ifsc").value.trim();
+                let phone = document.getElementById("phone").value.trim()
+                let pincode = document.getElementById("pincode").value.trim()
 
+                let bank_div = document.querySelector("#bank_account");
 
+                let bank = document.createElement("div");
+                bank.setAttribute("class", "bank");
+                bank_div.append(bank);
 
-
-
-            let data = [
-
-                {
-                    "label": "Account no",
-                    "for": "account_give",
-
-
-                    "type": "text",
-                    "id": "account_give",
-                    "class": "account_give form-control input_size",
-                    "name": "account_give",
-                    "place_holder": "Account no",
-                    "disable": "disable",
-
-
-                },
-
-                {
-                    "label": "IFSC Code",
-                    "for": "ifsc_give",
-
-                    "type": "text",
-                    "id": "ifsc_give",
-                    "class": "ifsc_give form-control input_size",
-                    "name": "ifsc_give",
-                    "place_holder": "IFSC Code",
-                    "disable": "disable",
-
-
-                },
-
-                // {
-                //     "label": "Phone no",
-                //     "for": "phone_give",
-
-                //     "type": "number",
-                //     "id": "phone_give",
-                //     "name": "phone_give",
-                //     "place_holder": "phone_give",
-                //     "disable": "disable",
-
-
-                // },
+                let image = document.createElement("img");
+                image.setAttribute("src", "../assets/img/account.png")
+                image.setAttribute("alt", "hello");
+                bank.append(image);
 
 
 
-                // {
-                //     "label": "Pin code",
-                //     "for": "pincode_give",
-
-                //     "type": "number",
-                //     "id": "pincode_give",
-                //     "name": "pincode_give",
-                //     "place_holder": "Pin code",
-                //     "disable": "disable",
 
 
+                let data = [
 
-                // },
-
-
-
-            ]
-
+                    {
+                        "label": "Account no",
+                        "for": "account_give",
 
 
-            for (let i = 0; i < 2; i++) {
+                        "type": "text",
+                        "id": "account_give",
+                        "class": "account_give form-control input_size",
+                        "name": "account_give",
+                        "place_holder": "Account no",
+                        "disable": "disable",
 
 
-                let contant = document.createElement("div");
-                contant.setAttribute("class", "form-floating mb-3");
-                bank.append(contant);
+                    },
 
-                let input = document.createElement("input");
-                input.setAttribute("type", data[i]["type"]);
-                // input.setAttribute("class", "form-control input_size ")
-                input.setAttribute("id", data[i]["id"]);
-                input.setAttribute("class", data[i]["class"]);
-                input.setAttribute("name", data[i]["name"]);
-                input.setAttribute("placeholder", data[i]["place_holder"]);
-                input.setAttribute("disable", data[i]["disable"]);
-                contant.append(input);
+                    {
+                        "label": "IFSC Code",
+                        "for": "ifsc_give",
 
-
-                let label = document.createElement("label");
-                label.innerText = data[i]["label"];
-                label.setAttribute("for", data[i]["for"]);
-                contant.append(label);
+                        "type": "text",
+                        "id": "ifsc_give",
+                        "class": "ifsc_give form-control input_size",
+                        "name": "ifsc_give",
+                        "place_holder": "IFSC Code",
+                        "disable": "disable",
 
 
-            }
+                    },
 
-            let btn = document.createElement("a");
-            btn.setAttribute("href", "#");
-            btn.setAttribute("id","remove_bk")
-            btn.innerText = "Remove bank account"
-            bank.append(btn);
+                    // {
+                    //     "label": "Phone no",
+                    //     "for": "phone_give",
+
+                    //     "type": "number",
+                    //     "id": "phone_give",
+                    //     "name": "phone_give",
+                    //     "place_holder": "phone_give",
+                    //     "disable": "disable",
+
+
+                    // },
 
 
 
-        }
+                    // {
+                    //     "label": "Pin code",
+                    //     "for": "pincode_give",
+
+                    //     "type": "number",
+                    //     "id": "pincode_give",
+                    //     "name": "pincode_give",
+                    //     "place_holder": "Pin code",
+                    //     "disable": "disable",
 
 
-let btn=document.getElementById("remove_bk")
 
-        function show1() {
-
-            let account_details = JSON.parse(localStorage.getItem("account_details"))
-
-            let email_compare = localStorage.getItem("email");
-
-            let k = 0
-            account_details.forEach(e => {
-
-                if (email_compare == e["email_compare"]) {
-
-                    document.getElementsByClassName("account_give")[k].value = e["account"]
-                    document.getElementsByClassName("ifsc_give")[k].value = e["ifsc"]
+                    // },
 
 
-                    // console.log(k);
 
-                    k++
+                ]
+
+
+
+                for (let i = 0; i < data.length; i++) {
+
+
+                    let contant = document.createElement("div");
+                    contant.setAttribute("class", "form-floating mb-3");
+                    bank.append(contant);
+
+                    let input = document.createElement("input");
+                    input.setAttribute("type", data[i]["type"]);
+                    // input.setAttribute("class", "form-control input_size ")
+                    input.setAttribute("id", data[i]["id"]);
+                    input.setAttribute("class", data[i]["class"]);
+                    input.setAttribute("name", data[i]["name"]);
+                    input.setAttribute("placeholder", data[i]["place_holder"]);
+                    input.setAttribute("disable", data[i]["disable"]);
+                    contant.append(input);
+
+
+                    let label = document.createElement("label");
+                    label.innerText = data[i]["label"];
+                    label.setAttribute("for", data[i]["for"]);
+                    contant.append(label);
+
+
                 }
 
-            })
-        }
+                let btn = document.createElement("a");
+                // btn.setAttribute("href", "#");
+                btn.setAttribute("id", "remove_bk")
+                btn.innerText = "Remove bank account"
+                bank.append(btn);
 
-        show1();
+                document.getElementsByClassName("account_give")[k].value = e["account"]
+                document.getElementsByClassName("ifsc_give")[k].value = e["ifsc"]
 
 
-        btn.addEventListener("click", () => {
+                console.log(k);
 
-            let account_details = JSON.parse(localStorage.getItem("account_details"))
+                k++
 
+                // console.log(list);
 
-            for (let i = 0; i < account_details.length; i++) {
-                if (document.getElementById("account_give").value == account_details[i]["account"] && document.getElementById("ifsc_give").value == account_details[i]["ifsc"]) {
-                    account_details.splice(i, 1)
-                    localStorage.setItem("account_details", JSON.stringify(account_details));
-                    // window.location.href = "../index.html";
-                }
             }
         })
 
 
-        let ifsc_search = document.getElementById("ifsc").value
-       
+        // }
 
+        // console.log("hi")
+        let btn1 = document.getElementById("remove_bk")
+        // console.log(btn1)
+
+        btn1.addEventListener("click", () => {
+            // console.log("hi1")
+
+            let account_details = JSON.parse(localStorage.getItem("account_details"))
+
+            account_details.find(e => {
+
+                if (document.getElementById("account_give").value == e["account"] && document.getElementById("ifsc_give").value == e["ifsc"]) {
+                    account_details.splice(e,1);
+                    localStorage.setItem("account_details", JSON.stringify(account_details));
+                    window.location.href = "#bank_account"
+
+                    // window.location.href = "../index.html";
+                }
+            })
+
+        })
+
+
+        // let ifsc_search = document.getElementById("ifsc").value
+
+
+        // function account_detail() {
+
+        //     let account = document.getElementById("account").value.trim();
+        //     let ifsc = document.getElementById("ifsc").value.trim();
+        //     let phone = document.getElementById("phone").value.trim()
+        //     let pincode = document.getElementById("pincode").value.trim()
+
+        //     let bank_div = document.querySelector("#bank_account");
+
+        //     let bank = document.createElement("div");
+        //     bank.setAttribute("class", "bank");
+        //     bank_div.append(bank);
+
+        //     let image = document.createElement("img");
+        //     image.setAttribute("src", "../assets/img/account.png")
+        //     image.setAttribute("alt", "hello");
+        //     bank.append(image);
+
+
+
+
+
+        //     let data = [
+
+        //         {
+        //             "label": "Account no",
+        //             "for": "account_give",
+
+
+        //             "type": "text",
+        //             "id": "account_give",
+        //             "class": "account_give form-control input_size",
+        //             "name": "account_give",
+        //             "place_holder": "Account no",
+        //             "disable": "disable",
+
+
+        //         },
+
+        //         {
+        //             "label": "IFSC Code",
+        //             "for": "ifsc_give",
+
+        //             "type": "text",
+        //             "id": "ifsc_give",
+        //             "class": "ifsc_give form-control input_size",
+        //             "name": "ifsc_give",
+        //             "place_holder": "IFSC Code",
+        //             "disable": "disable",
+
+
+        //         },
+
+        //         // {
+        //         //     "label": "Phone no",
+        //         //     "for": "phone_give",
+
+        //         //     "type": "number",
+        //         //     "id": "phone_give",
+        //         //     "name": "phone_give",
+        //         //     "place_holder": "phone_give",
+        //         //     "disable": "disable",
+
+
+        //         // },
+
+
+
+        //         // {
+        //         //     "label": "Pin code",
+        //         //     "for": "pincode_give",
+
+        //         //     "type": "number",
+        //         //     "id": "pincode_give",
+        //         //     "name": "pincode_give",
+        //         //     "place_holder": "Pin code",
+        //         //     "disable": "disable",
+
+
+
+        //         // },
+
+
+
+        //     ]
+
+
+
+        //     for (let i = 0; i < 2; i++) {
+
+
+        //         let contant = document.createElement("div");
+        //         contant.setAttribute("class", "form-floating mb-3");
+        //         bank.append(contant);
+
+        //         let input = document.createElement("input");
+        //         input.setAttribute("type", data[i]["type"]);
+        //         // input.setAttribute("class", "form-control input_size ")
+        //         input.setAttribute("id", data[i]["id"]);
+        //         input.setAttribute("class", data[i]["class"]);
+        //         input.setAttribute("name", data[i]["name"]);
+        //         input.setAttribute("placeholder", data[i]["place_holder"]);
+        //         input.setAttribute("disable", data[i]["disable"]);
+        //         contant.append(input);
+
+
+        //         let label = document.createElement("label");
+        //         label.innerText = data[i]["label"];
+        //         label.setAttribute("for", data[i]["for"]);
+        //         contant.append(label);
+
+
+        //     }
+
+        //     let btn = document.createElement("a");
+        //     btn.setAttribute("href", "#");
+        //     btn.setAttribute("id", "remove_bk")
+        //     btn.innerText = "Remove bank account"
+        //     bank.append(btn);
+
+        // }
 
 
     </script>

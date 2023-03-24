@@ -41,7 +41,6 @@
             </div>
         </div>
 
-
     </header>
 
     <main>
@@ -55,20 +54,36 @@
 
 
             <div class="account">
-                <div class="heading">
-                    <span>Main account</span>
-                    <span>Available money</span>
-                </div>
-                <div class="type_account">
-                    <div class="type_value">
-                        <span>NetBliz <input type="text" id="type_account"></span>
-                        <input type="number" id="account_no" name="account_no">
+
+                <div class="balance_data">
+
+                    <div class="number_type">
+
+                        <div class="account_number">
+
+                            <span>Account Number :</span>
+                            <h2 id="customer_ac"></h2>
+                        </div>
+
+                        <div class="account_type">
+
+                            <span>Account Type :</span>
+                            <h2>Savings Account</h2>
+                        </div>
+
                     </div>
 
-                    <label for="balance">$</label>
-                    <input type="number" id="balance" name="balance">
+                    <div class="account_balance">
+
+                        <span>Available money :</span>
+                        <h1 id="balance"></h1>
+                    </div>
+
+
                 </div>
+
                 <div class="back_button">
+
                     <a href="./fund_transfer.html">Transfer money</a>
                     <a href="./account_detail.html">Account Details</a>
                 </div>
@@ -83,11 +98,70 @@
 
 <script>
 
-    let balance = document.getElementById("balance") ;
-    let balance_result = "" ;
+    let email = localStorage.getItem("email");
+    // console.log(email);
 
-    balance.value = balance_result ;
+    let account_check = JSON.parse(localStorage.getItem("bal_enquire"));
+    // console.log(account_check);
 
+    let customer_balance
+    let customer_number
+
+    account_check.forEach(element => {
+
+        if (element["email_compare"] == email) {
+            // console.log("correct");
+
+            customer_balance = element["ac_balance"];
+            customer_number = element["ac_no"];
+            document.getElementById("balance").innerText = customer_balance
+            document.getElementById("customer_ac").innerHTML = customer_number
+
+            localStorage.setItem("ac_balance", customer_balance);
+        }
+    });
+
+
+
+
+//     let fresh_balance = document.getElementById("balance").innerHTML
+//     let fresh_ac_no = document.getElementById("customer_ac").innerHTML
+
+//     let enquire = JSON.parse(localStorage.getItem("balance_enquire")) ?? [];
+
+//     let balance_table = {
+//         "fresh_balance": fresh_balance,
+//         "fresh_ac_no": fresh_ac_no,
+//         "fresh_type": ""
+
+//     }
+
+
+//     let res = 0;
+
+//     for (let i = 0; i < enquire.length; i++) {
+
+//         if (enquire[i]["fresh_ac_no"] === fresh_ac_no) {
+//             res = 1;
+//             break;
+//         }
+//     }
+
+//     if (res == 1) {
+//         alert(" Invalid account number")
+
+//     }
+
+// else{
+
+
+//     enquire.push(balance_table);
+
+//     localStorage.setItem("balance_enquire", JSON.stringify(enquire));
+
+//     alert("successfully signup");
+
+// }
 </script>
 
 </html>

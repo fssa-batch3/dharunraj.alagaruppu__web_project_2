@@ -46,9 +46,9 @@
     </header>
 
     <main>
-        <div class="history">
+        <!-- <div class="history">
 
-            <!-- *************** fund transfer  ************************** -->
+
             <div class="parent">
 
                 <div class="content1">
@@ -75,10 +75,154 @@
 
             </div>
 
-        </div>
+        </div> -->
 
     </main>
 
+    <!-- <footer>
+
+        <div class="back_foot">
+
+            <div class="direct">
+
+                <a href="./pages/signup_page.html">Register</a>
+                <a href="./pages/login_page.html">Login</a>
+            </div>
+
+            <h3>@ 2023 Net Banking</h3>
+
+
+
+            <div class="icon_social">
+
+                <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in">
+                <img src="../assets/img/icons8-facebook-100.png" alt="facebook">
+                <img src="../assets/img/icons8-instagram-100.png" alt="insta">
+                <img src="../assets/img/icons8-twitter-100.png" alt="teitter">
+
+            </div>
+
+
+        </div>
+
+    </footer> -->
+
+    <script>
+
+        // let history = JSON.parse(localStorage.getItem("history_table"));
+        // console.log(history)
+
+
+
+
+
+        //   let type_transfer =  document.querySelector(".increase").innerText;
+        //   console.log(type_transfer);
+        // let reciver_name= document.querySelector(".reciver_name").innerHTML;
+        //   console.log(reciver_name);
+
+        // let date = document.querySelector(".date").innerText;
+        // console.log(date)
+
+
+        let email_compare = localStorage.getItem("email");
+        // console.log(email_compare)
+
+        let history = JSON.parse(localStorage.getItem("history_table"));
+        // console.log(history)
+
+        // let list = 0
+
+        // let k = 0;
+
+        for (let i = 0; i < history.length; i++) {
+
+
+            if (history[i]["email_compare"] == email_compare) {
+
+
+                // list++
+
+                let main_div = document.querySelector("main")
+
+
+                let new_container = document.createElement("div");
+                new_container.setAttribute("class", "history");
+                document.querySelector("main").append(new_container);
+
+
+                let send = document.createElement("div");
+                send.setAttribute("class", "send_data");
+                new_container.append(send);
+
+                let type_fund = document.createElement("div");
+                type_fund.setAttribute("class", "type_fund");
+                send.append(type_fund);
+
+                let image = document.createElement("img");
+                image.setAttribute("id", "bank_icon")
+                image.setAttribute("src", "../assets/img/hdfc_icon.png");
+                image.setAttribute("alt", "bank_icon");
+                type_fund.append(image);
+
+                let transfer_type = document.createElement("div");
+                transfer_type.setAttribute("class", "transfer_type");
+                type_fund.append(transfer_type);
+
+                let increase = document.createElement("h2");
+                increase.setAttribute("class", "increase");
+                increase.setAttribute("id", "increase");
+                increase.innerText = "Fund transfer";
+                transfer_type.append(increase);
+
+                let reciver_name = document.createElement("p");
+                reciver_name.setAttribute("class", "reciver_name");
+                reciver_name.innerText = "sender_ac_number";
+                transfer_type.append(reciver_name);
+
+
+                let amount = document.createElement("div");
+                amount.setAttribute("class", "amount");
+                send.append(amount);
+
+                let minus = document.createElement("h4");
+                minus.setAttribute("class", "minus");
+                minus.setAttribute("id", "minus");
+                minus.innerText = history[i].send_amount;
+                amount.append(minus);
+
+                let type_model = document.createElement("img");
+                type_model.setAttribute("src", "../assets/img/minus_icon.png");
+                type_model.setAttribute("alt", "bank_icon");
+                amount.append(type_model);
+
+
+
+                let balance_data = document.createElement("div");
+                balance_data.setAttribute("class", "balance_data");
+                new_container.append(balance_data)
+
+                let date = document.createElement("h4");
+                date.setAttribute("class", "date");
+                date.innerText = "09/08/2022";
+                balance_data.append(date);
+
+                let balance_span = document.createElement("span");
+                balance_span.setAttribute("class", "balance_span");
+                balance_span.innerText = "Balance : ";
+                balance_data.append(balance_span);
+
+                let balance = document.createElement("h3");
+                balance.setAttribute("class", "balance_span");
+                balance.innerText = "";
+                balance_span.append(balance);
+
+            }
+
+        }
+
+
+    </script>
 </body>
 
 </html>

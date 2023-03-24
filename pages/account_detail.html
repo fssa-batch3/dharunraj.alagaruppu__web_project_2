@@ -120,24 +120,24 @@
 
         },
 
-        {
-            "label": "Aadhaar.no",
-            "id": "aadhar",
-            "for": "aadhar",
-            "place_holder": "Aadhaar.no"
+        // {
+        //     "label": "Aadhaar.no",
+        //     "id": "aadhar",
+        //     "for": "aadhar",
+        //     "place_holder": "Aadhaar.no"
 
 
-        },
+        // },
 
-        {
-            "label": "PAN.no",
-            "id": "pan",
-            "for": "pan",
-            "place_holder": "PAN.no"
+        // {
+        //     "label": "PAN.no",
+        //     "id": "pan",
+        //     "for": "pan",
+        //     "place_holder": "PAN.no"
 
 
 
-        },
+        // },
 
 
         {
@@ -167,14 +167,14 @@
 
         },
 
-        {
-            "label": "Pin code",
-            "id": "pincode",
-            "for": "pincode",
-            "place_holder": "Pin code"
+        // {
+        //     "label": "Pin code",
+        //     "id": "pincode",
+        //     "for": "pincode",
+        //     "place_holder": "Pin code"
 
 
-        },
+        // },
 
         {
             "label": "State",
@@ -257,20 +257,16 @@
     )
     document.querySelectorAll("#fi_name")[0].innerText = current_user["fname"] //[0]
 
-
+    
     document.getElementById("fname").value = current_user["fname"] //show[0]["fname"] //dharun
     document.getElementById("phone").value = current_user["phone"]
     document.getElementById("email").value = current_user["email"]
-    document.getElementById("pan").value = current_user["pan"]
-    document.getElementById("aadhar").value = current_user["aadhar"]
+    // document.getElementById("pan").value = current_user["pan"]
+    // document.getElementById("aadhar").value = current_user["aadhar"]
     document.getElementById("dob").value = current_user["dob"]
     document.getElementById("district").value = current_user["district"]
-    document.getElementById("pincode").value = current_user["pincode"]
+    // document.getElementById("pincode").value = current_user["pincode"]
     document.getElementById("state").value = current_user["state"]
-
-
-
-
 
     console.log(current_user)
 
@@ -285,11 +281,11 @@
 
                 console.log(show[i]);
 
-                show[i].pan = document.getElementById("pan").value;
-                show[i].aadhar = document.getElementById("aadhar").value;
+                // show[i].pan = document.getElementById("pan").value;
+                // show[i].aadhar = document.getElementById("aadhar").value;
+                // show[i].pincode = document.getElementById("pincode").value;
                 show[i].dob = document.getElementById("dob").value;
                 show[i].district = document.getElementById("district").value;
-                show[i].pincode = document.getElementById("pincode").value;
                 show[i].state = document.getElementById("state").value;
                 // show[i].image=document.getElementById("simple_image").getAttribute("src")
                 // show[i].image=document.querySelector("")
@@ -298,7 +294,7 @@
             }
         }
 
-        if (document.getElementById("pan").value != "" && document.getElementById("aadhar").value != "" && document.getElementById("fname").value != "") {
+        if (document.getElementById("fname").value != "" && document.getElementById("email").value != "") {
             localStorage.setItem('array', JSON.stringify(show))
             alert("Successfully your profile updated")
         }
@@ -342,11 +338,8 @@
                 let us1 = JSON.parse(localStorage.getItem("array"))
 
                 us1.forEach(element => {
-                    
-                    
+                         
                 });
-
-
 
                 us1[0]["image"] = image.getAttribute("src")
                 localStorage.setItem("array", JSON.stringify(us1))

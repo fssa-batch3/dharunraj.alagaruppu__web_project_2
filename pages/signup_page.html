@@ -156,35 +156,35 @@
             },
 
 
-            {
+            // {
 
-                "for": "aadhar",
-                "text": "",
+            //     "for": "aadhar",
+            //     "text": "",
 
-                "type": "number",
-                "name": "aadhar",
-                "id": "aadhar",
-                "placeholder": "Aadhar Number *",
+            //     "type": "number",
+            //     "name": "aadhar",
+            //     "id": "aadhar",
+            //     "placeholder": "Aadhar Number *",
 
-                "pattern": "[0-9]{12,12}",
-                "tittle": "Your pattern un accectable",
+            //     "pattern": "[0-9]{12,12}",
+            //     "tittle": "Your pattern un accectable",
 
-            },
+            // },
 
-            {
+            // {
 
-                "for": "pan",
-                "text": "",
+            //     "for": "pan",
+            //     "text": "",
 
-                "type": "text",
-                "name": "pan",
-                "id": "pan",
-                "placeholder": "PAN Number *",
+            //     "type": "text",
+            //     "name": "pan",
+            //     "id": "pan",
+            //     "placeholder": "PAN Number *",
 
-                "pattern": "[0-9a-zA-Z]{8,11}",
-                "tittle": "Your pattern un accectable",
+            //     "pattern": "[0-9a-zA-Z]{8,11}",
+            //     "tittle": "Your pattern un accectable",
 
-            },
+            // },
 
             {
 
@@ -221,10 +221,20 @@
 
         // Form is started this point
 
+        let page_name = document.createElement("h1");
+        page_name.innerText=("Regsister here !!");
+        content_of_singnup.append(page_name);
+
+        // let quote = document.createElement("h3");
+        // quote.innerText=("Banking in your pocket");
+        // content_of_singnup.append(quote);
+
+
+
         let form = document.createElement("form");
         content_of_singnup.append(form);
 
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < obj.length; i++) {
 
             let label_text = document.createElement("label");
             label_text.setAttribute("for", obj[i]["for"]);
@@ -271,6 +281,7 @@
 
 
         let form_check = document.querySelector("form");
+
         form_check.addEventListener("submit", e => {
             e.preventDefault()
             signup()
@@ -283,8 +294,8 @@
             let last_name = document.getElementById("lname").value.trim()
             let email = document.getElementById("email").value.trim()
             let phone = document.getElementById("phone").value.trim()
-            let aadhar = document.getElementById("aadhar").value.trim()
-            let pan = document.getElementById("pan").value.trim()
+            // let aadhar = document.getElementById("aadhar").value.trim()
+            // let pan = document.getElementById("pan").value.trim()
             let new_pass = document.getElementById("new_pass").value.trim()
             let confirm = document.getElementById("confirm").value.trim()
 
@@ -297,7 +308,7 @@
                 }
 
                 else {
-                   
+
 
                     let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
 
@@ -322,8 +333,8 @@
                         obj["lname"] = last_name
                         obj["email"] = email
                         obj["phone"] = phone
-                        obj["aadhar"] = aadhar
-                        obj["pan"] = pan
+                        // obj["aadhar"] = aadhar
+                        // obj["pan"] = pan
                         obj["new_pass"] = new_pass
                         obj["confirm"] = confirm
                         obj["dob"] = ""
@@ -331,7 +342,7 @@
                         obj["district"] = ""
                         obj["pincode"] = ""
                         obj["image"] = ""
-                        
+
 
                         store.push(obj);//[{name, email, pass}]
 

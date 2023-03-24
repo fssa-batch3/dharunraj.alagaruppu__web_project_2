@@ -68,11 +68,13 @@ a{
     border-top-left-radius: 250px;
     /* border-top-right-radius: 250px;
     border-bottom-right-radius: 250px; */
-
-
     padding: .001%;
 }
 
+.sing_up h1{
+    color: rgb(44, 44, 149);
+    /* margin-top: 5%; */
+}
 
 /* .for_button {
 
@@ -121,7 +123,7 @@ form {
     align-items: center;
     justify-content: center;
     width: 97%;
-    margin: 5% 0%;
+    margin:1% 0% 2% 0%;
     /* color: #ebedee; */
 }
 

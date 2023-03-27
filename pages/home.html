@@ -335,13 +335,13 @@
 
         // function link_account() {
 
-        let account_detail = JSON.parse(localStorage.getItem("account_details"))
+        let account_detail = JSON.parse(localStorage.getItem("account_details")) ?? []
         // console.log(account_detail)
         // let list = 0
         // console.log(list)
 
         let k = 0
-
+        // if (let j=0;j<account_detail.length;) { }
         account_detail.forEach(e => {
 
             if (e["email_compare"] == email_compare) {
@@ -472,9 +472,30 @@
                 document.getElementsByClassName("ifsc_give")[k].value = e["ifsc"]
 
 
-                console.log(k);
+                // console.log(k);
 
                 k++
+
+                let btn1 = document.getElementById("remove_bk")
+        // console.log(btn1)
+
+        btn1.addEventListener("click", () => {
+            // console.log("hi1")
+
+            let account_details = JSON.parse(localStorage.getItem("account_details"))
+
+            account_details.forEach(e => {
+
+                if (document.getElementById("account_give").value == e["account"] ) {
+                    account_details.splice(e, 1);
+                    localStorage.setItem("account_details", JSON.stringify(account_details));
+                    // window.location.href = "#bank_account"
+
+                    // window.location.href = "../index.html";
+                }
+            })
+
+        })
 
                 // console.log(list);
 
@@ -485,27 +506,7 @@
         // }
 
         // console.log("hi")
-        let btn1 = document.getElementById("remove_bk")
-        // console.log(btn1)
-
-        btn1.addEventListener("click", () => {
-            // console.log("hi1")
-
-            let account_details = JSON.parse(localStorage.getItem("account_details"))
-
-            account_details.find(e => {
-
-                if (document.getElementById("account_give").value == e["account"] && document.getElementById("ifsc_give").value == e["ifsc"]) {
-                    account_details.splice(e,1);
-                    localStorage.setItem("account_details", JSON.stringify(account_details));
-                    window.location.href = "#bank_account"
-
-                    // window.location.href = "../index.html";
-                }
-            })
-
-        })
-
+        
 
         // let ifsc_search = document.getElementById("ifsc").value
 

@@ -37,18 +37,18 @@ img {
 }
 
 /* minus font color */
-.amount {
-    color: rgb(203, 20, 20);
+.amount h4 {
+    color: rgb(250, 99, 99);
 }
 
 /* plus amount color */
-.amount1 {
+/* .amount1 {
     color: rgb(8, 54, 8);
-}
+} */
 
 
-#minus,
-#plus {
+#minus
+{
     font-size: 20px;
 }
 
@@ -64,8 +64,13 @@ main{
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
+    font-family: 'Libre Baskerville', sans-serif;
+    font-weight: 400;
 }
 
+/* .balance_span{
+    width: 50%;
+} */
 /* 123456789876543234567890987654345678 */
 
 /* .content1 img {

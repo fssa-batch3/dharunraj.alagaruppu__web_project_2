@@ -294,14 +294,11 @@
             let last_name = document.getElementById("lname").value.trim()
             let email = document.getElementById("email").value.trim()
             let phone = document.getElementById("phone").value.trim()
-            // let aadhar = document.getElementById("aadhar").value.trim()
-            // let pan = document.getElementById("pan").value.trim()
             let new_pass = document.getElementById("new_pass").value.trim()
             let confirm = document.getElementById("confirm").value.trim()
 
 
             if (first_name != "" && last_name != "" && email !== "" && new_pass != "" && confirm != "" && phone != "") {
-
 
                 if (new_pass != confirm) {
                     alert("Oops !! password and confirm password doesn't match.")
@@ -309,10 +306,10 @@
 
                 else {
 
-
                     let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
 
                     let res;
+                    
                     for (let i = 0; i < store.length; i++) {
 
                         if (store[i]["email"] === email) {
@@ -333,8 +330,6 @@
                         obj["lname"] = last_name
                         obj["email"] = email
                         obj["phone"] = phone
-                        // obj["aadhar"] = aadhar
-                        // obj["pan"] = pan
                         obj["new_pass"] = new_pass
                         obj["confirm"] = confirm
                         obj["dob"] = ""

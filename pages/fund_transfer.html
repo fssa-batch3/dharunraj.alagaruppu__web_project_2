@@ -67,7 +67,7 @@
                 <label for="amount"> Transfer Amount </label>
                 <input class="form-control" type="number" id="amount" name="amount" required min="1"> <br>
 
-                <button type="button" class="btn btn-primary" id="send">Send</button>
+                <button class="btn btn-primary" id="send">Send</button>
 
             </form>
 
@@ -88,13 +88,10 @@
                 <label for="to_num"> Benificiary Ph.No </label>
                 <input class="form-control" type="number" id="to_num" name="to_num" required>
 
-                <label for="to_email"> Benificiary Email id</label>
-                <input class="form-control" type="email" id="to_email" name="to_email" required>
-
                 <label for="to_amount"> Transfer Amount </label>
                 <input class="form-control" type="number" id="to_amount" name="to_amount" required min="1"> <br>
 
-                <button type="button" class="btn btn-primary">Send</button>
+                <button class="btn btn-primary">Send</button>
 
             </form>
 
@@ -135,13 +132,16 @@
     <script>
 
         let email = localStorage.getItem("email");
-        // console.log(email);
 
         let account_check = JSON.parse(localStorage.getItem("account_details"));
-        // console.log(account_check);
+
+        let balance_page = JSON.parse(localStorage.getItem("bal_enquire"));
+
         let account_number;
         let phone_number;
         let balance;
+
+
 
 
         account_check.forEach(element => {
@@ -149,15 +149,71 @@
             if (element["email_compare"] == email) {
 
                 account_number = element["account"]
-                // phone_number = element["phone"]
-                // balance = element["balance"]
-
                 document.getElementById("from").value = account_number
-                // document.getElementById("phone").value = phone_number
-                // document.getElementById("to").value = balance
             }
         });
 
+
+        let send_button = document.getElementsByTagName("form");
+
+        send_button[0].addEventListener("submit", (e) => {
+            account_to_account();
+        });
+
+        function balance_change() {
+
+            let current_send_money = document.getElementById("amount").value;
+
+            let history = JSON.parse(localStorage.getItem("history_table"));
+
+            balance_page.forEach(element => {
+
+
+                if (element["email_compare"] == email) {
+
+                    let old_balance = element["ac_balance"]
+
+                    old_balance = Number(old_balance) - Number(current_send_money);
+
+                    element["ac_balance"] = old_balance;
+
+                    localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
+
+                }
+
+            })
+
+        }
+
+        function reciver() {
+
+            let accounter = document.getElementById("to").value;
+
+            let current_recive_money = document.getElementById("amount").value;
+
+            balance_page.forEach(element => {
+
+                if (element["ac_no"] == accounter) {
+
+                    let old_balances = element["ac_balance"];
+
+                    let reciver = element["email_compare"]
+
+
+                    console.log(reciver);
+
+                    let recived_money = Number(old_balances) + Number(current_recive_money);
+
+                    element["ac_balance"] = recived_money;
+
+                    localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
+
+                    // let history_table = JSON.parse(localStorage.getItem("history_table"));
+
+                }
+            })
+
+        }
 
 
         function account_to_account() {
@@ -167,218 +223,81 @@
             let to_ifsc = document.getElementById("ifsc").value.trim();
             let send_amount = document.getElementById("amount").value.trim();
             let email_compare = localStorage.getItem("email");
+            let current_money = localStorage.getItem("ac_balance");
+
 
             if (from_account != "" && to_account != "" && to_ifsc != "" && send_amount != "") {
-
-                let account_account = {
-                    "from_account": from_account,
-                    "to_account": to_account,
-                    "to_ifsc": to_ifsc,
-                    "send_amount": send_amount,
-                    "email_compare": email_compare,
-
-                }
-
-                let history ={
-                    "send_amount":send_amount,
-                    "date":"",
-                    "type":"",
-                    "email_compare": email_compare,
-                    "to_account": to_account,
-
-
-                }
 
                 let send_account = JSON.parse(localStorage.getItem("send_account")) ?? [];
 
                 let history_table = JSON.parse(localStorage.getItem("history_table")) ?? [];
 
-                send_account.push(account_account);
-
-                history_table.push(history);
-
-                localStorage.setItem("send_account", JSON.stringify(send_account)); 
-
-                localStorage.setItem("history_table", JSON.stringify(history_table)); 
-
-                alert("Thanks for send money");
-
-            }
-            else {
-                alert("Sorry can't get a value")
-            }
-        }
-
-        let send_button = document.getElementById("send");
-
-        let transfer;
-        let amount;
+                let result = 0;
 
 
-        // //  transfer = document.getElementById("to_amount").value
-        // // console.log(transfer)
-        // // amount = document.getElementById("to").value
-        // // console.log(amount)
+                balance_page.find(e => {
 
-        // let accounter_balance;
+                    if (e["ac_no"] == to_account && e["ac_no"] != from_account) {
+                        result = 1;
+                    }
 
-
-        send_button.addEventListener("click", () => {
-
-            account_to_account();
+                })
 
 
-            let current_send_money = document.getElementById("amount").value;
-            // console.log(current_send_money)
+                if (result == 1) {
 
-            let balance_page = JSON.parse(localStorage.getItem("bal_enquire"));
-            // console.log(balance_page)
+                    let account_account = {
+                        "from_account": from_account,
+                        "to_account": to_account,
+                        "to_ifsc": to_ifsc,
+                        "send_amount": send_amount,
+                        "email_compare": email_compare,
+                    }
 
-            balance_page.forEach(element => {
-
-                if (element["email_compare"] == email) {
-
-                    let old_balance = element["ac_balance"]
-                    // console.log(old_balance);
-
-                    old_balance = old_balance - current_send_money;
-                    // console.log(old_balance);
-
-                    // old_balance = element["ac_balance"];
-                    // console.log(old_balance);
-
-                    element["ac_balance"] = old_balance;
-                    // console.log(element["ac_balance"]);
-
-                    localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
-
-                    // localStorage.setItem("send_account"), JSON.stringify(account_account);
+                    let history = {
+                        "send_amount": send_amount,
+                        "date": "",
+                        "type": "",
+                        "current_money": current_money,
+                        "email_compare": email_compare,
+                        "to_account": to_account,
+                        "reciver_id":""
+                    }
 
 
+                    send_account.push(account_account);
+
+                    history_table.push(history);
+
+                    localStorage.setItem("send_account", JSON.stringify(send_account));
+
+                    localStorage.setItem("history_table", JSON.stringify(history_table));
+
+                    balance_change();
+
+                    reciver()
+
+                    alert("Thanks for send money");
 
                 }
-            })
+
+                if (result != 1) {
+                    alert("Sorry!! Reciver is not there")
+                }
+
+            }
+
+            else {
+
+                alert("Sorry can't get a value")
+            }
+
+        }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-            // let balance_page = JSON.parse(localStorage.getItem("bal_enquire"));
-            // // console.log(balance_page)
-
-            // let account_account = JSON.parse(localStorage.getItem("send_account"));
-
-            // let current_send_money
-            // // console.log(account_account)
-
-            // // let normal_balace = localStorage.getItem("ac_balance");
-            // // console.log(normal_balace);
-
-
-
-            // account_account.forEach(element => {
-
-            //     if (element["email_compare"] == email) {
-
-            //         let send_money = element["send_amount"]
-            //         // console.log(send_money)
-
-            //         balance_page.forEach(element => {
-
-            //             if (element["email_compare"] == email) {
-
-            //                 let old_balance = element["ac_balance"]
-            //                 // console.log(old_balance);
-
-            //                 old_balance = old_balance - send_money;
-            //                 // console.log(old_balance);
-
-            //                 // old_balance = element["ac_balance"];
-            //                 // console.log(old_balance);
-
-            //                 element["ac_balance"] = old_balance;
-            //                 // console.log(element["ac_balance"]);
-
-            //                 localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
-
-            //         localStorage.setItem("send_account"), JSON.stringify(account_account);
-
-
-
-            //             }
-            //         })
-
-            //     }
-            // })
-
-
-
-
-
-
-
-
-
-
-
-            // let money_transfer = JSON.parse(localStorage.getItem("bal_enquire"))
-            // console.log(money_transfer);
-
-            //     money_transfer.forEach(element => {
-
-            //         if (element["email_compare"] == email) {
-            //             let accounter_balance;
-            //             let sended_money;
-            //             accounter_balance = element["ac_balance"];
-            //             sended_money =element["send_amount"];
-
-            //             accounter_balance= accounter_balance - sended_money;
-
-            //             console.log(accounter_balance);
-
-            //             // let after_math = document.getElementById("to").value
-            //             // console.log(after_math);
-
-            //            let account_details = JSON.parse(localStorage.getItem("account_details"));
-            //            console.log(account_details);
-
-            //            account_details.forEach(e => {
-
-            //             if(e["email_compare"]== email){
-            //                 // let balance;
-            //                 // balance=e["balance"];
-            //                 // console.log(balance);
-
-            //                e["balance"]=accounter_balance;
-            //                 console.log(balance);
-
-            //             localStorage.setItem("account_details", JSON.stringify(account_details));
-
-            //             alert("thankyou");
-            //             }
-
-            //             else{
-            //                 alert("something wroung");
-            //             }
-            //            })
-
-            //         }
-            //     });
-
-
-            //     // console.log(hi)
-        });
 
     </script>
 </body>

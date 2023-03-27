@@ -104,8 +104,8 @@
     let account_check = JSON.parse(localStorage.getItem("bal_enquire"));
     // console.log(account_check);
 
-    let customer_balance
-    let customer_number
+    let customer_balance;
+    let customer_number;
 
     account_check.forEach(element => {
 
@@ -113,11 +113,15 @@
             // console.log("correct");
 
             customer_balance = element["ac_balance"];
+
             customer_number = element["ac_no"];
+
             document.getElementById("balance").innerText = customer_balance
             document.getElementById("customer_ac").innerHTML = customer_number
 
             localStorage.setItem("ac_balance", customer_balance);
+
+            localStorage.setItem("bal_enquire", JSON.stringify(account_check));
         }
     });
 

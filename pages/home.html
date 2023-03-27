@@ -95,18 +95,16 @@
 
                 <form>
                     <label for="account"> Account number </label>
-                    <input class="form-control" type="text" id="account" name="account" required>
+                    <input class="form-control" type="text" id="account" name="account" required pattern="[0-9]{16,17}">
 
                     <label for="ifsc"> IFSC code </label>
-                    <input class="form-control" type="text" id="ifsc" name="ifsc" required>
+                    <input class="form-control" type="text" id="ifsc" name="ifsc" required pattern="[0-9A-Za-z]{12,16}">
 
                     <label for="phone">Phone number</label>
-                    <input class="form-control" type="number" id="phone" name="phone" required>
+                    <input class="form-control" type="number" id="phone" name="phone" required pattern="[0-9]{10,11}">
 
                     <label for="pincode"> Pin code</label>
-                    <input class="form-control" type="text" id="pincode" name="pincode" required>
-
-
+                    <input class="form-control" type="text" id="pincode" name="pincode" required pattern="[0-9]{6,7}">
 
                     <h5>Account name</h5>
 
@@ -162,8 +160,8 @@
 
             <div class="direct">
 
-                <a href="./pages/signup_page.html">Register</a>
-                <a href="./pages/login_page.html">Login</a>
+                <a href="./signup_page.html">Register</a>
+                <a href="./login_page.html">Login</a>
             </div>
 
             <h3>@ 2023 Net Banking</h3>
@@ -172,10 +170,10 @@
 
             <div class="icon_social">
 
-                <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in">
-                <img src="../assets/img/icons8-facebook-100.png" alt="facebook">
-                <img src="../assets/img/icons8-instagram-100.png" alt="insta">
-                <img src="../assets/img/icons8-twitter-100.png" alt="teitter">
+               <a href="https://www.linkedin.com/"> <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in"></a>
+                <a href="https://www.facebook.com/"><img src="../assets/img/icons8-facebook-100.png" alt="facebook"></a>
+                <a href="https://www.instagram.com/"><img src="../assets/img/icons8-instagram-100.png" alt="insta"></a>
+               <a href="https://twitter.com/"> <img src="../assets/img/icons8-twitter-100.png" alt="teitter"></a>
 
             </div>
 
@@ -489,15 +487,13 @@
                 if (document.getElementById("account_give").value == e["account"] ) {
                     account_details.splice(e, 1);
                     localStorage.setItem("account_details", JSON.stringify(account_details));
-                    // window.location.href = "#bank_account"
-
-                    // window.location.href = "../index.html";
+                    location.reload();
+                    
                 }
             })
 
         })
 
-                // console.log(list);
 
             }
         })

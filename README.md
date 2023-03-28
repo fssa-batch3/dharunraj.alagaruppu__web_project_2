@@ -82,7 +82,7 @@
  - Expected Result: 
  - If you sent money add in the transation page.add in the histroy page.
 
-### History (completed)
+### History (Yet to start)
 -Scenario 2: Yet to start
 - steps :
  - Expected Result:

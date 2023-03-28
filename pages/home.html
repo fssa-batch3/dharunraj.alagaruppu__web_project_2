@@ -216,11 +216,14 @@
 
             let account = document.getElementById("account").value.trim();
             let ifsc = document.getElementById("ifsc").value.trim();
-            let phone = document.getElementById("phone").value.trim()
-            let pincode = document.getElementById("pincode").value.trim()
+            let phone = document.getElementById("phone").value.trim();
+            let pincode = document.getElementById("pincode").value.trim();
             let email_compare = localStorage.getItem("email");
-            let balance = Math.floor(Math.random() * 10000);;
-
+            let balance = Math.floor(Math.random() * 10000);
+            let personal= document.getElementById("personal").checked;
+            console.log(personal)
+          let business= document.getElementById("business").checked;
+          console.log(business)
             if (account != "" && ifsc != "" && phone != "" && pincode != "") {
 
                 let account_store = {
@@ -239,6 +242,18 @@
                     "ac_balance": balance,
                     "email_compare": email_compare,
                 }
+
+                
+            // if(personal.checked){
+            //  account_store["ac_type"] = personal;
+            //  console.log(account_store["ac_type"])
+            //  table_obj["ac_type"] = personal;
+            // }
+
+            // else if(business.checked){
+            //     account_store["ac_type"]
+            //     table_obj["ac_type"]
+            // }
 
                 let add_account = JSON.parse(localStorage.getItem("account_details")) ?? []; //account = []
 
@@ -407,19 +422,19 @@
         })
 
 
-        // function checked(){
+        function checked(){
 
-        //   let personal= document.getElementById("personal").value;
-        //   let business= document.getElementById("business").value
+          let personal= document.getElementById("personal").value;
+          let business= document.getElementById("business").value
 
-        //     if(personal.checked){
+            if(personal.checked){
+             account_store["ac_type"]
+            }
 
-        //         let add_account = JSON.parse(localStorage.getItem("account_details"));
-
-
-
-        //     }
-        // }
+            else if(business.checked){
+                account_store["ac_type"]
+            }
+        }
 
 
         // }

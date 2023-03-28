@@ -150,10 +150,12 @@
                 balance_data.setAttribute("class", "balance_data");
                 new_container.append(balance_data)
 
-                let date = document.createElement("h4");
+                let date = document.createElement("h3");
                 date.setAttribute("class", "date");
-                date.innerText = "09/08/2022";
                 balance_data.append(date);
+
+                let current_date = new Date().toJSON().slice(0, 10)
+                document.querySelector(".date").innerHTML = `<h3> ${current_date}</h3>`;
 
                 let balance_span = document.createElement("span");
                 balance_span.setAttribute("class", "balance_span");

@@ -1,5 +1,5 @@
-# APRIL NET BLIZ
- APRIL NET BLIZ
+#  NET BLIZ
+ Banking in your pocket
 
 ### Landing page  (Completed)
 - Scenario 1: Successfully read the content

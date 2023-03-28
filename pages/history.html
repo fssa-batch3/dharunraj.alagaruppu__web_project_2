@@ -46,36 +46,8 @@
     </header>
 
     <main>
-        <!-- <div class="history">
 
 
-            <div class="parent">
-
-                <div class="content1">
-
-                    <img src="../assets/img/hdfc_icon.png" alt="hdfc icon">
-
-                    <div class="fund">
-                        <h2>Fund Transfer</h2>
-                        <p>UPI</p>
-                    </div>
-                </div>
-
-                <div class="amount">
-                    <p id="minus"> ₹ 80,000 </p>
-                    <img id="math" src="../assets/img/minus_icon.png" alt="minus icon">
-                </div>
-
-            </div>
-
-            <div class="parent2">
-
-                <h2>09/12/2022</h2>
-                <h3> Balance: ₹ 12345</h3>
-
-            </div>
-
-        </div> -->
 
     </main>
 
@@ -95,10 +67,11 @@
 
             <div class="icon_social">
 
-               <a href="https://www.linkedin.com/"> <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in"></a>
+                <a href="https://www.linkedin.com/"> <img src="../assets/img/icons8-linkedin-100 (1).png"
+                        alt="linked in"></a>
                 <a href="https://www.facebook.com/"><img src="../assets/img/icons8-facebook-100.png" alt="facebook"></a>
                 <a href="https://www.instagram.com/"><img src="../assets/img/icons8-instagram-100.png" alt="insta"></a>
-               <a href="https://twitter.com/"> <img src="../assets/img/icons8-twitter-100.png" alt="teitter"></a>
+                <a href="https://twitter.com/"> <img src="../assets/img/icons8-twitter-100.png" alt="teitter"></a>
 
             </div>
 
@@ -106,71 +79,18 @@
         </div>
 
     </footer>
-
-
-    <!-- <footer>
-
-        <div class="back_foot">
-
-            <div class="direct">
-
-                <a href="./pages/signup_page.html">Register</a>
-                <a href="./pages/login_page.html">Login</a>
-            </div>
-
-            <h3>@ 2023 Net Banking</h3>
-
-
-
-            <div class="icon_social">
-
-                <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in">
-                <img src="../assets/img/icons8-facebook-100.png" alt="facebook">
-                <img src="../assets/img/icons8-instagram-100.png" alt="insta">
-                <img src="../assets/img/icons8-twitter-100.png" alt="teitter">
-
-            </div>
-
-
-        </div>
-
-    </footer> -->
-
     <script>
-
-        // let history = JSON.parse(localStorage.getItem("history_table"));
-        // console.log(history)
-
-
-
-
-
-        //   let type_transfer =  document.querySelector(".increase").innerText;
-        //   console.log(type_transfer);
-        // let reciver_name= document.querySelector(".reciver_name").innerHTML;
-        //   console.log(reciver_name);
-
-        // let date = document.querySelector(".date").innerText;
-        // console.log(date)
-
 
         let email_compare = localStorage.getItem("email");
         // console.log(email_compare)
 
         let history = JSON.parse(localStorage.getItem("history_table")) ?? [];
-        // console.log(history)
-
-        // let list = 0
-
-        // let k = 0;
 
         for (let i = 0; i < history.length; i++) {
 
 
             if (history[i]["email_compare"] == email_compare) {
 
-
-                // list++
 
                 let main_div = document.querySelector("main")
 
@@ -226,7 +146,6 @@
                 amount.append(type_model);
 
 
-
                 let balance_data = document.createElement("div");
                 balance_data.setAttribute("class", "balance_data");
                 new_container.append(balance_data)
@@ -250,8 +169,88 @@
 
         }
 
-
     </script>
 </body>
+
+<!-- <div class="history">
+
+
+            <div class="parent">
+
+                <div class="content1">
+
+                    <img src="../assets/img/hdfc_icon.png" alt="hdfc icon">
+
+                    <div class="fund">
+                        <h2>Fund Transfer</h2>
+                        <p>UPI</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <p id="minus"> ₹ 80,000 </p>
+                    <img id="math" src="../assets/img/minus_icon.png" alt="minus icon">
+                </div>
+
+            </div>
+
+            <div class="parent2">
+
+                <h2>09/12/2022</h2>
+                <h3> Balance: ₹ 12345</h3>
+
+            </div>
+
+        </div> -->
+
+<!-- 
+        // let history = JSON.parse(localStorage.getItem("history_table"));
+        // console.log(history)
+
+
+
+
+
+        //   let type_transfer =  document.querySelector(".increase").innerText;
+        //   console.log(type_transfer);
+        // let reciver_name= document.querySelector(".reciver_name").innerHTML;
+        //   console.log(reciver_name);
+
+        // let date = document.querySelector(".date").innerText;
+        // console.log(date) -->
+
+<!-- <footer>
+
+        <div class="back_foot">
+
+            <div class="direct">
+
+                <a href="./pages/signup_page.html">Register</a>
+                <a href="./pages/login_page.html">Login</a>
+            </div>
+
+            <h3>@ 2023 Net Banking</h3>
+
+
+
+            <div class="icon_social">
+
+                <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in">
+                <img src="../assets/img/icons8-facebook-100.png" alt="facebook">
+                <img src="../assets/img/icons8-instagram-100.png" alt="insta">
+                <img src="../assets/img/icons8-twitter-100.png" alt="teitter">
+
+            </div>
+
+
+        </div>
+
+    </footer> -->
+
+<!-- // console.log(history)
+
+        // let list = 0
+
+        // let k = 0; -->
 
 </html>

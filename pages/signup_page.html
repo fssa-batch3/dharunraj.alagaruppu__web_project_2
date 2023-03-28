@@ -103,8 +103,8 @@
                 "placeholder": "First Name *",
                 "required": "required",
 
-                "pattern": "[A-Za-z]{2,10}",
-                "tittle": "Your pattern un acceptable",
+                "pattern": "[A-Za-z]{2,29}",
+                "tittle": "Your pattern minium length of 2 characters",
                 "aria": "First name"
 
             },
@@ -119,8 +119,8 @@
                 "id": "lname",
                 "placeholder": "Last Name *",
 
-                "pattern": "[a-zA-Z]{1,15}",
-                "tittle": "Your pattern un accectable",
+                "pattern": "[a-zA-Z]{1,29}",
+                "tittle": "Your pattern is minium 1 to 20 character",
                 "aria": "Last Name"
 
             },
@@ -151,41 +151,10 @@
                 "id": "phone",
                 "placeholder": "Phone No *",
 
-                "pattern": "[0-9]{10,10}",
-                "tittle": "Your pattern un accectable",
+                "pattern": "[0-9]{10,12}",
+                "tittle": "Your number should be 10 numbers",
                 "aria": "Phone No"
             },
-
-
-            // {
-
-            //     "for": "aadhar",
-            //     "text": "",
-
-            //     "type": "number",
-            //     "name": "aadhar",
-            //     "id": "aadhar",
-            //     "placeholder": "Aadhar Number *",
-
-            //     "pattern": "[0-9]{12,12}",
-            //     "tittle": "Your pattern un accectable",
-
-            // },
-
-            // {
-
-            //     "for": "pan",
-            //     "text": "",
-
-            //     "type": "text",
-            //     "name": "pan",
-            //     "id": "pan",
-            //     "placeholder": "PAN Number *",
-
-            //     "pattern": "[0-9a-zA-Z]{8,11}",
-            //     "tittle": "Your pattern un accectable",
-
-            // },
 
             {
 
@@ -198,7 +167,7 @@
                 "placeholder": "Create password *",
 
                 "pattern": "[0-9a-zA-Z]{8,20}",
-                "tittle": "Your pattern un accectable",
+                "tittle": " 8 letter or 8 number is required",
                 "aria": "Create password "
             },
 
@@ -213,7 +182,7 @@
                 "placeholder": "Confirm password *",
 
                 "pattern": "[0-9A-Za-z]{8,20}",
-                "tittle": "Your pattern un accectable",
+                "tittle": " 8 letter or 8 number is required",
                 "aria": "Confirm password"
             }
 
@@ -223,7 +192,7 @@
         // Form is started this point
 
         let page_name = document.createElement("h1");
-        page_name.innerText=("Regsister here !!");
+        page_name.innerText = ("Regsister here !!");
         content_of_singnup.append(page_name);
 
         // let quote = document.createElement("h3");
@@ -255,7 +224,7 @@
                 input_box.setAttribute("pattern", obj[i]["pattern"]);
             }
             else if (i == 2) {
-                console.log("none");
+                // console.log("none");
             }
             else {
                 input_box.setAttribute("pattern", obj[i]["pattern"]);
@@ -276,7 +245,6 @@
         let next = document.createElement("button");
         next.setAttribute("class", "bottom_button");
         next.innerText = ("Register");
-        // next.setAttribute("onclick", "signup()");
         bottom_button.append(next);
 
 
@@ -310,7 +278,7 @@
                     let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
 
                     let res;
-                    
+
                     for (let i = 0; i < store.length; i++) {
 
                         if (store[i]["email"] === email) {

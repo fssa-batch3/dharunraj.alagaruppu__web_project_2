@@ -21,9 +21,6 @@
 
 <script>
 
-
-
-
     //Right side container
 
     let content_list = document.createElement("div");
@@ -120,25 +117,6 @@
 
         },
 
-        // {
-        //     "label": "Aadhaar.no",
-        //     "id": "aadhar",
-        //     "for": "aadhar",
-        //     "place_holder": "Aadhaar.no"
-
-
-        // },
-
-        // {
-        //     "label": "PAN.no",
-        //     "id": "pan",
-        //     "for": "pan",
-        //     "place_holder": "PAN.no"
-
-
-
-        // },
-
 
         {
             "label": "Email id",
@@ -166,15 +144,6 @@
 
 
         },
-
-        // {
-        //     "label": "Pin code",
-        //     "id": "pincode",
-        //     "for": "pincode",
-        //     "place_holder": "Pin code"
-
-
-        // },
 
         {
             "label": "State",
@@ -224,12 +193,11 @@
     back_button.setAttribute("href", "./home.html")
     back_button.innerText = ("Back to home");
     click_button.append(back_button);
-    // document.querySelector(".main").append(back_button);
+   
 
 
     let edit_button = document.createElement("a");
     edit_button.setAttribute("class", "back_button");
-    // back_button.setAttribute("href", "")
     edit_button.innerText = ("Edit");
     click_button.append(edit_button);
 
@@ -237,9 +205,9 @@
 
 
 
-    let show = JSON.parse(localStorage.getItem('array')); // sign up details [{}]
+    let show = JSON.parse(localStorage.getItem('array')); 
 
-    let account_name = localStorage.getItem("first_name"); // login user detail 
+    let account_name = localStorage.getItem("first_name");
 
     let email_compare = localStorage.getItem("email");
 
@@ -261,17 +229,9 @@
     document.getElementById("fname").value = current_user["fname"] //show[0]["fname"] //dharun
     document.getElementById("phone").value = current_user["phone"]
     document.getElementById("email").value = current_user["email"]
-    // document.getElementById("pan").value = current_user["pan"]
-    // document.getElementById("aadhar").value = current_user["aadhar"]
     document.getElementById("dob").value = current_user["dob"]
     document.getElementById("district").value = current_user["district"]
-    // document.getElementById("pincode").value = current_user["pincode"]
     document.getElementById("state").value = current_user["state"]
-
-    console.log(current_user)
-
-
-
 
     edit_button.addEventListener("click", () => {
 
@@ -279,17 +239,9 @@
 
             if (document.getElementById("email").value == show[i]["email"]) {
 
-                console.log(show[i]);
-
-                // show[i].pan = document.getElementById("pan").value;
-                // show[i].aadhar = document.getElementById("aadhar").value;
-                // show[i].pincode = document.getElementById("pincode").value;
                 show[i].dob = document.getElementById("dob").value;
                 show[i].district = document.getElementById("district").value;
                 show[i].state = document.getElementById("state").value;
-                // show[i].image=document.getElementById("simple_image").getAttribute("src")
-                // show[i].image=document.querySelector("")
-
 
             }
         }

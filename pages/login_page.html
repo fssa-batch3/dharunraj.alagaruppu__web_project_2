@@ -101,13 +101,15 @@
             {
 
                 "for": "fullname",
-                "text": "Full name",
+                "text": "First name",
 
                 "type": "text",
                 "name": "fullname",
                 "id": "fullname",
                 "placeholder": "",
-                "required": "required"
+                "required": "required",
+                "tittle": "You must put the name what you signup in this website",
+                "aria": "First name"
 
             },
 
@@ -122,6 +124,8 @@
                 "id": "email",
                 "placeholder": "",
                 "required": "required",
+                "tittle": "You must put the email what you signup in this website",
+                "aria": "Email id"
 
             },
 
@@ -136,6 +140,8 @@
                 "id": "password",
                 "placeholder": "",
                 "required": "required",
+                "tittle": "You must put the password what you signup in this website",
+                "aria": "Password"
 
             },
         ]
@@ -228,7 +234,9 @@
 
 
         let button_click = document.getElementById("button_1")
+
         button_click.addEventListener("click",
+
             function (e) {
 
                 e.preventDefault()
@@ -244,12 +252,9 @@
                 // 
                 attach.forEach(element => {
 
-                    if (element["fname"] === fullname && element["email"] === email && element["new_pass"] === password) {//a[0];a[1]
-                        // console.log(element)
+                    if (element["fname"] === fullname && element["email"] === email && element["new_pass"] === password) {
 
-
-                        return check = 1; //
-
+                        return check = 1;
 
                     }
 
@@ -258,11 +263,6 @@
                 if (check == 1) {
 
                     let first_name = fullname;
-
-                    // let email = email;
-
-                    console.log(first_name);
-
 
                     localStorage.setItem("first_name", first_name); //login user details
 

@@ -56,24 +56,28 @@
                 <h1>Bank Account to fund transfer</h1>
 
                 <label for="from"> From Account Number </label>
-                <input class="form-control" type="text" id="from" name="from" required min="14" max="14">
+                <input class="form-control" type="text" id="from" name="from" required min="14" max="14"
+                    aria="From Account Number">
 
                 <label for="to"> Benificiary Account </label>
-                <input class="form-control input" type="text" id="to" name="to" required min="14" max="14">
+                <input class="form-control input" type="text" id="to" name="to" required pattern="[0-9]{16,17}"
+                    title="Remember !! Your bank account number should be 16 numbers" aria=" Benificiary Account ">
 
                 <label for="ifsc"> Benificiary IFSC </label>
-                <input class="form-control" type="text" id="ifsc" name="ifsc" required min="11" max="20">
+                <input class="form-control" type="text" id="ifsc" name="ifsc" required pattern="[0-9A-Za-z]{12,16}"
+                    title="Are you sure !! minium Our ifsc number should be 12 numbers" aria="Benificiary IFSC">
 
                 <label for="amount"> Transfer Amount </label>
-                <input class="form-control" type="number" id="amount" name="amount" required min="0.1"> <br>
+                <input class="form-control" type="number" id="amount" name="amount" required aria=" Transfer Amount">
+                <br>
 
-                <button class="btn btn-primary" id="send">Send</button>
+                <button class="btn btn-primary" id="send" aria="Send button">Send</button>
 
             </form>
 
         </div>
 
-<!-- 
+        <!-- 
         <div class="right_contant left_photo">
 
             <form>
@@ -117,10 +121,11 @@
 
             <div class="icon_social">
 
-               <a href="https://www.linkedin.com/"> <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in"></a>
+                <a href="https://www.linkedin.com/"> <img src="../assets/img/icons8-linkedin-100 (1).png"
+                        alt="linked in"></a>
                 <a href="https://www.facebook.com/"><img src="../assets/img/icons8-facebook-100.png" alt="facebook"></a>
                 <a href="https://www.instagram.com/"><img src="../assets/img/icons8-instagram-100.png" alt="insta"></a>
-               <a href="https://twitter.com/"> <img src="../assets/img/icons8-twitter-100.png" alt="teitter"></a>
+                <a href="https://twitter.com/"> <img src="../assets/img/icons8-twitter-100.png" alt="teitter"></a>
 
             </div>
 
@@ -157,7 +162,9 @@
         let send_button = document.getElementsByTagName("form");
 
         send_button[0].addEventListener("submit", (e) => {
+            e.preventDefault()
             account_to_account();
+
         });
 
         function balance_change() {
@@ -208,13 +215,10 @@
 
                     localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
 
-                    // let history_table = JSON.parse(localStorage.getItem("history_table"));
-
                 }
             })
 
         }
-
 
         function account_to_account() {
 
@@ -261,7 +265,7 @@
                         "current_money": current_money,
                         "email_compare": email_compare,
                         "to_account": to_account,
-                        "reciver_id":""
+                        "reciver_id": ""
                     }
 
 
@@ -279,6 +283,8 @@
 
                     alert("Thanks for send money");
 
+                    window.location.href = "./history.html"
+
                 }
 
                 if (result != 1) {
@@ -293,11 +299,6 @@
             }
 
         }
-
-
-
-
-
 
     </script>
 </body>

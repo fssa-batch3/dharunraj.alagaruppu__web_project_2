@@ -70,11 +70,20 @@
 - steps :
    1. On fund transfer page a account to account transfer branch.and you have some inputs like benificary
       account number, phone number , amount ,like that.
+   2. Benificary account (Reciver) should be in netbliz.
  - Expected Result: 
    - How many amount you want to share someone you can share money and on that person compelsary in our website.
    - After that can see your balance will reduce and benificary account balance will increase how you sent money.
-   - After that you redirect to history page
+   - After that you redirect to history page.
 
+### Money transfer  (Yet to start)
+-Scenario 2: Still progress fund transfer
+- steps :
+   1.One user can access multiple account
+ - Expected Result: 
+   - You can send money for using various type account to account money transation.
+   - If you want 2nd account to send money drop down will come after that you can select bank and send to any account.
+   
 ### History (Completed)
 -Scenario 1: Successfully read the transation history
 - steps :

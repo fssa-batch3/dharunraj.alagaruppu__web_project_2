@@ -282,7 +282,7 @@
 
                     localStorage.setItem("bal_enquire", JSON.stringify(table_balance));
 
-                    // location.reload();
+                    location.reload();
 
                     alert("Thanks for add account");
 
@@ -415,6 +415,18 @@
 
                 k++
 
+                primary.addEventListener('click', function () {
+
+                    let selectvalue = primary.value;
+
+                    localStorage.setItem("default_account", selectvalue);
+
+                    alert("Thank you!! Primary account is  " + selectvalue + " " + "selected");
+
+                    window.location.href = ("./balance_enquire.html");
+
+                });
+
                 btn1.addEventListener("click", () => {
 
                     let account_details = JSON.parse(localStorage.getItem("account_details"))
@@ -431,24 +443,9 @@
 
                 })
 
-                primary.addEventListener('click', function () {
-
-                    let selectvalue = primary.value;
-
-                    localStorage.setItem("default_account", selectvalue);
-
-                    alert("Thank you!! Primary account is  " + selectvalue + " " + "selected");
-
-                    window.location.href = ("./balance_enquire.html");
-
-                });
-
-
 
 
             }
-
-
 
         });
 

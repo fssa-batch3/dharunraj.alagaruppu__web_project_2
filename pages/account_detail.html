@@ -131,7 +131,8 @@
             "label": "DOB",
             "id": "dob",
             "for": "dob",
-            "place_holder": "DOB"
+            "place_holder": "DOB",
+            "pattern":"[0-9A-Za-z]{5,19}"
 
 
         },
@@ -140,7 +141,8 @@
             "label": "District",
             "id": "district",
             "for": "district",
-            "place_holder": "District"
+            "place_holder": "District",
+            "pattern":"[A-Za-z]{5,30}"
 
 
         },
@@ -149,7 +151,8 @@
             "label": "State",
             "id": "state",
             "for": "state",
-            "place_holder": "State"
+            "place_holder": "State",
+            "pattern":"[A-Za-z]{5,30}"
 
         },
 
@@ -168,7 +171,7 @@
         input_profile.setAttribute("id", head[i]["id"]);
         input_profile.setAttribute("placeholder", head[i]["place_holder"]);
         input_profile.setAttribute("disable", head[i]["disable"]);
-
+        input_profile.setAttribute("pattern", head[i]["pattern"]);
 
         input_profile.setAttribute("type", "text")
         input_profile.setAttribute("class", "form-control input input1");
@@ -246,16 +249,14 @@
             }
         }
 
-        if (document.getElementById("fname").value != "" && document.getElementById("email").value != "") {
+        if (document.getElementById("fname").value != "" && document.getElementById("email").value != "" && document.getElementById("phone").value != "") {
             localStorage.setItem('array', JSON.stringify(show))
             alert("Successfully your profile updated")
         }
         else {
-            alert("Your name or some fields could not be empty")
+            alert("Name , phone number , email_id you are  can't change the data");
         }
     });
-
-    console.log(document.getElementById("simple_image").getAttribute("src"), "efrdcvzx");
 
     delete_button.addEventListener("click", () => {
 

@@ -55,7 +55,7 @@
    3. You can fill the information on link account brance such as 
       account number , ifsc code , phone number , pincode like that.
  - Expected Result:
-   - after you click a add account button after some validation youn can rediriect to bank account details setup.After that you can check balance.
+   - After you click a add account button after some validation youn can rediriect to bank account details setup.After that you can check balance.And you must set the "set primary account".
 
 ### balance enquire page (Completed)
 -Scenario 1: Successfully see the account balance
@@ -76,13 +76,13 @@
    - After that can see your balance will reduce and benificary account balance will increase how you sent money.
    - After that you redirect to history page.
 
-### Money transfer  (Yet to start)
+### Money transfer  (Completed)
 -Scenario 2: Still progress fund transfer
 - steps :
    1.One user can access multiple account
  - Expected Result: 
    - You can send money for using various type account to account money transation.
-   - If you want 2nd account to send money drop down will come after that you can select bank and send to any account.
+   - If you want 2nd account to send money your account number will be change later you can send to any account.
    
 ### History (Completed)
 -Scenario 1: Successfully read the transation history

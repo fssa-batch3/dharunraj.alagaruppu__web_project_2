@@ -68,7 +68,7 @@
                         <div class="account_type">
 
                             <span>Account Type :</span>
-                            <h2>Personal Account</h2>
+                            <h2 id="ac_type"></h2>
                         </div>
 
                     </div>
@@ -136,6 +136,7 @@
 
     let customer_balance;
     let customer_number;
+    let customer_type;
 
     account_check.forEach(element => {
 
@@ -146,8 +147,11 @@
 
             customer_number = element["ac_no"];
 
-            document.getElementById("balance").innerText = customer_balance
-            document.getElementById("customer_ac").innerHTML = customer_number
+            customer_type = element["ac_type"];
+
+            document.getElementById("balance").innerText = customer_balance;
+            document.getElementById("customer_ac").innerHTML = customer_number;
+            document.getElementById("ac_type").innerText =  customer_type ;
 
             localStorage.setItem("ac_balance", customer_balance);
 

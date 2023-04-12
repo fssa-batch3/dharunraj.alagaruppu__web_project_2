@@ -105,8 +105,8 @@
 
                     <h5>Account name</h5>
 
-                    <input type="radio" name="detail" id="personal" required> <label for="personal">Personal Account</label> <br>
-                    <input type="radio" name="detail" id="business"> <label for="business">Business Account</label> <br>
+                    <input type="radio" name="detail" id="personal" required> <label for="personal">Savings Account</label> <br>
+                    <input type="radio" name="detail" id="business"> <label for="business">Current Account </label> <br>
                     <!-- <input type="radio" name="detail" id="savings"> <label for="savings">Savings Account</label> <br> -->
 
                     <p>Remember to double-check your account number . Banks may not flag errors until you transfer funds
@@ -195,7 +195,7 @@
         btn_submit.addEventListener("submit", (e) => {
             e.preventDefault()
             link_bank();
-            window.location.href = "./balance_enquire.html"
+            // window.location.href = "./balance_enquire.html"
         })
 
 
@@ -220,10 +220,19 @@
             let pincode = document.getElementById("pincode").value.trim();
             let email_compare = localStorage.getItem("email");
             let balance = Math.floor(Math.random() * 10000);
-            let personal= document.getElementById("personal").checked;
-            console.log(personal)
-          let business= document.getElementById("business").checked;
-          console.log(business)
+            let personal= document.getElementById("personal");
+            let business= document.getElementById("business");
+let account_type;
+
+          if(personal.checked){
+            account_type = "Savings Account"
+            
+          }
+          else if (business.checked){
+            account_type = "Current Account"
+           
+          }
+
             if (account != "" && ifsc != "" && phone != "" && pincode != "") {
 
                 let account_store = {
@@ -233,27 +242,15 @@
                     "pincode": pincode,
                     "email_compare": email_compare,
                     "balance": balance,
-                    "ac_type":""
+                    "ac_type":account_type
                 }
 
                 let table_obj = {
                     "ac_no": account,
-                    "ac_type": "",
+                    "ac_type": account_type,
                     "ac_balance": balance,
                     "email_compare": email_compare,
                 }
-
-                
-            // if(personal.checked){
-            //  account_store["ac_type"] = personal;
-            //  console.log(account_store["ac_type"])
-            //  table_obj["ac_type"] = personal;
-            // }
-
-            // else if(business.checked){
-            //     account_store["ac_type"]
-            //     table_obj["ac_type"]
-            // }
 
                 let add_account = JSON.parse(localStorage.getItem("account_details")) ?? []; //account = []
 
@@ -285,7 +282,11 @@
 
                     localStorage.setItem("bal_enquire", JSON.stringify(table_balance));
 
+                    location.reload();
+
                     alert("Thanks for add account");
+
+                   
 
                     window.location.href = "#bank_account"
 
@@ -422,19 +423,19 @@
         })
 
 
-        function checked(){
+        // function checked(){
 
-          let personal= document.getElementById("personal").value;
-          let business= document.getElementById("business").value
+        //   let personal= document.getElementById("personal").value;
+        //   let business= document.getElementById("business").value
 
-            if(personal.checked){
-             account_store["ac_type"]
-            }
+        //     if(personal.checked){
+        //      account_store["ac_type"]
+        //     }
 
-            else if(business.checked){
-                account_store["ac_type"]
-            }
-        }
+        //     else if(business.checked){
+        //         account_store["ac_type"]
+        //     }
+        // }
 
 
         // }

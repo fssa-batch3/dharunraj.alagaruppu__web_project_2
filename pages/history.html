@@ -49,9 +49,11 @@
 
 
 
+
+
     </main>
 
-    <footer>
+    <!-- <footer>
 
         <div class="back_foot">
 
@@ -78,18 +80,23 @@
 
         </div>
 
-    </footer>
+    </footer> -->
+
     <script>
 
-        let email_compare = localStorage.getItem("email");
-        // console.log(email_compare)
+        let email = localStorage.getItem("email");
 
-        let history = JSON.parse(localStorage.getItem("history_table")) ?? [];
+        let history = JSON.parse(localStorage.getItem("history_table")) ;
+
+        const get_default_account = localStorage.getItem("default_account");
+
+        let balance_enquire = JSON.parse(localStorage.getItem("bal_enquire"));
+
 
         for (let i = 0; i < history.length; i++) {
 
 
-            if (history[i]["email_compare"] == email_compare) {
+            if ((history[i]["email_compare"] == email && history[i]["from_account"] == get_default_account) || history[i]["to_account"] == get_default_account) {
 
 
                 let main_div = document.querySelector("main")
@@ -152,10 +159,9 @@
 
                 let date = document.createElement("h3");
                 date.setAttribute("class", "date");
+                date.setAttribute("id", "date");
+                date.innerHTML = history[i]["date"];
                 balance_data.append(date);
-
-                let current_date = new Date().toJSON().slice(0, 10)
-                document.querySelector(".date").innerHTML = `<h3> ${current_date}</h3>`;
 
                 let balance_span = document.createElement("span");
                 balance_span.setAttribute("class", "balance_span");
@@ -167,92 +173,15 @@
                 balance.innerText = "₹" + history[i].current_money;
                 balance_span.append(balance);
 
+
+
             }
 
         }
 
+
     </script>
+
 </body>
-
-<!-- <div class="history">
-
-
-            <div class="parent">
-
-                <div class="content1">
-
-                    <img src="../assets/img/hdfc_icon.png" alt="hdfc icon">
-
-                    <div class="fund">
-                        <h2>Fund Transfer</h2>
-                        <p>UPI</p>
-                    </div>
-                </div>
-
-                <div class="amount">
-                    <p id="minus"> ₹ 80,000 </p>
-                    <img id="math" src="../assets/img/minus_icon.png" alt="minus icon">
-                </div>
-
-            </div>
-
-            <div class="parent2">
-
-                <h2>09/12/2022</h2>
-                <h3> Balance: ₹ 12345</h3>
-
-            </div>
-
-        </div> -->
-
-<!-- 
-        // let history = JSON.parse(localStorage.getItem("history_table"));
-        // console.log(history)
-
-
-
-
-
-        //   let type_transfer =  document.querySelector(".increase").innerText;
-        //   console.log(type_transfer);
-        // let reciver_name= document.querySelector(".reciver_name").innerHTML;
-        //   console.log(reciver_name);
-
-        // let date = document.querySelector(".date").innerText;
-        // console.log(date) -->
-
-<!-- <footer>
-
-        <div class="back_foot">
-
-            <div class="direct">
-
-                <a href="./pages/signup_page.html">Register</a>
-                <a href="./pages/login_page.html">Login</a>
-            </div>
-
-            <h3>@ 2023 Net Banking</h3>
-
-
-
-            <div class="icon_social">
-
-                <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in">
-                <img src="../assets/img/icons8-facebook-100.png" alt="facebook">
-                <img src="../assets/img/icons8-instagram-100.png" alt="insta">
-                <img src="../assets/img/icons8-twitter-100.png" alt="teitter">
-
-            </div>
-
-
-        </div>
-
-    </footer> -->
-
-<!-- // console.log(history)
-
-        // let list = 0
-
-        // let k = 0; -->
 
 </html>

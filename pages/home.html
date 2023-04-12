@@ -92,20 +92,25 @@
 
                 <form>
                     <label for="account"> Account number </label>
-                    <input class="form-control" type="text" id="account" name="account" required pattern="[0-9]{16,17}" title="Remember !! Your bank account number should be 16 numbers">
+                    <input class="form-control" type="text" id="account" name="account" required pattern="[0-9]{16,17}"
+                        title="Remember !! Your bank account number should be 16 numbers">
 
                     <label for="ifsc"> IFSC code </label>
-                    <input class="form-control" type="text" id="ifsc" name="ifsc" required pattern="[0-9A-Za-z]{12,16}" title="Are you sure !! minium Your ifsc number should be 12 numbers">
+                    <input class="form-control" type="text" id="ifsc" name="ifsc" required pattern="[0-9A-Za-z]{12,16}"
+                        title="Are you sure !! minium Your ifsc number should be 12 numbers">
 
                     <label for="phone">Phone number</label>
-                    <input class="form-control" type="number" id="phone" name="phone" required pattern="[0-9]{10,11}" title="How many numbers will there be?">
+                    <input class="form-control" type="number" id="phone" name="phone" required pattern="[0-9]{10,11}"
+                        title="How many numbers will there be?">
 
                     <label for="pincode"> Pin code</label>
-                    <input class="form-control" type="text" id="pincode" name="pincode" required pattern="[0-9]{6,7}" title="It should be 6 numbers">
+                    <input class="form-control" type="text" id="pincode" name="pincode" required pattern="[0-9]{6,7}"
+                        title="It should be 6 numbers">
 
                     <h5>Account name</h5>
 
-                    <input type="radio" name="detail" id="personal" required> <label for="personal">Savings Account</label> <br>
+                    <input type="radio" name="detail" id="personal" required> <label for="personal">Savings
+                        Account</label> <br>
                     <input type="radio" name="detail" id="business"> <label for="business">Current Account </label> <br>
                     <!-- <input type="radio" name="detail" id="savings"> <label for="savings">Savings Account</label> <br> -->
 
@@ -155,11 +160,6 @@
 
         <div class="back_foot">
 
-            <div class="direct">
-
-                <a href="./signup_page.html">Register</a>
-                <a href="./login_page.html">Login</a>
-            </div>
 
             <h3>@ 2023 Net Banking</h3>
 
@@ -167,15 +167,16 @@
 
             <div class="icon_social">
 
-               <a href="https://www.linkedin.com/"> <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in"></a>
+                <a href="https://www.linkedin.com/"> <img src="../assets/img/icons8-linkedin-100 (1).png"
+                        alt="linked in"></a>
                 <a href="https://www.facebook.com/"><img src="../assets/img/icons8-facebook-100.png" alt="facebook"></a>
                 <a href="https://www.instagram.com/"><img src="../assets/img/icons8-instagram-100.png" alt="insta"></a>
-               <a href="https://twitter.com/"> <img src="../assets/img/icons8-twitter-100.png" alt="teitter"></a>
+                <a href="https://twitter.com/"> <img src="../assets/img/icons8-twitter-100.png" alt="teitter"></a>
 
             </div>
 
         </div>
-    
+
 
     </footer>
 
@@ -195,7 +196,6 @@
         btn_submit.addEventListener("submit", (e) => {
             e.preventDefault()
             link_bank();
-            // window.location.href = "./balance_enquire.html"
         })
 
 
@@ -220,18 +220,18 @@
             let pincode = document.getElementById("pincode").value.trim();
             let email_compare = localStorage.getItem("email");
             let balance = Math.floor(Math.random() * 10000);
-            let personal= document.getElementById("personal");
-            let business= document.getElementById("business");
-let account_type;
+            let personal = document.getElementById("personal");
+            let business = document.getElementById("business");
+            let account_type;
 
-          if(personal.checked){
-            account_type = "Savings Account"
-            
-          }
-          else if (business.checked){
-            account_type = "Current Account"
-           
-          }
+            if (personal.checked) {
+                account_type = "Savings Account"
+
+            }
+            else if (business.checked) {
+                account_type = "Current Account"
+
+            }
 
             if (account != "" && ifsc != "" && phone != "" && pincode != "") {
 
@@ -242,7 +242,7 @@ let account_type;
                     "pincode": pincode,
                     "email_compare": email_compare,
                     "balance": balance,
-                    "ac_type":account_type
+                    "ac_type": account_type
                 }
 
                 let table_obj = {
@@ -282,11 +282,9 @@ let account_type;
 
                     localStorage.setItem("bal_enquire", JSON.stringify(table_balance));
 
-                    location.reload();
+                    // location.reload();
 
                     alert("Thanks for add account");
-
-                   
 
                     window.location.href = "#bank_account"
 
@@ -299,7 +297,9 @@ let account_type;
             }
         }
 
-        let account_detail = JSON.parse(localStorage.getItem("account_details")) ?? []
+        let account_detail = JSON.parse(localStorage.getItem("account_details")) ?? [];
+
+        let default_account = localStorage.getItem("default_account");
 
         let k = 0;
 
@@ -328,9 +328,6 @@ let account_type;
                 bank.append(image);
 
 
-
-
-
                 let data = [
 
                     {
@@ -345,7 +342,6 @@ let account_type;
                         "place_holder": "Account no",
                         "disable": "disable",
 
-
                     },
 
                     {
@@ -358,7 +354,6 @@ let account_type;
                         "name": "ifsc_give",
                         "place_holder": "IFSC Code",
                         "disable": "disable",
-
 
                     },
 
@@ -390,229 +385,75 @@ let account_type;
 
                 }
 
+                let set_primary = document.createElement("div");
+                set_primary.setAttribute("class", "set_primary")
+                bank.append(set_primary);
+
+                let primary = document.createElement("input");
+                primary.setAttribute("type", "radio");
+                primary.setAttribute("id", "");
+                primary.setAttribute("class", "input-radio");
+                primary.setAttribute("value", e.account);
+                primary.setAttribute("name", "primary");
+                set_primary.append(primary);
+
+                let primary_label = document.createElement("label");
+                primary_label.setAttribute("for", "primary");
+                primary_label.innerHTML = ("Set primary account");
+                set_primary.append(primary_label);
+
                 let btn = document.createElement("a");
-                btn.setAttribute("id", "remove_bk")
-                btn.innerText = "Remove bank account"
+                btn.setAttribute("id", "remove_bk");
+                btn.setAttribute("class", "btn btn-primary");
+                btn.innerText = "Remove bank account ?"
                 bank.append(btn);
+
+                let btn1 = document.getElementById("remove_bk");
 
                 document.getElementsByClassName("account_give")[k].value = e["account"]
                 document.getElementsByClassName("ifsc_give")[k].value = e["ifsc"]
 
                 k++
 
-                let btn1 = document.getElementById("remove_bk")
+                btn1.addEventListener("click", () => {
 
-        btn1.addEventListener("click", () => {
+                    let account_details = JSON.parse(localStorage.getItem("account_details"))
 
-            let account_details = JSON.parse(localStorage.getItem("account_details"))
+                    account_details.forEach(e => {
 
-            account_details.forEach(e => {
+                        if (document.getElementById("account_give").value == e["account"]) {
+                            account_details.splice(e, 1);
+                            localStorage.setItem("account_details", JSON.stringify(account_details));
+                            location.reload();
 
-                if (document.getElementById("account_give").value == e["account"] ) {
-                    account_details.splice(e, 1);
-                    localStorage.setItem("account_details", JSON.stringify(account_details));
-                    location.reload();
-                    
-                }
-            })
+                        }
+                    })
 
-        })
+                })
+
+                primary.addEventListener('click', function () {
+
+                    let selectvalue = primary.value;
+
+                    localStorage.setItem("default_account", selectvalue);
+
+                    alert("Thank you!! Primary account is  " + selectvalue + " " + "selected");
+
+                    window.location.href = ("./balance_enquire.html");
+
+                });
+
+
 
 
             }
-        })
 
 
-        // function checked(){
 
-        //   let personal= document.getElementById("personal").value;
-        //   let business= document.getElementById("business").value
+        });
 
-        //     if(personal.checked){
-        //      account_store["ac_type"]
-        //     }
 
-        //     else if(business.checked){
-        //         account_store["ac_type"]
-        //     }
-        // }
 
-
-        // }
-
-        // console.log("hi")
-        
-
-        // let ifsc_search = document.getElementById("ifsc").value
-
-
-        // function account_detail() {
-
-        //     let account = document.getElementById("account").value.trim();
-        //     let ifsc = document.getElementById("ifsc").value.trim();
-        //     let phone = document.getElementById("phone").value.trim()
-        //     let pincode = document.getElementById("pincode").value.trim()
-
-        //     let bank_div = document.querySelector("#bank_account");
-
-        //     let bank = document.createElement("div");
-        //     bank.setAttribute("class", "bank");
-        //     bank_div.append(bank);
-
-        //     let image = document.createElement("img");
-        //     image.setAttribute("src", "../assets/img/account.png")
-        //     image.setAttribute("alt", "hello");
-        //     bank.append(image);
-
-
-
-
-
-        //     let data = [
-
-        //         {
-        //             "label": "Account no",
-        //             "for": "account_give",
-
-
-        //             "type": "text",
-        //             "id": "account_give",
-        //             "class": "account_give form-control input_size",
-        //             "name": "account_give",
-        //             "place_holder": "Account no",
-        //             "disable": "disable",
-
-
-        //         },
-
-        //         {
-        //             "label": "IFSC Code",
-        //             "for": "ifsc_give",
-
-        //             "type": "text",
-        //             "id": "ifsc_give",
-        //             "class": "ifsc_give form-control input_size",
-        //             "name": "ifsc_give",
-        //             "place_holder": "IFSC Code",
-        //             "disable": "disable",
-
-
-        //         },
-
-        //         // {
-        //         //     "label": "Phone no",
-        //         //     "for": "phone_give",
-
-        //         //     "type": "number",
-        //         //     "id": "phone_give",
-        //         //     "name": "phone_give",
-        //         //     "place_holder": "phone_give",
-        //         //     "disable": "disable",
-
-
-        //         // },
-
-
-
-        //         // {
-        //         //     "label": "Pin code",
-        //         //     "for": "pincode_give",
-
-        //         //     "type": "number",
-        //         //     "id": "pincode_give",
-        //         //     "name": "pincode_give",
-        //         //     "place_holder": "Pin code",
-        //         //     "disable": "disable",
-
-
-
-        //         // },
-
-
-
-        //     ]
-
-
-
-        //     for (let i = 0; i < 2; i++) {
-
-
-        //         let contant = document.createElement("div");
-        //         contant.setAttribute("class", "form-floating mb-3");
-        //         bank.append(contant);
-
-        //         let input = document.createElement("input");
-        //         input.setAttribute("type", data[i]["type"]);
-        //         // input.setAttribute("class", "form-control input_size ")
-        //         input.setAttribute("id", data[i]["id"]);
-        //         input.setAttribute("class", data[i]["class"]);
-        //         input.setAttribute("name", data[i]["name"]);
-        //         input.setAttribute("placeholder", data[i]["place_holder"]);
-        //         input.setAttribute("disable", data[i]["disable"]);
-        //         contant.append(input);
-
-
-        //         let label = document.createElement("label");
-        //         label.innerText = data[i]["label"];
-        //         label.setAttribute("for", data[i]["for"]);
-        //         contant.append(label);
-
-
-        //     }
-
-        //     let btn = document.createElement("a");
-        //     btn.setAttribute("href", "#");
-        //     btn.setAttribute("id", "remove_bk")
-        //     btn.innerText = "Remove bank account"
-        //     bank.append(btn);
-
-        // }
-
-
-        
-
-        // function balance_genarater() {
-        //     let account = document.getElementById("account").value.trim();
-        //     let balance = Math.floor(Math.random() * 50000);;
-        //     let email_compare = localStorage.getItem("email");
-
-
-        //     let table_obj ={
-        //         "ac.no":"",
-        //         "ac.type":"",
-        //         "ac.balance":"",
-        //         "email_compare":email_compare
-        //     }
-
-        //     let table_balance =JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
-
-        //     let result = 0;
-        //     table_balance.forEach(e =>{
-
-        //         if(e["email_compare"]==email){
-
-        //             table_balance.push(table_obj) ;
-        //             localStorage.setItem("bal_enquire").JSON.stringify(table_balance)
-
-        //         }
-        //     })
-
-
-        // }
-
-         //         a=[1,2,1,2,2];
-        // let count=0
-        // for (let i=0;i<a.length;i++){
-        //     if(a[i]==2){
-        // count++;
-        // // console.log(count);
-        //     }
-
-        // }
-        // console.log(count);
-
-
-        // function link_account() {
 
 
     </script>

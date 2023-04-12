@@ -98,11 +98,11 @@
 
         <div class="back_foot">
 
-            <div class="direct">
+            <!-- <div class="direct">
 
                 <a href="./signup_page.html">Register</a>
                 <a href="./login_page.html">Login</a>
-            </div>
+            </div> -->
 
             <h3>@ 2023 Net Banking</h3>
 
@@ -129,10 +129,10 @@
 <script>
 
     let email = localStorage.getItem("email");
-    // console.log(email);
-
+    
     let account_check = JSON.parse(localStorage.getItem("bal_enquire"));
-    // console.log(account_check);
+
+    const get_default_account = localStorage.getItem("default_account");
 
     let customer_balance;
     let customer_number;
@@ -140,8 +140,7 @@
 
     account_check.forEach(element => {
 
-        if (element["email_compare"] == email) {
-            // console.log("correct");
+        if (element["email_compare"] == email && element["ac_no"] == get_default_account) {
 
             customer_balance = element["ac_balance"];
 
@@ -151,55 +150,15 @@
 
             document.getElementById("balance").innerText = customer_balance;
             document.getElementById("customer_ac").innerHTML = customer_number;
-            document.getElementById("ac_type").innerText =  customer_type ;
+            document.getElementById("ac_type").innerText = customer_type;
 
             localStorage.setItem("ac_balance", customer_balance);
 
             localStorage.setItem("bal_enquire", JSON.stringify(account_check));
         }
+
     });
-
-
-
-
-//     let fresh_balance = document.getElementById("balance").innerHTML
-//     let fresh_ac_no = document.getElementById("customer_ac").innerHTML
-
-//     let enquire = JSON.parse(localStorage.getItem("balance_enquire")) ?? [];
-
-//     let balance_table = {
-//         "fresh_balance": fresh_balance,
-//         "fresh_ac_no": fresh_ac_no,
-//         "fresh_type": ""
-
-//     }
-
-
-//     let res = 0;
-
-//     for (let i = 0; i < enquire.length; i++) {
-
-//         if (enquire[i]["fresh_ac_no"] === fresh_ac_no) {
-//             res = 1;
-//             break;
-//         }
-//     }
-
-//     if (res == 1) {
-//         alert(" Invalid account number")
-
-//     }
-
-// else{
-
-
-//     enquire.push(balance_table);
-
-//     localStorage.setItem("balance_enquire", JSON.stringify(enquire));
-
-//     alert("successfully signup");
-
-// }
+    
 </script>
 
 </html>

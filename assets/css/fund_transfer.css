@@ -39,13 +39,13 @@ header a , footer a{
     margin: 1% auto;
 }
 
-.right_contant form input {
+.right_contant form input , .right_contant form select {
     width: 60%;
     padding: 1%;
     margin-bottom: 3%;
 }
 
-input:focus {
+input:focus , select:focus{
     outline: none;
 }
 

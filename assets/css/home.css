@@ -142,9 +142,23 @@ a{
 
 }
 
-.link_bank form input[type="radio"] {
+ form input[type="radio"] {
     width: 25px;
     margin: 0% auto;
+}
+
+.bank input[type="radio"] {
+    width: 25px;
+    margin: 0% -40%;
+
+   
+}
+
+#remove_bk{
+    margin: 10% 0%;
+    padding: 4%;
+    color: white;
+    cursor: pointer;
 }
 
 
@@ -244,10 +258,10 @@ input:focus {
 
 }
 
-#remove_bk{
-    color: blue;
-    cursor: pointer;
-}
+/* .set_primary{
+    display: flex;
+
+} */
 /* .intro {
   border: 1px solid black;
     display: flex;

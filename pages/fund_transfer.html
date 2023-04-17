@@ -207,19 +207,20 @@
                             "to_ifsc": to_ifsc,
                             "send_amount": send_amount,
                             "email_compare": email_compare,
-                            "reciver_id": "",
-
+                            "reciver_id": ""
                         }
 
                         let history = {
                             "send_amount": send_amount,
-                            "type": "",
-                            "current_money": current_money,
-                            "email_compare": email_compare,
-                            "to_account": to_account,
-                            "reciver_id": "",
-                            "from_account": from_account,
                             "date": current_date,
+                            "sender_balance": current_money,
+                            "reciver_balance": "",
+                            "email_compare": email_compare,
+                            "reciver_account": to_account,
+                            "sender_account": from_account,
+                            "sender_type": "",
+                            "reciver_type": "",
+
                         }
 
 
@@ -291,21 +292,71 @@
 
             let current_recive_money = document.getElementById("amount").value;
 
+            let recived_money;
+
             balance_page.forEach(element => {
 
                 if (element["ac_no"] == accounter) {
 
                     let old_balances = element["ac_balance"];
 
-                    let recived_money = Number(old_balances) + Number(current_recive_money);
+                    recived_money = Number(old_balances) + Number(current_recive_money);
 
                     element["ac_balance"] = recived_money;
 
                     localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
+
                 }
+
+                let history_table = JSON.parse(localStorage.getItem("history_table"));
+
+                let value;
+
+                for (let i = 0; i < history_table.length; i++) {
+
+                    if (history_table[i]["reciver_account"] == "") {
+
+                        value = 1
+                    }
+
+                    console.log("heyy")
+                    if (value == 1) {
+
+                        history_table[i]["reciver_account"] = old_balances;
+
+                        console.log(old_balances);
+
+                        localStorage.setItem("history_table", JSON.stringify(history_table));
+                    }
+                }
+
             })
 
         }
+
+
+        // let history_table = JSON.parse(localStorage.getItem("history_table"));
+
+
+        // for (let j = 0; j < balance_page.length; j++) {
+
+        //     for (let i = 0; i < history_table.length; i++) {
+
+        //         if (history_table[i]["reciver_account"] == balance_page[j]["ac_no"]) {
+
+        //             let balance;
+
+        //             balance = balance_page[j]["ac_balance"]
+
+        //             history_table[i]["reciver_balance"] = balance;
+
+        //             localStorage.setItem("history_table", JSON.stringify(history_table));
+
+        //             // localStorage.setItem("array", JSON.stringify(store));
+        //         }
+
+        //     }
+        // }
 
     </script>
 </body>

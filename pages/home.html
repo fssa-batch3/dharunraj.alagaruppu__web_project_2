@@ -100,11 +100,11 @@
                         title="Are you sure !! minium Your ifsc number should be 12 numbers">
 
                     <label for="phone">Phone number</label>
-                    <input class="form-control" type="number" id="phone" name="phone" required pattern="[0-9]{10,11}"
+                    <input class="form-control" type="tel" id="phone" name="phone" required pattern="[0-9]{10}"
                         title="How many numbers will there be?">
 
                     <label for="pincode"> Pin code</label>
-                    <input class="form-control" type="text" id="pincode" name="pincode" required pattern="[0-9]{6,7}"
+                    <input class="form-control" type="tel" id="pincode" name="pincode" required pattern="[0-9]{6}"
                         title="It should be 6 numbers">
 
                     <h5>Account name</h5>
@@ -252,10 +252,9 @@
                     "email_compare": email_compare,
                 }
 
-                let add_account = JSON.parse(localStorage.getItem("account_details")) ?? []; //account = []
+                let add_account = JSON.parse(localStorage.getItem("account_details")) ?? [];
 
                 let table_balance = JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
-
 
                 let res = 0;
 
@@ -278,7 +277,7 @@
 
                     table_balance.push(table_obj);
 
-                    localStorage.setItem("account_details", JSON.stringify(add_account)); // account_details  :  [{name, email, pass}]
+                    localStorage.setItem("account_details", JSON.stringify(add_account));
 
                     localStorage.setItem("bal_enquire", JSON.stringify(table_balance));
 
@@ -308,8 +307,6 @@
             if (e["email_compare"] == email_compare) {
 
                 document.getElementById("bank_account").style.display = "flex";
-
-                // list++
 
                 let account = document.getElementById("account").value.trim();
                 let ifsc = document.getElementById("ifsc").value.trim();
@@ -404,16 +401,16 @@
 
                 let btn = document.createElement("a");
                 btn.setAttribute("id", "remove_bk");
-                btn.setAttribute("class", "btn btn-primary");
+                btn.setAttribute("class", "btn btn-primary remove_bk");
                 btn.innerText = "Remove bank account ?"
                 bank.append(btn);
-
-                let btn1 = document.getElementById("remove_bk");
 
                 document.getElementsByClassName("account_give")[k].value = e["account"]
                 document.getElementsByClassName("ifsc_give")[k].value = e["ifsc"]
 
                 k++
+
+                let btn1 = document.querySelectorAll(".remove_bk");
 
                 primary.addEventListener('click', function () {
 
@@ -427,28 +424,35 @@
 
                 });
 
-                btn1.addEventListener("click", () => {
 
-                    let account_details = JSON.parse(localStorage.getItem("account_details"))
 
-                    account_details.forEach(e => {
 
-                        if (document.getElementById("account_give").value == e["account"]) {
-                            account_details.splice(e, 1);
-                            localStorage.setItem("account_details", JSON.stringify(account_details));
-                            location.reload();
+                btn1.forEach((e, index) => {
+                    e.addEventListener("click", function () {
 
+                        for (let a = 0; a < btn1.length; a++) {
+
+                            let account_details = JSON.parse(localStorage.getItem("account_details"))
+
+                            for (let j = 0; j < account_details.length; j++) {
+
+                                if (document.getElementById("account_give").value === account_details[j]["account"]) {
+
+                                    account_details.splice(index, 1);
+                                    localStorage.setItem("account_details", JSON.stringify(account_details));
+                                    location.reload();
+                                }
+                            }
                         }
+
                     })
 
-                })
-
+                });
 
 
             }
 
         });
-
 
 
 

@@ -37,7 +37,7 @@ img {
 }
 
 /* minus font color */
-.amount h4 {
+.amount .minus {
     color: rgb(250, 99, 99);
 }
 
@@ -66,6 +66,10 @@ main{
     align-items: center;
     font-family: 'Libre Baskerville', sans-serif;
     font-weight: 400;
+}
+
+.plus{
+    color: rgb(60, 188, 60);
 }
 
 /* .balance_span{

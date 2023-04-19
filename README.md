@@ -91,8 +91,9 @@
  - Expected Result: 
  - If you sent money add in the transation page.add in the histroy page.
 
-### History (Yet to start)
--Scenario 2: Yet to start
+### History (Completed)
+-Scenario 2:  Successfully read the transation history
 - steps :
+1 . History page you have fund transation read the history in the page 
  - Expected Result:
    - If you receive money also add history page.

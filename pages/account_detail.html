@@ -15,6 +15,7 @@
 <body>
 
     <div class="main">
+
     </div>
 
 </body>
@@ -71,7 +72,7 @@
 
     let delete_button = document.createElement("a");
     delete_button.setAttribute("class", "back_button");
-       // back_button.setAttribute("href", "./home.html")
+    // back_button.setAttribute("href", "./home.html")
     delete_button.innerText = ("Delete");
     simple_detail.append(delete_button);
 
@@ -104,7 +105,12 @@
             "id": "fname",
             "for": "fname",
             "place_holder": "Name",
-            "disable": "disable"
+            // "disable": "true",
+            "type": "text",
+            "tittle": "Your pattern minium length of 2 characters a_z or A_Z only",
+            "aria": "Name",
+            "pattern": "[A-Za-z]{2,29}"
+
 
         },
 
@@ -112,9 +118,11 @@
             "label": "Phone.no",
             "id": "phone",
             "for": "phone",
-            "place_holder": "Phone.no"
-
-
+            "place_holder": "Phone.no",
+            "type": "tel",
+            "tittle": "Number only allowed && 10 numbers must",
+            "aria": "Phone number",
+            "pattern": "[0-9]{10}"
         },
 
 
@@ -122,7 +130,11 @@
             "label": "Email id",
             "id": "email",
             "for": "email",
-            "place_holder": "Email id"
+            "place_holder": "Email id",
+            "type": "email",
+            "tittle": "This is not a email format",
+            "aria": "Email id",
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
 
 
         },
@@ -132,7 +144,9 @@
             "id": "dob",
             "for": "dob",
             "place_holder": "DOB",
-            "pattern":"[0-9A-Za-z]{5,19}"
+            "type": "date",
+            "tittle": "This is not a date of birth",
+            "aria": "Date of birth"
 
 
         },
@@ -142,8 +156,10 @@
             "id": "district",
             "for": "district",
             "place_holder": "District",
-            "pattern":"[A-Za-z]{5,30}"
-
+            "pattern": "^[a-zA-Z]{2,30}$",
+            "type": "text",
+            "tittle": "Your pattern minium length of 2 to 30 characters a_z or A_Z only",
+            "aria": "District"
 
         },
 
@@ -152,11 +168,11 @@
             "id": "state",
             "for": "state",
             "place_holder": "State",
-            "pattern":"[A-Za-z]{5,30}"
-
+            "pattern": "[A-Za-z]{2,20}",
+            "type": "text",
+            "tittle": "Your pattern minium length of 2 to 20 characters a_z or A_Z only",
+            "aria": "State"
         },
-
-
 
 
     ]
@@ -168,12 +184,19 @@
         form_profile.append(contant_profile);
 
         let input_profile = document.createElement("input");
+
+        input_profile.setAttribute("for", head[i]["for"]);
         input_profile.setAttribute("id", head[i]["id"]);
         input_profile.setAttribute("placeholder", head[i]["place_holder"]);
-        input_profile.setAttribute("disable", head[i]["disable"]);
+        // input_profile.setAttribute("disable", head[i]["disable"]);
         input_profile.setAttribute("pattern", head[i]["pattern"]);
+        input_profile.setAttribute("type", head[i]["type"]);
+        input_profile.setAttribute("title", head[i]["tittle"]);
+        input_profile.setAttribute("aria", head[i]["aria"]);
 
-        input_profile.setAttribute("type", "text")
+
+        // input_box.setAttribute("title", obj[i]["tittle"]);
+        // input_profile.setAttribute("type", "text")
         input_profile.setAttribute("class", "form-control input input1");
         contant_profile.append(input_profile);
 
@@ -196,7 +219,7 @@
     back_button.setAttribute("href", "./home.html")
     back_button.innerText = ("Back to home");
     click_button.append(back_button);
-   
+
 
 
     let edit_button = document.createElement("a");
@@ -208,7 +231,7 @@
 
 
 
-    let show = JSON.parse(localStorage.getItem('array')); 
+    let show = JSON.parse(localStorage.getItem('array'));
 
     let account_name = localStorage.getItem("first_name");
 
@@ -228,7 +251,7 @@
     )
     document.querySelectorAll("#fi_name")[0].innerText = current_user["fname"] //[0]
 
-    
+
     document.getElementById("fname").value = current_user["fname"] //show[0]["fname"] //dharun
     document.getElementById("phone").value = current_user["phone"]
     document.getElementById("email").value = current_user["email"]
@@ -242,15 +265,15 @@
 
             if (document.getElementById("email").value == show[i]["email"]) {
 
-                show[i].dob = document.getElementById("dob").value;
-                show[i].district = document.getElementById("district").value;
-                show[i].state = document.getElementById("state").value;
+                show[i].dob = document.getElementById("dob").value.trim()
+                show[i].district = document.getElementById("district").value.trim();
+                show[i].state = document.getElementById("state").value.trim();
 
             }
         }
 
         if (document.getElementById("fname").value != "" && document.getElementById("email").value != "" && document.getElementById("phone").value != "") {
-            localStorage.setItem('array', JSON.stringify(show))
+            localStorage.setItem('array', JSON.stringify(show));
             alert("Successfully your profile updated")
         }
         else {
@@ -263,7 +286,7 @@
         for (let i = 0; i < show.length; i++) {
             if (document.getElementById("email").value == show[i]["email"]) {
                 // confirm("comfortable with it")
-                show.splice(i, 1)
+                show.splice(i, 1);
                 localStorage.setItem("array", JSON.stringify(show));
                 window.location.href = "../index.html";
             }
@@ -291,7 +314,7 @@
                 let us1 = JSON.parse(localStorage.getItem("array"))
 
                 us1.forEach(element => {
-                         
+
                 });
 
                 us1[0]["image"] = image.getAttribute("src")
@@ -306,8 +329,8 @@
 
 
     let us1 = JSON.parse(localStorage.getItem("array"))
-        let new_src= us1[0]["image"] 
-        image.setAttribute("src",new_src)
+    let new_src = us1[0]["image"]
+    image.setAttribute("src", new_src)
 
 </script>
 

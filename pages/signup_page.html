@@ -55,45 +55,12 @@
         document.querySelector(".main").append(content_of_singnup);     //main 2st child is start
 
 
-        // Nice buttons start
-
-
-        // let for_button = document.createElement("div");
-        // for_button.setAttribute("class", "for_button");
-        // content_of_singnup.append(for_button);
-
-        // let back_blue = document.createElement("div");
-        // back_blue.setAttribute("class", "back_blue");
-        // for_button.append(back_blue);
-
-        // let Personal_a = document.createElement("a");
-        // a.setAttribute("href", "#");
-        // back_blue.append(Personal_a);
-
-        // let Address_a = document.createElement("a");
-        // a.setAttribute("href", "./login_page.html");
-        // back_blue.append(Address_a);
-
-        // let input_button = document.createElement("button");
-        // input_button.setAttribute("class", "top_button");
-        // input_button.setAttribute("id", "hover");
-        // input_button.innerText = ("Personal");
-        // Personal_a.append(input_button);
-
-        // let input_button2 = document.createElement("button");
-        // input_button2.setAttribute("class", "top_button");
-        // input_button2.innerText = ("Address");
-        // Address_a.append(input_button2);
-
-
-
-
         const obj = [
 
             {
 
                 "for": "fname",
-                "text": "",
+                "text": "", //label
 
                 "type": "text",
                 "name": "fname",
@@ -132,11 +99,9 @@
                 "name": "email",
                 "id": "email",
                 "placeholder": "Email.Id *",
-                "tittle": "Your pattern un accectable ",
+                "tittle": "This is not a email format ",
+                "aria": "Email.Id ",
                 "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
-                "aria": "Email.Id "
-
-
 
             },
 
@@ -165,7 +130,7 @@
                 "id": "new_pass",
                 "placeholder": "Create password *",
 
-                "pattern": "(?=.*)(?=.*[a-z])(?=.*[A-Z]).{8,20}" ,
+                "pattern": "(?=.*)(?=.*[a-z])(?=.*[A-Z]).{8,20}",
                 "tittle": "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters",
                 "aria": "Create password "
             },
@@ -180,7 +145,7 @@
                 "id": "confirm",
                 "placeholder": "Confirm password *",
 
-                "pattern": "(?=.*)(?=.*[a-z])(?=.*[A-Z]).{8,20}" ,
+                "pattern": "(?=.*)(?=.*[a-z])(?=.*[A-Z]).{8,20}",
                 "tittle": "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters",
                 "aria": "Confirm password"
             }
@@ -193,11 +158,6 @@
         let page_name = document.createElement("h1");
         page_name.innerText = ("Regsister here !!");
         content_of_singnup.append(page_name);
-
-        // let quote = document.createElement("h3");
-        // quote.innerText=("Banking in your pocket");
-        // content_of_singnup.append(quote);
-
 
 
         let form = document.createElement("form");
@@ -213,23 +173,21 @@
             let input_box = document.createElement("input");
             input_box.setAttribute("type", obj[i]["type"]);
             input_box.setAttribute("name", obj[i]["name"]);
+
             input_box.setAttribute("id", obj[i]["id"]);
             input_box.setAttribute("placeholder", obj[i]["placeholder"]);
             input_box.setAttribute("title", obj[i]["tittle"]);
-
-            // input_box.setAttribute("min-length", obj[i]["min"]);
-            // input_box.setAttribute("max-length", obj[i]["max"]);
-            if (i < 2) {
-                input_box.setAttribute("pattern", obj[i]["pattern"]);
-            }
-            else if (i == 2) {
-                // console.log("none");
-            }
-            else {
-                input_box.setAttribute("pattern", obj[i]["pattern"]);
-            }
-            input_box.setAttribute("required", "");
-            // input_box.setAttribute("pattern", obj[i]["pattern"]);
+            // if (i < 2) {
+            //     input_box.setAttribute("pattern", obj[i]["pattern"]);
+            // }
+            // else if (i == 2) {
+            //     // console.log("none");
+            // }
+            // else {
+            input_box.setAttribute("pattern", obj[i]["pattern"]);
+            // console.log(obj[i]["pattern"])
+            // }
+            // input_box.setAttribute("required", "");
 
             form.append(input_box);
 
@@ -246,7 +204,7 @@
         next.innerText = ("Register");
         bottom_button.append(next);
 
-
+        // Functions Start here*****
 
         let form_check = document.querySelector("form");
 
@@ -256,66 +214,35 @@
 
         })
 
+
+
+        let first_name;
+        let last_name;
+        let email;
+        let phone;
+        let new_pass;
+        let confirm;
+
+
         function signup() {
 
-            let first_name = document.getElementById("fname").value.trim()
-            let last_name = document.getElementById("lname").value.trim()
-            let email = document.getElementById("email").value.trim()
-            let phone = document.getElementById("phone").value.trim()
-            let new_pass = document.getElementById("new_pass").value.trim()
-            let confirm = document.getElementById("confirm").value.trim()
+            first_name = document.getElementById("fname").value.trim()
+            last_name = document.getElementById("lname").value.trim()
+            email = document.getElementById("email").value.trim()
+            phone = document.getElementById("phone").value.trim()
+            new_pass = document.getElementById("new_pass").value.trim()
+            confirm_pass = document.getElementById("confirm").value.trim()
 
 
-            if (first_name != "" && last_name != "" && email !== "" && new_pass != "" && confirm != "" && phone != "") {
+            if (first_name != "" && last_name != "" && email !== "" && new_pass != "" && confirm_pass != "" && phone != "") {
 
-                if (new_pass != confirm) {
+                if (new_pass != confirm_pass) {
                     alert("Oops !! password and confirm password doesn't match.")
                 }
 
                 else {
 
-                    let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
-
-                    let res;
-
-                    for (let i = 0; i < store.length; i++) {
-
-                        if (store[i]["email"] === email) {
-                            res = 1;
-                            break;
-                        }
-                    }
-
-                    if (res == 1) {
-                        alert("email already registered")
-
-                    }
-
-                    else {
-                        let obj = {};
-
-                        obj["fname"] = first_name
-                        obj["lname"] = last_name
-                        obj["email"] = email
-                        obj["phone"] = phone
-                        obj["new_pass"] = new_pass
-                        obj["confirm"] = confirm
-                        obj["dob"] = ""
-                        obj["state"] = ""
-                        obj["district"] = ""
-                        obj["pincode"] = ""
-                        obj["image"] = ""
-
-                        store.push(obj);//[{name, email, pass}]
-
-                        localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
-
-                        alert("successfully signup");
-
-                        window.location.href = "./login_page.html"
-
-                    }
-
+                    add_local()
                 }
 
             }
@@ -324,6 +251,53 @@
                 alert("Can't get a data.Please give a value")
             }
         }
+
+        function add_local() {
+
+            let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
+
+            let res;
+
+            for (let i = 0; i < store.length; i++) {
+
+                if (store[i]["email"] === email) {
+                    res = 1;
+                    break;
+                }
+            }
+
+            if (res == 1) {
+                alert("email already registered")
+
+            }
+
+            else {
+                let obj = {};
+
+                obj["fname"] = first_name
+                obj["lname"] = last_name
+                obj["email"] = email
+                obj["phone"] = phone
+                obj["new_pass"] = new_pass
+                obj["confirm"] = confirm_pass
+                obj["dob"] = ""
+                obj["state"] = ""
+                obj["district"] = ""
+                obj["pincode"] = ""
+                obj["image"] = ""
+                obj["primary"] = ""
+
+                store.push(obj);//[{name, email, pass}]
+
+                localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
+
+                alert("successfully signup");
+
+                window.location.href = "./login_page.html"
+
+            }
+        }
+
 
 
     </script>

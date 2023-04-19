@@ -129,7 +129,9 @@
 <script>
 
     let email = localStorage.getItem("email");
-    
+
+    let signup_array = JSON.parse(localStorage.getItem("array"));
+
     let account_check = JSON.parse(localStorage.getItem("bal_enquire"));
 
     const get_default_account = localStorage.getItem("default_account");
@@ -138,27 +140,68 @@
     let customer_number;
     let customer_type;
 
-    account_check.forEach(element => {
+    check_balance()
 
-        if (element["email_compare"] == email && element["ac_no"] == get_default_account) {
 
-            customer_balance = element["ac_balance"];
+    function check_balance() {
 
-            customer_number = element["ac_no"];
+        for (let s = 0; s < signup_array.length; s++) {
 
-            customer_type = element["ac_type"];
+            for (let t = 0; t < account_check.length; t++) {
 
-            document.getElementById("balance").innerText = customer_balance;
-            document.getElementById("customer_ac").innerHTML = customer_number;
-            document.getElementById("ac_type").innerText = customer_type;
+                if (signup_array[s]["email"] == email && signup_array[s]["primary"] == account_check[t]["ac_no"]) {
 
-            localStorage.setItem("ac_balance", customer_balance);
+                    customer_balance = account_check[t]["ac_balance"];
 
-            localStorage.setItem("bal_enquire", JSON.stringify(account_check));
+                    customer_number = account_check[t]["ac_no"];
+
+                    customer_type = account_check[t]["ac_type"];
+
+                    document.getElementById("balance").innerText = customer_balance;
+                    document.getElementById("customer_ac").innerHTML = customer_number;
+                    document.getElementById("ac_type").innerText = customer_type;
+
+
+                    localStorage.setItem("bal_enquire", JSON.stringify(account_check));
+
+
+                }
+
+            }
+
         }
 
-    });
-    
+    }
+
+
+
+
+
+
+
+
+
+
+
+ //     local();
+
+
+    //     function local() {
+
+    // show.forEach(element => {
+
+    //     if (element["email"] === email) {
+
+    //         selectvalue = element["primary"];
+
+    //         localStorage.setItem("default_account", selectvalue);
+
+    //     }
+
+    // })
+
+
+    // }
 </script>
 
 </html>

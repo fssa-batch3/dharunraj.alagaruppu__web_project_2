@@ -191,15 +191,17 @@
 
         let email_compare = localStorage.getItem("email");
 
+        let selectvalue;
+
         let btn_submit = document.querySelector("form");
+
+          // Functions Starts****
 
         btn_submit.addEventListener("submit", (e) => {
             e.preventDefault()
             link_bank();
-        })
+        });
 
-
-        let check;
 
         show.forEach(element => { //[{0},{1},......]
 
@@ -207,6 +209,8 @@
 
                 document.querySelectorAll("#fname")[0].innerText = element["fname"] + ","//[0,1]
                 document.querySelectorAll("#fname")[1].innerText = element["fname"]
+
+                local()
 
                 localStorage.setItem("array", JSON.stringify(show));
             }
@@ -242,7 +246,8 @@
                     "pincode": pincode,
                     "email_compare": email_compare,
                     "balance": balance,
-                    "ac_type": account_type
+                    "ac_type": account_type,
+                    "primary": "",
                 }
 
                 let table_obj = {
@@ -256,7 +261,7 @@
 
                 let table_balance = JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
 
-                let res = 0;
+                let res;
 
                 for (let i = 0; i < add_account.length; i++) {
 
@@ -287,6 +292,8 @@
 
                     window.location.href = "#bank_account"
 
+
+
                 }
 
             }
@@ -296,9 +303,12 @@
             }
         }
 
+
+
+
         let account_detail = JSON.parse(localStorage.getItem("account_details")) ?? [];
 
-        let default_account = localStorage.getItem("default_account");
+        // let default_account = localStorage.getItem("default_account");
 
         let k = 0;
 
@@ -405,56 +415,107 @@
                 btn.innerText = "Remove bank account ?"
                 bank.append(btn);
 
+
+
                 document.getElementsByClassName("account_give")[k].value = e["account"]
                 document.getElementsByClassName("ifsc_give")[k].value = e["ifsc"]
 
                 k++
 
-                let btn1 = document.querySelectorAll(".remove_bk");
-
                 primary.addEventListener('click', function () {
-
                     let selectvalue = primary.value;
 
-                    localStorage.setItem("default_account", selectvalue);
+                    let signup = JSON.parse(localStorage.getItem("array"));
 
-                    alert("Thank you!! Primary account is  " + selectvalue + " " + "selected");
+                    for (let k = 0; k < signup.length; k++) {
 
-                    window.location.href = ("./balance_enquire.html");
+                        if (signup[k]["email"] == email_compare) {
 
-                });
+                            signup[k]["primary"] = selectvalue;
 
-
-
-
-                btn1.forEach((e, index) => {
-                    e.addEventListener("click", function () {
-
-                        for (let a = 0; a < btn1.length; a++) {
-
-                            let account_details = JSON.parse(localStorage.getItem("account_details"))
-
-                            for (let j = 0; j < account_details.length; j++) {
-
-                                if (document.getElementById("account_give").value === account_details[j]["account"]) {
-
-                                    account_details.splice(index, 1);
-                                    localStorage.setItem("account_details", JSON.stringify(account_details));
-                                    location.reload();
-                                }
-                            }
+                            localStorage.setItem("array", JSON.stringify(signup));
                         }
 
-                    })
+                    }
+
+                    local()
+
+                    window.location.href = ("./home.html");
+                    // window.location.href = "./balance_enquire.html"
 
                 });
-
 
             }
 
         });
 
 
+
+        const btn1 = document.querySelectorAll(".remove_bk");
+
+        for (let i = 0; i < btn1.length; i++) {
+
+            btn1[i].addEventListener("click", () => {
+
+                let account_details = JSON.parse(localStorage.getItem("account_details"));
+
+                account_details.splice(i, 1);
+
+                localStorage.setItem("account_details", JSON.stringify(account_details));
+
+                primary_check();
+
+                location.reload();
+            })
+        }
+
+
+
+        function local() {
+
+            show.forEach(element => {
+
+                if (element["email"] === email_compare) {
+
+                    selectvalue = element["primary"];
+
+                    // localStorage.setItem("default_account", selectvalue);
+
+                }
+
+            })
+
+        }
+
+
+        function primary_check() {
+
+            // let primary_account = localStorage.getItem("default_account");
+
+
+            for (let kd = 0; kd < show.length; kd++) {
+
+                let primary_account = document.getElementById("account_give").value;
+
+
+                if (show[kd]["primary"] == primary_account) {
+
+                    show[kd]["primary"] = "";
+
+                    // primary_account = "";
+
+                    // localStorage.setItem("default_account", JSON.stringify(primary_account));
+
+                    localStorage.setItem("array", JSON.stringify(show));
+
+                    location.reload();
+
+
+                }
+
+            }
+
+        }
 
 
     </script>

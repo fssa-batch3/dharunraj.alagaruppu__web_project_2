@@ -181,63 +181,13 @@
         bottom_button.setAttribute("class", "btm_btn");
         content_of_log_in.append(bottom_button);
 
-        //ridht side main divider end
-
-
-        // Function is started............
-
-        // function login() 
-
-
-        //     let fullname = document.getElementById("fullname").value
-        //     let email = document.getElementById("email").value
-        //     let password = document.getElementById("password").value
-
-
-        //     const attach = JSON.parse(localStorage.getItem("array"))
-
-        //     let check;
-
-        //     attach.forEach(element => {
-
-        //         if (element["fname"] == fullname && element["email"] == email && element["new_pass"] == password) {
-
-        //             return check = 1
-        //             alert("logged");
-        //         }
-
-        //         else {
-        //             console.log(element);
-        //             console.log(fullname, email, password);
-
-        //             return check = 0
-        //             alert("invalid");
-        //         }
-
-        //     });
-
-        //     if (check == 1) {
-        //         let first_name;
-
-        //         first_name = fullname;
-        //         console.log(first_name);
-
-
-        //         localStorage.setItem("first_name", first_name);
-
-        //         window.location.href = "account_detail.html"
-
-        //     }
-
-
-        // }
-
 
         let button_click = document.getElementById("button_1")
 
-        button_click.addEventListener("click",
 
-            function (e) {
+        // Functions Starts***
+
+        button_click.addEventListener("click", function (e) {
 
                 e.preventDefault()
 
@@ -264,21 +214,20 @@
 
                     let first_name = fullname;
 
-                    localStorage.setItem("first_name", first_name); //login user details
-
                     localStorage.setItem("email", email); //login user details
-
 
                     alert("logged");
                     window.location.href = "home.html"
 
                 }
                 else {
-                    alert("invalid");
+                    alert("Something wrong !!");
                 }
 
 
-            })
+            });
+
+
     </script>
 
 

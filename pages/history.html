@@ -15,8 +15,9 @@
 <body>
 
     <header>
+
         <div class="title">
-            <a href="">NET BANKING</a>
+            <a href="./home.html">NET BANKING</a>
         </div>
 
         <div class="full_link">
@@ -41,15 +42,40 @@
             <div class="logout">
                 <a href="../index.html">Log Out</a>
             </div>
+
         </div>
 
     </header>
 
+    <div class="welcome">
+
+        <div class="background">
+
+            <div class="search">
+                <img src="../assets/img/5138de707a808fdcb21f8190a417a259.png_wh860-removebg-preview.png" alt="search">
+                <label for="search"></label>
+                <input type="search" id="search" name="search" placeholder="History here">
+            </div>
+
+            <div class="filter">
+
+                <div class="filter_icon">
+
+                    <img src="../assets/img/filter_icon.png" alt="filter_icon">
+                    <span>Filter</span>
+                </div>
+
+                <img src="../assets/img/arrow_icon.png" alt="arrow_icon">
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
     <main>
-
-
-
-
 
     </main>
 
@@ -66,9 +92,25 @@
 
         let primary_account;
 
+        let accounter;
+
         let signup_array = JSON.parse(localStorage.getItem("array"));
 
+        let function_account;
+        let function_image;
+        let type;
+        let function_amount;
+        let icon;
+        let id;
+        let function_date;
+        let function_current_balance;
+
+
+
         primary()
+
+        history_show()
+
         function primary() {
 
             for (let m = 0; m < signup_array.length; m++) {
@@ -79,185 +121,179 @@
 
                 }
 
-
-
             }
 
         }
 
 
-        for (let d = 0; d < account_details.length; d++) {
-
-            if (account_details[d]["email_compare"] == email && account_details[d]["account"] == primary_account) {
-
-                let accounter = account_details[d]["account"];
-
-                for (let j = 0; j < history.length; j++) {
-
-                    if (accounter == history[j]["sender_account"]) {
-
-                        let main_div = document.querySelector("main")
+        function history_show() {
 
 
-                        let new_container = document.createElement("div");
-                        new_container.setAttribute("class", "history");
-                        document.querySelector("main").append(new_container);
 
+            for (let d = 0; d < account_details.length; d++) {
 
-                        let send = document.createElement("div");
-                        send.setAttribute("class", "send_data");
-                        new_container.append(send);
+                if (account_details[d]["email_compare"] == email && account_details[d]["account"] == primary_account) {
 
-                        let type_fund = document.createElement("div");
-                        type_fund.setAttribute("class", "type_fund");
-                        send.append(type_fund);
+                    accounter = account_details[d]["account"];
 
-                        let image = document.createElement("img");
-                        image.setAttribute("id", "bank_icon")
-                        image.setAttribute("src", "../assets/img/hdfc_icon.png");
-                        image.setAttribute("alt", "bank_icon");
-                        type_fund.append(image);
+                    for (let j = 0; j < history.length; j++) {
 
-                        let transfer_type = document.createElement("div");
-                        transfer_type.setAttribute("class", "transfer_type");
-                        type_fund.append(transfer_type);
+                        if (accounter == history[j]["sender_account"]) {
 
-                        let increase = document.createElement("h2");
-                        increase.setAttribute("class", "increase");
-                        increase.setAttribute("id", "increase");
-                        increase.innerText = history[j]["sender_type"];
-                        transfer_type.append(increase);
+                            function_account = history[j]["sender_account"];
+                            function_image = "../assets/img/hdfc_icon.png"
+                            type = history[j]["sender_type"]
+                            function_amount = history[j].send_amount
+                            icon = "../assets/img/minus_icon.png"
+                            id = "minus";
+                            function_date = history[j]["date"]
+                            function_current_balance = history[j]["sender_balance"];
 
-                        let reciver_name = document.createElement("p");
-                        reciver_name.setAttribute("class", "reciver_name");
-                        reciver_name.innerText = history[j]["reciver_account"];
-                        transfer_type.append(reciver_name);
+                            create_div()
 
+                        }
 
-                        let amount = document.createElement("div");
-                        amount.setAttribute("class", "amount");
-                        send.append(amount);
+                        else if (accounter == history[j]["reciver_account"]) {
 
-                        let minus = document.createElement("h4");
-                        minus.setAttribute("class", "minus");
-                        minus.setAttribute("id", "minus");
-                        minus.innerText = "₹" + "" + history[j].send_amount;
-                        amount.append(minus);
+                            function_account = history[j]["sender_account"];
+                            function_image = "../assets/img/hdfc_icon.png"
+                            type = history[j]["reciver_type"]
+                            function_amount = history[j].send_amount
+                            icon = "../assets/img/plus_icon.png";
+                            id = "plus";
+                            function_date = history[j]["date"]
+                            function_current_balance = history[j]["reciver_balance"];
 
-                        let type_model = document.createElement("img");
-                        type_model.setAttribute("src", "../assets/img/minus_icon.png");
-                        type_model.setAttribute("alt", "bank_icon");
-                        amount.append(type_model);
+                            create_div()
 
-
-                        let balance_data = document.createElement("div");
-                        balance_data.setAttribute("class", "balance_data");
-                        new_container.append(balance_data)
-
-                        let date = document.createElement("h3");
-                        date.setAttribute("class", "date");
-                        date.setAttribute("id", "date");
-                        date.innerHTML = history[j]["date"];
-                        balance_data.append(date);
-
-                        let balance_span = document.createElement("span");
-                        balance_span.setAttribute("class", "balance_span");
-                        balance_span.innerText = "Balance :";
-                        balance_data.append(balance_span);
-
-                        let balance = document.createElement("h3");
-                        balance.setAttribute("class", "balance_span");
-                        balance.innerText = "₹" + " " + history[j].sender_balance;
-                        balance_span.append(balance);
+                        }
 
                     }
+
                 }
-
-                for (let j = 0; j < history.length; j++) {
-
-                    if (accounter == history[j]["reciver_account"]) {
-
-                        let main_div = document.querySelector("main")
-
-                        let new_container = document.createElement("div");
-                        new_container.setAttribute("class", "history");
-                        document.querySelector("main").append(new_container);
-
-
-                        let send = document.createElement("div");
-                        send.setAttribute("class", "send_data");
-                        new_container.append(send);
-
-                        let type_fund = document.createElement("div");
-                        type_fund.setAttribute("class", "type_fund");
-                        send.append(type_fund);
-
-                        let image = document.createElement("img");
-                        image.setAttribute("id", "bank_icon")
-                        image.setAttribute("src", "../assets/img/hdfc_icon.png");
-                        image.setAttribute("alt", "bank_icon");
-                        type_fund.append(image);
-
-                        let transfer_type = document.createElement("div");
-                        transfer_type.setAttribute("class", "transfer_type");
-                        type_fund.append(transfer_type);
-
-                        let increase = document.createElement("h2");
-                        increase.setAttribute("class", "increase");
-                        increase.setAttribute("id", "increase");
-                        increase.innerText = history[j]["reciver_type"]
-                        transfer_type.append(increase);
-
-                        let reciver_name = document.createElement("p");
-                        reciver_name.setAttribute("class", "reciver_name");
-                        reciver_name.innerText = history[j]["sender_account"]
-                        transfer_type.append(reciver_name);
-
-
-                        let amount = document.createElement("div");
-                        amount.setAttribute("class", "amount");
-                        send.append(amount);
-
-                        let minus = document.createElement("h4");
-                        minus.setAttribute("class", "plus");
-                        minus.setAttribute("id", "minus");
-                        minus.innerText = "₹" + "" + history[j].send_amount;
-                        amount.append(minus);
-
-                        let type_model = document.createElement("img");
-                        type_model.setAttribute("src", "../assets/img/plus_icon.png");
-                        type_model.setAttribute("alt", "bank_icon");
-                        amount.append(type_model);
-
-
-                        let balance_data = document.createElement("div");
-                        balance_data.setAttribute("class", "balance_data");
-                        new_container.append(balance_data)
-
-                        let date = document.createElement("h3");
-                        date.setAttribute("class", "date");
-                        date.setAttribute("id", "date");
-                        date.innerHTML = history[j]["date"];
-                        balance_data.append(date);
-
-                        let balance_span = document.createElement("span");
-                        balance_span.setAttribute("class", "balance_span");
-                        balance_span.innerText = "Balance :";
-                        balance_data.append(balance_span);
-
-                        let balance = document.createElement("h3");
-                        balance.setAttribute("class", "balance_span");
-                        balance.innerText = "₹" + "" + history[j].reciver_balance
-                        balance_span.append(balance);
-
-                    }
-                }
-
-
             }
+
+
         }
 
-        // }
+
+
+        function create_div() {
+
+            let main_div = document.querySelector("main")
+
+
+            let new_container = document.createElement("div");
+            new_container.setAttribute("class", "history");
+            document.querySelector("main").append(new_container);
+
+
+            let send = document.createElement("div");
+            send.setAttribute("class", "send_data");
+            new_container.append(send);
+
+            let type_fund = document.createElement("div");
+            type_fund.setAttribute("class", "type_fund");
+            send.append(type_fund);
+
+            let image = document.createElement("img");
+            image.setAttribute("id", "bank_icon")
+            image.setAttribute("src", function_image);
+            image.setAttribute("alt", "bank_icon");
+            type_fund.append(image);
+
+            let transfer_type = document.createElement("div");
+            transfer_type.setAttribute("class", "transfer_type");
+            type_fund.append(transfer_type);
+
+            let increase = document.createElement("h2");
+            increase.setAttribute("class", "increase");
+            increase.setAttribute("id", "increase");
+            increase.innerText = type;
+            transfer_type.append(increase);
+
+            let reciver_name = document.createElement("p");
+            reciver_name.setAttribute("class", "reciver_name");
+            reciver_name.innerText = function_account;
+            transfer_type.append(reciver_name);
+
+
+            let amount = document.createElement("div");
+            amount.setAttribute("class", "amount");
+            send.append(amount);
+
+            let minus = document.createElement("h4");
+            minus.setAttribute("class", "minus");
+            minus.setAttribute("id", id);
+            minus.innerText = "₹" + "" + function_amount;
+            amount.append(minus);
+
+            let type_model = document.createElement("img");
+            type_model.setAttribute("src", icon);
+            type_model.setAttribute("alt", "bank_icon");
+            amount.append(type_model);
+
+
+            let balance_data = document.createElement("div");
+            balance_data.setAttribute("class", "balance_data");
+            new_container.append(balance_data)
+
+            let date = document.createElement("h3");
+            date.setAttribute("class", "date");
+            date.setAttribute("id", "date");
+            date.innerHTML = function_date;
+            balance_data.append(date);
+
+            let balance_span = document.createElement("span");
+            balance_span.setAttribute("class", "balance_span");
+            balance_span.innerText = "Balance :";
+            balance_data.append(balance_span);
+
+            let balance = document.createElement("h3");
+            balance.setAttribute("class", "balance_span");
+            balance.innerText = "₹" + " " + function_current_balance;
+            balance_span.append(balance);
+
+        }
+
+
+
+        let search = document.querySelector("#search");
+
+        let histroy = document.querySelectorAll(".history");
+
+        search.addEventListener("keyup", (key) => {
+
+            let values = key.target.value.toLowerCase();
+
+
+            for (let i = 0; i < histroy.length; i++) {
+
+                let fund_type = histroy[i].querySelector(".increase").innerHTML.toLowerCase();
+
+                if ((fund_type.includes(values))) {
+
+                    histroy[i].style.display = "block";
+
+                }
+
+                else {
+
+                    histroy[i].style.display = "none";
+                }
+            }
+
+        });
+
+
+        // let filter_div = document.querySelector(".filter");
+
+
+        // filter_div.addEventListener("click", () => {
+        //     ;
+
+        // });
+
     </script>
 
 </body>

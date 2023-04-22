@@ -212,9 +212,7 @@
             e.preventDefault()
             signup()
 
-        })
-
-
+        });
 
         let first_name;
         let last_name;
@@ -226,29 +224,29 @@
 
         function signup() {
 
-            first_name = document.getElementById("fname").value.trim()
-            last_name = document.getElementById("lname").value.trim()
-            email = document.getElementById("email").value.trim()
-            phone = document.getElementById("phone").value.trim()
-            new_pass = document.getElementById("new_pass").value.trim()
-            confirm_pass = document.getElementById("confirm").value.trim()
+            first_name = document.getElementById("fname").value.trim();
+            last_name = document.getElementById("lname").value.trim();
+            email = document.getElementById("email").value.trim();
+            phone = document.getElementById("phone").value.trim();
+            new_pass = document.getElementById("new_pass").value.trim();
+            confirm_pass = document.getElementById("confirm").value.trim();
 
 
             if (first_name != "" && last_name != "" && email !== "" && new_pass != "" && confirm_pass != "" && phone != "") {
 
                 if (new_pass != confirm_pass) {
-                    alert("Oops !! password and confirm password doesn't match.")
+                    alert("Oops !! password and confirm password doesn't match.");
                 }
 
                 else {
 
-                    add_local()
+                    add_local();
                 }
 
             }
 
             else {
-                alert("Can't get a data.Please give a value")
+                alert("Can't get a data.Please give a value");
             }
         }
 
@@ -267,7 +265,7 @@
             }
 
             if (res == 1) {
-                alert("email already registered")
+                alert("email already registered");
 
             }
 
@@ -298,121 +296,8 @@
             }
         }
 
-
-
     </script>
 
 </body>
 
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- // localStorage.setItem("fname", first_name)
-// localStorage.setItem("lname", last_name)
-// localStorage.setItem("email", email)
-// localStorage.setItem("phone", phone)
-// localStorage.setItem("aadhar", aadhar)
-// localStorage.setItem("pan", pan)
-// localStorage.setItem("new_pass", new_pass)
-// localStorage.setItem("confirm", confirm)
-
-// let btn = document.querySelector(".bottom_button");
-// btn.addEventListener(
-//     "onSubmit", function (e) {
-//         e.target.preventDefault();
-//         signup();
-//     }
-// )
-
-
-//date of birth
-
-// let bottom_form = document.createElement("div");
-// bottom_form.setAttribute("class", "bottom_form");
-// content_of_singnup.append(bottom_form);
-
-// let dob_child = document.createElement("div");
-// dob_child.setAttribute("class", "dob_child");
-
-// bottom_form.append(dob_child);
-
-// let dob_label = document.createElement("label");
-// dob_label.setAttribute("for", "dob");
-// dob_child.append(dob_label);
-
-// let dob = document.createElement("input");
-// dob.setAttribute("type", "date");
-// dob.setAttribute("name", "dob");
-// dob.setAttribute("id", "dob");
-// dob_child.append(dob);
-
-
-//Gender label and input
-
-// let div_of_gender = document.createElement("div");
-// div_of_gender.setAttribute("class", "gender");
-// bottom_form.append(div_of_gender);
-
-// let heading_gender = document.createElement("h4");
-// heading_gender.innerText = "Gender:";
-// div_of_gender.append(heading_gender);
-
-// let require = document.createElement("div");
-// require.setAttribute("class", "require");
-// div_of_gender.append(require);
-
-
-// let gen_div = document.createElement("div");
-// gen_div.setAttribute("class", "align_gen");
-// require.append(gen_div);
-
-// let ladi_div = document.createElement("div");
-// ladi_div.setAttribute("class", "align_gen");
-// div_of_gender.append(ladi_div);
-
-
-// let gender_input = document.createElement("input");
-// gender_input.setAttribute("type", "radio");
-// gender_input.setAttribute("name", "gender");
-// gender_input.setAttribute("id", "gender");
-// gen_div.append(gender_input);
-
-// let gen_label = document.createElement("label");
-// gen_label.setAttribute("for", "gender");
-// gen_label.innerText = "Male";
-// gen_div.append(gen_label);
-
-// let gender_input2 = document.createElement("input");
-// gender_input2.setAttribute("type", "radio");
-// gender_input2.setAttribute("name", "gender");
-// gender_input2.setAttribute("id", "gend");
-// ladi_div.append(gender_input2);
-
-// let gen_label2 = document.createElement("label");
-// gen_label2.setAttribute("for", "gend");
-// gen_label2.innerText = "Female";
-// // gen_label2.innerText=("Female")
-// ladi_div.append(gen_label2); -->

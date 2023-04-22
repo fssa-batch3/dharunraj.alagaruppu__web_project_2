@@ -14,7 +14,7 @@
 
     <header>
         <div class="title">
-            <a href="">NET BANKING</a>
+            <a href="./home.html">NET BANKING</a>
         </div>
 
         <div class="full_link">
@@ -134,7 +134,7 @@
 
     let account_check = JSON.parse(localStorage.getItem("bal_enquire"));
 
-    const get_default_account = localStorage.getItem("default_account");
+    // const get_default_account = localStorage.getItem("default_account");
 
     let customer_balance;
     let customer_number;
@@ -161,9 +161,7 @@
                     document.getElementById("customer_ac").innerHTML = customer_number;
                     document.getElementById("ac_type").innerText = customer_type;
 
-
                     localStorage.setItem("bal_enquire", JSON.stringify(account_check));
-
 
                 }
 

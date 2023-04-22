@@ -18,15 +18,17 @@
 
     </div>
 
+    <script type="text/javascript" src="../assets/js/common_function.js"></script>
+
 </body>
 
 <script>
 
     //Right side container
 
-    let content_list = document.createElement("div");
-    content_list.setAttribute("class", "content_list");
-    document.querySelector(".main").append(content_list);
+    // let content_list = document.createElement("div");
+    // content_list.setAttribute("class", "content_list");
+    // document.querySelector(".main").append(content_list);
 
 
 
@@ -76,10 +78,14 @@
     delete_button.innerText = ("Delete");
     simple_detail.append(delete_button);
 
+    let form = document.createElement("form");
+    form.setAttribute("id", "right_form");
+    document.querySelector(".main").append(form);
+
 
     let edit_profile = document.createElement("div");
     edit_profile.setAttribute("class", "edit_profile");
-    document.querySelector(".main").append(edit_profile);
+    form.append(edit_profile);
 
 
     let heading_profile = document.createElement("div");
@@ -222,10 +228,11 @@
 
 
 
-    let edit_button = document.createElement("a");
-    edit_button.setAttribute("class", "back_button");
+    let edit_button = document.createElement("button");
+    edit_button.setAttribute("class", "back_button1");
     edit_button.innerText = ("Edit");
     click_button.append(edit_button);
+
 
 
 
@@ -236,6 +243,9 @@
     let account_name = localStorage.getItem("first_name");
 
     let email_compare = localStorage.getItem("email");
+
+    let balance_enquire = JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
+
 
 
     let current_user;
@@ -257,37 +267,66 @@
     document.getElementById("email").value = current_user["email"]
     document.getElementById("dob").value = current_user["dob"]
     document.getElementById("district").value = current_user["district"]
-    document.getElementById("state").value = current_user["state"]
+    document.getElementById("state").value = current_user["state"];
 
-    edit_button.addEventListener("click", () => {
+    let form_click = document.querySelector("form");
+
+    form_click.addEventListener("submit", () => {
+
+        console.log(current_user["fname"])
+        let correction;
 
         for (let i = 0; i < show.length; i++) {
 
             if (document.getElementById("email").value == show[i]["email"]) {
 
-                show[i].dob = document.getElementById("dob").value.trim()
-                show[i].district = document.getElementById("district").value.trim();
-                show[i].state = document.getElementById("state").value.trim();
+                if (document.getElementById("fname").value == current_user["fname"] && document.getElementById("email").value == current_user["email"] && document.getElementById("phone").value == current_user["phone"]) {
+
+                    show[i].dob = document.getElementById("dob").value.trim()
+                    show[i].district = document.getElementById("district").value.trim();
+                    show[i].state = document.getElementById("state").value.trim();
+                    correction = 1;
+                    break;
+                }
 
             }
+
         }
 
-        if (document.getElementById("fname").value != "" && document.getElementById("email").value != "" && document.getElementById("phone").value != "") {
+        if (correction == 1) {
+
             localStorage.setItem('array', JSON.stringify(show));
             alert("Successfully your profile updated")
+
         }
         else {
             alert("Name , phone number , email_id you are  can't change the data");
         }
+
+
+
+
+
+
     });
+
+
+    let account_num;
 
     delete_button.addEventListener("click", () => {
 
         for (let i = 0; i < show.length; i++) {
+
             if (document.getElementById("email").value == show[i]["email"]) {
-                // confirm("comfortable with it")
+
                 show.splice(i, 1);
+
+                // primary_check();
+
+                // clear_balance();
+
                 localStorage.setItem("array", JSON.stringify(show));
+
                 window.location.href = "../index.html";
             }
         }
@@ -313,9 +352,9 @@
                 image.setAttribute("src", reader.result);
                 let us1 = JSON.parse(localStorage.getItem("array"))
 
-                us1.forEach(element => {
+                // us1.forEach(element => {
 
-                });
+                // });
 
                 us1[0]["image"] = image.getAttribute("src")
                 localStorage.setItem("array", JSON.stringify(us1))

@@ -12,6 +12,7 @@ a {
 }
 
 .main {
+    width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -55,7 +56,8 @@ input {
 }
 
 
-.edit_profile {
+
+form {
     width: 47%;
     display: flex;
     flex-direction: column;
@@ -67,25 +69,25 @@ input {
     border-radius: 25px;
 }
 
-.edit_profile h2 {
+form .edit_profile h2 {
     margin: 5%;
     width: 100%;
 }
 
-.edit_profile .heading_profile {
+form .edit_profile .heading_profile {
 
     /* border-bottom: 1px solid gray; */
     width: 100%;
 }
 
-.edit_profile .form_profile {
+form .edit_profile .form_profile {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 2% 0%;
 }
 
-.form_profile .input1 {
+ .form_profile .input1 {
     font-size: 15px;
     /* margin: 10%; */
 }
@@ -109,7 +111,7 @@ input:focus {
     justify-content: space-around;
 }
 
-.back_button {
+.back_button , .back_button1 {
     text-align: center;
     background-color: #566ef3;
     color: white;
@@ -121,13 +123,17 @@ input:focus {
     font-family: 'Open Sans', sans-serif;
     width: 30%;
     margin: 5% auto;
+    border: none;
 }
 
-.back_button:hover {
+.back_button:hover , .back_button1:hover{
     color: white;
     background-color: #2945d0;
 }
 
+/* button {
+    border: none;
+} */
 
 #simple_upload {
     display: none;

@@ -15,7 +15,8 @@
 <body>
 
     <div class="main">
-        <a href=></a>
+       
+
     </div>
     <script>
 
@@ -43,10 +44,6 @@
         let pickup = document.createElement("h3");
         pickup.innerText = "You are 30 seconds away to experiencing your new Banking World ";
         welcome.append(pickup);
-
-        // let account= document.createElement("div");
-        // account.setAttribute("class","full_account");
-        // welcome.append(account);
 
         let a = document.createElement("a");
         a.setAttribute("href", "./signup_page.html");
@@ -91,8 +88,6 @@
 
 
         let form = document.createElement("form");
-        // form.setAttribute("method", "post");
-        // form.setAttribute("id", "singupform")
 
         right_container.append(form);
 
@@ -106,10 +101,11 @@
                 "type": "text",
                 "name": "fullname",
                 "id": "fullname",
-                "placeholder": "",
+                "placeholder": "Enter your name",
                 "required": "required",
-                "tittle": "You must put the name what you signup in this website",
-                "aria": "First name"
+                "tittle": "Please enter correct 'First name' when you signup in this website or a_z && A_Z only accepted",
+                "aria": "First name",
+                "pattern": "[A-Za-z]{2,29}",
 
             },
 
@@ -122,10 +118,12 @@
                 "type": "email",
                 "name": "email",
                 "id": "email",
-                "placeholder": "",
+                "placeholder": "Enter your email.id",
                 "required": "required",
                 "tittle": "You must put the email what you signup in this website",
-                "aria": "Email id"
+                "aria": "Email id",
+                "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+
 
             },
 
@@ -138,15 +136,16 @@
                 "type": "password",
                 "name": "password",
                 "id": "password",
-                "placeholder": "",
+                "placeholder": "Enter your correct password",
                 "required": "required",
-                "tittle": "You must put the password what you signup in this website",
-                "aria": "Password"
+                "tittle": "You must put the password when you signup in this website",
+                "aria": "Password",
+                "pattern": "(?=.*)(?=.*[a-z])(?=.*[A-Z]).{8,20}",
 
             },
         ]
 
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < obj.length; i++) {
 
 
             let label_text = document.createElement("label");
@@ -159,16 +158,19 @@
             input_box.setAttribute("name", obj[i]["name"]);
             input_box.setAttribute("id", obj[i]["id"]);
             input_box.setAttribute("placeholder", obj[i]["placeholder"]);
-            input_box.setAttribute("required", "");
+            input_box.setAttribute("required", obj[i]["required"]);
+            input_box.setAttribute("pattern", obj[i]["pattern"]);
+            input_box.setAttribute("title", obj[i]["tittle"]);
+            input_box.setAttribute("aria", obj[i]["aria"]);
+            
+
             form.append(input_box);
 
         }
 
         let next = document.createElement("button");
-        next.setAttribute("type", "submit");
         next.setAttribute("class", "bottom_button");
         next.setAttribute("id", "button_1")
-        // next.setAttribute("onclick", "login()")
         next.innerText = ("Login");
         form.append(next);
 
@@ -182,50 +184,54 @@
         content_of_log_in.append(bottom_button);
 
 
-        let button_click = document.getElementById("button_1")
 
 
         // Functions Starts***
 
-        button_click.addEventListener("click", function (e) {
-
-                e.preventDefault()
-
-                let fullname = document.getElementById("fullname").value.trim()
-                let email = document.getElementById("email").value.trim()
-                let password = document.getElementById("password").value.trim()
 
 
-                const attach = JSON.parse(localStorage.getItem("array"))
 
-                let check;
-                // 
-                attach.forEach(element => {
+        form.addEventListener("submit", function (e) {
 
-                    if (element["fname"] === fullname && element["email"] === email && element["new_pass"] === password) {
+            e.preventDefault()
+            login()
 
-                        return check = 1;
+        });
 
-                    }
+        function login() {
 
-                });
+            const attach = JSON.parse(localStorage.getItem("array"))
 
-                if (check == 1) {
+            let fullname = document.getElementById("fullname").value.trim()
+            let email = document.getElementById("email").value.trim()
+            let password = document.getElementById("password").value.trim()
 
-                    let first_name = fullname;
+            let check;
+            attach.forEach(element => {
 
-                    localStorage.setItem("email", email); //login user details
+                if (element["fname"] === fullname && element["email"] === email && element["new_pass"] === password) {
 
-                    alert("logged");
-                    window.location.href = "home.html"
-
+                    check = 1;
                 }
-                else {
-                    alert("Something wrong !!");
-                }
-
 
             });
+
+            if (check == 1) {
+
+                localStorage.setItem("email", email); //login user email details 
+
+                alert(" Successfully login");
+
+                window.location.href = "home.html"
+
+            }
+
+            else {
+
+                alert("Some thing went increate .Please recheck your details !!");
+            }
+
+        }
 
 
     </script>

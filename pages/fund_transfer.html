@@ -17,7 +17,7 @@
 
     <header>
         <div class="title">
-            <a href="">NET BANKING</a>
+            <a href="./home.html">NET BANKING</a>
         </div>
 
         <div class="full_link">
@@ -109,15 +109,7 @@
 
         <div class="back_foot">
 
-            <!-- <div class="direct">
-
-                <a href="./signup_page.html">Register</a>
-                <a href="./login_page.html">Login</a>
-            </div> -->
-
             <h3>@ 2023 Net Banking</h3>
-
-
 
             <div class="icon_social">
 
@@ -144,7 +136,6 @@
 
         let signup_array = JSON.parse(localStorage.getItem("array"));
 
-        let sender_balances;
         let current_balance;
         let reciver_balances;
         let balance;
@@ -169,8 +160,9 @@
 
         }
 
-        sender_balance()
+        let sender_balances;
 
+        sender_balance()
         function sender_balance() {
 
             for (let i = 0; i < balance_page.length; i++) {
@@ -178,10 +170,8 @@
                 if (balance_page[i]["email_compare"] == email) {
 
                     sender_balances = balance_page[i]["ac_balance"];
-                    // console.log(sender_balances);
 
                 }
-
             }
         }
 
@@ -189,40 +179,51 @@
 
         let send_button = document.getElementsByTagName("form");
 
-        send_button[0].addEventListener("submit", () => {
-            // e.preventDefault()
+        send_button[0].addEventListener("submit", (j) => {
+
+            j.preventDefault()
+
             account_to_account();
 
         });
 
+
+        let send_account = JSON.parse(localStorage.getItem("send_account")) ?? [];
+
+        let history_table = JSON.parse(localStorage.getItem("history_table")) ?? [];
+
+        let result;
+
+        let from_account;
+        let to_account;
+        let to_ifsc;
+        let send_amount;
+        let current_date;
+        let email_compare;
+        let reciver_type;
+        let sender_type;
+
+        let account_account;
+        let history;
+
         function account_to_account() {
 
-            let from_account = document.getElementById("from").value.trim();
-            let to_account = document.getElementById("to").value.trim();
-            let to_ifsc = document.getElementById("ifsc").value.trim();
-            let send_amount = document.getElementById("amount").value.trim();
-            let current_date = new Date().toJSON().slice(0, 10);
-            let email_compare = localStorage.getItem("email");
-            // let current_money = JSON.parse(localStorage.getItem("ac_balance"));
-            // console.log(current_money);
-            let result;
-            let reciver_type;
-            // let reciver_balance;
-            let sender_type;
+            from_account = document.getElementById("from").value.trim();
+            to_account = document.getElementById("to").value.trim();
+            to_ifsc = document.getElementById("ifsc").value.trim();
+            send_amount = document.getElementById("amount").value.trim();
+            current_date = new Date().toJSON().slice(0, 10);
+            email_compare = localStorage.getItem("email");
+            result;
+            reciver_type;
+            sender_type;
 
             if (from_account != "" && to_account != "" && to_ifsc != "" && send_amount != "") {
-
-                let send_account = JSON.parse(localStorage.getItem("send_account")) ?? [];
-
-                let history_table = JSON.parse(localStorage.getItem("history_table")) ?? [];
-
-                let result;
-
                 balance_page.find(e => {
 
                     if (e["ac_no"] == to_account && e["ac_no"] != from_account) {
-                        result = 1;
 
+                        result = 1;
                     }
 
                 });
@@ -230,45 +231,9 @@
 
                 if (result == 1) {
 
-                    if (sender_balances > send_amount) {
+                    if (sender_balances >= send_amount) {
 
-                        let account_account = {
-                            "from_account": from_account,
-                            "to_account": to_account,
-                            "to_ifsc": to_ifsc,
-                            "send_amount": send_amount,
-                            "email_compare": email_compare,
-                            "reciver_id": ""
-                        }
-
-                        let history = {
-                            "send_amount": send_amount,
-                            "date": current_date,
-                            "sender_balance": "",
-                            "reciver_balance": "",
-                            "email_compare": email_compare,
-                            "reciver_account": to_account,
-                            "sender_account": from_account,
-                            "sender_type": "",
-                            "reciver_type": "",
-
-                        }
-
-
-                        send_account.push(account_account);
-
-                        history_table.push(history);
-
-                        localStorage.setItem("send_account", JSON.stringify(send_account));
-
-                        localStorage.setItem("history_table", JSON.stringify(history_table));
-
-                        balance_change();
-
-                        window.location.href = ("./history.html");
-
-                        alert("Thanks for send money");
-
+                        local_push();
                     }
 
                     else {
@@ -285,10 +250,54 @@
 
             else {
 
-                alert("Sorry can't get a value")
+                alert("Please recheck the value")
             }
 
         }
+
+
+        function local_push() {
+
+
+            account_account = {
+                "from_account": from_account,
+                "to_account": to_account,
+                "to_ifsc": to_ifsc,
+                "send_amount": send_amount,
+                "email_compare": email_compare,
+                "reciver_id": ""
+            }
+
+            history = {
+                "send_amount": send_amount,
+                "date": current_date,
+                "sender_balance": "",
+                "reciver_balance": "",
+                "email_compare": email_compare,
+                "reciver_account": to_account,
+                "sender_account": from_account,
+                "sender_type": "",
+                "reciver_type": "",
+
+            }
+
+
+            send_account.push(account_account);
+
+            history_table.push(history);
+
+            localStorage.setItem("send_account", JSON.stringify(send_account));
+
+            localStorage.setItem("history_table", JSON.stringify(history_table));
+
+            balance_change();
+
+            window.location.href = ("./history.html");
+
+            alert("Thanks for send money");
+
+        }
+
 
         function balance_change() {
 
@@ -379,30 +388,11 @@
                         }
                     }
 
-
-
-
-
                 }
 
             })
 
         }
-
-
-
-          // account_check.forEach(element => {
-
-        //     if (element["email_compare"] == email) {
-
-        //         let default_account = document.getElementById("from");
-
-        //         const get_default_account = localStorage.getItem("default_account");
-
-        //         default_account.value = get_default_account;
-
-        //     }
-        // });
 
     </script>
 </body>

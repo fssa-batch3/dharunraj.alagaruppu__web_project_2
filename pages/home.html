@@ -19,7 +19,7 @@
 
     <header>
         <div class="title">
-            <a href="">NET BANKING</a>
+            <a href="./home.html">NET BANKING</a>
         </div>
 
         <div class="full_link">
@@ -182,20 +182,18 @@
 
     <script>
 
-
-        // Header name 
-
         let show = JSON.parse(localStorage.getItem('array'));
 
-        let account_name = localStorage.getItem("first_name");
+        let account_detail = JSON.parse(localStorage.getItem("account_details")) ?? [];
+
+        let balance_enquire = JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
 
         let email_compare = localStorage.getItem("email");
 
         let selectvalue;
 
-        let btn_submit = document.querySelector("form");
 
-          // Functions Starts****
+        let btn_submit = document.querySelector("form");
 
         btn_submit.addEventListener("submit", (e) => {
             e.preventDefault()
@@ -216,17 +214,30 @@
             }
         })
 
+
+        let account;
+        let ifsc;
+        let phone;
+        let pincode;
+        let balance;
+        let personal;
+        let business;
+        let account_type;
+
+        let account_store;
+        let table_obj;
+
         function link_bank() {
 
-            let account = document.getElementById("account").value.trim();
-            let ifsc = document.getElementById("ifsc").value.trim();
-            let phone = document.getElementById("phone").value.trim();
-            let pincode = document.getElementById("pincode").value.trim();
-            let email_compare = localStorage.getItem("email");
-            let balance = Math.floor(Math.random() * 10000);
-            let personal = document.getElementById("personal");
-            let business = document.getElementById("business");
-            let account_type;
+            account = document.getElementById("account").value.trim();
+            ifsc = document.getElementById("ifsc").value.trim();
+            phone = document.getElementById("phone").value.trim();
+            pincode = document.getElementById("pincode").value.trim();
+            email_compare = localStorage.getItem("email");
+            balance = Math.floor(Math.random() * 10000);
+            personal = document.getElementById("personal");
+            business = document.getElementById("business");
+            account_type;
 
             if (personal.checked) {
                 account_type = "Savings Account"
@@ -234,68 +245,15 @@
             }
             else if (business.checked) {
                 account_type = "Current Account"
-
             }
+
+
 
             if (account != "" && ifsc != "" && phone != "" && pincode != "") {
 
-                let account_store = {
-                    "account": account,
-                    "ifsc": ifsc,
-                    "phone": phone,
-                    "pincode": pincode,
-                    "email_compare": email_compare,
-                    "balance": balance,
-                    "ac_type": account_type,
-                    "primary": "",
-                }
+                add_local()
 
-                let table_obj = {
-                    "ac_no": account,
-                    "ac_type": account_type,
-                    "ac_balance": balance,
-                    "email_compare": email_compare,
-                }
-
-                let add_account = JSON.parse(localStorage.getItem("account_details")) ?? [];
-
-                let table_balance = JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
-
-                let res;
-
-                for (let i = 0; i < add_account.length; i++) {
-
-                    if (add_account[i]["account"] === account) {
-                        res = 1;
-                        break;
-                    }
-                }
-
-                if (res == 1) {
-                    alert(" Invalid account number")
-
-                }
-
-                else {
-
-                    add_account.push(account_store);
-
-                    table_balance.push(table_obj);
-
-                    localStorage.setItem("account_details", JSON.stringify(add_account));
-
-                    localStorage.setItem("bal_enquire", JSON.stringify(table_balance));
-
-                    location.reload();
-
-                    alert("Thanks for add account");
-
-                    window.location.href = "#bank_account"
-
-
-
-                }
-
+                window.location.href = "#bank_account"
             }
 
             else {
@@ -304,11 +262,58 @@
         }
 
 
+        function add_local() {
 
+            account_store = {
+                "account": account,
+                "ifsc": ifsc,
+                "phone": phone,
+                "pincode": pincode,
+                "email_compare": email_compare,
+                "balance": balance,
+                "ac_type": account_type,
+                "primary": "",
+            }
 
-        let account_detail = JSON.parse(localStorage.getItem("account_details")) ?? [];
+            table_obj = {
+                "ac_no": account,
+                "ac_type": account_type,
+                "ac_balance": balance,
+                "email_compare": email_compare,
+            }
 
-        // let default_account = localStorage.getItem("default_account");
+            let res;
+
+            for (let i = 0; i < account_detail.length; i++) {
+
+                if (account_detail[i]["account"] === account) {
+                    res = 1;
+                    break;
+                }
+            }
+
+            if (res == 1) {
+                alert(" Invalid account number")
+
+            }
+
+            else {
+
+                account_detail.push(account_store);
+
+                balance_enquire.push(table_obj);
+
+                localStorage.setItem("account_details", JSON.stringify(account_detail));
+
+                localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
+
+                alert("Thanks for add account");
+
+                location.reload();
+
+            }
+
+        }
 
         let k = 0;
 
@@ -423,7 +428,7 @@
                 k++
 
                 primary.addEventListener('click', function () {
-                    let selectvalue = primary.value;
+                    selectvalue = primary.value;
 
                     let signup = JSON.parse(localStorage.getItem("array"));
 
@@ -440,36 +445,14 @@
 
                     local()
 
-                    window.location.href = ("./home.html");
-                    // window.location.href = "./balance_enquire.html"
+                    // window.location.href = ("./home.html");
+                    window.location.href = "./balance_enquire.html"
 
                 });
 
             }
 
         });
-
-
-
-        const btn1 = document.querySelectorAll(".remove_bk");
-
-        for (let i = 0; i < btn1.length; i++) {
-
-            btn1[i].addEventListener("click", () => {
-
-                let account_details = JSON.parse(localStorage.getItem("account_details"));
-
-                account_details.splice(i, 1);
-
-                localStorage.setItem("account_details", JSON.stringify(account_details));
-
-                primary_check();
-
-                location.reload();
-            })
-        }
-
-
 
         function local() {
 
@@ -479,8 +462,6 @@
 
                     selectvalue = element["primary"];
 
-                    // localStorage.setItem("default_account", selectvalue);
-
                 }
 
             })
@@ -488,38 +469,40 @@
         }
 
 
-        function primary_check() {
+        const btn1 = document.querySelectorAll(".remove_bk");
 
-            // let primary_account = localStorage.getItem("default_account");
+        let account_num;
 
+        for (let ic = 0; ic < btn1.length; ic++) {
+            btn1[ic].addEventListener("click", (account, balance) => {
 
-            for (let kd = 0; kd < show.length; kd++) {
+                account_num = document.getElementsByClassName("account_give")[ic].value;
 
-                let primary_account = document.getElementById("account_give").value;
+                console.log(account_num)
 
+                for (let a = 0; a < account_detail.length; a++) {
 
-                if (show[kd]["primary"] == primary_account) {
+                    if (account_detail[a]["account"] == account_num && email_compare == account_detail[a]["email_compare"]) {
 
-                    show[kd]["primary"] = "";
+                        account_detail.splice(a, 1);
 
-                    // primary_account = "";
+                        localStorage.setItem("account_details", JSON.stringify(account_detail));
 
-                    // localStorage.setItem("default_account", JSON.stringify(primary_account));
+                        primary_check();
 
-                    localStorage.setItem("array", JSON.stringify(show));
+                        clear_balance();
 
-                    location.reload();
-
-
+                        location.reload();
+                    }
                 }
 
-            }
-
+            })
         }
 
 
-    </script>
 
+    </script>
+    <script type="text/javascript" src="../assets/js/common_function.js"></script>
 
 </body>
 

@@ -96,7 +96,7 @@
                         title="Remember !! Your bank account number should be 16 numbers">
 
                     <label for="ifsc"> IFSC code </label>
-                    <input class="form-control" type="text" id="ifsc" name="ifsc" required pattern="[0-9A-Za-z]{12,16}"
+                    <input class="form-control" type="text" id="ifsc" name="ifsc" required pattern="[0-9A-Za-z]{5,15}"
                         title="Are you sure !! minium Your ifsc number should be 12 numbers">
 
                     <label for="phone">Phone number</label>
@@ -184,6 +184,7 @@
 
         let show = JSON.parse(localStorage.getItem('array'));
 
+
         let account_detail = JSON.parse(localStorage.getItem("account_details")) ?? [];
 
         let balance_enquire = JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
@@ -192,6 +193,7 @@
 
         let selectvalue;
 
+        let accounter_name;
 
         let btn_submit = document.querySelector("form");
 
@@ -208,6 +210,9 @@
                 document.querySelectorAll("#fname")[0].innerText = element["fname"] + ","//[0,1]
                 document.querySelectorAll("#fname")[1].innerText = element["fname"]
 
+                accounter_name = element["fname"];
+                // console.log(accounter_name);
+
                 local()
 
                 localStorage.setItem("array", JSON.stringify(show));
@@ -223,6 +228,8 @@
         let personal;
         let business;
         let account_type;
+        let branch;
+
 
         let account_store;
         let table_obj;
@@ -264,6 +271,8 @@
 
         function add_local() {
 
+            // branch_get()
+
             account_store = {
                 "account": account,
                 "ifsc": ifsc,
@@ -273,6 +282,9 @@
                 "balance": balance,
                 "ac_type": account_type,
                 "primary": "",
+                "branch": "",
+                "accounter_name": accounter_name,
+
             }
 
             table_obj = {
@@ -280,6 +292,8 @@
                 "ac_type": account_type,
                 "ac_balance": balance,
                 "email_compare": email_compare,
+                "accounter_name": accounter_name,
+
             }
 
             let res;
@@ -315,7 +329,20 @@
 
         }
 
+        let ifsc_branch;
+
+        function branch_get() {
+
+            ifsc_branch = ifsc;
+
+            console.log(ifsc_branch);
+
+            console.log(ifsc_api(ifsc_branch));
+        }
+
+
         let k = 0;
+        let primary_index;
 
         account_detail.forEach(e => {
 
@@ -369,6 +396,19 @@
 
                     },
 
+                    {
+                        "label": "Branch Name",
+                        "for": "branch",
+
+                        "type": "text",
+                        "id": "branch",
+                        "class": "branch form-control input_size",
+                        "name": "branch",
+                        "place_holder": "Branch Name",
+                        "disable": "disable"
+
+                    }
+
                 ]
 
 
@@ -401,29 +441,34 @@
                 set_primary.setAttribute("class", "set_primary")
                 bank.append(set_primary);
 
+
                 let primary = document.createElement("input");
                 primary.setAttribute("type", "radio");
-                primary.setAttribute("id", "");
+                primary.setAttribute("id", e.account);
                 primary.setAttribute("class", "input-radio");
                 primary.setAttribute("value", e.account);
                 primary.setAttribute("name", "primary");
                 set_primary.append(primary);
 
                 let primary_label = document.createElement("label");
-                primary_label.setAttribute("for", "primary");
+                primary_label.setAttribute("for", e.account);
                 primary_label.innerHTML = ("Set primary account");
                 set_primary.append(primary_label);
 
-                let btn = document.createElement("a");
+                let btn = document.createElement("button");
                 btn.setAttribute("id", "remove_bk");
                 btn.setAttribute("class", "btn btn-primary remove_bk");
-                btn.innerText = "Remove bank account ?"
+                btn.innerText = "Remove bank account !!"
                 bank.append(btn);
 
 
+                let symbal = document.createElement("div");
+                symbal.setAttribute("class", "tick_append");
+                bank.append(symbal);
 
-                document.getElementsByClassName("account_give")[k].value = e["account"]
-                document.getElementsByClassName("ifsc_give")[k].value = e["ifsc"]
+
+                document.getElementsByClassName("account_give")[k].value = e["account"];
+                document.getElementsByClassName("ifsc_give")[k].value = e["ifsc"];
 
                 k++
 
@@ -445,7 +490,6 @@
 
                     local()
 
-                    // window.location.href = ("./home.html");
                     window.location.href = "./balance_enquire.html"
 
                 });
@@ -453,6 +497,41 @@
             }
 
         });
+
+
+        let account_numbers = document.querySelectorAll(".account_give")
+
+
+        show.forEach(e => {
+
+            account_numbers.forEach((el, ind) => {
+
+                if (el.value == e["primary"] && e["email"] == email_compare) {
+
+                    let primary = document.querySelectorAll(".tick_append");
+                    // console.log(primary)
+
+                    let unique_div = document.createElement("div");
+                    unique_div.setAttribute("class", "unique_div")
+
+                    let primary_tick_image = document.createElement("img");
+                    primary_tick_image.setAttribute("src", "../assets/img/tick_balance.png")
+                    primary_tick_image.setAttribute("alt", "tick");
+                    primary_tick_image.setAttribute("id", "primary_tick")
+                    unique_div.append(primary_tick_image);
+
+
+                    let news = document.createElement("span");
+                    news.setAttribute("id", "default");
+                    news.innerText = "Default bank account";
+                    unique_div.append(news);
+
+                    primary[ind].append(unique_div);
+
+                }
+            })
+
+        })
 
         function local() {
 
@@ -499,10 +578,31 @@
             })
         }
 
-
-
     </script>
+
     <script type="text/javascript" src="../assets/js/common_function.js"></script>
+
+    <!-- <script type="module" src="../assets/js/home.js"> </script> -->
+
+    <!-- <img src="../assets/img/tick_balance.png" alt="tick"> -->
+
+
+
+    <!-- function random() {
+    alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
+    "V", "W", "X", "Y", "Z"]
+    let random = Number(Math.floor(Math.random() * 26))
+    alpha_random = alpha[random]
+    console.log(random);
+    alpha.splice(random, 1)
+    } -->
+
+    <!-- // let alpha
+    // let alpha_random
+    // random()
+
+
+    // console.log(alpha_random); -->
 
 </body>
 

@@ -111,11 +111,10 @@
             "id": "fname",
             "for": "fname",
             "place_holder": "Name",
-            // "disable": "true",
             "type": "text",
             "tittle": "Your pattern minium length of 2 characters a_z or A_Z only",
             "aria": "Name",
-            "pattern": "[A-Za-z]{2,29}"
+            "pattern":"^[a-zA-Z ]{3,50}$",
 
 
         },
@@ -152,8 +151,7 @@
             "place_holder": "DOB",
             "type": "date",
             "tittle": "This is not a date of birth",
-            "aria": "Date of birth"
-
+            "aria": "Date of birth",
 
         },
 
@@ -162,8 +160,8 @@
             "id": "district",
             "for": "district",
             "place_holder": "District",
-            "pattern": "^[a-zA-Z]{2,30}$",
-            "type": "text",
+            "pattern":"^[a-zA-Z]{3,20}$",
+            "type": "name",
             "tittle": "Your pattern minium length of 2 to 30 characters a_z or A_Z only",
             "aria": "District"
 
@@ -174,10 +172,10 @@
             "id": "state",
             "for": "state",
             "place_holder": "State",
-            "pattern": "[A-Za-z]{2,20}",
-            "type": "text",
+            "pattern":"^[a-zA-Z]{3,20}$",
+            "type": "name",
             "tittle": "Your pattern minium length of 2 to 20 characters a_z or A_Z only",
-            "aria": "State"
+            "aria": "State",
         },
 
 
@@ -199,10 +197,6 @@
         input_profile.setAttribute("type", head[i]["type"]);
         input_profile.setAttribute("title", head[i]["tittle"]);
         input_profile.setAttribute("aria", head[i]["aria"]);
-
-
-        // input_box.setAttribute("title", obj[i]["tittle"]);
-        // input_profile.setAttribute("type", "text")
         input_profile.setAttribute("class", "form-control input input1");
         contant_profile.append(input_profile);
 
@@ -273,7 +267,7 @@
 
     form_click.addEventListener("submit", () => {
 
-        console.log(current_user["fname"])
+        // console.log(current_user["fname"])
         let correction;
 
         for (let i = 0; i < show.length; i++) {

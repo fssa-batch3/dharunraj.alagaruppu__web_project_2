@@ -202,6 +202,8 @@
         let email_compare;
         let reciver_type;
         let sender_type;
+        let reciver_name;
+        let sender_name;
 
         let account_account;
         let history;
@@ -278,6 +280,9 @@
                 "sender_account": from_account,
                 "sender_type": "",
                 "reciver_type": "",
+                "reciver_name": "",
+                "sender_name": "",
+                "reciver_name": "",
 
             }
 
@@ -312,6 +317,9 @@
 
                     let old_balance = element["ac_balance"];
 
+                    sender_name = element["accounter_name"];
+                    console.log(sender_name)
+
                     old_balance = Number(old_balance) - Number(current_send_money);
 
                     element["ac_balance"] = old_balance;
@@ -329,6 +337,8 @@
                             sender_history[di]["sender_type"] = sender_type;
 
                             sender_history[di]["sender_balance"] = current_balance;
+
+                            sender_history[di]["sender_name"] = sender_name
 
                             localStorage.setItem("history_table", JSON.stringify(sender_history));
 
@@ -360,6 +370,9 @@
 
                     let old_balances = element["ac_balance"];
 
+                    reciver_name = element["accounter_name"];
+
+
                     recived_money = Number(old_balances) + Number(current_recive_money);
 
                     element["ac_balance"] = recived_money;
@@ -382,6 +395,9 @@
                             change_history[d]["reciver_balance"] = reciver_balances;
 
                             change_history[d]["reciver_type"] = reciver_type;
+
+                            change_history[d]["reciver_name"] = reciver_name;
+
 
                             localStorage.setItem("history_table", JSON.stringify(change_history));
 

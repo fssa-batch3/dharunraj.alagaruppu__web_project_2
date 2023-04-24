@@ -140,7 +140,8 @@
 
                         if (accounter == history[j]["sender_account"]) {
 
-                            function_account = history[j]["sender_account"];
+                            function_account = history[j]["reciver_name"];
+
                             function_image = "../assets/img/hdfc_icon.png"
                             type = history[j]["sender_type"]
                             function_amount = history[j].send_amount
@@ -155,7 +156,7 @@
 
                         else if (accounter == history[j]["reciver_account"]) {
 
-                            function_account = history[j]["sender_account"];
+                            function_account = history[j]["sender_name"];
                             function_image = "../assets/img/hdfc_icon.png"
                             type = history[j]["reciver_type"]
                             function_amount = history[j].send_amount

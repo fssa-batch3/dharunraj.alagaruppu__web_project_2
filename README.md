@@ -30,9 +30,19 @@
   - The user is redirected to the home page.
 
 ### Your Profile (completed)
--Scenario 1: Successfully see the profile
+-Scenario 1: Successfully read the profile
 - steps :
-   1. On the right corner you have account details icon There you can update your information except email and name:
+   1.In home On the right corner you have account details icon.
+   2 . If you click the button redirect to account detail page.
+   - Expected Result:
+  1.  Signup page data like Firstname , Emil id and Phone number are read in the accont detail page. 
+
+### Your Profile (completed)
+-Scenario 2: Successfully edit account
+- steps :
+   1.  In profile page have some empty value inputs If you want to update your profile you can edit before click "Edit button"
+   - Expected Result:
+  1.  Your update data will savew in the local storage. 
 
 ### Your Profile (completed)
 -Scenario 2: Successfully delete account
@@ -45,22 +55,35 @@
 - steps :
    1. If you a "back to home" button
  - Expected Result:
-  1.  you can redirect from home page. 
+  1.  you can redirect to home page. 
 
 ### Home page (Completed)
 -Scenario 1: Successfully add account
 - steps :
-   1. On home page have a  account link bank before you click "Link bank" button before
+   1. On home page have a "Link bank" button before you click 
    2.  If you have bank account you must link my website.
-   3. You can fill the information on link account brance such as 
+   3. You can fill the information on link account point such as 
       account number , ifsc code , phone number , pincode like that.
  - Expected Result:
-   - After you click a add account button after some validation youn can rediriect to bank account details setup.After that you can check balance.And you must set the "set primary account".
+   - After you click a add account button after some validation youn can rediriect to bank account details setup.And you must set the "set primary account"
+
+
+   ### Home page (Completed)
+-Scenario 1: Successfully read the bank details
+-steps : 
+  1. Below the account link div you can read the bank account details.
+  2. like Account number , Ifsc code , phone number , pin code and type of bank account.
+  3. .After that you should set primary account.
+
+- Expected Result:
+
+After all setup You can redirect to balance enquire page .
+
 
 ### balance enquire page (Completed)
--Scenario 1: Successfully see the account balance
+-Scenario 1: Successfully reasd the account balance
 - steps :
-   1. In the balance enquire page you can see your balance , account type and account number on this page 
+   1. In the balance enquire page you can read your balance , account type and account number on this page 
  - Expected Result: 
   -  If you click "account details" button you redirct from account detail page.
    - If you click a "transfer" button You redirect from balance enquire page to fund transfer page.
@@ -68,7 +91,7 @@
 ### Money transfer  (Completed)
 -Scenario 1: Successfully fund transfer
 - steps :
-   1. On fund transfer page a account to account transfer branch.and you have some inputs like benificary
+   1. On fund transfer page a account to account transfer type and you have some inputs like benificary
       account number, phone number , amount ,like that.
    2. Benificary account (Reciver) should be in netbliz.
  - Expected Result: 
@@ -82,18 +105,18 @@
    1.One user can access multiple account
  - Expected Result: 
    - You can send money for using various type account to account money transation.
-   - If you want 2nd account to send money your account number will be change later you can send to any account.
+   - If you want 2nd account to send money your account number will be change after set primary account.
    
 ### History (Completed)
 -Scenario 1: Successfully read the transation history
 - steps :
-   1. History page you have fund transation history in the page 
+   1. History page you have fund transation history in the page sender page.
  - Expected Result: 
- - If you sent money add in the transation page.add in the histroy page.
+ - If you sent money add in the transation history.add in the histroy page.
 
 ### History (Completed)
 -Scenario 2:  Successfully read the transation history
 - steps :
-1 . History page you have fund transation read the history in the page 
+1 . History page you have fund transation read the history in the page reciver page.
  - Expected Result:
-   - If you receive money also add history page.
+   - If you receive money transation also add history page.

@@ -284,6 +284,7 @@
                 "primary": "",
                 "branch": "",
                 "accounter_name": accounter_name,
+                "img_src":"",
 
             }
 
@@ -364,6 +365,7 @@
                 let image = document.createElement("img");
                 image.setAttribute("src", "../assets/img/account.png")
                 image.setAttribute("alt", "hello");
+                image.setAttribute("id", "bank_detail_image");
                 bank.append(image);
 
 
@@ -576,6 +578,16 @@
                 }
 
             })
+        }
+        let detail_image;
+        // image_show()
+
+        function image_show() {
+
+            detail_image = document.querySelectorAll("#bank_detail_image")
+            console.log(detail_image);
+
+            // .src = "../assets/img/hdfc_icon.png" 
         }
 
     </script>

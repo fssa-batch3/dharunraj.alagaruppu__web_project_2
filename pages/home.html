@@ -19,7 +19,7 @@
 
     <header>
         <div class="title">
-            <a href="./home.html">NET BANKING</a>
+            <a href="./home.html">NET BLIZ</a>
         </div>
 
         <div class="full_link">
@@ -88,7 +88,7 @@
 
                 <h2>Link a bank account</h2>
                 <p>You'll need to link and confirm to our bank account before you can receive Payment with Banking.
-                    We'll automatically withdraw the funds in your netbanking account to the bank account </p>
+                    We'll automatically withdraw the funds in your NET BLIZ account to the bank account </p>
 
                 <form>
                     <label for="account"> Account number </label>
@@ -161,7 +161,7 @@
         <div class="back_foot">
 
 
-            <h3>@ 2023 Net Banking</h3>
+            <h3>@ 2023 NET BLIZ</h3>
 
 
 
@@ -181,6 +181,9 @@
     </footer>
 
     <script>
+
+
+
 
         let show = JSON.parse(localStorage.getItem('array'));
 
@@ -228,8 +231,10 @@
         let personal;
         let business;
         let account_type;
-        let branch;
 
+
+        let branch;
+        let bank_name;
 
         let account_store;
         let table_obj;
@@ -238,6 +243,7 @@
 
             account = document.getElementById("account").value.trim();
             ifsc = document.getElementById("ifsc").value.trim();
+            console.log(ifsc);
             phone = document.getElementById("phone").value.trim();
             pincode = document.getElementById("pincode").value.trim();
             email_compare = localStorage.getItem("email");
@@ -254,24 +260,71 @@
                 account_type = "Current Account"
             }
 
-
-
             if (account != "" && ifsc != "" && phone != "" && pincode != "") {
 
-                add_local()
+                // console.log(ifsc,"before");
 
-                window.location.href = "#bank_account"
+                api(ifsc)
+
+                // console.log(ifsc + " rt");
+
+                // if (ifsc != "") {
+
+                    // add_local()
+
+                    // window.location.href = "#bank_account"
+                // }
+
+                // else {
+
+                    // alert("Enter the correct IFSC code or recheck ")
+                // }
+
+
             }
 
             else {
                 alert("Sorry can't get a value")
             }
+
+
+
         }
 
 
-        function add_local() {
 
-            // branch_get()
+        function api(ifsc) {
+
+            // console.log(ifsc)
+
+            fetch(`https://api.sandbox.co.in/bank/${ifsc}`)
+
+                .then((results) => {
+
+                    return results.json();
+                })
+
+                .then((data) => {
+
+                    if (data["BRANCH"] == undefined && data["BANK"] == undefined) {
+
+                        alert("Enter the correct IFSC code or recheck ")
+
+                    }
+                    else {
+
+                        branch = data["BRANCH"]
+                        bank_name = data["BANK"]
+                        add_local(branch,bank_name)
+                    }
+
+                });
+
+
+        }
+
+
+        function add_local(branch,bank_name) {
 
             account_store = {
                 "account": account,
@@ -282,9 +335,9 @@
                 "balance": balance,
                 "ac_type": account_type,
                 "primary": "",
-                "branch": "",
+                "branch": branch,
                 "accounter_name": accounter_name,
-                "img_src":"",
+                "bank_name": bank_name,
 
             }
 
@@ -330,20 +383,7 @@
 
         }
 
-        let ifsc_branch;
-
-        function branch_get() {
-
-            ifsc_branch = ifsc;
-
-            console.log(ifsc_branch);
-
-            console.log(ifsc_api(ifsc_branch));
-        }
-
-
         let k = 0;
-        let primary_index;
 
         account_detail.forEach(e => {
 
@@ -351,10 +391,10 @@
 
                 document.getElementById("bank_account").style.display = "flex";
 
-                let account = document.getElementById("account").value.trim();
-                let ifsc = document.getElementById("ifsc").value.trim();
-                let phone = document.getElementById("phone").value.trim()
-                let pincode = document.getElementById("pincode").value.trim()
+                // let account = document.getElementById("account").value.trim();
+                // let ifsc = document.getElementById("ifsc").value.trim();
+                // let phone = document.getElementById("phone").value.trim()
+                // let pincode = document.getElementById("pincode").value.trim()
 
                 let bank_div = document.querySelector("#bank_account");
 
@@ -436,7 +476,6 @@
                     label.setAttribute("for", data[i]["for"]);
                     contant.append(label);
 
-
                 }
 
                 let set_primary = document.createElement("div");
@@ -471,6 +510,7 @@
 
                 document.getElementsByClassName("account_give")[k].value = e["account"];
                 document.getElementsByClassName("ifsc_give")[k].value = e["ifsc"];
+                document.getElementsByClassName("branch")[k].value = e["branch"];
 
                 k++
 
@@ -479,11 +519,11 @@
 
                     let signup = JSON.parse(localStorage.getItem("array"));
 
-                    for (let k = 0; k < signup.length; k++) {
+                    for (let ko = 0; ko < signup.length; ko++) {
 
-                        if (signup[k]["email"] == email_compare) {
+                        if (signup[ko]["email"] == email_compare) {
 
-                            signup[k]["primary"] = selectvalue;
+                            signup[ko]["primary"] = selectvalue;
 
                             localStorage.setItem("array", JSON.stringify(signup));
                         }
@@ -593,6 +633,7 @@
     </script>
 
     <script type="text/javascript" src="../assets/js/common_function.js"></script>
+    <!-- <script type="text/javascript" src="../assets/js/home.js"></script> -->
 
     <!-- <script type="module" src="../assets/js/home.js"> </script> -->
 

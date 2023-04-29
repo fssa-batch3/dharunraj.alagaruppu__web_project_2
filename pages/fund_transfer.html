@@ -55,16 +55,27 @@
 
                 <h1>Bank Account to fund transfer</h1>
 
-                <label for="from"> From Account Number </label>
+                <!-- <label for="from"> From Account Number </label>
                 <input class="form-control" type="text" id="from" name="from" required min="14" max="14"
-                    aria="From Account Number">
+                    aria="From Account Number"> -->
+
+                <h5>Account Number </h5>
+
+                <select class="form-select accounts" id="from" aria-label="Example select with button addon" required>
+
+                    <option value="">Choose your Ac.No</option>
+
+
+
+
+                </select>
 
                 <label for="to"> Benificiary Account </label>
                 <input class="form-control input" type="text" id="to" name="to" required pattern="[0-9]{16,17}"
                     title="Remember !! Your bank account number should be 16 numbers" aria=" Benificiary Account ">
 
                 <label for="ifsc"> Benificiary IFSC </label>
-                <input class="form-control" type="text" id="ifsc" name="ifsc" required pattern="[0-9A-Za-z]{12,16}"
+                <input class="form-control" type="text" id="ifsc" name="ifsc" required pattern="[0-9A-Za-z]{6,16}"
                     title="Are you sure !! minium Our ifsc number should be 12 numbers" aria="Benificiary IFSC">
 
                 <label for="amount"> Transfer Amount </label>
@@ -140,24 +151,49 @@
         let reciver_balances;
         let balance;
 
-        primary_set()
+        // primary_set()
 
-        function primary_set() {
+        // function primary_set() {
+
+        //     for (let array = 0; array < signup_array.length; array++) {
+
+        //         if (signup_array[array]["email"] == email && signup_array[array]["primary"] != "") {
+
+        //             let current_account = signup_array[array]["primary"];
+
+        //             let set = document.getElementById("from");
+
+        //             set.value = current_account;
+
+        //         }
+
+        //     }
+
+        // }
+
+        option()
+        function option() {
+
+            let current_ac = document.getElementById("from")
 
             for (let array = 0; array < signup_array.length; array++) {
 
-                if (signup_array[array]["email"] == email && signup_array[array]["primary"] != "") {
+                for (let ac = 0; ac < account_check.length; ac++) {
 
-                    let current_account = signup_array[array]["primary"];
+                    if (signup_array[array]["email"] == email && signup_array[array]["email"] == account_check[ac]["email_compare"]) {
 
-                    let set = document.getElementById("from");
+                        let account_match = account_check[ac]["account"];
+                        // console.log(account_match)
 
-                    set.value = current_account;
+                        let option = document.createElement("option");
+                        option.setAttribute("value", account_match);
+                        option.innerHTML = (account_match);
+                        current_ac.append(option);
+
+                    }
 
                 }
-
             }
-
         }
 
         let sender_balances;
@@ -204,6 +240,7 @@
         let sender_type;
         let reciver_name;
         let sender_name;
+        let receiver_email;
 
         let account_account;
         let history;
@@ -220,40 +257,40 @@
             reciver_type;
             sender_type;
 
-            if (from_account != "" && to_account != "" && to_ifsc != "" && send_amount != "") {
-                balance_page.find(e => {
+            // if (from_account != "" && to_account != "" && to_ifsc != "" && send_amount != "") {
+            balance_page.find(e => {
 
-                    if (e["ac_no"] == to_account && e["ac_no"] != from_account) {
+                if (e["ac_no"] == to_account && e["ac_no"] != from_account && e["ac_ifsc"] == to_ifsc) {
 
-                        result = 1;
-                    }
+                    result = 1;
+                }
 
-                });
+            });
 
 
-                if (result == 1) {
+            if (result == 1) {
 
-                    if (sender_balances >= send_amount) {
+                if (sender_balances >= send_amount) {
 
-                        local_push();
-                    }
-
-                    else {
-                        alert("Sorry!! You don't have money to send")
-                    }
-
+                    local_push();
                 }
 
                 else {
-                    alert("Sorry!! Reciver is not there")
+                    alert("Sorry!! You don't have money to send")
                 }
 
             }
 
             else {
-
-                alert("Please recheck the value")
+                alert("Sorry!! Reciver is not there")
             }
+
+            // }
+
+            // else {
+
+            //     alert("Please recheck the value")
+            // }
 
         }
 
@@ -275,7 +312,7 @@
                 "date": current_date,
                 "sender_balance": "",
                 "reciver_balance": "",
-                "email_compare": email_compare,
+                "sender_email": email_compare,
                 "reciver_account": to_account,
                 "sender_account": from_account,
                 "sender_type": "",
@@ -283,6 +320,7 @@
                 "reciver_name": "",
                 "sender_name": "",
                 "reciver_name": "",
+                "reciver_email": ""
 
             }
 
@@ -308,17 +346,19 @@
 
             let current_send_money = document.getElementById("amount").value;
 
+            let sender_ac = document.getElementById("from").value;
+
             balance_page.forEach(element => {
 
 
-                if (element["email_compare"] == email) {
+                if (element["email_compare"] == email && element["ac_no"] == sender_ac) {
 
                     let accounter = document.getElementById("from").value;
 
                     let old_balance = element["ac_balance"];
 
                     sender_name = element["accounter_name"];
-                    console.log(sender_name)
+                    // console.log(sender_name)
 
                     old_balance = Number(old_balance) - Number(current_send_money);
 
@@ -372,6 +412,8 @@
 
                     reciver_name = element["accounter_name"];
 
+                    receiver_email = element["email_compare"]
+
 
                     recived_money = Number(old_balances) + Number(current_recive_money);
 
@@ -398,6 +440,7 @@
 
                             change_history[d]["reciver_name"] = reciver_name;
 
+                            change_history[d]["reciver_email"] = receiver_email;
 
                             localStorage.setItem("history_table", JSON.stringify(change_history));
 
@@ -409,6 +452,8 @@
             })
 
         }
+
+
 
     </script>
 </body>

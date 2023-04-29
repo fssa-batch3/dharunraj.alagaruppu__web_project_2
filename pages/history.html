@@ -57,17 +57,41 @@
                 <input type="search" id="search" name="search" placeholder="History here">
             </div>
 
-            <div class="filter">
+            <div class="right_filter">
 
-                <div class="filter_icon">
+                <div class="filter">
 
-                    <img src="../assets/img/filter_icon.png" alt="filter_icon">
-                    <span>Filter</span>
+                    <div class="filter_icon">
+
+                        <img src="../assets/img/filter_icon.png" alt="filter_icon">
+                        <span>Filter</span>
+                    </div>
+
+                    <img src="../assets/img/arrow_icon.png" alt="arrow_icon">
+
                 </div>
 
-                <img src="../assets/img/arrow_icon.png" alt="arrow_icon">
+                <div class="select_div">
+
+                    <select class="form-select accounts" id="from" aria-label="Example select with button addon"
+                        required>
+
+                        <option value="">Choose your Ac.No</option>
+
+
+
+
+                    </select>
+
+                    <button id="result_button">check</button>
+
+                </div>
+
+
 
             </div>
+
+
 
 
         </div>
@@ -77,10 +101,16 @@
 
     <main>
 
+
+
+
     </main>
 
 
     <script>
+
+
+        let signup_array = JSON.parse(localStorage.getItem("array"));
 
         let email = localStorage.getItem("email");
 
@@ -94,7 +124,6 @@
 
         let accounter;
 
-        let signup_array = JSON.parse(localStorage.getItem("array"));
 
         let function_account;
         let function_image;
@@ -105,81 +134,122 @@
         let function_date;
         let function_current_balance;
 
+        // **************************************************
 
 
-        primary()
+        let sender_value;
+        let reciver_value;
 
-        history_show()
+        let sender_email;
+        let reciver_email;
 
-        function primary() {
+        let account_value;
 
-            for (let m = 0; m < signup_array.length; m++) {
 
-                if (signup_array[m]["email"] == email) {
 
-                    primary_account = signup_array[m]["primary"];
+        // ***********************************************
 
+        active_user()
+        function active_user() {
+
+            for (let i = 0; i < signup_array.length; i++) {
+
+                if (signup_array[i]["email"] == email) {
+
+                    // console.log("jk")
+
+                    main()
+
+                    // console.log("jk")
                 }
 
-            }
-
-        }
-
-
-        function history_show() {
-
-
-
-            for (let d = 0; d < account_details.length; d++) {
-
-                if (account_details[d]["email_compare"] == email && account_details[d]["account"] == primary_account) {
-
-                    accounter = account_details[d]["account"];
-
-                    for (let j = 0; j < history.length; j++) {
-
-                        if (accounter == history[j]["sender_account"]) {
-
-                            function_account = history[j]["reciver_name"];
-
-                            function_image = "../assets/img/hdfc_icon.png"
-                            type = history[j]["sender_type"]
-                            function_amount = history[j].send_amount
-                            icon = "../assets/img/minus_icon.png"
-                            id = "minus";
-                            function_date = history[j]["date"]
-                            function_current_balance = history[j]["sender_balance"];
-
-                            create_div()
-
-                        }
-
-                        else if (accounter == history[j]["reciver_account"]) {
-
-                            function_account = history[j]["sender_name"];
-                            function_image = "../assets/img/hdfc_icon.png"
-                            type = history[j]["reciver_type"]
-                            function_amount = history[j].send_amount
-                            icon = "../assets/img/plus_icon.png";
-                            id = "plus";
-                            function_date = history[j]["date"]
-                            function_current_balance = history[j]["reciver_balance"];
-
-                            create_div()
-
-                        }
-
-                    }
-
-                }
             }
 
 
         }
 
 
+        function main() {
 
-        function create_div() {
+
+            for (let j = 0; j < history.length; j++) {
+
+                sender_value = history[j]["sender_account"];
+                reciver_value = history[j]["reciver_account"];
+
+                sender_email = history[j]["sender_email"];
+                reciver_email = history[j]["reciver_email"];
+
+                // console.log("jk")
+
+                // account_search()
+
+                account_search(sender_value, reciver_value, sender_email, reciver_email, j)
+
+            }
+
+        }
+
+
+        function account_search(sender_value, reciver_value, sender_email, reciver_email, j) {
+
+
+            for (let k = 0; k < account_details.length; k++) {
+
+                account_value = account_details[k]["account"];
+
+                if (sender_value == account_value && sender_email == email) {
+
+                    // function_account = history[j]["reciver_name"];
+
+                    // function_image = "../assets/img/hdfc_icon.png"
+                    // type = history[j]["sender_type"]
+                    // function_amount = history[j].send_amount
+                    // icon = "../assets/img/minus_icon.png"
+                    // id = "minus";
+                    // function_date = history[j]["date"]
+                    // function_current_balance = history[j]["sender_balance"];
+
+
+
+                    function_account = history[j]["reciver_name"];
+
+                    function_image = "../assets/img/hdfc_icon.png"
+                    type = history[j]["sender_type"]
+                    function_amount = history[j].send_amount
+                    icon = "../assets/img/minus_icon.png"
+                    id = "minus";
+                    function_date = history[j]["date"]
+                    function_current_balance = history[j]["sender_balance"];
+
+
+                    create_div(function_account, function_image, type, function_amount, icon, id, function_date, function_current_balance)
+
+                }
+
+                else if (reciver_value == account_value && reciver_email == email) {
+
+                    function_account = history[j]["sender_name"];
+                    function_image = "../assets/img/hdfc_icon.png"
+                    type = history[j]["reciver_type"]
+                    function_amount = history[j].send_amount
+                    icon = "../assets/img/plus_icon.png";
+                    id = "plus";
+                    function_date = history[j]["date"]
+                    function_current_balance = history[j]["reciver_balance"];
+
+
+
+                    create_div(function_account, function_image, type, function_amount, icon, id, function_date, function_current_balance)
+                }
+
+            }
+        }
+
+
+
+
+        function create_div(function_account, function_image, type, function_amount, icon, id, function_date, function_current_balance) {
 
             let main_div = document.querySelector("main")
 
@@ -263,6 +333,7 @@
 
         let histroy = document.querySelectorAll(".history");
 
+
         search.addEventListener("keyup", (key) => {
 
             let values = key.target.value.toLowerCase();
@@ -286,14 +357,67 @@
 
         });
 
+        option()
+        function option() {
 
-        // let filter_div = document.querySelector(".filter");
+            let current_ac = document.getElementById("from")
+
+            for (let array = 0; array < signup_array.length; array++) {
+
+                for (let ac = 0; ac < account_details.length; ac++) {
+
+                    if (signup_array[array]["email"] == email && signup_array[array]["email"] == account_details[ac]["email_compare"]) {
+
+                        let account_match = account_details[ac]["account"];
+
+                        let option = document.createElement("option");
+                        option.setAttribute("value", account_match);
+                        option.innerHTML = (account_match);
+                        current_ac.append(option);
+
+                    }
+
+                }
+            }
+        }
 
 
-        // filter_div.addEventListener("click", () => {
-        //     ;
+        let selcet_account
 
-        // });
+        let filter_div = document.querySelector(".filter");
+
+        filter_div.addEventListener("click", () => {
+
+            let filter = document.querySelector(".filter");
+
+            document.querySelector(".filter").style.display = "none";
+
+            document.querySelector(".select_div").style.display = "block";
+
+        });
+
+        let result_button = document.querySelector("button");
+        let select_value;
+
+        result_button.addEventListener("click", () => {
+
+            selcet_account = document.getElementById("from").value
+
+            if (selcet_account != "") {
+
+                select_value = selcet_account;
+                console.log(select_value);
+
+            }
+
+            else {
+
+                alert("click dropdown account number");
+            }
+
+        })
+
+
 
     </script>
 

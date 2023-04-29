@@ -45,6 +45,13 @@
 
     <main>
 
+        <h1 id="balance_name">Bank balance details</h1>
+
+        <div class="bank_list">
+
+
+        </div>
+
         <div class="container1">
 
             <div class="content1">
@@ -85,7 +92,7 @@
                 <div class="back_button">
 
                     <a href="./fund_transfer.html">Transfer money</a>
-                    <a href="./account_detail.html">Account Details</a>
+                    <a href="./balance_enquire.html">Back balance enquire</a>
                 </div>
 
 
@@ -132,34 +139,97 @@
 
     let signup_array = JSON.parse(localStorage.getItem("array"));
 
-    let account_check = JSON.parse(localStorage.getItem("bal_enquire"));
+    let balance_enquire = JSON.parse(localStorage.getItem("bal_enquire"));
+
+    let account_detail = JSON.parse(localStorage.getItem("account_details"));
+
 
     let customer_balance;
     let customer_number;
     let customer_type;
 
-    check_balance()
+
+    for (let array = 0; array < signup_array.length; array++) {
+
+        for (let ac = 0; ac < account_detail.length; ac++) {
+
+            if (signup_array[array]["email"] == email && signup_array[array]["email"] == account_detail[ac]["email_compare"]) {
+
+
+
+                let welcome = document.createElement("div");
+                welcome.setAttribute("class", "bank_no");
+                document.querySelector(".bank_list").append(welcome);
+
+                let image = document.createElement("img");
+                image.setAttribute("src", "../assets/img/account.png");
+                image.setAttribute("alt", "Net Bliz");
+                welcome.append(image);
+
+                let bank_no = document.createElement("h4");
+                bank_no.setAttribute("class", "account_num")
+                bank_no.setAttribute("id", "account");
+                bank_no.innerText = account_detail[ac]["account"];
+                welcome.append(bank_no);
+
+                let bank_name = document.createElement("h3");
+                bank_name.setAttribute("class", "bank_name")
+                bank_name.setAttribute("id", "bank_name")
+                bank_name.innerText = account_detail[ac]["bank_name"];
+                welcome.append(bank_name);
+
+
+            }
+        }
+    }
+
+
+    let user_acc = document.querySelectorAll(".bank_no");
+    let account_num = document.querySelectorAll(".account_num");
+    let account_name = document.querySelectorAll(".bank_name");
+
+    let ref_num;
+    let ref_name;
+
+
+    for (let p = 0; p < user_acc.length; p++) {
+
+        user_acc[p].addEventListener("click", () => {
+
+            document.querySelector(".container1").style.display = "block";
+
+            document.querySelector(".bank_list").style.display = "none";
+
+            ref_num = account_num[p].innerText;
+            ref_name = account_name[p].innerText;
+
+
+            check_balance()
+        })
+
+    }
+
 
 
     function check_balance() {
 
         for (let s = 0; s < signup_array.length; s++) {
 
-            for (let t = 0; t < account_check.length; t++) {
+            for (let t = 0; t < balance_enquire.length; t++) {
 
-                if (signup_array[s]["email"] == email && signup_array[s]["primary"] == account_check[t]["ac_no"]) {
+                if (signup_array[s]["email"] == email && ref_num == balance_enquire[t]["ac_no"]) {
 
-                    customer_balance = account_check[t]["ac_balance"];
+                    customer_balance = balance_enquire[t]["ac_balance"];
 
-                    customer_number = account_check[t]["ac_no"];
+                    customer_number = balance_enquire[t]["ac_no"];
 
-                    customer_type = account_check[t]["ac_type"];
+                    customer_type = balance_enquire[t]["ac_type"];
 
                     document.getElementById("balance").innerText = customer_balance;
                     document.getElementById("customer_ac").innerHTML = customer_number;
                     document.getElementById("ac_type").innerText = customer_type;
 
-                    localStorage.setItem("bal_enquire", JSON.stringify(account_check));
+                    localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
 
                 }
 
@@ -168,7 +238,6 @@
         }
 
     }
-
 
 </script>
 

@@ -19,6 +19,11 @@ main .intro img {
     padding: 0% 10%;
 }
 
+
+.container1{
+    display: none;
+}
+
 .container1 .content1 {
     display: flex;
     flex-direction: column;
@@ -48,13 +53,14 @@ main .intro img {
 }
 
 .account {
-    /* border: 1px solid black; */
+
     padding: 3%;
-    margin: 5% auto 15% auto;
-    width: 80%;
+    margin: 5% auto;
+    width: 70%;
     background-color: white;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 25px;
+    /* display: none; */
 }
 
 .account .balance_data {
@@ -64,11 +70,14 @@ main .intro img {
     padding: 0% 3%;
 }
 
-.account_number , .account_type , .account_balance {
+.account_number,
+.account_type,
+.account_balance {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .account span {
     font-size: 17px;
 }
@@ -89,4 +98,37 @@ main .intro img {
     letter-spacing: .5px;
     font-family: 'Open Sans', sans-serif;
     margin: 3%;
+}
+
+.bank_list {
+
+    display: block;
+    margin: 3% auto;
+    padding: 1% 0%;
+
+}
+
+.bank_no {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2% auto;
+    background-color: white;
+    width: 80%;
+    border-radius: 10px;
+    padding: .4% 0%;
+}
+
+.bank_no img {
+    width: 5%;
+}
+
+#balance_name {
+    text-shadow: 2px .50px black;
+    color: #2a48ee;
+    padding: 2% 0% 0% 2%;
+    font-weight: 700;
+    letter-spacing: .5px;
+    font-family: 'Open Sans', sans-serif;
 }

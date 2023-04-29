@@ -103,9 +103,25 @@
                     <input class="form-control" type="tel" id="phone" name="phone" required pattern="[0-9]{10}"
                         title="How many numbers will there be?">
 
-                    <label for="pincode"> Pin code</label>
+                    <!-- <label for="pincode"> Pin code</label>
                     <input class="form-control" type="tel" id="pincode" name="pincode" required pattern="[0-9]{6}"
-                        title="It should be 6 numbers">
+                        title="It should be 6 numbers"> -->
+
+                    <!-- <p></p> -->
+                    <h6>Choose minium balance</h6>
+                    <div class="input-group mb-3 drop_down">
+
+                        <select class="form-select" id="inputGroupSelect03"
+                            aria-label="Example select with button addon" required>
+
+                            <option value="">please select correctly amount *</option>
+                            <option value="500">500</option>
+                            <option value="1000">1000</option>
+                            <option value="2500">2500</option>
+                            <option value="5000">5000</option>
+
+                        </select>
+                    </div>
 
                     <h5>Account name</h5>
 
@@ -216,7 +232,7 @@
                 accounter_name = element["fname"];
                 // console.log(accounter_name);
 
-                local()
+                // local()
 
                 localStorage.setItem("array", JSON.stringify(show));
             }
@@ -226,7 +242,8 @@
         let account;
         let ifsc;
         let phone;
-        let pincode;
+        // let pincode;
+        let minium;
         let balance;
         let personal;
         let business;
@@ -243,9 +260,10 @@
 
             account = document.getElementById("account").value.trim();
             ifsc = document.getElementById("ifsc").value.trim();
-            console.log(ifsc);
             phone = document.getElementById("phone").value.trim();
-            pincode = document.getElementById("pincode").value.trim();
+            // pincode = document.getElementById("pincode").value.trim();
+            minium = document.getElementById("inputGroupSelect03").value.trim()
+            console.log(minium);
             email_compare = localStorage.getItem("email");
             balance = Math.floor(Math.random() * 10000);
             personal = document.getElementById("personal");
@@ -260,26 +278,9 @@
                 account_type = "Current Account"
             }
 
-            if (account != "" && ifsc != "" && phone != "" && pincode != "") {
-
-                // console.log(ifsc,"before");
+            if (account != "" && ifsc != "" && phone != "" && minium != "") {
 
                 api(ifsc)
-
-                // console.log(ifsc + " rt");
-
-                // if (ifsc != "") {
-
-                    // add_local()
-
-                    // window.location.href = "#bank_account"
-                // }
-
-                // else {
-
-                    // alert("Enter the correct IFSC code or recheck ")
-                // }
-
 
             }
 
@@ -315,7 +316,7 @@
 
                         branch = data["BRANCH"]
                         bank_name = data["BANK"]
-                        add_local(branch,bank_name)
+                        add_local(branch, bank_name)
                     }
 
                 });
@@ -324,17 +325,16 @@
         }
 
 
-        function add_local(branch,bank_name) {
+        function add_local(branch, bank_name) {
 
             account_store = {
                 "account": account,
                 "ifsc": ifsc,
                 "phone": phone,
-                "pincode": pincode,
+                // "pincode": pincode,
                 "email_compare": email_compare,
                 "balance": balance,
                 "ac_type": account_type,
-                "primary": "",
                 "branch": branch,
                 "accounter_name": accounter_name,
                 "bank_name": bank_name,
@@ -347,6 +347,8 @@
                 "ac_balance": balance,
                 "email_compare": email_compare,
                 "accounter_name": accounter_name,
+                "minium": minium,
+                "ac_ifsc": ifsc,
 
             }
 
@@ -375,9 +377,35 @@
 
                 localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
 
+                open_primary()
+
                 alert("Thanks for add account");
 
                 location.reload();
+
+            }
+
+        }
+
+
+
+
+        function open_primary() {
+
+            for (let op = 0; op < show.length; op++) {
+
+                if (show[op]["email"] == email_compare) {
+
+                    let start = show[op]["primary"];
+
+                    start = "";
+
+                    show[op]["primary"] = account;
+
+                    localStorage.setItem("array", JSON.stringify(show));
+
+
+                }
 
             }
 
@@ -515,22 +543,23 @@
                 k++
 
                 primary.addEventListener('click', function () {
+
                     selectvalue = primary.value;
 
-                    let signup = JSON.parse(localStorage.getItem("array"));
+                    console.log(selectvalue)
 
-                    for (let ko = 0; ko < signup.length; ko++) {
+                    for (let ko = 0; ko < show.length; ko++) {
 
-                        if (signup[ko]["email"] == email_compare) {
+                        if (show[ko]["email"] == email_compare) {
 
-                            signup[ko]["primary"] = selectvalue;
+                            show[ko]["primary"] = selectvalue;
 
-                            localStorage.setItem("array", JSON.stringify(signup));
+                            localStorage.setItem("array", JSON.stringify(show));
                         }
 
                     }
 
-                    local()
+                    // local()
 
                     window.location.href = "./balance_enquire.html"
 
@@ -543,7 +572,6 @@
 
         let account_numbers = document.querySelectorAll(".account_give")
 
-
         show.forEach(e => {
 
             account_numbers.forEach((el, ind) => {
@@ -551,7 +579,6 @@
                 if (el.value == e["primary"] && e["email"] == email_compare) {
 
                     let primary = document.querySelectorAll(".tick_append");
-                    // console.log(primary)
 
                     let unique_div = document.createElement("div");
                     unique_div.setAttribute("class", "unique_div")
@@ -561,7 +588,6 @@
                     primary_tick_image.setAttribute("alt", "tick");
                     primary_tick_image.setAttribute("id", "primary_tick")
                     unique_div.append(primary_tick_image);
-
 
                     let news = document.createElement("span");
                     news.setAttribute("id", "default");
@@ -575,19 +601,19 @@
 
         })
 
-        function local() {
+        // function local() {
 
-            show.forEach(element => {
+        //     show.forEach(element => {
 
-                if (element["email"] === email_compare) {
+        //         if (element["email"] === email_compare) {
 
-                    selectvalue = element["primary"];
+        //             selectvalue = element["primary"];
 
-                }
+        //         }
 
-            })
+        //     })
 
-        }
+        // }
 
 
         const btn1 = document.querySelectorAll(".remove_bk");
@@ -599,8 +625,6 @@
 
                 account_num = document.getElementsByClassName("account_give")[ic].value;
 
-                console.log(account_num)
-
                 for (let a = 0; a < account_detail.length; a++) {
 
                     if (account_detail[a]["account"] == account_num && email_compare == account_detail[a]["email_compare"]) {
@@ -609,7 +633,7 @@
 
                         localStorage.setItem("account_details", JSON.stringify(account_detail));
 
-                        primary_check();
+                        primary_check();  // home.js
 
                         clear_balance();
 
@@ -618,16 +642,6 @@
                 }
 
             })
-        }
-        let detail_image;
-        // image_show()
-
-        function image_show() {
-
-            detail_image = document.querySelectorAll("#bank_detail_image")
-            console.log(detail_image);
-
-            // .src = "../assets/img/hdfc_icon.png" 
         }
 
     </script>

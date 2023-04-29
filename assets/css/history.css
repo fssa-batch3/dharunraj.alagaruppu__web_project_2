@@ -15,8 +15,7 @@
     font-size: 22px;
 }
 
-.welcome .search
- {
+.welcome .search {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,12 +109,6 @@ img {
     font-size: 20px;
 }
 
-/* plus amount color */
-/* .amount1 {
-    color: rgb(8, 54, 8);
-} */
-
-/* inbetween dotted line */
 .history {
     border-bottom: 2px dotted black;
     width: 75%;
@@ -134,4 +127,8 @@ main {
 #plus {
     color: rgb(60, 188, 60);
     font-size: 20px;
+}
+
+.select_div {
+    display: none;
 }

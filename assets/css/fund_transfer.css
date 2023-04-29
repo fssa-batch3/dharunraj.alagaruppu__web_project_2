@@ -40,7 +40,7 @@ header a , footer a{
 }
 
 .right_contant form input , .right_contant form select {
-    width: 60%;
+    width: 90%;
     padding: 1%;
     margin-bottom: 3%;
 }

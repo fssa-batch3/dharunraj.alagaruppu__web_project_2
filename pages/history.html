@@ -87,12 +87,7 @@
 
                 </div>
 
-
-
             </div>
-
-
-
 
         </div>
 
@@ -133,7 +128,7 @@
         let id;
         let function_date;
         let function_current_balance;
-
+        let account_number;
         // **************************************************
 
 
@@ -221,9 +216,9 @@
                     id = "minus";
                     function_date = history[j]["date"]
                     function_current_balance = history[j]["sender_balance"];
+                    account_number = history[j]["sender_account"]
 
-
-                    create_div(function_account, function_image, type, function_amount, icon, id, function_date, function_current_balance)
+                    create_div(function_account, function_image, type, function_amount, icon, id, function_date, function_current_balance, account_number)
 
                 }
 
@@ -237,10 +232,10 @@
                     id = "plus";
                     function_date = history[j]["date"]
                     function_current_balance = history[j]["reciver_balance"];
+                    account_number = history[j]["reciver_account"];
 
 
-
-                    create_div(function_account, function_image, type, function_amount, icon, id, function_date, function_current_balance)
+                    create_div(function_account, function_image, type, function_amount, icon, id, function_date, function_current_balance, account_number)
                 }
 
             }
@@ -249,7 +244,7 @@
 
 
 
-        function create_div(function_account, function_image, type, function_amount, icon, id, function_date, function_current_balance) {
+        function create_div(function_account, function_image, type, function_amount, icon, id, function_date, function_current_balance, account_number) {
 
             let main_div = document.querySelector("main")
 
@@ -283,10 +278,15 @@
             increase.innerText = type;
             transfer_type.append(increase);
 
-            let reciver_name = document.createElement("p");
+            let reciver_name = document.createElement("h5");
             reciver_name.setAttribute("class", "reciver_name");
             reciver_name.innerText = function_account;
             transfer_type.append(reciver_name);
+
+            let account_num = document.createElement("span");
+            account_num.setAttribute("class", "send_account");
+            account_num.innerHTML = (account_number)
+            reciver_name.append(account_num);
 
 
             let amount = document.createElement("div");
@@ -327,11 +327,9 @@
 
         }
 
-
-
         let search = document.querySelector("#search");
 
-        let histroy = document.querySelectorAll(".history");
+        let histroy_search = document.querySelectorAll(".history");
 
 
         search.addEventListener("keyup", (key) => {
@@ -339,19 +337,19 @@
             let values = key.target.value.toLowerCase();
 
 
-            for (let i = 0; i < histroy.length; i++) {
+            for (let i = 0; i < histroy_search.length; i++) {
 
-                let fund_type = histroy[i].querySelector(".increase").innerHTML.toLowerCase();
+                let fund_type = histroy_search[i].querySelector(".increase").innerHTML.toLowerCase();
 
                 if ((fund_type.includes(values))) {
 
-                    histroy[i].style.display = "block";
+                    histroy_search[i].style.display = "block";
 
                 }
 
                 else {
 
-                    histroy[i].style.display = "none";
+                    histroy_search[i].style.display = "none";
                 }
             }
 
@@ -382,7 +380,7 @@
         }
 
 
-        let selcet_account
+        let selcet_account;
 
         let filter_div = document.querySelector(".filter");
 
@@ -397,7 +395,6 @@
         });
 
         let result_button = document.querySelector("button");
-        let select_value;
 
         result_button.addEventListener("click", () => {
 
@@ -405,8 +402,8 @@
 
             if (selcet_account != "") {
 
-                select_value = selcet_account;
-                console.log(select_value);
+                // console.log(selcet_account);
+                search_account(selcet_account, histroy_search)
 
             }
 
@@ -415,9 +412,31 @@
                 alert("click dropdown account number");
             }
 
-        })
+        });
 
 
+        function search_account(selcet_account, histroy_search) {
+
+
+            for (let sa = 0; sa < histroy_search.length; sa++) {
+
+                let account = histroy_search[sa].querySelector(".send_account").innerHTML;
+                console.log(account)
+
+                if (account != selcet_account) {
+                    console.log(histroy_search[sa])
+
+                    histroy_search[sa].style.display = "none";
+                    
+                }
+                else {
+                    histroy_search[sa].style.display = "block";
+                }
+
+            }
+
+
+        }
 
     </script>
 

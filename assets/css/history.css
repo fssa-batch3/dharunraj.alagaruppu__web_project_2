@@ -132,3 +132,12 @@ main {
 .select_div {
     display: none;
 }
+
+.reciver_name p {
+
+    font-size: 20px;
+}
+
+.send_account{
+    display: none;
+}

@@ -419,11 +419,6 @@
 
                 document.getElementById("bank_account").style.display = "flex";
 
-                // let account = document.getElementById("account").value.trim();
-                // let ifsc = document.getElementById("ifsc").value.trim();
-                // let phone = document.getElementById("phone").value.trim()
-                // let pincode = document.getElementById("pincode").value.trim()
-
                 let bank_div = document.querySelector("#bank_account");
 
                 let bank = document.createElement("div");
@@ -433,7 +428,7 @@
                 let image = document.createElement("img");
                 image.setAttribute("src", "../assets/img/account.png")
                 image.setAttribute("alt", "hello");
-                image.setAttribute("id", "bank_detail_image");
+                image.setAttribute("class", "bank_detail_image");
                 bank.append(image);
 
 
@@ -599,22 +594,7 @@
                 }
             })
 
-        })
-
-        // function local() {
-
-        //     show.forEach(element => {
-
-        //         if (element["email"] === email_compare) {
-
-        //             selectvalue = element["primary"];
-
-        //         }
-
-        //     })
-
-        // }
-
+        });
 
         const btn1 = document.querySelectorAll(".remove_bk");
 
@@ -643,10 +623,46 @@
 
             })
         }
+        // bank_img()
+
+        function bank_img(bank_name) {
+
+            // let bank_img = document.querySelector(".bank_detail_image");
+            // console.log(bank_img)
+
+            if (bank_name == "Canara Bank") {
+
+                document.getElementsByClassName("bank_detail_image").src = "../assets/img/canara.png"
+            }
+
+        }
 
     </script>
 
     <script type="text/javascript" src="../assets/js/common_function.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- <script type="text/javascript" src="../assets/js/home.js"></script> -->
 
     <!-- <script type="module" src="../assets/js/home.js"> </script> -->
@@ -673,6 +689,6 @@
 
 </body>
 
-
+<!-- <img src="../assets/img/canara.png" alt=""> -->
 
 </html>

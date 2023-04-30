@@ -20,7 +20,7 @@ main .intro img {
 }
 
 
-.container1{
+.container1 {
     display: none;
 }
 
@@ -125,10 +125,10 @@ main .intro img {
 }
 
 #balance_name {
-    text-shadow: 2px .50px black;
-    color: #2a48ee;
+    /* text-shadow: 2px .50px black; */
+    color: #1a237e;
     padding: 2% 0% 0% 2%;
-    font-weight: 700;
+    /* font-weight: 700; */
     letter-spacing: .5px;
     font-family: 'Open Sans', sans-serif;
 }

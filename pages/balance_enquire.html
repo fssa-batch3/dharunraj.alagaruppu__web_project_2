@@ -197,10 +197,13 @@
         user_acc[p].addEventListener("click", () => {
 
             document.querySelector(".container1").style.display = "block";
+            
+            document.querySelector("#balance_name").style.display = "none"
 
             document.querySelector(".bank_list").style.display = "none";
 
             ref_num = account_num[p].innerText;
+            
             ref_name = account_name[p].innerText;
 
 

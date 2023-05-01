@@ -77,18 +77,21 @@ function now_time() {
     setTimeout(now_time, 1000);
 
 }
+let account_number;
+let balance;
+
+
+let balance_enquire = JSON.parse(localStorage.getItem("bal_enquire"));
+
+let signup = JSON.parse(localStorage.getItem("array"));
+
+
 test()
 function test() {
 
     let value = time.innerHTML;
-    // console.log(value);
 
-    let balance_enquire = JSON.parse(localStorage.getItem("bal_enquire"));
-    // console.log(balance_enquire);
-    let signup = JSON.parse(localStorage.getItem("array"));
-
-
-    if (value == "12:08:00 PM") {
+    if (value == "02:06:40 AM") { //  date chancer *******
 
         for (let i = 0; i < signup.length; i++) {
 
@@ -96,14 +99,26 @@ function test() {
 
                 if (signup[i]["email"] == balance_enquire[j]["email_compare"]) {
 
-                    let account_number = balance_enquire[j]["ac_no"];
+                    account_number = balance_enquire[j]["ac_no"];
 
-                    let balance = balance_enquire[j]["ac_balance"];
+                    balance = balance_enquire[j]["ac_balance"];
 
                     console.log(account_number);
                     console.log(balance);
 
-                    sendEmail()
+                    let month = balance_enquire[j]["monthly_balance"] ?? [];
+
+                    let rotine = {
+
+                        "day_balance": balance,
+                    }
+
+                    month.push(rotine);
+
+                    balance_enquire[j]["monthly_balance"] = month
+
+                    localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
+
                 }
             }
 
@@ -111,8 +126,69 @@ function test() {
 
     }
 
+
     setTimeout(test, 1000);
 }
+
+
+
+let total;
+
+// average(account_number)
+
+// function average(account_number, balance) {
+
+//     for (let sign = 0; sign < signup.length; sign++) {
+
+//         for (let enquire = 0; enquire < balance_enquire.length; enquire++) {
+
+//             if (signup[sign]["email"] == balance_enquire[enquire]["email_compare"]) {
+
+//                 total = balance_enquire[enquire]["monthly_balance"];
+//                 console.log(total);
+
+//                 for (let step = 0; step < total.length; step++) {
+
+//                     let account_number = "1234567890123456";
+
+//                     if (account_number == total[step]["ac_no"]) {
+
+//                         let tr_bal = total[step]["day_balance"];
+
+//                         // let array =[]
+
+//                         let average = tr_bal / 2;
+//                         console.log(average);
+
+//                     }
+
+//                 }
+
+
+//             }
+
+//         }
+
+//     }
+
+// }
+
+for (let h = 0; h < balance_enquire.length; h++) {
+
+    let average_value = 0;
+
+    for (let r = 0; r < balance_enquire[h]["monthly_balance"].length; r++) {
+
+        average_value += balance_enquire[h]["monthly_balance"][r]["day_balance"]
+    }
+
+    balance_enquire[h]["average_value"] = (average_value / balance_enquire[h]["monthly_balance"].length)
+}
+
+localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
+
+
+
 
 function sendEmail() {
 
@@ -143,5 +219,72 @@ function sendEmail() {
         })
 
 }
+
+
+
+
+
+
+
+
+
+// step_average(total)
+
+// function step_average(total) {
+
+//     for (let step = 0; step < total.length; step++) {
+
+//         console.log(step)
+
+//     }
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// smart function**********************
+
+// balance_enquire.forEach(element => {
+//     delete element["monthly_balance"]
+// });
+// localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
 
 

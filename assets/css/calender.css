@@ -1,0 +1,7 @@
+.day_date_month{
+
+    display: flex;
+    width: 500px;
+    justify-content: space-around;
+    align-items: center;
+}

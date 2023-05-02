@@ -2,11 +2,8 @@ let day = document.querySelector(".day");
 let date = document.querySelector(".date");
 let time = document.querySelector(".time");
 let important = new Date();
-// console.log(important)
 
-// console.log(day);
-// console.log(date);
-// console.log(time);
+
 let current_day;
 let no_of_days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thuresday", "Friday", "Saturday"];
 
@@ -21,19 +18,33 @@ function now_day(important) {
     let current_year = important.getFullYear();
     // console.log(current_year);
 
-    date.innerHTML = current_day + "/" + current_month + "/" + current_year
+    if (current_day < 10) {
+
+        current_day = "0" + current_day;
+    }
+
+    if (current_month < 10) {
+
+        current_month = "0" + current_month;
+    }
+
+    date.innerHTML = current_day + "/" + current_month + "/" + current_year;
 }
 
-now_date(important, current_day)
+// now_date(important, current_day)
 
-function now_date(important, current_day) {
+// function now_date(important, current_day) {
 
-    let only_day = no_of_days[current_day];
-    // console.log(day);
+//     let split = current_day.split("")
+//     let splice = split.splice(0, 1);
 
-    day.innerHTML = only_day
+//     current_day = split[0]
 
-}
+//     let only_day = no_of_days[current_day];
+
+//     day.innerHTML = only_day
+
+// }
 
 now_time()
 function now_time() {
@@ -91,7 +102,7 @@ function test() {
 
     let value = time.innerHTML;
 
-    if (value == "02:06:40 AM") { //  date chancer *******
+    if (value == "06:52:58 PM") { //  date chancer *******
 
         for (let i = 0; i < signup.length; i++) {
 
@@ -119,6 +130,8 @@ function test() {
 
                     localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
 
+                    average()
+
                 }
             }
 
@@ -130,77 +143,113 @@ function test() {
     setTimeout(test, 1000);
 }
 
+function average() {
 
+    for (let h = 0; h < balance_enquire.length; h++) {
 
-let total;
+        let average_value = 0;
 
-// average(account_number)
+        for (let r = 0; r < balance_enquire[h]["monthly_balance"].length; r++) {
 
-// function average(account_number, balance) {
+            average_value += balance_enquire[h]["monthly_balance"][r]["day_balance"]
+        }
 
-//     for (let sign = 0; sign < signup.length; sign++) {
-
-//         for (let enquire = 0; enquire < balance_enquire.length; enquire++) {
-
-//             if (signup[sign]["email"] == balance_enquire[enquire]["email_compare"]) {
-
-//                 total = balance_enquire[enquire]["monthly_balance"];
-//                 console.log(total);
-
-//                 for (let step = 0; step < total.length; step++) {
-
-//                     let account_number = "1234567890123456";
-
-//                     if (account_number == total[step]["ac_no"]) {
-
-//                         let tr_bal = total[step]["day_balance"];
-
-//                         // let array =[]
-
-//                         let average = tr_bal / 2;
-//                         console.log(average);
-
-//                     }
-
-//                 }
-
-
-//             }
-
-//         }
-
-//     }
-
-// }
-
-for (let h = 0; h < balance_enquire.length; h++) {
-
-    let average_value = 0;
-
-    for (let r = 0; r < balance_enquire[h]["monthly_balance"].length; r++) {
-
-        average_value += balance_enquire[h]["monthly_balance"][r]["day_balance"]
+        balance_enquire[h]["average_value"] = (average_value / balance_enquire[h]["monthly_balance"].length)
     }
 
-    balance_enquire[h]["average_value"] = (average_value / balance_enquire[h]["monthly_balance"].length)
+    localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
+
 }
 
-localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
+let account;
+
+let ac_ifsc;
+
+let ac_type;
+
+let accounter_name;
+
+let account_minimum_balance;
+
+let average_balance;
+
+let accounter_email;
+
+let subject;
+
+let body;
+
+monthly_once()
+
+function monthly_once() {
+
+    let index_one = date.innerHTML[0]
+    // console.log(index_one);
+    let index_two = date.innerHTML[1]
+    // console.log(index_two);
+
+    let twenty_five = index_one + index_two
+    // console.log(twenty_five);
+
+    let time_one = time.innerHTML
+    // console.log(time_one)
+
+    if (twenty_five == "03" && time_one == "12:28:00 AM") {
+
+        for (let b = 0; b < balance_enquire.length; b++) {
+
+            console.log(balance_enquire[b]);
+
+            account = balance_enquire[b]["ac_no"];
+
+            ac_ifsc = balance_enquire[b]["ac_ifsc"];
+
+            ac_type = balance_enquire[b]["ac_type"];
+
+            accounter_name = balance_enquire[b]["accounter_name"];
+
+            account_minimum_balance = balance_enquire[b]["minium"];
+
+            average_balance = balance_enquire[b]["average_value"];
+
+            accounter_email = balance_enquire[b]["email_compare"];
 
 
+            if (balance_enquire[b]["minium"] <= balance_enquire[b]["average_value"]) {
 
+                console.log("good");
 
-function sendEmail() {
+                subject = "This month you are escaping from the minimum balance penalty.Proud to say this from our side .Always with you. track your account maintenance.  Keep it up. Your account is maintained well . "
+
+                goodEmail(accounter_email, subject, average_balance)
+            }
+
+            else if (balance_enquire[b]["minium"] >= balance_enquire[b]["average_value"]) {
+
+                console.log("bad");
+
+                subject = "It's time to wake up"
+            }
+
+        }
+
+    }
+
+    setTimeout(monthly_once, 1000);
+
+}
+
+function goodEmail(accounter_email, subject, average_balance) {
 
     Email.send({
 
         Host: "smtp.elasticemail.com",
         Username: "manidharun2204@gmail.com",
         Password: "4D6FC23DC9C154060201E850106AFDAC2CBD",
-        To: 'nareshfreshworks@gmail.com',
+        To: accounter_email,
         From: "manidharun2204@gmail.com",
-        Subject: "Sending Email using javascript",
-        Body: "Well that was easy!!",
+        Subject: subject,
+        Body: average_balance,
 
         // Attachments: [
         //     {
@@ -222,63 +271,33 @@ function sendEmail() {
 
 
 
+for (let d = 0; d < 35; d++) {
+
+    `    <div class="days">
+
+    <div class="full_click">
+
+        <span class="date">1</span>
+        <div class="sms">
+
+            <div class="sent">
+                <span class="type_s">sent</span>
+                <span class="sent_value">5</span>
+            </div>
+
+            <div class="recive">
+                <span class="type_r">recived</span>
+                <span class="receive_value">10</span>
+            </div>
+        </div>
 
 
+    </div>
 
 
+</div>`
 
-
-// step_average(total)
-
-// function step_average(total) {
-
-//     for (let step = 0; step < total.length; step++) {
-
-//         console.log(step)
-
-//     }
-
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 // smart function**********************
 

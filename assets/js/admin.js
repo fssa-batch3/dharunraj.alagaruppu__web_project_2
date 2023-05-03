@@ -194,7 +194,7 @@ function monthly_once() {
     let time_one = time.innerHTML
     // console.log(time_one)
 
-    if (twenty_five == "03" && time_one == "07:38:00 PM") {
+    if (twenty_five == "03" && time_one == "07:56:30 PM") {
 
         for (let b = 0; b < balance_enquire.length; b++) {
 
@@ -286,38 +286,6 @@ function goodEmail(accounter_email, subject, body) {
 
 }
 
-let calender = ""
-
-for (let d = 1; d < 32; d++) {
-
-    calender += `    <div class="days">
-
-    <div class="full_click">
-
-        <span class="date">${d}</span>
-        <div class="sms">
-
-            <div class="sent">
-                <span class="type_s">sent</span>
-                <span class="sent_value">5</span>
-            </div>
-
-            <div class="recive">
-                <span class="type_r">recived</span>
-                <span class="receive_value">10</span>
-            </div>
-        </div>
-
-
-    </div>
-
-
-</div>`
-
-}
-
-let total_calender = document.querySelector(".total_back")
-total_calender.innerHTML = calender
 
 // smart function**********************
 

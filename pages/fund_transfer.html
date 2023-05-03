@@ -79,7 +79,8 @@
                     title="Are you sure !! minium Our ifsc number should be 12 numbers" aria="Benificiary IFSC">
 
                 <label for="amount"> Transfer Amount </label>
-                <input class="form-control" type="number" id="amount" name="amount" required aria=" Transfer Amount">
+                <input class="form-control" type="number" id="amount" name="amount" required aria=" Transfer Amount"
+                    min="1" max="49999" title="You can only share amount between 50000 per day">
                 <br>
 
                 <button class="btn btn-primary" id="send" aria="Send button">Send</button>

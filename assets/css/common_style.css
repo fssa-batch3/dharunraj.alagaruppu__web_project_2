@@ -2,7 +2,6 @@
     list-style: none;
     text-decoration: none;
     box-sizing: border-box;
-    font-family: 'Libre Baskerville', sans-serif;
     scroll-behavior: smooth;
     color: #1a237e;
 }
@@ -11,13 +10,11 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    font-family: 'Libre Baskerville', sans-serif;
     align-items: center;
     padding: .5%;
     margin: 1% auto;
     width: 89%;
-    /* background-color:  #f5f6ff; */
-
-    /* border: 1px solid black; */
 }
 
 .title {

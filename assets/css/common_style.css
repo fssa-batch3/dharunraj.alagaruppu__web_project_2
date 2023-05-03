@@ -10,11 +10,14 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    font-family: 'Libre Baskerville', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     align-items: center;
     padding: .5%;
     margin: 1% auto;
     width: 89%;
+    font-weight: 500;
+    /* line-height: 1.2; */
+    letter-spacing: 1px;
 }
 
 .title {
@@ -23,7 +26,7 @@ header {
 
 .title a {
     font-size: 25px;
-    font-weight: 600;
+    /* font-weight: 600; */
     color: #2241ed;
     letter-spacing: 1px;
     list-style: none;
@@ -31,7 +34,7 @@ header {
 }
 
 .full_link {
-   
+
     margin: 1%;
     width: 65%;
     display: flex;
@@ -48,11 +51,12 @@ header {
 
 }
 
-.full_link a:hover , .full_link .current_page{
+.full_link a:hover,
+.full_link .current_page {
 
     color: #2a48ee;
     border-bottom: 2px solid #2a48ee;
-    
+
 }
 
 .logout a {
@@ -63,7 +67,6 @@ header {
     font-size: 16px;
     font-weight: 500;
     letter-spacing: .5px;
-    font-family: 'Open Sans', sans-serif;
 }
 
 .logout a:hover {

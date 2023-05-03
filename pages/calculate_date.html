@@ -92,11 +92,42 @@
 
         </div> -->
     </div>
+    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+
+
 
 
 
     <script type="text/javascript" src="../assets/js/calender.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script>
+        let balancevalue= 2000
+        var xValues = ["balance", "France"];
+var yValues = [balancevalue, 490];
+var barColors = [
+  "#b91d47",
+  "green"
+];
+
+new Chart("myChart", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: ""
+    }
+  }
+});
+    </script>
 
 
     <!-- Calendly inline widget begin -->

@@ -33,6 +33,7 @@ a {
     width: 40%;
     /* margin: 0% auto; */
 }
+
 /* 
 .drop_down{
     display: block;
@@ -112,9 +113,10 @@ form input[type="radio"] {
     justify-content: space-evenly;
     align-items: center;
     margin: 0% auto;
-    /* padding: 1%; */
     background-color: #f5f6ff;
     font-size: 18px;
+    font-weight: 450;
+    letter-spacing: 1px;
 }
 
 .welcome #fname {
@@ -233,4 +235,8 @@ footer .direct a {
     justify-content: start;
     align-items: center;
     width: 100%;
+}
+
+label{
+    font-weight: 500;
 }

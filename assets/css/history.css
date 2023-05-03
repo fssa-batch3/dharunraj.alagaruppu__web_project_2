@@ -8,7 +8,9 @@
     background-color: #f5f6ff;
     font-size: 18px;
     padding: 1% 0%;
-    font-family: 'Libre Baskerville', sans-serif;
+    /* font-family: 'Libre Baskerville', sans-serif; */
+    font-family: 'Open Sans', sans-serif;
+
 }
 
 .welcome #fname {
@@ -44,6 +46,7 @@ input:focus {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    font-weight: 500;
 }
 
 .filter {

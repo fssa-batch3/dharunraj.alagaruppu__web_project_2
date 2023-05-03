@@ -140,7 +140,7 @@ function test() {
     }
 
 
-    setTimeout(test, 1000);
+    // setTimeout(test, 1000);
 }
 
 function average() {

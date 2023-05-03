@@ -1,6 +1,9 @@
 main {
     background-color: #f5f6ff;
     height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    line-height: 1.2;
 }
 
 main .intro {
@@ -96,7 +99,6 @@ main .intro img {
     font-size: 16px;
     font-weight: 500;
     letter-spacing: .5px;
-    font-family: 'Open Sans', sans-serif;
     margin: 3%;
 }
 
@@ -118,6 +120,9 @@ main .intro img {
     width: 80%;
     border-radius: 10px;
     padding: .4% 0%;
+    font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+    
 }
 
 .bank_no img {
@@ -130,5 +135,4 @@ main .intro img {
     padding: 2% 0% 0% 2%;
     /* font-weight: 700; */
     letter-spacing: .5px;
-    font-family: 'Open Sans', sans-serif;
 }

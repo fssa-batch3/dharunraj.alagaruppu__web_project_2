@@ -72,13 +72,13 @@
 
                 </select>
 
-                <label for="to"> Benificiary Account </label>
+                <label for="to"> Reciver Account </label>
                 <input class="form-control input" type="text" id="to" name="to" required pattern="[0-9]{16,17}"
-                    title="Remember !! Your bank account number should be 16 numbers" aria=" Benificiary Account ">
+                    title="Remember !! Your bank account number should be 16 numbers" aria=" Reciver Account ">
 
-                <label for="ifsc"> Benificiary IFSC </label>
+                <label for="ifsc"> Reciver IFSC </label>
                 <input class="form-control" type="text" id="ifsc" name="ifsc" required pattern="[0-9A-Za-z]{6,16}"
-                    title="Are you sure !! minium Our ifsc number should be 12 numbers" aria="Benificiary IFSC">
+                    title="Are you sure !! minium Our ifsc number should be 12 numbers" aria="Reciver IFSC">
 
                 <label for="amount"> Transfer Amount </label>
                 <input class="form-control" type="number" id="amount" name="amount" required aria=" Transfer Amount"
@@ -98,9 +98,9 @@
 
                 <h1>Phone Number to Money Transfer</h1>
 
-                <p>This is fully consider Benificiary Details</p>
+                <p>This is fully consider Reciver Details</p>
 
-                <h5>Account Number </h5>
+                <h5>Account Number</h5>
 
                 <select class="form-select accounts" id="from_num" required>
 
@@ -109,11 +109,15 @@
 
                 </select>
 
-                <label for="to_num"> Benificiary phone number </label>
-                <input class="form-control" type="number" id="to_num" name="to_num" required>
+                <label for="to_num"> Reciver phone number </label>
+                <input class="form-control" type="tel" id="to_num" name="to_num" pattern="[0-9]{10}"
+                    title="Your number should be 10 numbers or characters" aria="Phone number" placeholder="Phone No *"
+                    required>
+
 
                 <label for="amount"> Transfer amount </label>
-                <input class="form-control" type="number" id="to_amount" name="amount" required min="1">
+                <input class="form-control" type="number" id="to_amount" name="amount" required aria=" Transfer Amount"
+                    min="1" max="49999" title="You can only share amount between 50000 per day">
 
 
 
@@ -318,7 +322,7 @@
                 "to_ifsc": to_ifsc,
                 "send_amount": send_amount,
                 "email_compare": email_compare,
-                
+
             }
 
             history = {
@@ -469,7 +473,7 @@
 
     </script>
 
-<script src="../assets/js/fund_transfer.js"></script>
+    <script src="../assets/js/fund_transfer.js"></script>
 
 </body>
 

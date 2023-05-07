@@ -103,11 +103,6 @@
                     <input class="form-control" type="tel" id="phone" name="phone" required pattern="[0-9]{10}"
                         title="How many numbers will there be?">
 
-                    <!-- <label for="pincode"> Pin code</label>
-                    <input class="form-control" type="tel" id="pincode" name="pincode" required pattern="[0-9]{6}"
-                        title="It should be 6 numbers"> -->
-
-                    <!-- <p></p> -->
                     <h6>Choose minium balance</h6>
                     <div class="input-group mb-3 drop_down">
 
@@ -403,10 +398,62 @@
 
                     localStorage.setItem("array", JSON.stringify(show));
 
-
+                    open_average()
                 }
 
             }
+
+        }
+
+        function open_average() {
+
+            for (let j = 0; j < balance_enquire.length; j++) {
+
+                balance = balance_enquire[j]["ac_balance"];
+
+                console.log(balance);
+
+                let month = balance_enquire[j]["monthly_balance"] ?? [];
+
+                let rotine = {
+
+                    "day_balance": balance,
+                }
+
+                month.push(rotine);
+
+                balance_enquire[j]["monthly_balance"] = month
+
+                localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
+
+                average();
+            }
+        }
+
+        function average() {
+
+            for (let h = 0; h < balance_enquire.length; h++) {
+
+                let average_value = 0;
+
+                if (balance_enquire[h]["monthly_balance"]) {
+
+                    for (let r = 0; r < balance_enquire[h]["monthly_balance"].length; r++) {
+
+                        average_value += balance_enquire[h]["monthly_balance"][r]["day_balance"]
+                    }
+
+                    let average_balance;
+
+                    average_balance = (average_value / balance_enquire[h]["monthly_balance"].length).toFixed(2);
+
+                    balance_enquire[h]["average_value"] = average_balance
+                }
+
+
+            }
+
+            localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
 
         }
 
@@ -639,6 +686,8 @@
     </script>
 
     <script type="text/javascript" src="../assets/js/common_function.js"></script>
+    <!-- <script src="../assets/js/admin.js"></script> -->
+
 
 
 

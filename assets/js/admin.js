@@ -128,9 +128,9 @@ function average() {
     
            let average_balance;
 
-            average_balance = (average_value / balance_enquire[h]["monthly_balance"].length);
+            average_balance = (average_value / balance_enquire[h]["monthly_balance"].length).toFixed(2);
 
-            balance_enquire[h]["average_value"] = average_balance.toFixed(2)
+            balance_enquire[h]["average_value"] = average_balance
         }
 
 

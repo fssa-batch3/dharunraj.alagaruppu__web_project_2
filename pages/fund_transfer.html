@@ -65,7 +65,7 @@
 
                 <h5>Account Number </h5>
 
-                <select class="form-select accounts" id="from" aria-label="Example select with button addon" required>
+                <select class="form-select accounts" id="from" required>
 
                     <option value="">Choose your Ac.No</option>
 
@@ -91,7 +91,7 @@
 
         </div>
 
-        <!-- 
+
         <div class="right_contant left_photo">
 
             <form>
@@ -100,21 +100,22 @@
 
                 <p>This is fully consider Benificiary Details</p>
 
-                <label for="to_num"> Benificiary phone number </label>
-                <input class="form-control" type="number" id="to_num" name="to_num" required>
-
-                <label for="to_amount"> Transfer amount </label>
-                <input class="form-control" type="number" id="to_amount" name="to_amount" required min="1">
-
                 <h5>Account Number </h5>
 
-                <select class="form-select accounts" id="from_num" aria-label="Example select with button addon"
-                    required>
+                <select class="form-select accounts" id="from_num" required>
 
                     <option value="">Choose your Ac.No</option>
 
 
-                </select> <br>
+                </select>
+
+                <label for="to_num"> Benificiary phone number </label>
+                <input class="form-control" type="number" id="to_num" name="to_num" required>
+
+                <label for="amount"> Transfer amount </label>
+                <input class="form-control" type="number" id="to_amount" name="amount" required min="1">
+
+
 
                 <button class="btn btn-primary">Send</button>
 
@@ -122,7 +123,7 @@
 
             <img src="../assets/img/9176210_6617-removebg-preview.png" alt="fund1">
 
-        </div> -->
+        </div>
 
     </div>
 
@@ -265,6 +266,7 @@
         let account_account;
         let history;
 
+
         function account_to_account() {
 
             from_account = document.getElementById("from").value.trim();
@@ -277,7 +279,6 @@
             reciver_type;
             sender_type;
 
-            // if (from_account != "" && to_account != "" && to_ifsc != "" && send_amount != "") {
             balance_page.find(e => {
 
                 if (e["ac_no"] == to_account && e["ac_no"] != from_account && e["ac_ifsc"] == to_ifsc && e["email_compare"] != email_compare) {
@@ -305,13 +306,6 @@
                 alert("Sorry!! Reciver is not there or recheck your benificary account number")
             }
 
-            // }
-
-            // else {
-
-            //     alert("Please recheck the value")
-            // }
-
         }
 
 
@@ -324,7 +318,7 @@
                 "to_ifsc": to_ifsc,
                 "send_amount": send_amount,
                 "email_compare": email_compare,
-                "reciver_id": ""
+                
             }
 
             history = {
@@ -473,27 +467,10 @@
 
         }
 
-        // let account_number;
-        // let transfer_amount;
-        // let from_ac_number
-
-        // function phone_transaction() {
-
-
-        //     account_number = document.getElementById("to_num");
-        //     transfer_amount = document.getElementById("to_amount");
-        //     from_ac_number = document.getElementById("from_num");
-        //     current_date = new Date().toJSON().slice(0, 10);
-        //     email_compare = localStorage.getItem("email");
-        //     result;
-        //     reciver_type;
-        //     sender_type;
-
-        // }
-
-
-
     </script>
+
+<script src="../assets/js/fund_transfer.js"></script>
+
 </body>
 
 </html>

@@ -237,9 +237,9 @@
 
             let average_num = arr[i]["average_value"];
 
-            range_value = ((100 * average_num) / avg_month).toFixed(2);
+            range_value = ((100 * average_num) / avg_month);
 
-            remaining = (100 - range_value);
+            remaining = (100 - range_value).toFixed(2);
 
             e.style.width = `${remaining}%`
             e.parentElement.parentElement.children[0].children[0].children[1].innerText = `${remaining}%`

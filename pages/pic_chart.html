@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pic chart</title>
+    <link rel="stylesheet" href="../assets/css/pie_chart.css">
+    <link rel="stylesheet" href="../assets/css/common_style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="title">
+            <a href="./home.html">NET BLIZ</a>
+        </div>
+
+        <div class="full_link">
+            <div>
+                <a href="./home.html">Home</a>
+            </div>
+
+            <div>
+                <a href="./fund_transfer.html">Transfer</a>
+            </div>
+
+            <div>
+                <a href="./balance_enquire.html">Balance</a>
+            </div>
+
+            <div>
+                <a href="./history.html">History</a>
+            </div>
+
+            <div>
+                <a class="current_page" href="#">Chart</a>
+            </div>
+
+            <div class="logout">
+                <a href="../index.html">Log Out</a>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="day_date_month">
+
+        <p class="date">date</p>
+
+        <p class="time">time</p>
+
+    </div>
+
+    <main>
+
+
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <script type="text/javascript" src="../assets/js/date_time.js"></script>
+
+    <script>
+
+        let email = localStorage.getItem("email");
+        let balance_enquire = JSON.parse(localStorage.getItem("bal_enquire"));
+
+        let main = document.querySelector("main");
+
+        let chart = "";
+
+        let diagram = "";
+        let range_value;
+        let arr = []
+
+        for (let i = 0; i < balance_enquire.length; i++) {
+
+            if (email == balance_enquire[i]["email_compare"]) {
+
+                arr.push(balance_enquire[i]);
+
+                let total_date = date.innerHTML
+
+                total_date = total_date.slice(0, 2);
+
+                let maintenance = (balance_enquire[i]["minium"] * total_date);
+
+                let avg_month = (balance_enquire[i]["minium"] * 30);
+
+
+                chart += `<h1 id="pie">Pie chart :</h1>
+
+                <div>
+
+              <div class="total_table">
+
+           <table>
+
+           <tr>
+              <td id="table_label">Account number</td>
+             <td>${balance_enquire[i]["ac_no"]}</td> 
+
+             <td class="range">
+                <div class="name">
+                ${balance_enquire[i]["accounter_name"]}
+            </td>
+                </div>
+           </tr>
+
+        <tr>
+            <td class="first_td" id="table_label">Your balance</td>
+            <td class="sec_td">${balance_enquire[i]["ac_balance"]}</td>
+
+        </tr>
+
+        <tr>
+            <td class="first_td" id="table_label">Daily mininum balance</td>
+
+            <td class="sec_td">${balance_enquire[i]["minium"]}</td>
+
+        </tr>
+
+        <tr>
+            <td class="first_td" id="table_label"> Monthly maintenance balance</td>
+
+            <td class="sec_td mon">${avg_month}</td>
+
+            <td class="range">
+                <div class="min">
+                 <div id="static_min"></div>
+
+                 </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="first_td" id="table_label"> Until maintenance balance</td>
+            <td class="sec_td">${maintenance}</td>
+            <td class="range">
+                <div class="min">
+                    <div class="daily_maintain"></div>
+
+                     </div>
+                </div>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td class="first_td" id="table_label">Average maintain balance</td>
+            <td class="sec_td avg">${balance_enquire[i]["average_value"]}</td>
+            <td class="range">
+                <div class="min ">
+
+                   <div class="value_avg">
+
+                    
+    
+                      </div>
+                </div>
+            </td>
+
+        </tr>
+
+    </table>
+</div>
+
+        <div class="chart_details">
+
+           <div class = "pie_chart_div">
+
+               <canvas id=piechart${i}></canvas> 
+
+            </div> 
+                     
+             <div class="details">
+
+                <div>
+                    <div class="remaining">
+                         <h4>Remaining</h4>
+                          <h1 class="remain_per">26.7%</h1>
+                     </div>
+                    </div>
+
+                <div class="cover">
+
+                    <div class="remaining_value">
+                        
+                        </div>
+                    </div>
+
+             </div>
+
+        </div> `
+
+
+
+                // ave_value.style.display = "flex";
+            }
+
+
+
+        }
+
+
+        main.innerHTML = chart
+
+
+        let ave_value = document.querySelectorAll(".value_avg");
+
+        let red_alert = document.querySelectorAll(".remaining_value");
+
+        let balance_alert = [];
+
+        balance_alert.push(red_alert);
+
+        ave_value.forEach((e, i) => {
+
+            let avg_month = (arr[i]["minium"] * 30); // 30000
+
+            let average_num = arr[i]["average_value"];
+
+            range_value = ((100 * average_num) / avg_month).toFixed(2);
+
+            e.style.width = `${range_value}%`;
+
+        });
+
+        let remaining;
+
+        let show_remain;
+
+        red_alert.forEach((e, i) => {
+
+            let avg_month = (arr[i]["minium"] * 30); // 30000
+
+            let average_num = arr[i]["average_value"];
+
+            range_value = ((100 * average_num) / avg_month).toFixed(2);
+
+            remaining = (100 - range_value);
+
+            e.style.width = `${remaining}%`
+            e.parentElement.parentElement.children[0].children[0].children[1].innerText = `${remaining}%`
+
+        });
+
+
+        let daily_min = document.querySelectorAll(".daily_maintain");
+        let maintenance;
+        let avg_month;
+
+        daily_min.forEach((e, i) => {
+
+            let total_date = date.innerHTML
+
+            total_date = total_date.slice(0, 2);
+
+            avg_month = (arr[i]["minium"] * 30);
+
+            maintenance = (arr[i]["minium"] * total_date);
+
+            let until = ((100 * maintenance) / avg_month).toFixed(2);
+            // console.log(until)
+
+            e.style.width = `${until}%`;
+
+        });
+
+        // let remain_per = document.querySelectorAll(".remain_per");
+        // console.log(remain_per[0].classList.contains('remain_per'));
+
+        // remain_per.forEach((e) => {
+
+
+
+        // })
+
+
+
+    </script>
+
+    <script src="../assets/js/pic_chart.js"></script>
+
+</body>
+
+</html>

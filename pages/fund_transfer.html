@@ -39,6 +39,10 @@
                 <a href="./history.html">History</a>
             </div>
 
+            <div>
+                <a href="./pic_chart.html">Chart</a>
+            </div>
+
             <div class="logout">
                 <a href="../index.html">Log Out</a>
             </div>
@@ -66,8 +70,6 @@
                     <option value="">Choose your Ac.No</option>
 
 
-
-
                 </select>
 
                 <label for="to"> Benificiary Account </label>
@@ -89,23 +91,30 @@
 
         </div>
 
-
-        <!-- <div class="right_contant left_photo">
+        <!-- 
+        <div class="right_contant left_photo">
 
             <form>
 
                 <h1>Phone Number to Money Transfer</h1>
 
-                <p>This content fully consider Benificiary Details</p>
+                <p>This is fully consider Benificiary Details</p>
 
-                <label for="phone"> Phone number </label>
-                <input class="form-control" type="number" id="phone" name="phone" required>
-
-                <label for="to_num"> Benificiary Ph.No </label>
+                <label for="to_num"> Benificiary phone number </label>
                 <input class="form-control" type="number" id="to_num" name="to_num" required>
 
-                <label for="to_amount"> Transfer Amount </label>
-                <input class="form-control" type="number" id="to_amount" name="to_amount" required min="1"> <br>
+                <label for="to_amount"> Transfer amount </label>
+                <input class="form-control" type="number" id="to_amount" name="to_amount" required min="1">
+
+                <h5>Account Number </h5>
+
+                <select class="form-select accounts" id="from_num" aria-label="Example select with button addon"
+                    required>
+
+                    <option value="">Choose your Ac.No</option>
+
+
+                </select> <br>
 
                 <button class="btn btn-primary">Send</button>
 
@@ -179,6 +188,8 @@
 
             let current_ac = document.getElementById("from")
 
+            let phone_numbers = document.getElementById("from_num")
+
             for (let array = 0; array < signup_array.length; array++) {
 
                 for (let ac = 0; ac < account_check.length; ac++) {
@@ -186,12 +197,18 @@
                     if (signup_array[array]["email"] == email && signup_array[array]["email"] == account_check[ac]["email_compare"]) {
 
                         let account_match = account_check[ac]["account"];
-                        // console.log(account_match)
+
+                        // let accounter_numbers = account_check[ac]["phone"];
 
                         let option = document.createElement("option");
                         option.setAttribute("value", account_match);
                         option.innerHTML = (account_match);
                         current_ac.append(option);
+
+                        let phone_option = document.createElement("option");
+                        phone_option.setAttribute("value", account_match);
+                        phone_option.innerHTML = (account_match);
+                        phone_numbers.append(phone_option)
 
                     }
 
@@ -263,7 +280,7 @@
             // if (from_account != "" && to_account != "" && to_ifsc != "" && send_amount != "") {
             balance_page.find(e => {
 
-                if (e["ac_no"] == to_account && e["ac_no"] != from_account && e["ac_ifsc"] == to_ifsc) {
+                if (e["ac_no"] == to_account && e["ac_no"] != from_account && e["ac_ifsc"] == to_ifsc && e["email_compare"] != email_compare) {
 
                     result = 1;
                 }
@@ -285,7 +302,7 @@
             }
 
             else {
-                alert("Sorry!! Reciver is not there")
+                alert("Sorry!! Reciver is not there or recheck your benificary account number")
             }
 
             // }
@@ -455,6 +472,24 @@
             })
 
         }
+
+        // let account_number;
+        // let transfer_amount;
+        // let from_ac_number
+
+        // function phone_transaction() {
+
+
+        //     account_number = document.getElementById("to_num");
+        //     transfer_amount = document.getElementById("to_amount");
+        //     from_ac_number = document.getElementById("from_num");
+        //     current_date = new Date().toJSON().slice(0, 10);
+        //     email_compare = localStorage.getItem("email");
+        //     result;
+        //     reciver_type;
+        //     sender_type;
+
+        // }
 
 
 

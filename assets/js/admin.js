@@ -11,10 +11,10 @@ now_day(important)
 
 function now_day(important) {
 
-    current_day = important.getDay();
-    // console.log(day)
+    let current_day = important.getDate();
+    console.log(current_day);
     let current_month = important.getMonth() + 1;
-    // console.log(current_month);
+    console.log(current_month);
     let current_year = important.getFullYear();
     // console.log(current_year);
 
@@ -30,21 +30,6 @@ function now_day(important) {
 
     date.innerHTML = current_day + "/" + current_month + "/" + current_year;
 }
-
-// now_date(important, current_day)
-
-// function now_date(important, current_day) {
-
-//     let split = current_day.split("")
-//     let splice = split.splice(0, 1);
-
-//     current_day = split[0]
-
-//     let only_day = no_of_days[current_day];
-
-//     day.innerHTML = only_day
-
-// }
 
 now_time()
 function now_time() {
@@ -122,29 +107,11 @@ daily.addEventListener("click", e => {
             balance_enquire[j]["monthly_balance"] = month
 
             localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
-            // alert("success")
-            
-   }
+          
+            average();
+        }
 
-})
-
-   
-
-    // console.log("cort")
-
-
-
-
-let month = document.getElementById("monthly_check");
-
-month.addEventListener("click", () => {
-
-    average()
-
-    monthly_once()
-    console.log("cort1")
-})
-
+  });
 
 function average() {
 
@@ -152,17 +119,35 @@ function average() {
 
         let average_value = 0;
 
-        for (let r = 0; r < balance_enquire[h]["monthly_balance"].length; r++) {
+        if(balance_enquire[h]["monthly_balance"]){
+            
+            for (let r = 0; r < balance_enquire[h]["monthly_balance"].length; r++) {
 
-            average_value += balance_enquire[h]["monthly_balance"][r]["day_balance"]
+                average_value += balance_enquire[h]["monthly_balance"][r]["day_balance"]
+            }
+    
+           let average_balance;
+
+            average_balance = (average_value / balance_enquire[h]["monthly_balance"].length);
+
+            balance_enquire[h]["average_value"] = average_balance.toFixed(2)
         }
 
-        balance_enquire[h]["average_value"] = (average_value / balance_enquire[h]["monthly_balance"].length)
+
     }
 
     localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
 
 }
+
+
+
+let month = document.getElementById("monthly_check");
+
+month.addEventListener("click", () => {
+
+    monthly_once()
+});
 
 let account;
 
@@ -181,9 +166,6 @@ let subject;
 let body;
 
 let current_balance;
-
-
-
 
 function monthly_once() {
 
@@ -256,10 +238,6 @@ function monthly_once() {
 
     }
 
-    // }
-
-    // setTimeout(monthly_once, 1000);
-
 }
 
 let crt;
@@ -281,6 +259,7 @@ function goodEmail(accounter_email, subject, body) {
         //         name: "File_Name_with_Extension",
         //         path: "https://drive.google.com/file/d/1RhOnDY9rkq-tjYnhhjUEUV-WEjjKL_Wh/view?usp=sharing"
         //     }]
+        
     })
 
         .then(function (message) { //try{} catch{}
@@ -304,7 +283,20 @@ function goodEmail(accounter_email, subject, body) {
 
 
 
+// now_date(important, current_day)
 
+// function now_date(important, current_day) {
+
+//     let split = current_day.split("")
+//     let splice = split.splice(0, 1);
+
+//     current_day = split[0]
+
+//     let only_day = no_of_days[current_day];
+
+//     day.innerHTML = only_day
+
+// }
 
 
 

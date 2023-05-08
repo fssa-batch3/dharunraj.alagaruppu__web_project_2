@@ -14,7 +14,7 @@
 // }
 //   )
 
-fetch("https://api.apilayer.com/email_verification/balajihack2651@gmail.com?apikey=AQcZ7IxCjhBK10lW9u8Lx03MH378Kaci")
+fetch("https://api.apilayer.com/email_verification/manidharun2204@gmail.com?apikey=AQcZ7IxCjhBK10lW9u8Lx03MH378Kaci")
   .then((response) => {
   return response.json()
 }
@@ -22,7 +22,7 @@ fetch("https://api.apilayer.com/email_verification/balajihack2651@gmail.com?apik
   .then((data) => {
   // console.log(data)
   if(data.can_connect_smtp===true){
-    console.log("valid")
+    console.log(data)
   }
   else{
     console.log(" not valid")

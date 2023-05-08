@@ -68,7 +68,7 @@
                 "placeholder": "First Name *",
                 "required": "required",
 
-                "pattern":"^[a-zA-Z ]{3,50}$",
+                "pattern": "^[a-zA-Z ]{3,50}$",
                 "tittle": "Your pattern minium length of 2 characters a_z or A_Z only",
                 "aria": "First name"
 
@@ -84,7 +84,7 @@
                 "id": "lname",
                 "placeholder": "Last Name *",
 
-                "pattern":"^[a-zA-Z ]{1,50}$",
+                "pattern": "^[a-zA-Z ]{1,50}$",
                 "tittle": "Your pattern is minium 1 to 20 character a_z or A_Z only",
                 "aria": "Last Name"
 
@@ -113,10 +113,10 @@
                 "type": "tel",
                 "name": "phone",
                 "id": "phone",
-                "placeholder": "Phone No *",
+                "placeholder": "Phone number *",
 
-                "pattern": "[0-9]{10}",
-                "tittle": "Your number should be 10 numbers or characters",
+                "pattern": "[0-9]{12}",
+                "tittle": "Before enter phone number enter your country code  OR Your number should be 12 numbers",
                 "aria": "Phone No"
             },
 
@@ -231,26 +231,71 @@
             new_pass = document.getElementById("new_pass").value.trim();
             confirm_pass = document.getElementById("confirm").value.trim();
 
+            if (new_pass != confirm_pass) {
 
-            if (first_name != "" && last_name != "" && email !== "" && new_pass != "" && confirm_pass != "" && phone != "") {
-
-                if (new_pass != confirm_pass) {
-                    alert("Oops !! password and confirm password doesn't match.");
-                }
-
-                else {
-
-                    add_local();
-                }
-
+                alert("Oops !! password and confirm password doesn't match.");
             }
 
             else {
-                alert("Can't get a data.Please give a value");
+                emailcheck(email, phone);
             }
+
         }
 
-        function add_local() {
+
+
+        function emailcheck(email, phone) {
+
+            console.log(email)
+
+            fetch(`https://api.apilayer.com/email_verification/${email}?apikey=AQcZ7IxCjhBK10lW9u8Lx03MH378Kaci`)
+
+                .then((response) => {
+
+                    return response.json()
+                })
+
+                .then((data) => {
+
+                    if (data.can_connect_smtp == true) {
+
+                        console.log(data);
+                        phone_check(email, phone);
+                    }
+
+                    else {
+                        alert("User email id is not valid");
+                    }
+
+                });
+        }
+
+
+        function phone_check(email, phone) {
+
+            fetch(`https://api.apilayer.com/number_verification/validate?apikey=AQcZ7IxCjhBK10lW9u8Lx03MH378Kaci&number=${phone}`)
+
+                .then((response) => {
+
+                    return response.json();
+                })
+
+                .then((data) => {
+
+                    if (data.carrier == "") {
+
+                        alert("Recheck your phone number");
+                    }
+                    else {
+
+                        console.log("valid");
+                        add_local(email, phone);
+
+                    }
+                });
+        }
+
+        function add_local(email, phone) {
 
             let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
 

@@ -1,7 +1,5 @@
-
-let send_button1 = document.getElementsByTagName("form")[1];
-
 send_button[1].addEventListener("submit", (p) => {
+
     p.preventDefault()
 
     phone_transaction();
@@ -9,25 +7,28 @@ send_button[1].addEventListener("submit", (p) => {
 });
 
 let ph_number;
-let transfer_amount;
-let from_ac_number;
-
-
 let primary_ac;
+
 function phone_transaction() {
 
-    ph_number = document.getElementById("to_num").value.trim();
-    // console.log(account_number);
-    send_amount = document.getElementById("to_amount").value.trim();
-    // console.log(send_amount);
-    from_ac_number = document.getElementById("from_num").value.trim();
-    // console.log(from_ac_number);
+    from_account = document.getElementById("from_num").value.trim();
 
-    current_date = new Date().toJSON().slice(0, 10);
-    email_compare = localStorage.getItem("email");
-    result;
-    reciver_type;
-    sender_type;
+    ph_number = document.getElementById("to_num").value.trim();
+
+    send_amount = document.getElementById("to_amount").value.trim();
+
+    remarks = textAreaExample6[1].value.trim();
+
+
+    balance_page.forEach(e => {
+
+        if (e["ac_no"] == from_account) {
+
+            sender_balances = e["ac_balance"];
+
+        }
+
+    })
 
     signup_array.forEach(e => {
 
@@ -41,25 +42,15 @@ function phone_transaction() {
 
     });
 
-    balance_page.forEach((e) => {
-
-        if (e["ac_no"] == from_ac_number) {
-
-            sender_balances = e["ac_balance"]
-
-        }
-
-    })
-
     if (result == 1) {
 
         if (sender_balances >= send_amount) {
 
-            push_local()
+            push_local(from_account, ph_number, send_amount, email_compare, current_date, primary_ac, remarks)
         }
 
         else {
-            alert("Sorry!! You don't have money to send")
+            alert("Sorry!! You don't have money to send");
         }
 
     }
@@ -73,31 +64,32 @@ function phone_transaction() {
 
 let phone_phone;
 
-function push_local() {
+function push_local(from_account, ph_number, send_amount, email_compare, current_date, primary_ac, remarks) {
 
     phone_phone = {
 
-        "from_account": from_ac_number,
+        "from_account": from_account,
         "to_phone": ph_number,
         "send_amount": send_amount,
         "email_compare": email_compare,
+        "remarks": remarks,
     }
 
     history = {
-        "send_amount": send_amount,
-        "date": current_date,
-        "sender_balance": "",
-        "reciver_balance": "",
-        "sender_email": email_compare,
-        "reciver_account": primary_ac,
-        "sender_account": from_ac_number,
+        "sender_account": from_account,
         "to_phone": ph_number,
+        "send_amount": send_amount,
+        "sender_email": email_compare,
+        "date": current_date,
+        "reciver_account": primary_ac,
+        "remarks": remarks,
         "sender_type": "",
+        "sender_balance": "",
+        "sender_name": "",
+        "reciver_balance": "",
         "reciver_type": "",
         "reciver_name": "",
-        "sender_name": "",
-        "reciver_name": "",
-        "reciver_email": ""
+        "reciver_email": "",
 
     }
 
@@ -109,7 +101,7 @@ function push_local() {
 
     localStorage.setItem("history_table", JSON.stringify(history_table));
 
-    balance_change();
+    balance_change(from_account, send_amount, primary_ac);
 
     window.location.href = ("./history.html");
 
@@ -117,54 +109,39 @@ function push_local() {
 
 }
 
-function balance_change() {
-
-    let current_send_money = document.getElementById("to_amount").value;
-
-    let sender_ac = document.getElementById("from_num").value;
-    console.log(sender_ac);
-
+function balance_change(from_account, send_amount, primary_ac) {
     balance_page.forEach(element => {
 
+        if (element["email_compare"] == email_compare && element["ac_no"] == from_account) {
 
-        if (element["email_compare"] == email && element["ac_no"] == sender_ac) {
-
-            let accounter = document.getElementById("from_num").value;
-            console.log(accounter);
-
-            let old_balance = element["ac_balance"];
+            old_balance = element["ac_balance"];
 
             sender_name = element["accounter_name"];
 
-            old_balance = Number(old_balance) - Number(current_send_money);
+            old_balance = Number(old_balance) - Number(send_amount);
 
             element["ac_balance"] = old_balance;
 
-            current_balance = old_balance;
-
             sender_type = "Money sent"
 
-            let sender_history = JSON.parse(localStorage.getItem("history_table"));
+            for (let di = 0; di < history_table.length; di++) {
 
-            for (let di = 0; di < sender_history.length; di++) {
+                if (from_account == history_table[di]["sender_account"] && history_table[di]["sender_type"] == "" && history_table[di]["sender_balance"] == "" && history_table[di]["sender_name"] == "") {
 
-                if (accounter == sender_history[di]["sender_account"] && sender_history[di]["sender_type"] == "" && sender_history[di]["sender_balance"] == "") {
+                    history_table[di]["sender_type"] = sender_type;
 
-                    sender_history[di]["sender_type"] = sender_type;
+                    history_table[di]["sender_balance"] = old_balance;
 
-                    sender_history[di]["sender_balance"] = current_balance;
+                    history_table[di]["sender_name"] = sender_name
 
-                    sender_history[di]["sender_name"] = sender_name
-
-                    localStorage.setItem("history_table", JSON.stringify(sender_history));
+                    localStorage.setItem("history_table", JSON.stringify(history_table));
 
                 }
-
             }
 
             localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
 
-            reciver()
+            reciver(primary_ac, send_amount)
 
         }
 
@@ -172,52 +149,40 @@ function balance_change() {
 
 }
 
-function reciver() {
-
-    let accounter = primary_ac;
-
-    let current_recive_money = document.getElementById("to_amount").value;
-
-    let recived_money;
+function reciver(primary_ac, send_amount) {
 
     balance_page.forEach(element => {
 
-        if (element["ac_no"] == accounter) {
+        if (element["ac_no"] == primary_ac) {
 
-            let old_balances = element["ac_balance"];
+            recived_money = element["ac_balance"];
 
             reciver_name = element["accounter_name"];
+            console.log(reciver_name);
 
-            receiver_email = element["email_compare"]
-
-
-            recived_money = Number(old_balances) + Number(current_recive_money);
-
-            element["ac_balance"] = recived_money;
-
-            // console.log(recived_money);
-
-            reciver_balances = recived_money;
-
-            localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
+            receiver_email = element["email_compare"];
 
             reciver_type = "Money received";
 
-            let change_history = JSON.parse(localStorage.getItem("history_table"));
+            recived_money = Number(recived_money) + Number(send_amount);
 
-            for (let d = 0; d < change_history.length; d++) {
+            element["ac_balance"] = recived_money;
 
-                if (accounter == change_history[d]["reciver_account"] && change_history[d]["reciver_balance"] == "" && change_history[d]["reciver_type"] == "") {
+            localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
 
-                    change_history[d]["reciver_balance"] = reciver_balances;
+            for (let d = 0; d < history_table.length; d++) {
 
-                    change_history[d]["reciver_type"] = reciver_type;
+                if (primary_ac == history_table[d]["reciver_account"] && history_table[d]["reciver_balance"] == "" && history_table[d]["reciver_type"] == "" && history_table[d]["reciver_name"] == "" && history_table[d]["reciver_email"] == "") {
 
-                    change_history[d]["reciver_name"] = reciver_name;
+                    history_table[d]["reciver_balance"] = recived_money;
 
-                    change_history[d]["reciver_email"] = receiver_email;
+                    history_table[d]["reciver_type"] = reciver_type;
 
-                    localStorage.setItem("history_table", JSON.stringify(change_history));
+                    history_table[d]["reciver_name"] = reciver_name;
+
+                    history_table[d]["reciver_email"] = receiver_email;
+
+                    localStorage.setItem("history_table", JSON.stringify(history_table));
 
                 }
             }
@@ -227,5 +192,4 @@ function reciver() {
     })
 
 }
-
 

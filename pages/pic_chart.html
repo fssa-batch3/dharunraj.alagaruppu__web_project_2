@@ -53,6 +53,15 @@
 
     </div>
 
+    <select class="form-select accounts" id="select_account" required>
+
+        <option value="">Choose your account number</option>
+
+
+    </select>
+
+    <button>check</button>
+
     <main>
 
 
@@ -60,19 +69,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
     <script type="text/javascript" src="../assets/js/date_time.js"></script>
-
+    <script src="../assets/js/common_function.js"></script>
     <script>
 
+        let picchart_select = document.getElementById("select_account");
+        option()
+
         let email = localStorage.getItem("email");
+
         let balance_enquire = JSON.parse(localStorage.getItem("bal_enquire"));
+
+        let account_check = JSON.parse(localStorage.getItem("account_details"));
 
         let main = document.querySelector("main");
 
         let chart = "";
 
         let diagram = "";
+
         let range_value;
-        let arr = []
+
+        let arr = [];
+
+
 
         for (let i = 0; i < balance_enquire.length; i++) {
 
@@ -89,15 +108,17 @@
                 let avg_month = (balance_enquire[i]["minium"] * 30);
 
 
-                chart += `<h1 id="pie">Pie chart :</h1>
+                chart += ` <div class="full_account_details">
+                    
+                    <h1 id="pie">Pie chart :</h1>
 
                 <div>
 
               <div class="total_table">
 
-           <table>
+               <table>
 
-           <tr>
+                 <tr>
               <td id="table_label">Account number</td>
              <td>${balance_enquire[i]["ac_no"]}</td> 
 
@@ -108,20 +129,20 @@
                 </div>
            </tr>
 
-        <tr>
+          <tr>
             <td class="first_td" id="table_label">Your balance</td>
             <td class="sec_td">${balance_enquire[i]["ac_balance"]}</td>
 
-        </tr>
+          </tr>
 
-        <tr>
-            <td class="first_td" id="table_label">Daily mininum balance</td>
+          <tr>
+            <td class="first_td" id="table_label">Minimum maintenance balance</td>
 
             <td class="sec_td">${balance_enquire[i]["minium"]}</td>
 
-        </tr>
+          </tr>
 
-        <tr>
+          <tr>
             <td class="first_td" id="table_label"> Monthly maintenance balance</td>
 
             <td class="sec_td mon">${avg_month}</td>
@@ -132,9 +153,9 @@
 
                  </div>
             </td>
-        </tr>
+          </tr>
 
-        <tr>
+          <tr>
             <td class="first_td" id="table_label"> Until maintenance balance</td>
             <td class="sec_td">${maintenance}</td>
             <td class="range">
@@ -145,9 +166,9 @@
                 </div>
             </td>
 
-        </tr>
+         </tr>
 
-        <tr>
+         <tr>
             <td class="first_td" id="table_label">Average maintain balance</td>
             <td class="sec_td avg">${balance_enquire[i]["average_value"]}</td>
             <td class="range">
@@ -161,12 +182,12 @@
                 </div>
             </td>
 
-        </tr>
+         </tr>
 
-    </table>
-</div>
+          </table>
+          </div>
 
-        <div class="chart_details">
+          <div class="chart_details">
 
            <div class = "pie_chart_div">
 
@@ -192,11 +213,11 @@
 
              </div>
 
-        </div> `
+           </div> 
+           
+           </div>
+           `
 
-
-
-                // ave_value.style.display = "flex";
             }
 
 
@@ -262,20 +283,22 @@
             maintenance = (arr[i]["minium"] * total_date);
 
             let until = ((100 * maintenance) / avg_month).toFixed(2);
-            // console.log(until)
 
             e.style.width = `${until}%`;
 
         });
 
-        // let remain_per = document.querySelectorAll(".remain_per");
-        // console.log(remain_per[0].classList.contains('remain_per'));
+        let result = document.querySelector("button");
 
-        // remain_per.forEach((e) => {
+        result.addEventListener("click", () => {
+
+            let select_ac_number = document.getElementById("select_account")
 
 
 
-        // })
+        })
+
+        // let ac_numbers = document.querySelectorAll(".")
 
 
 

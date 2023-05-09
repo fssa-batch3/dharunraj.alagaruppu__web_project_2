@@ -57,9 +57,12 @@
 
             <div class="search">
                 <img src="../assets/img/5138de707a808fdcb21f8190a417a259.png_wh860-removebg-preview.png" alt="search">
+
                 <label for="search"></label>
                 <input type="search" id="search" name="search" placeholder="History here">
+
             </div>
+
 
             <div class="right_filter">
 
@@ -77,21 +80,23 @@
 
                 <div class="select_div">
 
-                    <select class="form-select accounts" id="from" aria-label="Example select with button addon"
-                        required>
+                    <select class="form-select accounts" id="from" required>
 
                         <option value="">Choose your Ac.No</option>
-
-
 
 
                     </select>
 
                     <button id="result_button">check</button>
 
+                    <button id="restart">back</button>
+
                 </div>
 
             </div>
+
+
+
 
         </div>
 
@@ -121,9 +126,6 @@
 
         let primary_account;
 
-        let accounter;
-
-
         let function_account;
         let function_image;
         let type;
@@ -133,6 +135,11 @@
         let function_date;
         let function_current_balance;
         let account_number;
+        let reciver_name;
+        let reciver_account;
+
+        let sender_account;
+        let sender_name;
         // **************************************************
 
 
@@ -155,11 +162,7 @@
 
                 if (signup_array[i]["email"] == email) {
 
-                    // console.log("jk")
-
                     main()
-
-                    // console.log("jk")
                 }
 
             }
@@ -179,10 +182,6 @@
                 sender_email = history[j]["sender_email"];
                 reciver_email = history[j]["reciver_email"];
 
-                // console.log("jk")
-
-                // account_search()
-
                 account_search(sender_value, reciver_value, sender_email, reciver_email, j)
 
             }
@@ -199,36 +198,35 @@
 
                 if (sender_value == account_value && sender_email == email) {
 
-                    // function_account = history[j]["reciver_name"];
+                    sender_account = history[j]["sender_account"];
+                    sender_name = history[j]["sender_name"];
 
-                    // function_image = "../assets/img/hdfc_icon.png"
-                    // type = history[j]["sender_type"]
-                    // function_amount = history[j].send_amount
-                    // icon = "../assets/img/minus_icon.png"
-                    // id = "minus";
-                    // function_date = history[j]["date"]
-                    // function_current_balance = history[j]["sender_balance"];
-
-
-
-                    function_account = history[j]["reciver_name"];
+                    reciver_account = history[j]["reciver_account"];
+                    reciver_name = history[j]["reciver_name"];
 
                     function_image = "../assets/img/hdfc_icon.png"
                     type = history[j]["sender_type"]
-                    function_amount = history[j].send_amount
+                    function_amount = history[j]["send_amount"]
                     icon = "../assets/img/minus_icon.png"
                     id = "minus";
                     function_date = history[j]["date"]
                     function_current_balance = history[j]["sender_balance"];
-                    account_number = history[j]["sender_account"]
+                    account_number = history[j]["sender_account"];
+                    remark = history[j]["remarks"];
 
-                    create_div(function_account, function_image, type, function_amount, icon, id, function_date, function_current_balance, account_number)
+
+                    create_div(function_image, type, sender_name, reciver_name, sender_account, reciver_account, function_amount, icon, function_date, function_current_balance, remark)
 
                 }
 
                 else if (reciver_value == account_value && reciver_email == email) {
 
-                    function_account = history[j]["sender_name"];
+                    sender_account = history[j]["reciver_account"];
+                    sender_name = history[j]["reciver_name"];
+
+                    reciver_account = history[j]["reciver_account"];
+                    reciver_name = history[j]["sender_name"];
+
                     function_image = "../assets/img/hdfc_icon.png"
                     type = history[j]["reciver_type"]
                     function_amount = history[j].send_amount
@@ -237,9 +235,10 @@
                     function_date = history[j]["date"]
                     function_current_balance = history[j]["reciver_balance"];
                     account_number = history[j]["reciver_account"];
+                    remark = history[j]["remarks"];
 
 
-                    create_div(function_account, function_image, type, function_amount, icon, id, function_date, function_current_balance, account_number)
+                    create_div(function_image, type, sender_name, reciver_name, sender_account, reciver_account, function_amount, icon, function_date, function_current_balance, remark)
                 }
 
             }
@@ -248,7 +247,7 @@
 
 
 
-        function create_div(function_account, function_image, type, function_amount, icon, id, function_date, function_current_balance, account_number) {
+        function create_div(function_image, type, sender_name, reciver_name, sender_account, reciver_account, function_amount, icon, function_date, function_current_balance, remark) {
 
             let main_div = document.querySelector("main")
 
@@ -282,15 +281,25 @@
             increase.innerText = type;
             transfer_type.append(increase);
 
-            let reciver_name = document.createElement("h5");
-            reciver_name.setAttribute("class", "reciver_name");
-            reciver_name.innerText = function_account;
-            transfer_type.append(reciver_name);
+            let sender_name_value = document.createElement("h5");
+            sender_name_value.setAttribute("class", "reciver_name");
+            sender_name_value.innerText = sender_name + " " + "to" + " " + reciver_name;
+            transfer_type.append(sender_name_value);
 
-            let account_num = document.createElement("span");
-            account_num.setAttribute("class", "send_account");
-            account_num.innerHTML = (account_number)
-            reciver_name.append(account_num);
+            // let reciver_name_value = document.createElement("span");
+            // reciver_name_value.setAttribute("class", "send_account");
+            // reciver_name_value.innerHTML = (" " + "to" + " " + reciver_name)
+            // sender_name_value.append(reciver_name_value);
+
+            let sender_num = document.createElement("h5");
+            sender_num.setAttribute("class", "reciver_num");
+            sender_num.innerHTML = sender_account;
+            transfer_type.append(sender_num);
+
+            let reciver_num = document.createElement("span");
+            reciver_num.setAttribute("class", "send_account");
+            reciver_num.innerHTML = (reciver_account)
+            transfer_type.append(reciver_num);
 
 
             let amount = document.createElement("div");
@@ -329,6 +338,11 @@
             balance.innerText = "₹" + " " + function_current_balance;
             balance_span.append(balance);
 
+            let remark_sms = document.createElement("h3");
+            remark_sms.setAttribute("class", "remark");
+            remark_sms.innerHTML = ("Remarks :" + " " + remark)
+            new_container.append(remark_sms);
+
         }
 
         let search = document.querySelector("#search");
@@ -345,7 +359,21 @@
 
                 let fund_type = histroy_search[i].querySelector(".increase").innerHTML.toLowerCase();
 
-                if ((fund_type.includes(values))) {
+                let date = histroy_search[i].querySelector(".date").innerHTML.toLowerCase();
+
+                let reciver_name = histroy_search[i].querySelector(".reciver_name").innerHTML.toLowerCase();
+
+                let balance = histroy_search[i].querySelector(".balance_span").innerHTML.toLowerCase();
+
+                let send_money = histroy_search[i].querySelector(".minus").innerHTML.toLowerCase();
+
+                let send_account = histroy_search[i].querySelector(".send_account").innerHTML.toLowerCase();
+
+                let account_number = histroy_search[i].querySelector(".reciver_num").innerHTML.toLowerCase();
+
+                let remarks = histroy_search[i].querySelector(".remark").innerHTML.toLowerCase()
+
+                if ((fund_type.includes(values)) || date.includes(values) || reciver_name.includes(values) || balance.includes(values) || send_money.includes(values) || account_number.includes(values) || remarks.includes(values) || account_number.includes(values) || send_account.includes(values)) {
 
                     histroy_search[i].style.display = "block";
 
@@ -364,27 +392,26 @@
 
             let current_ac = document.getElementById("from")
 
-            for (let array = 0; array < signup_array.length; array++) {
 
-                for (let ac = 0; ac < account_details.length; ac++) {
+            for (let ac = 0; ac < account_details.length; ac++) {
 
-                    if (signup_array[array]["email"] == email && signup_array[array]["email"] == account_details[ac]["email_compare"]) {
+                if (email == account_details[ac]["email_compare"]) {
 
-                        let account_match = account_details[ac]["account"];
+                    let account_match = account_details[ac]["account"];
 
-                        let option = document.createElement("option");
-                        option.setAttribute("value", account_match);
-                        option.innerHTML = (account_match);
-                        current_ac.append(option);
-
-                    }
+                    let option = document.createElement("option");
+                    option.setAttribute("value", account_match);
+                    option.innerHTML = (account_match);
+                    current_ac.append(option);
 
                 }
+
             }
+
         }
 
 
-        let selcet_account;
+        let select_account;
 
         let filter_div = document.querySelector(".filter");
 
@@ -402,12 +429,11 @@
 
         result_button.addEventListener("click", () => {
 
-            selcet_account = document.getElementById("from").value
+            select_account = document.getElementById("from").value.trim();
 
-            if (selcet_account != "") {
+            if (select_account != "") {
 
-                // console.log(selcet_account);
-                search_account(selcet_account, histroy_search)
+                search_account(histroy_search, select_account);
 
             }
 
@@ -418,22 +444,33 @@
 
         });
 
-        function search_account(selcet_account, histroy_search) {
 
+        let restart = document.getElementById("restart");
+
+        restart.addEventListener("click", () => {
+
+            window.location.href = "./history.html"
+
+        })
+
+        function search_account(histroy_search, select_account) {
 
             for (let sa = 0; sa < histroy_search.length; sa++) {
 
-                let account = histroy_search[sa].querySelector(".send_account").innerHTML;
-                console.log(account)
+                let sender_only = histroy_search[sa].querySelector(".reciver_num").innerHTML
 
-                if (account != selcet_account) {
-                    console.log(histroy_search[sa])
+                let recive_only = histroy_search[sa].querySelector(".send_account").innerHTML;
+
+                if (select_account == sender_only || select_account == recive_only) {
+
+                    histroy_search[sa].style.display = "block";
+
+                }
+
+                else {
 
                     histroy_search[sa].style.display = "none";
 
-                }
-                else {
-                    histroy_search[sa].style.display = "block";
                 }
 
             }

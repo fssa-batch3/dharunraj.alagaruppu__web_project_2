@@ -86,7 +86,6 @@ body a {
     width: 100%;
 }
 
-
 img {
     width: 25px;
     margin: 5px;
@@ -103,7 +102,9 @@ img {
 
 /* amount size */
 .transfer_type {
-    margin: 1%;
+    /* margin: 0% 1%; */
+    display: block;
+
 }
 
 /* minus font color */
@@ -136,11 +137,12 @@ main {
     display: none;
 }
 
-.reciver_name p {
-
-    font-weight: bold;
+.reciver_num,
+.send_account {
+    display: none;
 }
 
-.send_account{
-    display: none;
+.remark {
+
+    font-weight: 500;
 }

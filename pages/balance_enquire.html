@@ -151,17 +151,11 @@
     let account_detail = JSON.parse(localStorage.getItem("account_details"));
 
 
-    let customer_balance;
-    let customer_number;
-    let customer_type;
-
-
     for (let array = 0; array < signup_array.length; array++) {
 
         for (let ac = 0; ac < account_detail.length; ac++) {
 
             if (signup_array[array]["email"] == email && signup_array[array]["email"] == account_detail[ac]["email_compare"]) {
-
 
 
                 let welcome = document.createElement("div");
@@ -209,9 +203,9 @@
 
             document.querySelector(".bank_list").style.display = "none";
 
-            ref_num = account_num[p].innerText;
+            ref_num = account_num[p].innerHTML;
 
-            ref_name = account_name[p].innerText;
+            ref_name = account_name[p].innerHTML;
 
             check_balance()
         })
@@ -219,72 +213,75 @@
     }
 
 
+    let customer_balance;
+    let customer_number;
+    let customer_type;
 
     function check_balance() {
 
-        for (let s = 0; s < signup_array.length; s++) {
+        // for (let s = 0; s < signup_array.length; s++) {
 
-            for (let t = 0; t < balance_enquire.length; t++) {
+        for (let t = 0; t < balance_enquire.length; t++) {
 
-                if (signup_array[s]["email"] == email && ref_num == balance_enquire[t]["ac_no"]) {
+            if (balance_enquire[t]["email_compare"] == email && ref_num == balance_enquire[t]["ac_no"]) {
 
-                    customer_balance = balance_enquire[t]["ac_balance"];
+                customer_balance = balance_enquire[t]["ac_balance"];
 
-                    customer_number = balance_enquire[t]["ac_no"];
+                customer_number = balance_enquire[t]["ac_no"];
 
-                    customer_type = balance_enquire[t]["ac_type"];
+                customer_type = balance_enquire[t]["ac_type"];
 
-                    document.getElementById("balance").innerText = customer_balance;
-                    document.getElementById("customer_ac").innerHTML = customer_number;
-                    document.getElementById("ac_type").innerText = customer_type;
+                document.getElementById("balance").innerText = customer_balance;
+                document.getElementById("customer_ac").innerHTML = customer_number;
+                document.getElementById("ac_type").innerText = customer_type;
 
-                    localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
-
-                }
+                localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
 
             }
 
         }
 
+        // }
+
     }
 
 
 
-    var xValues = ["Italy", "France", "USA"];
-    var yValues = [55, 49, 44,];
-    var barColors = [
+    // var xValues = ["Italy", "France", "USA"];
+    // var yValues = [55, 49, 44,];
+    // var barColors = [
 
-        "#b91d47",
-        "#00aba9",
-        "#2b5797",
+    //     "#b91d47",
+    //     "#00aba9",
+    //     "#2b5797",
 
-    ];
+    // ];
 
-    new Chart("myChart", {
+    // new Chart("myChart", {
 
-        type: "doughnut",
+    //     type: "doughnut",
 
-        data: {
+    //     data: {
 
-            labels: xValues,
-            datasets: [{
+    //         labels: xValues,
+    //         datasets: [{
 
-                backgroundColor: barColors,
-                data: yValues
+    //             backgroundColor: barColors,
+    //             data: yValues
 
-            }]
-        },
+    //         }]
+    //     },
 
-        // options: {
+    //     // options: {
 
-        //     title: {
+    //     //     title: {
 
-        //         display: true,
-        //         text: "World Wide Wine Production 2018"
+    //     //         display: true,
+    //     //         text: "World Wide Wine Production 2018"
 
-        //     }
-        // }
-    });
+    //     //     }
+    //     // }
+    // });
 
 </script>
 

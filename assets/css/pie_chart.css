@@ -4,11 +4,10 @@
 
 }
 
-main {
-    background-color: #f5f6ff;
-    font-weight: 600;
-
-}
+/* 
+.charts{
+    
+} */
 
 #pie{
 
@@ -176,4 +175,20 @@ th {
 .day_date_month{
 
     display: none;
+    /* margin-bottom: 10%; */
+
+}
+/* 
+.information{
+
+    background-color: #f5f6ff;
+} */
+
+.full_chart{
+    /* border: 1px solid black; */
+    margin-bottom: 2%;
+    background-color: #f5f6ff;
+    font-weight: 600;
+    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+
 }

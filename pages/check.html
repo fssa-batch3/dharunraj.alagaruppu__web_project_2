@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -43,6 +43,63 @@
     <form method="post">
         <button type="button" value="Send Mail" onclick="sendEmail()">send</button>
     </form>
+</body>
+
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <main>
+
+
+    </main>
+
+
+    <script>
+
+        let email = localStorage.getItem("email");
+
+        let balance_enquire = JSON.parse(localStorage.getItem("bal_enquire"));
+
+        let account_check = JSON.parse(localStorage.getItem("account_details"));
+
+        let main = document.querySelector("main");
+
+        let chart = "";
+
+        let range_value;
+
+        let arr = [];
+
+
+
+        for (let i = 0; i < balance_enquire.length; i++) {
+
+            if (email == balance_enquire[i]["email_compare"]) {
+
+                arr.push(balance_enquire[i]);
+
+            }
+        }
+
+    </script>
+
 </body>
 
 </html>

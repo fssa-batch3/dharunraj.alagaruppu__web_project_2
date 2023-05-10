@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pic chart</title>
+    <title>Chart</title>
     <link rel="stylesheet" href="../assets/css/pie_chart.css">
     <link rel="stylesheet" href="../assets/css/common_style.css">
 </head>
@@ -53,19 +53,103 @@
 
     </div>
 
-    <select class="form-select accounts" id="select_account" required>
-
-        <option value="">Choose your account number</option>
-
-
-    </select>
-
-    <button>check</button>
-
     <main>
+        <div class="information">
 
+            <div class="start_build back" id="start_build">
+
+                <img src="../assets/img/people-thinking-make-decision-problem-solving-find-creative-ideas-flat-illustration_2175-3897-removebg.png"
+                    alt="2nd image">
+
+                <div class="open_account">
+
+                    <span class="heading">Frequently Asked Questions <br> ( FAQs ) </span>
+
+                    <div class="box_content">
+
+                        <div class="content_text">
+                            <h2> What is the monthly average balance?</h2>
+
+                            <p>Monthly Average Balance is the minimum amount of funds that account holders must maintain
+                                to
+                                avoid being penalized by the bank.</p>
+
+                            <h2>Do you need to maintain the MAB every day in a month?</h2>
+
+                            <p>No. Since the daily closing balance is averaged out, the account holder may have more
+                                funds
+                                than MAB on some days that can make up for the shortfall on some days.</p>
+
+                            <h2>How is the monthly average balance calculated by my bank?</h2>
+
+                            <p>Banks use the formula: MAB = (total of end of the day closing balances) / (number of days
+                                in
+                                one month) to calculate the MAB of an account holder.</p>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <select class="form-select accounts" id="select_account" required>
+
+                <option value="">Choose your account number</option>
+
+
+            </select>
+
+            <button>check</button>
+
+
+            <div class="start_build information" id="start_build">
+
+                <img src="../assets/img/hero-img.png" alt="2nd image">
+
+                <div class="open_account">
+
+                    <span class="heading">In 5 minutes to start banking with your own account </span>
+
+                    <div class="box_content">
+
+                        <div class="content_text">
+                            <h2> <span>1</span> Build an account</h2>
+
+                            <p>Enter your name , email and phone number for the account . If you have a pan please
+                                ensure to
+                                give</p>
+
+                            <h2><span>2</span> Transfer best in class</h2>
+
+                            <p>Send money Instantly with NET BLIZ Online Money Transfer Service. Simple & secure way to
+                                transfer money to bank account</p>
+
+                            <h2><span>3</span> Secure watch assets</h2>
+
+                            <p>100% digital banking with no pain. Zero balance accounts, no hidden fees. Master your
+                                money,
+                                reap rewards</p>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="charts">
+
+
+        </div>
 
     </main>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
     <script type="text/javascript" src="../assets/js/date_time.js"></script>
@@ -73,6 +157,7 @@
     <script>
 
         let picchart_select = document.getElementById("select_account");
+
         option()
 
         let email = localStorage.getItem("email");
@@ -83,15 +168,14 @@
 
         let main = document.querySelector("main");
 
-        let chart = "";
+        let charts_div = document.querySelector(".charts");
+        console.log(charts_div)
 
-        let diagram = "";
+        let chart = "";
 
         let range_value;
 
         let arr = [];
-
-
 
         for (let i = 0; i < balance_enquire.length; i++) {
 
@@ -108,125 +192,119 @@
                 let avg_month = (balance_enquire[i]["minium"] * 30);
 
 
-                chart += ` <div class="full_account_details">
-                    
-                    <h1 id="pie">Pie chart :</h1>
+                chart = `<div class="full_chart">
 
-                <div>
+<h1 id="pie">Pie chart :</h1>
 
-              <div class="total_table">
+<div>
 
-               <table>
+    <div class="total_table">
 
-                 <tr>
-              <td id="table_label">Account number</td>
-             <td>${balance_enquire[i]["ac_no"]}</td> 
+        <table>
 
-             <td class="range">
-                <div class="name">
-                ${balance_enquire[i]["accounter_name"]}
-            </td>
-                </div>
-           </tr>
+            <tr>
+                <td id="table_label">Account number</td>
+                <td class="user_account">${balance_enquire[i]["ac_no"]} </td>
 
-          <tr>
-            <td class="first_td" id="table_label">Your balance</td>
-            <td class="sec_td">${balance_enquire[i]["ac_balance"]}</td>
+                <td class="range">
+                    <div class="name">
+                        ${balance_enquire[i]["accounter_name"]}
+                </td>
+    </div>
+    </tr>
 
-          </tr>
+    <tr>
+        <td class="first_td" id="table_label">Your balance</td>
+        <td class="sec_td">${"₹" + " " + balance_enquire[i]["ac_balance"]}</td>
 
-          <tr>
-            <td class="first_td" id="table_label">Minimum maintenance balance</td>
+    </tr>
 
-            <td class="sec_td">${balance_enquire[i]["minium"]}</td>
+    <tr>
+        <td class="first_td" id="table_label">Minimum maintenance balance</td>
 
-          </tr>
+        <td class="sec_td">${"₹" + " " + balance_enquire[i]["minium"]}</td>
 
-          <tr>
-            <td class="first_td" id="table_label"> Monthly maintenance balance</td>
+    </tr>
 
-            <td class="sec_td mon">${avg_month}</td>
+    <tr>
+        <td class="first_td" id="table_label"> Monthly maintenance balance</td>
 
-            <td class="range">
-                <div class="min">
-                 <div id="static_min"></div>
+        <td class="sec_td mon">${"₹" + " " + avg_month}</td>
 
-                 </div>
-            </td>
-          </tr>
+        <td class="range">
+            <div class="min">
+                <div id="static_min"></div>
 
-          <tr>
-            <td class="first_td" id="table_label"> Until maintenance balance</td>
-            <td class="sec_td">${maintenance}</td>
-            <td class="range">
-                <div class="min">
-                    <div class="daily_maintain"></div>
+            </div>
+        </td>
+    </tr>
 
-                     </div>
-                </div>
-            </td>
+    <tr>
+        <td class="first_td" id="table_label"> Until maintenance balance</td>
+        <td class="sec_td">${"₹" + " " + maintenance}</td>
+        <td class="range">
+            <div class="min">
+                <div class="daily_maintain"></div>
 
-         </tr>
+            </div>
+</div>
+</td>
 
-         <tr>
-            <td class="first_td" id="table_label">Average maintain balance</td>
-            <td class="sec_td avg">${balance_enquire[i]["average_value"]}</td>
-            <td class="range">
-                <div class="min ">
+</tr>
 
-                   <div class="value_avg">
+<tr>
+    <td class="first_td" id="table_label">Average maintain balance</td>
+    <td class="sec_td avg">${"₹" + " " + balance_enquire[i]["average_value"]}</td>
+    <td class="range">
+        <div class="min ">
 
-                    
-    
-                      </div>
-                </div>
-            </td>
+            <div class="value_avg">
 
-         </tr>
 
-          </table>
-          </div>
 
-          <div class="chart_details">
+            </div>
+        </div>
+    </td>
 
-           <div class = "pie_chart_div">
+</tr>
 
-               <canvas id=piechart${i}></canvas> 
+</table>
+</div>
 
-            </div> 
-                     
-             <div class="details">
+<div class="chart_details">
 
-                <div>
-                    <div class="remaining">
-                         <h4>Remaining</h4>
-                          <h1 class="remain_per">26.7%</h1>
-                     </div>
-                    </div>
+<div class="pie_chart_div">
 
-                <div class="cover">
+    <canvas id=piechart${i}></canvas>
 
-                    <div class="remaining_value">
-                        
-                        </div>
-                    </div>
+</div>
 
-             </div>
+<div class="details">
 
-           </div> 
-           
-           </div>
-           `
+    <div>
+        <div class="remaining">
+            <h4>Remaining</h4>
+            <h1 class="remain_per">26.7%</h1>
+        </div>
+    </div>
+
+    <div class="cover">
+
+        <div class="remaining_value">
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+</div>
+`
+
+                charts_div.innerHTML += chart
 
             }
-
-
-
         }
-
-
-        main.innerHTML = chart
-
 
         let ave_value = document.querySelectorAll(".value_avg");
 
@@ -288,23 +366,57 @@
 
         });
 
+
+
+        let user_number;
+
+        let account_div = document.querySelectorAll(".full_chart");
+
         let result = document.querySelector("button");
 
         result.addEventListener("click", () => {
 
-            let select_ac_number = document.getElementById("select_account")
+            user_number = picchart_select.value
+
+            if (user_number == "") {
+
+                alert("recheck your value");
+            }
+            else {
+
+                block_account(user_number);
+            }
+
+        });
+
+        function block_account(user_number) {
+
+            account_div.forEach((e, index) => {
+
+                let value_ac = e.querySelector(".user_account").innerHTML;
 
 
 
-        })
+                if (Number(value_ac) != Number(user_number)) {
 
-        // let ac_numbers = document.querySelectorAll(".")
+                    e.style.display = "none";
 
+                }
+
+                else {
+
+                    e.style.display = "block"
+
+                }
+
+            })
+        }
 
 
     </script>
 
     <script src="../assets/js/pic_chart.js"></script>
+
 
 </body>
 

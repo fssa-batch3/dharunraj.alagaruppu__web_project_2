@@ -2,7 +2,7 @@
     list-style: none;
     text-decoration: none;
     box-sizing: border-box;
-    font-family: 'Libre Baskerville', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     scroll-behavior: smooth;
 }
 
@@ -180,6 +180,8 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+
 }
 
 .start_build img {
@@ -218,6 +220,7 @@ header {
     font-size: 15px;
     position: relative;
     right: 5%;
+    margin: 5% 0%;
 
 }
 

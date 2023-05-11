@@ -1,37 +1,4 @@
 
-function primary_check() {
-
-    for (let kd = 0; kd < show.length; kd++) {
-
-        if (show[kd]["primary"] == account_num) {
-
-            show[kd]["primary"] = "";
-
-            localStorage.setItem("array", JSON.stringify(show));
-
-            location.reload();
-
-        }
-
-    }
-
-}
-
-function clear_balance() {
-
-    for (let b = 0; b < balance_enquire.length; b++) {
-
-        if (balance_enquire[b]["ac_no"] == account_num && email_compare == balance_enquire[b]["email_compare"]) {
-
-            balance_enquire.splice(b, 1);
-
-            localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
-
-        }
-
-    }
-
-}
 
 
 function option() {
@@ -83,3 +50,43 @@ function option() {
     }
 
 }
+
+function account_add() {
+
+
+    let account_check = JSON.parse(localStorage.getItem("account_details"));
+    let email_compare = localStorage.getItem("email");
+
+    let current_ac = document.getElementById("from");
+
+    for (let o = 0; o < account_check.length; o++) {
+
+        if (account_check[o]["email_compare"] == email_compare) {
+
+            let account_number = account_check[o]["account"];
+
+            let option = document.createElement("option");
+            option.setAttribute("value", account_number);
+            option.innerHTML = (account_number);
+            if (current_ac) {
+                current_ac.append(option);
+            }
+        }
+
+    }
+}
+
+function restart() {
+
+
+    let restart = document.getElementById("restart");
+
+    restart.addEventListener("click", () => {
+
+        location.reload();
+
+    })
+
+
+}
+

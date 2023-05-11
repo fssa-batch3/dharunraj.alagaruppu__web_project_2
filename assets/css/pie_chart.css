@@ -1,7 +1,5 @@
 * {
     font-family: 'Open Sans', sans-serif;
-
-
 }
 
 /* 
@@ -9,10 +7,11 @@
     
 } */
 
-#pie{
+#pie {
 
     padding: 2%;
 }
+
 .account_chart {
 
     display: flex;
@@ -80,10 +79,10 @@ table {
 
 }
 
-.name{
-display: flex;
-justify-content: end;
-align-items: center;
+.name {
+    display: flex;
+    justify-content: end;
+    align-items: center;
 
 }
 
@@ -99,9 +98,6 @@ align-items: center;
     height: 23px;
     background-color: #4285F4;
     border-radius: 5px;
-    /* margin: 0% auto; */
-    /* width: 70%; */
-
 }
 
 
@@ -150,6 +146,12 @@ th {
 
 }
 
+/* b{
+    font-weight:normal;
+    font-size: 20px;
+    color:black
+} */
+
 .name {
 
     margin-right: 30%;
@@ -172,23 +174,105 @@ th {
 
 }
 
-.day_date_month{
+.day_date_month {
 
     display: none;
     /* margin-bottom: 10%; */
 
 }
-/* 
-.information{
 
-    background-color: #f5f6ff;
-} */
+.full_chart {
 
-.full_chart{
-    /* border: 1px solid black; */
     margin-bottom: 2%;
     background-color: #f5f6ff;
     font-weight: 600;
-    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+    display: none;
 
+}
+
+.content_text p {
+    letter-spacing: 1px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.calculation {
+    width: 70%;
+    margin: 5% auto;
+    color: rgba(0, 0, 0, 0.74);
+    font-style: initial;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 400;
+    line-height: 1.5;
+
+}
+
+.calculation p,
+ol {
+    margin-bottom: 1.65em;
+    font-size: 19px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.calculation table {
+    border-collapse: collapse;
+    width: 60%;
+    margin: 5% auto;
+    letter-spacing: .4px;
+
+}
+
+.calculation td,
+th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 12px;
+}
+
+.calculation tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+.calculation tr td:first-child {
+
+    text-align: left;
+    width: 150px;
+}
+
+.select_div {
+    height: 100px;
+    margin:  auto;
+
+}
+
+.select_div button {
+    padding: 3% 1%;
+    background-color: #4285F4;
+    color: white;
+    border: 0px ;
+
+}
+
+.select_div .accounts {
+
+    margin: 5% auto;
+    width: 30%;
+    padding: 1%;
+    border-radius: 10px;
+}
+
+
+.accounts button {
+
+    margin: 0% auto;
+    /* border: 1px solid black; */
+
+
+}
+
+#result_button,
+#restart {
+    width: 10%;
 }

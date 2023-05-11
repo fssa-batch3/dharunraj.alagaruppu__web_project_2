@@ -1,13 +1,13 @@
 * {
-    list-style: none;
     text-decoration: none;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    color: #1a237e;
 
 }
 
 header {
+    text-decoration: none;
+    list-style: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -17,8 +17,8 @@ header {
     margin: 1% auto;
     width: 89%;
     font-weight: 500;
-    /* line-height: 1.2; */
     letter-spacing: 1px;
+    color: #1a237e;
 }
 
 .title {
@@ -26,8 +26,10 @@ header {
 }
 
 .title a {
+    /* text-decoration: none; */
+
     font-size: 25px;
-    /* font-weight: 600; */
+    font-weight: 600;
     color: #2241ed;
     letter-spacing: 1px;
     list-style: none;
@@ -35,7 +37,6 @@ header {
 }
 
 .full_link {
-
     margin: 1%;
     width: 65%;
     display: flex;
@@ -49,6 +50,7 @@ header {
     color: #1a237e;
     border: none;
     padding: 10% 1%;
+    text-decoration: none;
 
 }
 
@@ -60,7 +62,8 @@ header {
 
 }
 
-.logout a {
+.logout a , .select_div button{
+    text-decoration: none;
     background-color: #2a48ee;
     color: white;
     padding: 13px;
@@ -70,7 +73,7 @@ header {
     letter-spacing: .5px;
 }
 
-.logout a:hover {
+.logout a:hover , .select_div button {
     background-color: #2945d0;
     color: white;
     border: none;
@@ -87,6 +90,8 @@ footer .back_foot {
     justify-content: space-around;
     align-items: center;
     border-radius: 15px;
+    font-family: 'Open Sans', sans-serif;
+
 }
 
 footer .back_foot .icon_social,
@@ -125,7 +130,7 @@ footer .direct a {
     justify-content: space-around;
     align-items: center;
     margin: 3% 0%;
-    padding: 5% ;
+    padding: 7%;
     border-radius: 20px;
     font-weight: 500;
     background-color: #f5f6ff;
@@ -137,7 +142,7 @@ footer .direct a {
 }
 
 .start_build .open_account {
-    width: 50%;
+    width: 45%;
     color: #1a237e;
     padding: 3%;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -171,4 +176,5 @@ footer .direct a {
     position: relative;
     right: 5%;
 }
+
 

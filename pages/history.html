@@ -110,6 +110,8 @@
 
     </main>
 
+    <script src="../assets/js/common_function.js"></script>
+
 
     <script>
 
@@ -387,28 +389,30 @@
 
         });
 
-        option()
-        function option() {
+        account_add()
 
-            let current_ac = document.getElementById("from")
+        // option()
+        // function option() {
+
+        //     let current_ac = document.getElementById("from")
 
 
-            for (let ac = 0; ac < account_details.length; ac++) {
+        //     for (let ac = 0; ac < account_details.length; ac++) {
 
-                if (email == account_details[ac]["email_compare"]) {
+        //         if (email == account_details[ac]["email_compare"]) {
 
-                    let account_match = account_details[ac]["account"];
+        //             let account_match = account_details[ac]["account"];
 
-                    let option = document.createElement("option");
-                    option.setAttribute("value", account_match);
-                    option.innerHTML = (account_match);
-                    current_ac.append(option);
+        //             let option = document.createElement("option");
+        //             option.setAttribute("value", account_match);
+        //             option.innerHTML = (account_match);
+        //             current_ac.append(option);
 
-                }
+        //         }
 
-            }
+        //     }
 
-        }
+        // }
 
 
         let select_account;
@@ -444,14 +448,7 @@
 
         });
 
-
-        let restart = document.getElementById("restart");
-
-        restart.addEventListener("click", () => {
-
-            window.location.href = "./history.html"
-
-        })
+        restart()
 
         function search_account(histroy_search, select_account) {
 

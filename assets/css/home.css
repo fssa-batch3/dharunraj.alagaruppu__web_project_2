@@ -1,5 +1,8 @@
 /* home page start */
+*{
+    color: #1a237e;
 
+}
 .back_link {
     /* background-color: #f5f6ff; */
     padding: 5% auto;

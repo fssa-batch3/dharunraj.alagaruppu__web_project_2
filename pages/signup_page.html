@@ -66,11 +66,11 @@
                 "name": "fname",
                 "id": "fname",
                 "placeholder": "First Name *",
-                "required": "required",
 
                 "pattern": "^[a-zA-Z ]{3,50}$",
                 "tittle": "Your pattern minium length of 2 characters a_z or A_Z only",
-                "aria": "First name"
+                "aria": "First name",
+                "required":"true"
 
             },
 
@@ -177,6 +177,8 @@
             input_box.setAttribute("id", obj[i]["id"]);
             input_box.setAttribute("placeholder", obj[i]["placeholder"]);
             input_box.setAttribute("title", obj[i]["tittle"]);
+            input_box.setAttribute.required = true;
+
             // if (i < 2) {
             //     input_box.setAttribute("pattern", obj[i]["pattern"]);
             // }
@@ -231,14 +233,24 @@
             new_pass = document.getElementById("new_pass").value.trim();
             confirm_pass = document.getElementById("confirm").value.trim();
 
-            if (new_pass != confirm_pass) {
+            if (first_name != "" && last_name != "" && email != "" && phone != "" && new_pass != "" && confirm_pass != "") {
 
-                alert("Oops !! password and confirm password doesn't match.");
+                if (new_pass != confirm_pass) {
+
+                    alert("Oops !! password and confirm password doesn't match.");
+                }
+
+                else {
+                    emailcheck(email, phone);
+                }
+
             }
 
             else {
-                emailcheck(email, phone);
+                alert("Recheck your values")
             }
+
+
 
         }
 
@@ -282,15 +294,13 @@
 
                 .then((data) => {
 
-                    if (data.carrier == "") {
-
-                        alert("Recheck your phone number");
-                    }
-                    else {
-
+                    if (data.carrier != "" && phone != "") {
                         console.log("valid");
                         add_local(email, phone);
 
+                    }
+                    else {
+                        alert("Recheck your phone number");
                     }
                 });
         }

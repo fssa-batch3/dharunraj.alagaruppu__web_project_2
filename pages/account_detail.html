@@ -115,6 +115,7 @@
             "tittle": "Your pattern minium length of 2 characters a_z or A_Z only",
             "aria": "Name",
             "pattern": "^[a-zA-Z ]{3,50}$",
+            "required" : "true",
 
 
         },
@@ -127,7 +128,7 @@
             "type": "tel",
             "tittle": "Number only allowed && 10 numbers must",
             "aria": "Phone number",
-            "pattern": "[0-9]{10}"
+            "pattern": "[0-9]{12}"
         },
 
 
@@ -192,12 +193,14 @@
         input_profile.setAttribute("for", head[i]["for"]);
         input_profile.setAttribute("id", head[i]["id"]);
         input_profile.setAttribute("placeholder", head[i]["place_holder"]);
-        // input_profile.setAttribute("disable", head[i]["disable"]);
         input_profile.setAttribute("pattern", head[i]["pattern"]);
         input_profile.setAttribute("type", head[i]["type"]);
         input_profile.setAttribute("title", head[i]["tittle"]);
         input_profile.setAttribute("aria", head[i]["aria"]);
         input_profile.setAttribute("class", "form-control input input1");
+        input_profile.setAttribute("required", head[i]["required"]);
+
+        // input_profile.setAttribute.disabled = true;
         contant_profile.append(input_profile);
 
         let label_profile = document.createElement("label");

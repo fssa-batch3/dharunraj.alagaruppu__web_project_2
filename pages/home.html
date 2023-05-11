@@ -8,6 +8,9 @@
     <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/gh/LieutenantPeacock/SmoothScroll@1.2.0/src/smoothscroll.min.js"
+        integrity="sha384-UdJHYJK9eDBy7vML0TvJGlCpvrJhCuOPGTc7tHbA+jHEgCgjWpPbmMvmd/2bzdXU"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/home.css">
     <link rel="stylesheet" href="../assets/css/common_style.css">
 </head>
@@ -175,8 +178,6 @@
 
         <div class="back_foot">
 
-            <a href="./calculate_date.html">function</a>
-
             <h3>@ 2023 NET BLIZ</h3>
 
 
@@ -197,19 +198,13 @@
 
     <script>
 
-
-
-
         let show = JSON.parse(localStorage.getItem('array'));
-
 
         let account_detail = JSON.parse(localStorage.getItem("account_details")) ?? [];
 
         let balance_enquire = JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
 
         let email_compare = localStorage.getItem("email");
-
-        let selectvalue;
 
         let accounter_name;
 
@@ -238,7 +233,6 @@
         let account;
         let ifsc;
         let phone;
-        // let pincode;
         let minium;
         let balance;
         let personal;
@@ -257,9 +251,7 @@
             account = document.getElementById("account").value.trim();
             ifsc = document.getElementById("ifsc").value.trim();
             phone = document.getElementById("phone").value.trim();
-            // pincode = document.getElementById("pincode").value.trim();
             minium = document.getElementById("inputGroupSelect03").value.trim()
-            console.log(minium);
             email_compare = localStorage.getItem("email");
             balance = Math.floor(Math.random() * 10000);
             personal = document.getElementById("personal");
@@ -276,14 +268,12 @@
 
             if (account != "" && ifsc != "" && phone != "" && minium != "") {
 
-                api(ifsc);
+                api();
 
             }
 
         }
-        function api(ifsc) {
-
-            // console.log(ifsc)
+        function api() {
 
             fetch(`https://api.sandbox.co.in/bank/${ifsc}`)
 
@@ -303,7 +293,8 @@
 
                         branch = data["BRANCH"]
                         bank_name = data["BANK"]
-                        add_local(branch, bank_name);
+                        add_local();
+
                     }
 
                 });
@@ -311,7 +302,7 @@
         }
 
 
-        function add_local(branch, bank_name) {
+        function add_local() {
 
             account_store = {
                 "account": account,
@@ -349,7 +340,6 @@
 
             if (res == 1) {
                 alert(" Invalid account number")
-
             }
 
             else {
@@ -364,7 +354,10 @@
 
                 open_primary()
 
-                alert("Thanks for add account");
+                // alert("Thanks for add account");
+
+                smoothScroll({ yPos: 'end', duration: 1000 });
+
 
                 location.reload();
 
@@ -373,6 +366,7 @@
         }
 
 
+        // In this function is used to when user is link new bank account that account number is set the primary account
 
 
         function open_primary() {
@@ -387,8 +381,6 @@
 
                     show[op]["primary"] = account;
 
-                    // show[op]["primary_ph"] = 
-
                     localStorage.setItem("array", JSON.stringify(show));
 
                     open_average()
@@ -400,57 +392,88 @@
 
         function open_average() {
 
+            console.log("trew")
+
             for (let j = 0; j < balance_enquire.length; j++) {
 
-                balance = balance_enquire[j]["ac_balance"];
+                console.log(Number(account))
 
-                console.log(balance);
+                if ((balance_enquire[j]["ac_no"]) == Number(account)) {
 
-                let month = balance_enquire[j]["monthly_balance"] ?? [];
+                    console.log(account);
 
-                let rotine = {
+                    balance = balance_enquire[j]["ac_balance"];
 
-                    "day_balance": balance,
-                }
+                    let month = balance_enquire[j]["monthly_balance"] ?? [];
 
-                month.push(rotine);
+                    let rotine = {
 
-                balance_enquire[j]["monthly_balance"] = month
+                        "day_balance": balance,
+                    }
 
-                localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
+                    month.push(rotine);
 
-                average();
-            }
-        }
+                    balance_enquire[j]["monthly_balance"] = month
 
-        function average() {
+                    localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
 
-            for (let h = 0; h < balance_enquire.length; h++) {
+                    let average_value = 0;
 
-                let average_value = 0;
+                    for (let r = 0; r < balance_enquire[j]["monthly_balance"].length; r++) {
 
-                if (balance_enquire[h]["monthly_balance"]) {
+                        console.log(average_value)
 
-                    for (let r = 0; r < balance_enquire[h]["monthly_balance"].length; r++) {
+                        average_value += balance_enquire[j]["monthly_balance"][r]["day_balance"]
 
-                        average_value += balance_enquire[h]["monthly_balance"][r]["day_balance"]
+                        console.log(average_value)
+
                     }
 
                     let average_balance;
 
-                    average_balance = (average_value / balance_enquire[h]["monthly_balance"].length).toFixed(2);
+                    average_balance = (average_value / balance_enquire[j]["monthly_balance"].length).toFixed(2);
 
-                    balance_enquire[h]["average_value"] = average_balance
+                    balance_enquire[j]["average_value"] = average_balance
+
                 }
-
 
             }
 
             localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
 
+
         }
 
+        // function average() {
+
+        //     for (let h = 0; h < balance_enquire.length; h++) {
+
+        //         let average_value = 0;
+
+        //         if (balance_enquire[h]["monthly_balance"]) {
+
+        //             for (let r = 0; r < balance_enquire[h]["monthly_balance"].length; r++) {
+
+        //                 average_value += balance_enquire[h]["monthly_balance"][r]["day_balance"]
+        //             }
+
+        //             let average_balance;
+
+        //             average_balance = (average_value / balance_enquire[h]["monthly_balance"].length).toFixed(2);
+
+        //             balance_enquire[h]["average_value"] = average_balance
+        //         }
+
+
+        //     }
+
+        //     localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
+
+        // }
+
         let k = 0;
+
+        let selectvalue;
 
         account_detail.forEach(e => {
 
@@ -593,8 +616,6 @@
 
                     }
 
-                    // local()
-
                     window.location.href = "./balance_enquire.html"
 
                 });
@@ -603,6 +624,8 @@
 
         });
 
+
+        // Bank account detail div append the tick symbal and the information message function   ****
 
         let account_numbers = document.querySelectorAll(".account_give")
 
@@ -635,6 +658,8 @@
 
         });
 
+        // In this function used to remove bank account what account is linked in my website ( remove button )
+
         const btn1 = document.querySelectorAll(".remove_bk");
 
         let account_num;
@@ -652,8 +677,7 @@
 
                         localStorage.setItem("account_details", JSON.stringify(account_detail));
 
-                        primary_check();  // home.js
-
+                        primary_check();
                         clear_balance();
 
                         location.reload();
@@ -662,6 +686,42 @@
 
             })
         }
+
+        function primary_check() {
+
+            console.log(account_num);
+
+            for (let kd = 0; kd < show.length; kd++) {
+
+                if (show[kd]["primary"] == account_num) {
+
+                    show[kd]["primary"] = "";
+
+                    localStorage.setItem("array", JSON.stringify(show));
+
+                    location.reload();
+
+                }
+
+            }
+        }
+
+        function clear_balance() {
+
+            for (let b = 0; b < balance_enquire.length; b++) {
+
+                if (balance_enquire[b]["ac_no"] == account_num && email_compare == balance_enquire[b]["email_compare"]) {
+
+                    balance_enquire.splice(b, 1);
+
+                    localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
+
+                }
+
+            }
+
+        }
+
         // bank_img()
 
         function bank_img(bank_name) {

@@ -25,18 +25,7 @@
 // ifsc_api("CNRB0000973");
 
 
-function ifsc_api(ifsc_branch) {
-    fetch(`https://api.sandbox.co.in/bank/${ifsc_branch}`)
-      .then((results) => {
-        return results.json();
-      })
-      .then((data) => {
-        console.log(data);
-        // return data;
-        // Access your data here
-      });
-  }
-  ifsc_api("ABHIRAMAPURAM");
+
 
 // function getUsers() {
 //   fetch("https://api.sandbox.co.in/bank")

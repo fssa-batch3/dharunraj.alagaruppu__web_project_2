@@ -72,15 +72,15 @@
 
                 </select>
 
-                <label for="to"> Reciver Account </label>
+                <label for="to"> Reciver account number</label>
                 <input class="form-control input" type="text" id="to" name="to" required pattern="[0-9]{16,17}"
                     title="Remember !! Your bank account number should be 16 numbers" aria=" Reciver Account ">
 
-                <label for="ifsc"> Reciver IFSC </label>
+                <label for="ifsc"> Reciver IFSC code</label>
                 <input class="form-control" type="text" id="ifsc" name="ifsc" required pattern="[0-9A-Za-z]{6,16}"
                     title="Are you sure !! minium Our ifsc number should be 12 numbers" aria="Reciver IFSC">
 
-                <label for="amount"> Transfer Amount </label>
+                <label for="amount"> Transfer amount </label>
                 <input class="form-control" type="number" id="amount" name="amount" required aria=" Transfer Amount"
                     min="1" max="49999" title="You can only share amount between 50000 per day">
 
@@ -310,7 +310,7 @@
 
             window.location.href = ("./history.html");
 
-            alert("Thanks for send money");
+            // alert("Thanks for send money");
 
         }
 
@@ -341,13 +341,7 @@
 
                             history_table[di]["sender_balance"] = old_balance;
 
-                            history_table[di]["sender_name"] = sender_name
-
-                            // backup_history[di]["sender_type"] = sender_type;
-                            // backup_history[di]["sender_balance"] = old_balance;
-                            // backup_history[di]["sender_name"] = sender_name
-
-
+                            history_table[di]["sender_name"] = sender_name;
 
                             localStorage.setItem("history_table", JSON.stringify(history_table));
 
@@ -414,7 +408,9 @@
 
     </script>
 
-    <script src="../assets/js/fund_transfer.js"></script>
+<!-- This script have mobile number to money transfer functions -->
+
+    <script src="../assets/js/fund_transfer.js"></script> 
 
 </body>
 

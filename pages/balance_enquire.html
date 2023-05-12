@@ -142,6 +142,10 @@
 
 <script>
 
+
+    // script is start here ***
+
+
     let email = localStorage.getItem("email");
 
     let signup_array = JSON.parse(localStorage.getItem("array"));
@@ -150,12 +154,15 @@
 
     let account_detail = JSON.parse(localStorage.getItem("account_details"));
 
+    // signup array is represent signup page array of objects
 
     for (let array = 0; array < signup_array.length; array++) {
 
+        //account detail is represent by all user bank account details array of objects
+
         for (let ac = 0; ac < account_detail.length; ac++) {
 
-            if (signup_array[array]["email"] == email && signup_array[array]["email"] == account_detail[ac]["email_compare"]) {
+            if (signup_array[array]["email"] == email && signup_array[array]["email"] == account_detail[ac]["email_compare"]) { // 
 
 
                 let welcome = document.createElement("div");
@@ -219,8 +226,6 @@
 
     function check_balance() {
 
-        // for (let s = 0; s < signup_array.length; s++) {
-
         for (let t = 0; t < balance_enquire.length; t++) {
 
             if (balance_enquire[t]["email_compare"] == email && ref_num == balance_enquire[t]["ac_no"]) {
@@ -241,47 +246,8 @@
 
         }
 
-        // }
 
     }
-
-
-
-    // var xValues = ["Italy", "France", "USA"];
-    // var yValues = [55, 49, 44,];
-    // var barColors = [
-
-    //     "#b91d47",
-    //     "#00aba9",
-    //     "#2b5797",
-
-    // ];
-
-    // new Chart("myChart", {
-
-    //     type: "doughnut",
-
-    //     data: {
-
-    //         labels: xValues,
-    //         datasets: [{
-
-    //             backgroundColor: barColors,
-    //             data: yValues
-
-    //         }]
-    //     },
-
-    //     // options: {
-
-    //     //     title: {
-
-    //     //         display: true,
-    //     //         text: "World Wide Wine Production 2018"
-
-    //     //     }
-    //     // }
-    // });
 
 </script>
 

@@ -186,7 +186,7 @@
                 <a href="https://www.linkedin.com/"> <img src="../assets/img/icons8-linkedin-100 (1).png"
                         alt="linked in"></a>
                 <a href="https://www.facebook.com/"><img src="../assets/img/icons8-facebook-100.png" alt="facebook"></a>
-                <a href="https://www.instagram.com/"><img src="../assets/img/icons8-instagram-100.png" alt="insta"></a>
+                <a href="https://www.instagram.com/"><img src="../assets/img/icons8-google-100-removebg-preview.png" alt="google"></a>
                 <a href="https://twitter.com/"> <img src="../assets/img/icons8-twitter-100.png" alt="teitter"></a>
 
             </div>
@@ -266,10 +266,27 @@
                 account_type = "Current Account"
             }
 
-            if (account != "" && ifsc != "" && phone != "" && minium != "") {
+            let succuess;
+
+            show.find(element => {
+
+                if (element["email"] === email_compare) {
+
+                    if (element["phone"] == phone) {
+
+                        succuess = 1;
+                    }
+                }
+
+            });
+
+            if (succuess == 1) {
 
                 api();
+            }
+            else {
 
+                alert("Mobile number is not match with your regsistered data")
             }
 
         }
@@ -280,6 +297,7 @@
                 .then((results) => {
 
                     return results.json();
+
                 })
 
                 .then((data) => {
@@ -290,7 +308,7 @@
 
                     }
                     else {
-
+                        console.log(data)
                         branch = data["BRANCH"]
                         bank_name = data["BANK"]
                         add_local();
@@ -339,7 +357,7 @@
             }
 
             if (res == 1) {
-                alert(" Invalid account number")
+                alert(" This account number is already exited")
             }
 
             else {
@@ -354,10 +372,9 @@
 
                 open_primary()
 
-                // alert("Thanks for add account");
+                alert("Thanks for add account");
 
                 smoothScroll({ yPos: 'end', duration: 1000 });
-
 
                 location.reload();
 
@@ -612,11 +629,11 @@
                             show[ko]["primary"] = selectvalue;
 
                             localStorage.setItem("array", JSON.stringify(show));
+
+                            window.location.href = "./balance_enquire.html"
                         }
 
                     }
-
-                    window.location.href = "./balance_enquire.html"
 
                 });
 

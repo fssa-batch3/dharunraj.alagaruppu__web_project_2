@@ -27,11 +27,9 @@
                 <a class="current_page" href="#">Home</a>
             </div>
 
-
             <div>
                 <a href="./fund_transfer.html">Transfer</a>
             </div>
-
 
             <div>
                 <a href="./balance_enquire.html">Balance</a>
@@ -50,7 +48,6 @@
             </div>
         </div>
 
-
     </header>
 
     <main>
@@ -59,7 +56,7 @@
 
             <div class="welcome_sms">
                 <span>Welcome</span>
-                <span id="fname"></span>
+                <span class="fname"></span>
             </div>
 
             <div class="search">
@@ -73,7 +70,7 @@
                 <div class="profile">
                     <img src="../assets/img/icons8-user-100.png" alt="account">
                     <div class="detail">
-                        <span id="fname"></span>
+                        <span class="fname"></span>
                         <span>customer</span>
                     </div>
 
@@ -96,9 +93,11 @@
                 <form>
                     <label for="account"> Account number </label>
                     <input class="form-control" type="text" id="account" name="account" required pattern="[0-9]{16,17}"
+                        onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"
                         title="Remember !! Your bank account number should be 16 numbers">
 
-                    <label for="ifsc"> IFSC code </label>
+
+                    <label for="ifsc"> IFSC code </label><span id="alert_icon"> </span>
                     <input class="form-control" type="text" id="ifsc" name="ifsc" required pattern="[0-9A-Za-z]{5,15}"
                         title="Are you sure !! minium Your ifsc number should be 12 numbers">
 
@@ -113,6 +112,7 @@
                             aria-label="Example select with button addon" required>
 
                             <option value="">please select correctly amount *</option>
+                            <option value="0">₹ 0-/</option>
                             <option value="500">₹ 500-/</option>
                             <option value="1000">₹ 1,000-/</option>
                             <option value="2500">₹ 2,500-/</option>
@@ -120,17 +120,22 @@
                             <option value="10000">₹ 10,000-/</option>
                             <option value="25000">₹ 25,000-/</option>
 
-
-
                         </select>
                     </div>
 
                     <h5>Account name</h5>
 
-                    <input type="radio" name="detail" id="personal" required> <label for="personal">Savings
-                        Account</label> <br>
-                    <input type="radio" name="detail" id="business"> <label for="business">Current Account </label> <br>
-                    <!-- <input type="radio" name="detail" id="savings"> <label for="savings">Savings Account</label> <br> -->
+                    <input type="radio" name="detail" id="personal" required>
+                    <label for="personal">Savings
+                        Account</label>
+                    <br>
+                    <input type="radio" name="detail" id="business">
+                    <label for="business">Current Account </label>
+                    <br>
+                    <input type="radio" name="detail" id="zero">
+                    <label for="zero">Zero Balance Account </label>
+                    <br>
+
 
                     <p>Remember to double-check your account number . Banks may not flag errors until you transfer funds
                     </p>
@@ -151,7 +156,6 @@
                     <label for="account_give">Account Number </label>
                     <input class="form-control" type="text" id="account_give" name="account_give" required>
                 </div>
-
 
                 <div>
                     <label for="ifsc_give">IFSC Code</label> <br>
@@ -180,55 +184,56 @@
 
             <h3>@ 2023 NET BLIZ</h3>
 
-
             <div class="icon_social">
 
-                <a href="https://www.linkedin.com/"> <img src="../assets/img/icons8-linkedin-100 (1).png"
-                        alt="linked in"></a>
-                <a href="https://www.facebook.com/"><img src="../assets/img/icons8-facebook-100.png" alt="facebook"></a>
-                <a href="https://www.instagram.com/"><img src="../assets/img/icons8-google-100-removebg-preview.png" alt="google"></a>
-                <a href="https://twitter.com/"> <img src="../assets/img/icons8-twitter-100.png" alt="teitter"></a>
+                <a href="https://www.linkedin.com/">
+                    <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in">
+                </a>
+                <a href="https://www.facebook.com/">
+                    <img src="../assets/img/icons8-facebook-100.png" alt="facebook">
+                </a>
+                <a href="https://mail.google.com/">
+                    <img src="../assets/img/icons8-google-100-removebg-preview.png" alt="google">
+                </a>
+                <a href="https://twitter.com/">
+                    <img src="../assets/img/icons8-twitter-100.png" alt="teitter">
+                </a>
 
             </div>
 
         </div>
 
-
     </footer>
+    <!-- 
+    <script>        const show = JSON.parse(localStorage.getItem('array'));
 
-    <script>
+        const account_detail = JSON.parse(localStorage.getItem("account_details")) ?? [];
 
-        let show = JSON.parse(localStorage.getItem('array'));
-
-        let account_detail = JSON.parse(localStorage.getItem("account_details")) ?? [];
-
-        let balance_enquire = JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
+        const balance_enquire = JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
 
         let email_compare = localStorage.getItem("email");
 
         let accounter_name;
 
-        let btn_submit = document.querySelector("form");
+        const btn_submit = document.querySelector("form");
 
         btn_submit.addEventListener("submit", (e) => {
             e.preventDefault()
             link_bank();
         });
 
-
         show.forEach(element => { //[{0},{1},......]
 
-            if (element["email"] === email_compare) { //e=arr[0]
+            if (element.email === email_compare) { //e=arr[0]
 
-                document.querySelectorAll("#fname")[0].innerText = element["fname"] + ","//[0,1]
-                document.querySelectorAll("#fname")[1].innerText = element["fname"]
+                document.querySelectorAll("#fname")[0].innerText = `${element.fname},`//[0,1]
+                document.querySelectorAll("#fname")[1].innerText = element.fname
 
-                accounter_name = element["fname"];
+                accounter_name = element.fname;
 
                 localStorage.setItem("array", JSON.stringify(show));
             }
         })
-
 
         let account;
         let ifsc;
@@ -238,7 +243,6 @@
         let personal;
         let business;
         let account_type;
-
 
         let branch;
         let bank_name;
@@ -270,9 +274,9 @@
 
             show.find(element => {
 
-                if (element["email"] === email_compare) {
+                if (element.email === email_compare) {
 
-                    if (element["phone"] == phone) {
+                    if (element.phone === phone) {
 
                         succuess = 1;
                     }
@@ -280,7 +284,7 @@
 
             });
 
-            if (succuess == 1) {
+            if (succuess === 1) {
 
                 api();
             }
@@ -294,23 +298,19 @@
 
             fetch(`https://api.sandbox.co.in/bank/${ifsc}`)
 
-                .then((results) => {
-
-                    return results.json();
-
-                })
+                .then((results) => results.json())
 
                 .then((data) => {
 
-                    if (data["BRANCH"] == undefined && data["BANK"] == undefined) {
+                    if (data.BRANCH === undefined && data.BANK === undefined) {
 
                         alert("Enter the correct IFSC code or recheck ")
 
                     }
                     else {
                         console.log(data)
-                        branch = data["BRANCH"]
-                        bank_name = data["BANK"]
+                        branch = data.BRANCH
+                        bank_name = data.BANK
                         add_local();
 
                     }
@@ -319,19 +319,18 @@
 
         }
 
-
         function add_local() {
 
             account_store = {
-                "account": account,
-                "ifsc": ifsc,
-                "phone": phone,
-                "email_compare": email_compare,
-                "balance": balance,
+                account,
+                ifsc,
+                phone,
+                email_compare,
+                balance,
                 "ac_type": account_type,
-                "branch": branch,
-                "accounter_name": accounter_name,
-                "bank_name": bank_name,
+                branch,
+                accounter_name,
+                bank_name,
 
             }
 
@@ -339,9 +338,9 @@
                 "ac_no": account,
                 "ac_type": account_type,
                 "ac_balance": balance,
-                "email_compare": email_compare,
-                "accounter_name": accounter_name,
-                "minium": minium,
+                email_compare,
+                accounter_name,
+                minium,
                 "ac_ifsc": ifsc,
 
             }
@@ -350,13 +349,13 @@
 
             for (let i = 0; i < account_detail.length; i++) {
 
-                if (account_detail[i]["account"] === account) {
+                if (account_detail[i].account === account) {
                     res = 1;
                     break;
                 }
             }
 
-            if (res == 1) {
+            if (res === 1) {
                 alert(" This account number is already exited")
             }
 
@@ -382,21 +381,17 @@
 
         }
 
-
         // In this function is used to when user is link new bank account that account number is set the primary account
-
 
         function open_primary() {
 
             for (let op = 0; op < show.length; op++) {
 
-                if (show[op]["email"] == email_compare) {
+                if (show[op].email === email_compare) {
 
-                    let start = show[op]["primary"];
+                    // let start = show[op].primary;
 
-                    start = "";
-
-                    show[op]["primary"] = account;
+                    show[op].primary = account;
 
                     localStorage.setItem("array", JSON.stringify(show));
 
@@ -415,49 +410,46 @@
 
                 console.log(Number(account))
 
-                if ((balance_enquire[j]["ac_no"]) == Number(account)) {
+                if (Number(balance_enquire[j].ac_no) === Number(account)) {
 
-                    console.log(account);
+                    // console.log(account);
 
-                    balance = balance_enquire[j]["ac_balance"];
+                    balance = balance_enquire[j].ac_balance;
 
-                    let month = balance_enquire[j]["monthly_balance"] ?? [];
+                    const month = balance_enquire[j].monthly_balance ?? [];
 
-                    let rotine = {
+                    const rotine = {
 
                         "day_balance": balance,
                     }
 
                     month.push(rotine);
 
-                    balance_enquire[j]["monthly_balance"] = month
+                    balance_enquire[j].monthly_balance = month
 
                     localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
 
                     let average_value = 0;
 
-                    for (let r = 0; r < balance_enquire[j]["monthly_balance"].length; r++) {
+                    for (let r = 0; r < balance_enquire[j].monthly_balance.length; r++) {
 
                         console.log(average_value)
 
-                        average_value += balance_enquire[j]["monthly_balance"][r]["day_balance"]
+                        average_value += balance_enquire[j].monthly_balance[r].day_balance
 
                         console.log(average_value)
 
                     }
 
-                    let average_balance;
+                    const average_balance = (average_value / balance_enquire[j].monthly_balance.length).toFixed(2);
 
-                    average_balance = (average_value / balance_enquire[j]["monthly_balance"].length).toFixed(2);
-
-                    balance_enquire[j]["average_value"] = average_balance
+                    balance_enquire[j].average_value = average_balance
 
                 }
 
             }
 
             localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
-
 
         }
 
@@ -481,7 +473,6 @@
         //             balance_enquire[h]["average_value"] = average_balance
         //         }
 
-
         //     }
 
         //     localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
@@ -494,29 +485,27 @@
 
         account_detail.forEach(e => {
 
-            if (e["email_compare"] == email_compare) {
+            if (e.email_compare === email_compare) {
 
                 document.getElementById("bank_account").style.display = "flex";
 
-                let bank_div = document.querySelector("#bank_account");
+                const bank_div = document.querySelector("#bank_account");
 
-                let bank = document.createElement("div");
+                const bank = document.createElement("div");
                 bank.setAttribute("class", "bank");
                 bank_div.append(bank);
 
-                let image = document.createElement("img");
+                const image = document.createElement("img");
                 image.setAttribute("src", "../assets/img/account.png")
                 image.setAttribute("alt", "hello");
                 image.setAttribute("class", "bank_detail_image");
                 bank.append(image);
 
-
-                let data = [
+                const data = [
 
                     {
                         "label": "Account no",
                         "for": "account_give",
-
 
                         "type": "text",
                         "id": "account_give",
@@ -555,37 +544,33 @@
 
                 ]
 
-
-
                 for (let i = 0; i < data.length; i++) {
 
-                    let contant = document.createElement("div");
+                    const contant = document.createElement("div");
                     contant.setAttribute("class", "form-floating mb-3");
                     bank.append(contant);
 
-                    let input = document.createElement("input");
-                    input.setAttribute("type", data[i]["type"]);
-                    input.setAttribute("id", data[i]["id"]);
-                    input.setAttribute("class", data[i]["class"]);
-                    input.setAttribute("name", data[i]["name"]);
-                    input.setAttribute("placeholder", data[i]["place_holder"]);
-                    input.setAttribute("disable", data[i]["disable"]);
+                    const input = document.createElement("input");
+                    input.setAttribute("type", data[i].type);
+                    input.setAttribute("id", data[i].id);
+                    input.setAttribute("class", data[i].class);
+                    input.setAttribute("name", data[i].name);
+                    input.setAttribute("placeholder", data[i].place_holder);
+                    input.setAttribute("disable", data[i].disable);
                     contant.append(input);
 
-
-                    let label = document.createElement("label");
-                    label.innerText = data[i]["label"];
-                    label.setAttribute("for", data[i]["for"]);
+                    const label = document.createElement("label");
+                    label.innerText = data[i].label;
+                    label.setAttribute("for", data[i].for);
                     contant.append(label);
 
                 }
 
-                let set_primary = document.createElement("div");
+                const set_primary = document.createElement("div");
                 set_primary.setAttribute("class", "set_primary")
                 bank.append(set_primary);
 
-
-                let primary = document.createElement("input");
+                const primary = document.createElement("input");
                 primary.setAttribute("type", "radio");
                 primary.setAttribute("id", e.account);
                 primary.setAttribute("class", "input-radio");
@@ -593,30 +578,28 @@
                 primary.setAttribute("name", "primary");
                 set_primary.append(primary);
 
-                let primary_label = document.createElement("label");
+                const primary_label = document.createElement("label");
                 primary_label.setAttribute("for", e.account);
                 primary_label.innerHTML = ("Set primary account");
                 set_primary.append(primary_label);
 
-                let btn = document.createElement("button");
+                const btn = document.createElement("button");
                 btn.setAttribute("id", "remove_bk");
                 btn.setAttribute("class", "btn btn-primary remove_bk");
                 btn.innerText = "Remove bank account !!"
                 bank.append(btn);
 
-
-                let symbal = document.createElement("div");
+                const symbal = document.createElement("div");
                 symbal.setAttribute("class", "tick_append");
                 bank.append(symbal);
 
-
-                document.getElementsByClassName("account_give")[k].value = e["account"];
-                document.getElementsByClassName("ifsc_give")[k].value = e["ifsc"];
-                document.getElementsByClassName("branch")[k].value = e["branch"];
+                document.getElementsByClassName("account_give")[k].value = e.account;
+                document.getElementsByClassName("ifsc_give")[k].value = e.ifsc;
+                document.getElementsByClassName("branch")[k].value = e.branch;
 
                 k++
 
-                primary.addEventListener('click', function () {
+                primary.addEventListener('click', () => {
 
                     selectvalue = primary.value;
 
@@ -624,9 +607,9 @@
 
                     for (let ko = 0; ko < show.length; ko++) {
 
-                        if (show[ko]["email"] == email_compare) {
+                        if (show[ko].email === email_compare) {
 
-                            show[ko]["primary"] = selectvalue;
+                            show[ko].primary = selectvalue;
 
                             localStorage.setItem("array", JSON.stringify(show));
 
@@ -641,29 +624,28 @@
 
         });
 
-
         // Bank account detail div append the tick symbal and the information message function   ****
 
-        let account_numbers = document.querySelectorAll(".account_give")
+        const account_numbers = document.querySelectorAll(".account_give")
 
         show.forEach(e => {
 
             account_numbers.forEach((el, ind) => {
 
-                if (el.value == e["primary"] && e["email"] == email_compare) {
+                if (Number(el.value) === Number(e.primary) && e.email === email_compare) {
 
-                    let primary = document.querySelectorAll(".tick_append");
+                    const primary = document.querySelectorAll(".tick_append");
 
-                    let unique_div = document.createElement("div");
+                    const unique_div = document.createElement("div");
                     unique_div.setAttribute("class", "unique_div")
 
-                    let primary_tick_image = document.createElement("img");
+                    const primary_tick_image = document.createElement("img");
                     primary_tick_image.setAttribute("src", "../assets/img/tick_balance.png")
                     primary_tick_image.setAttribute("alt", "tick");
                     primary_tick_image.setAttribute("id", "primary_tick")
                     unique_div.append(primary_tick_image);
 
-                    let news = document.createElement("span");
+                    const news = document.createElement("span");
                     news.setAttribute("id", "default");
                     news.innerText = "Default bank account";
                     unique_div.append(news);
@@ -682,13 +664,13 @@
         let account_num;
 
         for (let ic = 0; ic < btn1.length; ic++) {
-            btn1[ic].addEventListener("click", (account, balance) => {
+            btn1[ic].addEventListener("click", () => {
 
                 account_num = document.getElementsByClassName("account_give")[ic].value;
 
                 for (let a = 0; a < account_detail.length; a++) {
 
-                    if (account_detail[a]["account"] == account_num && email_compare == account_detail[a]["email_compare"]) {
+                    if (Number(account_detail[a].account) === Number(account_num) && email_compare === account_detail[a].email_compare) {
 
                         account_detail.splice(a, 1);
 
@@ -710,9 +692,9 @@
 
             for (let kd = 0; kd < show.length; kd++) {
 
-                if (show[kd]["primary"] == account_num) {
+                if (Number(show[kd].primary) === Number(account_num)) {
 
-                    show[kd]["primary"] = "";
+                    show[kd].primary = "";
 
                     localStorage.setItem("array", JSON.stringify(show));
 
@@ -727,7 +709,7 @@
 
             for (let b = 0; b < balance_enquire.length; b++) {
 
-                if (balance_enquire[b]["ac_no"] == account_num && email_compare == balance_enquire[b]["email_compare"]) {
+                if (Number(balance_enquire[b].ac_no) === Number(account_num) && email_compare === balance_enquire[b].email_compare) {
 
                     balance_enquire.splice(b, 1);
 
@@ -739,55 +721,18 @@
 
         }
 
-        // bank_img()
+    </script> -->
 
-        function bank_img(bank_name) {
+    <script type="text/javascript" src="../assets/js/home.js"></script>
 
-            // let bank_img = document.querySelector(".bank_detail_image");
-            // console.log(bank_img)
-
-            if (bank_name == "Canara Bank") {
-
-                document.getElementsByClassName("bank_detail_image").src = "../assets/img/canara.png"
-            }
-
-        }
-
-    </script>
-
-    <script type="text/javascript" src="../assets/js/common_function.js"></script>
+    <!-- <script type="text/javascript" src="../assets/js/common_function.js"></script> -->
     <!-- <script src="../assets/js/admin.js"></script> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <!-- <script type="text/javascript" src="../assets/js/home.js"></script> -->
 
     <!-- <script type="module" src="../assets/js/home.js"> </script> -->
 
     <!-- <img src="../assets/img/tick_balance.png" alt="tick"> -->
-
-
 
     <!-- function random() {
     alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
@@ -801,7 +746,6 @@
     <!-- // let alpha
     // let alpha_random
     // random()
-
 
     // console.log(alpha_random); -->
 

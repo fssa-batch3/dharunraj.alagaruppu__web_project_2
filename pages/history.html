@@ -25,11 +25,9 @@
                 <a href="./home.html">Home</a>
             </div>
 
-
             <div>
                 <a href="./fund_transfer.html">Transfer</a>
             </div>
-
 
             <div>
                 <a href="./balance_enquire.html">Balance</a>
@@ -63,7 +61,6 @@
 
             </div>
 
-
             <div class="right_filter">
 
                 <div class="filter">
@@ -84,7 +81,6 @@
 
                         <option value="">Choose your Ac.No</option>
 
-
                     </select>
 
                     <button id="result_button">check</button>
@@ -95,40 +91,30 @@
 
             </div>
 
-
-
-
         </div>
 
     </div>
 
+    <script src="../assets/js/common_function.js"></script>
 
     <main>
 
-
-
-
     </main>
 
-    <script src="../assets/js/common_function.js"></script>
+    <script src="../assets/js/history.js"></script>
 
+    <!-- <script src="../assets/js/common_function.js"></script> -->
 
-    <script>
+    <!-- <script>        const signup_array = JSON.parse(localStorage.getItem("array"));
 
+        const email = localStorage.getItem("email");
 
-        let signup_array = JSON.parse(localStorage.getItem("array"));
+        const history = JSON.parse(localStorage.getItem("history_table")) ?? [];
 
-        let email = localStorage.getItem("email");
+        const balance_enquire = JSON.parse(localStorage.getItem("bal_enquire"));
 
-        let history = JSON.parse(localStorage.getItem("history_table")) ?? [];
+        const account_details = JSON.parse(localStorage.getItem("account_details"));
 
-        let balance_enquire = JSON.parse(localStorage.getItem("bal_enquire"));
-
-        let account_details = JSON.parse(localStorage.getItem("account_details"));
-
-        let primary_account;
-
-        let function_account;
         let function_image;
         let type;
         let function_amount;
@@ -144,7 +130,6 @@
         let sender_name;
         // **************************************************
 
-
         let sender_value;
         let reciver_value;
 
@@ -153,8 +138,7 @@
 
         let account_value;
 
-
-
+        let remark
         // ***********************************************
 
         active_user()
@@ -162,27 +146,24 @@
 
             for (let i = 0; i < signup_array.length; i++) {
 
-                if (signup_array[i]["email"] == email) {
+                if (signup_array[i].email === email) {
 
                     main()
                 }
 
             }
 
-
         }
-
 
         function main() {
 
-
             for (let j = 0; j < history.length; j++) {
 
-                sender_value = history[j]["sender_account"];
-                reciver_value = history[j]["reciver_account"];
+                sender_value = history[j].sender_account;
+                reciver_value = history[j].reciver_account;
 
-                sender_email = history[j]["sender_email"];
-                reciver_email = history[j]["reciver_email"];
+                sender_email = history[j].sender_email;
+                reciver_email = history[j].reciver_email;
 
                 account_search(sender_value, reciver_value, sender_email, reciver_email, j)
 
@@ -190,55 +171,51 @@
 
         }
 
-
-        function account_search(sender_value, reciver_value, sender_email, reciver_email, j) {
-
+        function account_search(j) {
 
             for (let k = 0; k < account_details.length; k++) {
 
-                account_value = account_details[k]["account"];
+                account_value = account_details[k].account;
 
-                if (sender_value == account_value && sender_email == email) {
+                if (Number(sender_value) === Number(account_value) && sender_email === email) {
 
-                    sender_account = history[j]["sender_account"];
-                    sender_name = history[j]["sender_name"];
+                    sender_account = history[j].sender_account;
+                    sender_name = history[j].sender_name;
 
-                    reciver_account = history[j]["reciver_account"];
-                    reciver_name = history[j]["reciver_name"];
+                    reciver_account = history[j].reciver_account;
+                    reciver_name = history[j].reciver_name;
 
                     function_image = "../assets/img/hdfc_icon.png"
-                    type = history[j]["sender_type"]
-                    function_amount = history[j]["send_amount"]
+                    type = history[j].sender_type
+                    function_amount = history[j].send_amount
                     icon = "../assets/img/minus_icon.png"
                     id = "minus";
-                    function_date = history[j]["date"]
-                    function_current_balance = history[j]["sender_balance"];
-                    account_number = history[j]["sender_account"];
-                    remark = history[j]["remarks"];
-
+                    function_date = history[j].date
+                    function_current_balance = history[j].sender_balance;
+                    account_number = history[j].sender_account;
+                    remark = history[j].remarks;
 
                     create_div(function_image, type, sender_name, reciver_name, sender_account, reciver_account, function_amount, icon, function_date, function_current_balance, remark)
 
                 }
 
-                else if (reciver_value == account_value && reciver_email == email) {
+                else if (Number(reciver_value) === Number(account_value) && reciver_email === email) {
 
-                    sender_account = history[j]["reciver_account"];
-                    sender_name = history[j]["reciver_name"];
+                    sender_account = history[j].reciver_account;
+                    sender_name = history[j].reciver_name;
 
-                    reciver_account = history[j]["reciver_account"];
-                    reciver_name = history[j]["sender_name"];
+                    reciver_account = history[j].reciver_account;
+                    reciver_name = history[j].sender_name;
 
                     function_image = "../assets/img/hdfc_icon.png"
-                    type = history[j]["reciver_type"]
+                    type = history[j].reciver_type
                     function_amount = history[j].send_amount
                     icon = "../assets/img/plus_icon.png";
                     id = "plus";
-                    function_date = history[j]["date"]
-                    function_current_balance = history[j]["reciver_balance"];
-                    account_number = history[j]["reciver_account"];
-                    remark = history[j]["remarks"];
-
+                    function_date = history[j].date
+                    function_current_balance = history[j].reciver_balance;
+                    account_number = history[j].reciver_account;
+                    remark = history[j].remarks;
 
                     create_div(function_image, type, sender_name, reciver_name, sender_account, reciver_account, function_amount, icon, function_date, function_current_balance, remark)
                 }
@@ -246,46 +223,41 @@
             }
         }
 
+        function create_div() {
 
+            const main_div = document.querySelector("main")
 
-
-        function create_div(function_image, type, sender_name, reciver_name, sender_account, reciver_account, function_amount, icon, function_date, function_current_balance, remark) {
-
-            let main_div = document.querySelector("main")
-
-
-            let new_container = document.createElement("div");
+            const new_container = document.createElement("div");
             new_container.setAttribute("class", "history");
             document.querySelector("main").append(new_container);
 
-
-            let send = document.createElement("div");
+            const send = document.createElement("div");
             send.setAttribute("class", "send_data");
             new_container.append(send);
 
-            let type_fund = document.createElement("div");
+            const type_fund = document.createElement("div");
             type_fund.setAttribute("class", "type_fund");
             send.append(type_fund);
 
-            let image = document.createElement("img");
+            const image = document.createElement("img");
             image.setAttribute("id", "bank_icon")
             image.setAttribute("src", function_image);
             image.setAttribute("alt", "bank_icon");
             type_fund.append(image);
 
-            let transfer_type = document.createElement("div");
+            const transfer_type = document.createElement("div");
             transfer_type.setAttribute("class", "transfer_type");
             type_fund.append(transfer_type);
 
-            let increase = document.createElement("h2");
+            const increase = document.createElement("h2");
             increase.setAttribute("class", "increase");
             increase.setAttribute("id", "increase");
             increase.innerText = type;
             transfer_type.append(increase);
 
-            let sender_name_value = document.createElement("h5");
+            const sender_name_value = document.createElement("h5");
             sender_name_value.setAttribute("class", "reciver_name");
-            sender_name_value.innerText = sender_name + " " + "to" + " " + reciver_name;
+            sender_name_value.innerText = `${sender_name} ` + `to` + ` ${reciver_name}`;
             transfer_type.append(sender_name_value);
 
             // let reciver_name_value = document.createElement("span");
@@ -293,87 +265,83 @@
             // reciver_name_value.innerHTML = (" " + "to" + " " + reciver_name)
             // sender_name_value.append(reciver_name_value);
 
-            let sender_num = document.createElement("h5");
+            const sender_num = document.createElement("h5");
             sender_num.setAttribute("class", "reciver_num");
             sender_num.innerHTML = sender_account;
             transfer_type.append(sender_num);
 
-            let reciver_num = document.createElement("span");
+            const reciver_num = document.createElement("span");
             reciver_num.setAttribute("class", "send_account");
             reciver_num.innerHTML = (reciver_account)
             transfer_type.append(reciver_num);
 
-
-            let amount = document.createElement("div");
+            const amount = document.createElement("div");
             amount.setAttribute("class", "amount");
             send.append(amount);
 
-            let minus = document.createElement("h4");
+            const minus = document.createElement("h4");
             minus.setAttribute("class", "minus");
             minus.setAttribute("id", id);
-            minus.innerText = "₹" + "" + function_amount;
+            minus.innerText = `₹` + `${function_amount}`;
             amount.append(minus);
 
-            let type_model = document.createElement("img");
+            const type_model = document.createElement("img");
             type_model.setAttribute("src", icon);
             type_model.setAttribute("alt", "bank_icon");
             amount.append(type_model);
 
-
-            let balance_data = document.createElement("div");
+            const balance_data = document.createElement("div");
             balance_data.setAttribute("class", "balance_data");
             new_container.append(balance_data)
 
-            let date = document.createElement("h3");
+            const date = document.createElement("h3");
             date.setAttribute("class", "date");
             date.setAttribute("id", "date");
             date.innerHTML = function_date;
             balance_data.append(date);
 
-            let balance_span = document.createElement("span");
+            const balance_span = document.createElement("span");
             balance_span.setAttribute("class", "balance_span");
             balance_span.innerText = "Balance :";
             balance_data.append(balance_span);
 
-            let balance = document.createElement("h3");
+            const balance = document.createElement("h3");
             balance.setAttribute("class", "balance_span");
-            balance.innerText = "₹" + " " + function_current_balance;
+            balance.innerText = `₹` + ` ${function_current_balance}`;
             balance_span.append(balance);
 
-            let remark_sms = document.createElement("h3");
+            const remark_sms = document.createElement("h3");
             remark_sms.setAttribute("class", "remark");
-            remark_sms.innerHTML = ("Remarks :" + " " + remark)
+            remark_sms.innerHTML = (`Remarks :` + ` ${remark}`)
             new_container.append(remark_sms);
 
         }
 
-        let search = document.querySelector("#search");
+        const search = document.querySelector("#search");
 
-        let histroy_search = document.querySelectorAll(".history");
-
+        const histroy_search = document.querySelectorAll(".history");
 
         search.addEventListener("keyup", (key) => {
 
-            let values = key.target.value.toLowerCase();
-
+            const values = key.target.value.toLowerCase();
 
             for (let i = 0; i < histroy_search.length; i++) {
 
-                let fund_type = histroy_search[i].querySelector(".increase").innerHTML.toLowerCase();
+                const fund_type = histroy_search[i].querySelector(".increase").innerHTML.toLowerCase();
 
-                let date = histroy_search[i].querySelector(".date").innerHTML.toLowerCase();
+                const date = histroy_search[i].querySelector(".date").innerHTML.toLowerCase();
 
-                let reciver_name = histroy_search[i].querySelector(".reciver_name").innerHTML.toLowerCase();
+                const reciver_name = histroy_search[i].querySelector(".reciver_name").innerHTML.toLowerCase();
 
-                let balance = histroy_search[i].querySelector(".balance_span").innerHTML.toLowerCase();
+                const balance = histroy_search[i].querySelector(".balance_span").innerHTML.toLowerCase();
 
-                let send_money = histroy_search[i].querySelector(".minus").innerHTML.toLowerCase();
+                const send_money = histroy_search[i].querySelector(".minus").innerHTML.toLowerCase();
 
-                let send_account = histroy_search[i].querySelector(".send_account").innerHTML.toLowerCase();
+                const send_account = histroy_search[i].querySelector(".send_account").innerHTML.toLowerCase();
 
-                let account_number = histroy_search[i].querySelector(".reciver_num").innerHTML.toLowerCase();
+                const account_number = histroy_search[i].querySelector(".reciver_num").innerHTML.toLowerCase();
 
-                let remarks = histroy_search[i].querySelector(".remark").innerHTML.toLowerCase()
+                const remarks = histroy_search[i].querySelector(".remark").innerHTML.toLowerCase()
 
                 if ((fund_type.includes(values)) || date.includes(values) || reciver_name.includes(values) || balance.includes(values) || send_money.includes(values) || account_number.includes(values) || remarks.includes(values) || account_number.includes(values) || send_account.includes(values)) {
 
@@ -391,37 +359,13 @@
 
         account_add()
 
-        // option()
-        // function option() {
-
-        //     let current_ac = document.getElementById("from")
-
-
-        //     for (let ac = 0; ac < account_details.length; ac++) {
-
-        //         if (email == account_details[ac]["email_compare"]) {
-
-        //             let account_match = account_details[ac]["account"];
-
-        //             let option = document.createElement("option");
-        //             option.setAttribute("value", account_match);
-        //             option.innerHTML = (account_match);
-        //             current_ac.append(option);
-
-        //         }
-
-        //     }
-
-        // }
-
-
         let select_account;
 
-        let filter_div = document.querySelector(".filter");
+        const filter_div = document.querySelector(".filter");
 
         filter_div.addEventListener("click", () => {
 
-            let filter = document.querySelector(".filter");
+            const filter = document.querySelector(".filter");
 
             document.querySelector(".filter").style.display = "none";
 
@@ -429,7 +373,7 @@
 
         });
 
-        let result_button = document.querySelector("button");
+        const result_button = document.querySelector("button");
 
         result_button.addEventListener("click", () => {
 
@@ -454,11 +398,11 @@
 
             for (let sa = 0; sa < histroy_search.length; sa++) {
 
-                let sender_only = histroy_search[sa].querySelector(".reciver_num").innerHTML
+                const sender_only = histroy_search[sa].querySelector(".reciver_num").innerHTML
 
-                let recive_only = histroy_search[sa].querySelector(".send_account").innerHTML;
+                const recive_only = histroy_search[sa].querySelector(".send_account").innerHTML;
 
-                if (select_account == sender_only || select_account == recive_only) {
+                if (Number(select_account) === Number(sender_only) || Number(select_account) === Number(recive_only)) {
 
                     histroy_search[sa].style.display = "block";
 
@@ -472,10 +416,8 @@
 
             }
 
-
         }
-
-    </script>
+    </script> -->
 
 </body>
 

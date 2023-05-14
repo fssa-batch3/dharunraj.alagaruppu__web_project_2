@@ -13,47 +13,41 @@
     <div class="main">
     </div>
 
-    <script>
+    <script>        // left page is start
 
-        // left page is start
-
-        let welcome = document.createElement("div");
+        const welcome = document.createElement("div");
         welcome.setAttribute("class", "welcome");
         document.querySelector(".main").append(welcome);    //main 1st child is start
 
-
-        let image = document.createElement("img");
+        const image = document.createElement("img");
         image.setAttribute("src", "../assets/img/image_processing20201202-31245-1hyedqz.gif");
         image.setAttribute("alt", "Net Bliz");
         document.querySelector(".welcome").append(image);
 
-        let heading = document.createElement("h1");
+        const heading = document.createElement("h1");
         heading.innerText = "welcome!!";
         welcome.append(heading);
 
-        let pickup = document.createElement("h3");
+        const pickup = document.createElement("h3");
         pickup.innerText = "You are 30 seconds away to experiencing your new Banking World ";
         welcome.append(pickup);
 
-        let a = document.createElement("a");
+        const a = document.createElement("a");
         a.setAttribute("href", "./login_page.html");
         welcome.append(a);
 
-        let button = document.createElement("button");
+        const button = document.createElement("button");
         button.setAttribute("class", "welcome_button");
         button.innerText = "Login";
         a.append(button);
 
         // left half page is end
 
-
-
         //container for button , form , button
 
-        let content_of_singnup = document.createElement("div");
+        const content_of_singnup = document.createElement("div");
         content_of_singnup.setAttribute("class", "sing_up");
         document.querySelector(".main").append(content_of_singnup);     //main 2st child is start
-
 
         const obj = [
 
@@ -66,11 +60,12 @@
                 "name": "fname",
                 "id": "fname",
                 "placeholder": "First Name *",
+                "keyup": "this.value=this.value.replace(/[^A-z]/g,'');",
 
                 "pattern": "^[a-zA-Z ]{3,50}$",
-                "tittle": "Your pattern minium length of 2 characters a_z or A_Z only",
+                "tittle": "Your pattern minium length of 3 characters a_z or A_Z only",
                 "aria": "First name",
-                "required":"true"
+                "required": "true"
 
             },
 
@@ -83,6 +78,7 @@
                 "name": "lname",
                 "id": "lname",
                 "placeholder": "Last Name *",
+                "keyup": "this.value=this.value.replace(/[^A-z]/g,'');",
 
                 "pattern": "^[a-zA-Z ]{1,50}$",
                 "tittle": "Your pattern is minium 1 to 20 character a_z or A_Z only",
@@ -101,7 +97,7 @@
                 "placeholder": "Email.Id *",
                 "tittle": "This is not a email format ",
                 "aria": "Email.Id ",
-                "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+                "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+[a-zA-Z]{2,}$",
 
             },
 
@@ -114,7 +110,7 @@
                 "name": "phone",
                 "id": "phone",
                 "placeholder": "Phone number *",
-
+                "keyup": "this.value=this.value.replace(/[^0-9]/g,'');",
                 "pattern": "[0-9]{12}",
                 "tittle": "Before enter phone number enter your country code  OR Your number should be 12 numbers",
                 "aria": "Phone No"
@@ -152,44 +148,37 @@
 
         ]
 
-
         // Form is started this point
 
-        let page_name = document.createElement("h1");
+        const page_name = document.createElement("h1");
         page_name.innerText = ("Regsister here !!");
         content_of_singnup.append(page_name);
 
-
-        let form = document.createElement("form");
+        const form = document.createElement("form");
         content_of_singnup.append(form);
 
         for (let i = 0; i < obj.length; i++) {
 
-            let label_text = document.createElement("label");
-            label_text.setAttribute("for", obj[i]["for"]);
-            label_text.innerText = obj[i]["text"];
+            const label_text = document.createElement("label");
+            label_text.setAttribute("for", obj[i].for);
+            label_text.innerText = obj[i].text;
             form.append(label_text);
 
-            let input_box = document.createElement("input");
-            input_box.setAttribute("type", obj[i]["type"]);
-            input_box.setAttribute("name", obj[i]["name"]);
+            const input_box = document.createElement("input");
+            input_box.setAttribute("type", obj[i].type);
+            input_box.setAttribute("name", obj[i].name);
 
-            input_box.setAttribute("id", obj[i]["id"]);
-            input_box.setAttribute("placeholder", obj[i]["placeholder"]);
-            input_box.setAttribute("title", obj[i]["tittle"]);
-            input_box.setAttribute.required = true;
+            input_box.setAttribute("id", obj[i].id);
+            input_box.setAttribute("placeholder", obj[i].placeholder);
+            input_box.setAttribute("title", obj[i].tittle);
+            input_box.setAttribute("required","")
+            if (obj[i].pattern) {
+                input_box.setAttribute("pattern", obj[i].pattern);
+            }
+            if (obj[i].keyup) {
 
-            // if (i < 2) {
-            //     input_box.setAttribute("pattern", obj[i]["pattern"]);
-            // }
-            // else if (i == 2) {
-            //     // console.log("none");
-            // }
-            // else {
-            input_box.setAttribute("pattern", obj[i]["pattern"]);
-            // console.log(obj[i]["pattern"])
-            // }
-            // input_box.setAttribute("required", "");
+                input_box.setAttribute("onkeyup",obj[i].keyup)
+            }
 
             form.append(input_box);
 
@@ -197,161 +186,149 @@
 
         //gender radio over....
 
-        let bottom_button = document.createElement("div");
+        const bottom_button = document.createElement("div");
         bottom_button.setAttribute("class", "btm_btn");
         form.append(bottom_button);
 
-        let next = document.createElement("button");
+        const next = document.createElement("button");
         next.setAttribute("class", "bottom_button");
         next.innerText = ("Register");
         bottom_button.append(next);
 
         // Functions Start here*****
 
-        let form_check = document.querySelector("form");
+        // const form_check = document.querySelector("form");
 
-        form_check.addEventListener("submit", e => {
-            e.preventDefault()
-            signup()
+        // form_check.addEventListener("submit", e => {
+        //     e.preventDefault()
+        //     signup()
 
-        });
+        // });
 
-        let first_name;
-        let last_name;
-        let email;
-        let phone;
-        let new_pass;
-        let confirm;
+        // let first_name;
+        // let last_name;
+        // let email;
+        // let phone;
+        // let new_pass;
+        // let confirm;
 
+        // function signup() {
 
-        function signup() {
+        //     first_name = document.getElementById("fname").value.trim();
+        //     last_name = document.getElementById("lname").value.trim();
+        //     email = document.getElementById("email").value.trim();
+        //     phone = document.getElementById("phone").value.trim();
+        //     new_pass = document.getElementById("new_pass").value.trim();
+        //     confirm_pass = document.getElementById("confirm").value.trim();
 
-            first_name = document.getElementById("fname").value.trim();
-            last_name = document.getElementById("lname").value.trim();
-            email = document.getElementById("email").value.trim();
-            phone = document.getElementById("phone").value.trim();
-            new_pass = document.getElementById("new_pass").value.trim();
-            confirm_pass = document.getElementById("confirm").value.trim();
+        //     if (first_name != "" && last_name != "" && email != "" && phone != "" && new_pass != "" && confirm_pass != "") {
 
-            if (first_name != "" && last_name != "" && email != "" && phone != "" && new_pass != "" && confirm_pass != "") {
+        //         if (new_pass != confirm_pass) {
 
-                if (new_pass != confirm_pass) {
+        //             alert("Oops !! password and confirm password doesn't match.");
+        //         }
 
-                    alert("Oops !! password and confirm password doesn't match.");
-                }
+        //         else {
+        //             emailcheck(email, phone);
+        //         }
 
-                else {
-                    emailcheck(email, phone);
-                }
+        //     }
 
-            }
+        //     else {
+        //         alert("Recheck your values")
+        //     }
 
-            else {
-                alert("Recheck your values")
-            }
+        // }
 
+        // function emailcheck(email, phone) {
 
+        //     console.log(email)
 
-        }
+        //     fetch(`https://api.apilayer.com/email_verification/${email}?apikey=AQcZ7IxCjhBK10lW9u8Lx03MH378Kaci`)
 
+        //         .then((response) => response.json())
 
+        //         .then((data) => {
 
-        function emailcheck(email, phone) {
+        //             if (data.can_connect_smtp == true) {
 
-            console.log(email)
+        //                 console.log(data);
+        //                 phone_check(email, phone);
+        //             }
 
-            fetch(`https://api.apilayer.com/email_verification/${email}?apikey=AQcZ7IxCjhBK10lW9u8Lx03MH378Kaci`)
+        //             else {
+        //                 alert("User email id is not valid");
+        //             }
 
-                .then((response) => {
+        //         });
+        // }
 
-                    return response.json()
-                })
+        // function phone_check(email, phone) {
 
-                .then((data) => {
+        //     fetch(`https://api.apilayer.com/number_verification/validate?apikey=AQcZ7IxCjhBK10lW9u8Lx03MH378Kaci&number=${phone}`)
 
-                    if (data.can_connect_smtp == true) {
+        //         .then((response) => response.json())
 
-                        console.log(data);
-                        phone_check(email, phone);
-                    }
+        //         .then((data) => {
 
-                    else {
-                        alert("User email id is not valid");
-                    }
+        //             if (data.carrier != "" && phone != "") {
+        //                 console.log("valid");
+        //                 add_local(email, phone);
 
-                });
-        }
+        //             }
+        //             else {
+        //                 alert("Recheck your phone number");
+        //             }
+        //         });
+        // }
 
+        // function add_local(email, phone) {
 
-        function phone_check(email, phone) {
+        //     const store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
 
-            fetch(`https://api.apilayer.com/number_verification/validate?apikey=AQcZ7IxCjhBK10lW9u8Lx03MH378Kaci&number=${phone}`)
+        //     let res;
 
-                .then((response) => {
+        //     for (let i = 0; i < store.length; i++) {
 
-                    return response.json();
-                })
+        //         if (store[i].email === email) {
+        //             res = 1;
+        //             break;
+        //         }
+        //     }
 
-                .then((data) => {
+        //     if (res == 1) {
+        //         alert("email already registered");
 
-                    if (data.carrier != "" && phone != "") {
-                        console.log("valid");
-                        add_local(email, phone);
+        //     }
 
-                    }
-                    else {
-                        alert("Recheck your phone number");
-                    }
-                });
-        }
+        //     else {
+        //         const obj = {};
 
-        function add_local(email, phone) {
+        //         obj.fname = first_name
+        //         obj.lname = last_name
+        //         obj.email = email
+        //         obj.phone = Number(phone)
+        //         obj.confirm = confirm_pass
+        //         obj.dob = ""
+        //         obj.state = ""
+        //         obj.district = ""
+        //         obj.pincode = ""
+        //         obj.image = ""
+        //         obj.primary = ""
 
-            let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
+        //         store.push(obj);//[{name, email, pass}]
 
-            let res;
+        //         localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
 
-            for (let i = 0; i < store.length; i++) {
+        //         alert("successfully signup");
 
-                if (store[i]["email"] === email) {
-                    res = 1;
-                    break;
-                }
-            }
+        //         window.location.href = "./login_page.html"
 
-            if (res == 1) {
-                alert("email already registered");
-
-            }
-
-            else {
-                let obj = {};
-
-                obj["fname"] = first_name
-                obj["lname"] = last_name
-                obj["email"] = email
-                obj["phone"] = phone
-                obj["new_pass"] = new_pass
-                obj["confirm"] = confirm_pass
-                obj["dob"] = ""
-                obj["state"] = ""
-                obj["district"] = ""
-                obj["pincode"] = ""
-                obj["image"] = ""
-                obj["primary"] = ""
-
-                store.push(obj);//[{name, email, pass}]
-
-                localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
-
-                alert("successfully signup");
-
-                window.location.href = "./login_page.html"
-
-            }
-        }
-
+        //     }
+        // }
     </script>
+
+    <script src="../assets/js/sign_up.js"></script>
 
 </body>
 

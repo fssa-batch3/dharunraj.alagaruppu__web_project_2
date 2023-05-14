@@ -122,7 +122,7 @@ form input[type="radio"] {
     letter-spacing: 1px;
 }
 
-.welcome #fname {
+.welcome .fname {
     font-size: 22px;
 }
 
@@ -131,7 +131,6 @@ form input[type="radio"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 2px solid black; */
 }
 
 .welcome .search input {
@@ -242,4 +241,9 @@ footer .direct a {
 
 label{
     font-weight: 500;
+}
+
+#error_home{
+    width: 35px;
+    margin-bottom: 5px;
 }

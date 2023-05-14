@@ -2,11 +2,6 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-/* 
-.charts{
-    
-} */
-
 #pie {
 
     padding: 2%;
@@ -146,12 +141,6 @@ th {
 
 }
 
-/* b{
-    font-weight:normal;
-    font-size: 20px;
-    color:black
-} */
-
 .name {
 
     margin-right: 30%;
@@ -177,7 +166,6 @@ th {
 .day_date_month {
 
     display: none;
-    /* margin-bottom: 10%; */
 
 }
 
@@ -243,33 +231,32 @@ th {
 
 .select_div {
     height: 100px;
-    margin:  auto;
-
+    margin: 0% auto;
+    text-align: center;
 }
 
 .select_div button {
     padding: 3% 1%;
     background-color: #4285F4;
     color: white;
-    border: 0px ;
+    border: 0px;
 
 }
 
 .select_div .accounts {
 
-    margin: 5% auto;
     width: 30%;
-    padding: 1%;
+    padding: 11px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .5px;
     border-radius: 10px;
+    line-height: 1.2;
 }
 
+.accounts:focus {
 
-.accounts button {
-
-    margin: 0% auto;
-    /* border: 1px solid black; */
-
-
+    outline: none;
 }
 
 #result_button,

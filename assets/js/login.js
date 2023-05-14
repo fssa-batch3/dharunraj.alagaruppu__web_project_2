@@ -1,44 +1,35 @@
-// fetch("https://api.apilayer.com/number_verification/validate?apikey=AQcZ7IxCjhBK10lW9u8Lx03MH378Kaci&number=9185449")
-//   .then((response) => {
-//   return response.json()
-// }
-//     )
-//   .then((data) => {
-//   // console.log(data)
-//   if(data.carrier==""){
-//     console.log("not valid")
-//   }
-//   else{
-//     console.log("valid")
-//   }
-// }
-//   )
+const form_click = document.querySelector("form");
 
-// fetch("https://api.apilayer.com/email_verification/manidharun2204@gmail.com?apikey=AQcZ7IxCjhBK10lW9u8Lx03MH378Kaci")
-//   .then((response) => {
-//   return response.json()
-// }
-//     )
-//   .then((data) => {
-//   // console.log(data)
-//   if(data.can_connect_smtp===true){
-//     console.log(data)
-//   }
-//   else{
-//     console.log(" not valid")
-//   }
-// }
-//   )
+form_click.addEventListener("submit", (e) => {
+  e.preventDefault();
+  login();
+});
 
-// function ifsc_api(ifsc_branch) {
-//   fetch(`https://api.sandbox.co.in/bank/${ifsc_branch}`)
-//     .then((results) => {
-//       return results.json();
-//     })
-//     .then((data) => {
-//       console.log(data);
-//       // return data;
-//       // Access your data here
-//     });
-// }
-// ifsc_api("ABHIRAMAPURAM");
+function login() {
+  const attach = JSON.parse(localStorage.getItem("array"));
+
+  const fullname = document.getElementById("fullname").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  let check;
+  attach.forEach((element) => {
+    if (
+      element.fname === fullname &&
+      element.email === email &&
+      element.confirm === password
+    ) {
+      check = 1;
+    }
+  });
+
+  if (check === 1) {
+    localStorage.setItem("email", email); // login user email details
+
+    alert(" Successfully login");
+
+    window.location.href = "home.html";
+  } else {
+    alert("Some thing went increate .Please recheck your details !!");
+  }
+}

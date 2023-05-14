@@ -13,6 +13,9 @@
 </head>
 
 <body>
+    <div class="date">
+
+    </div>
 
     <div class="main">
 
@@ -21,90 +24,71 @@
     <script type="text/javascript" src="../assets/js/common_function.js"></script>
 
 </body>
+<script src="../assets/js/date_time.js"></script>
 
-<script>
-
-    //Right side container
-
-    // let content_list = document.createElement("div");
-    // content_list.setAttribute("class", "content_list");
-    // document.querySelector(".main").append(content_list);
-
-
-
-    let simple_detail = document.createElement("div");
+<script>    const simple_detail = document.createElement("div");
     simple_detail.setAttribute("class", "simple_detail");
     document.querySelector(".main").append(simple_detail);
 
-
-    let profile_name = document.createElement("h2");
+    const profile_name = document.createElement("h2");
     profile_name.setAttribute("id", "fi_name");
     simple_detail.append(profile_name);
 
-    let simple_image = document.createElement("img");
+    const simple_image = document.createElement("img");
     simple_image.setAttribute("id", "simple_image");
-    simple_image.setAttribute("src", "");
+    simple_image.setAttribute("src", "https://freeimghost.net/images/2023/05/14/icons8-user-100.png");
     simple_image.setAttribute("alt", "i");
     simple_detail.append(simple_image);
 
-
-
-    let file_uplad = document.createElement("div");
+    const file_uplad = document.createElement("div");
     file_uplad.setAttribute("class", "file_uplad");
     simple_detail.append(file_uplad);
 
-    let simple_upload = document.createElement("input");
+    const simple_upload = document.createElement("input");
     simple_upload.setAttribute("type", "file");
     simple_upload.setAttribute("id", "simple_upload");
     simple_upload.setAttribute("name", "simple_upload");
     file_uplad.append(simple_upload);
 
-    let simple_label = document.createElement("label");
+    const simple_label = document.createElement("label");
     simple_label.setAttribute("for", "simple_upload");
     simple_label.setAttribute("id", "label_file");
     simple_label.innerText = ("Change profile");
     file_uplad.append(simple_label);
 
-
-
-    let simple_text = document.createElement("p");
+    const simple_text = document.createElement("p");
     simple_text.setAttribute("class", "simple_text");
     simple_text.innerText = "Upload a new avatar.Larger image will be resized automatically .";
     simple_detail.append(simple_text);
 
-    let delete_button = document.createElement("a");
-    delete_button.setAttribute("class", "back_button");
+    const delete_button = document.createElement("a");
+    delete_button.setAttribute("class", "back_button delete_button");
     // back_button.setAttribute("href", "./home.html")
     delete_button.innerText = ("Delete");
     simple_detail.append(delete_button);
 
-    let form = document.createElement("form");
+    const form = document.createElement("form");
     form.setAttribute("id", "right_form");
     document.querySelector(".main").append(form);
 
-
-    let edit_profile = document.createElement("div");
+    const edit_profile = document.createElement("div");
     edit_profile.setAttribute("class", "edit_profile");
     form.append(edit_profile);
 
-
-    let heading_profile = document.createElement("div");
+    const heading_profile = document.createElement("div");
     heading_profile.setAttribute("class", "heading_profile");
     edit_profile.append(heading_profile);
 
-    let heading = document.createElement("h2");
+    const heading = document.createElement("h2");
     heading.setAttribute("class", "heading");
     heading.innerText = ("Edit Profile");
     heading_profile.append(heading);
 
-
-
-    let form_profile = document.createElement("div");
+    const form_profile = document.createElement("div");
     form_profile.setAttribute("class", "form_profile");
     edit_profile.append(form_profile);
 
-
-    let head = [
+    const head = [
 
         {
             "label": "Name",
@@ -115,8 +99,7 @@
             "tittle": "Your pattern minium length of 2 characters a_z or A_Z only",
             "aria": "Name",
             "pattern": "^[a-zA-Z ]{3,50}$",
-            "required" : "true",
-
+            "required": "true",
 
         },
 
@@ -131,7 +114,6 @@
             "pattern": "[0-9]{12}"
         },
 
-
         {
             "label": "Email id",
             "id": "email",
@@ -140,19 +122,7 @@
             "type": "email",
             "tittle": "This is not a email format",
             "aria": "Email id",
-            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
-
-
-        },
-
-        {
-            "label": "DOB",
-            "id": "dob",
-            "for": "dob",
-            "place_holder": "DOB",
-            "type": "date",
-            "tittle": "This is not a date of birth",
-            "aria": "Date of birth",
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+[a-zA-Z]{2,}$",
 
         },
 
@@ -179,195 +149,208 @@
             "aria": "State",
         },
 
+        {
+            "label": "DOB",
+            "id": "dob",
+            "for": "dob",
+            "place_holder": "DOB",
+            "type": "date",
+            "max": date,
+            "tittle": "This is not a date of birth",
+            "aria": "Date of birth",
+
+        },
 
     ]
 
     for (let i = 0; i < head.length; i++) {
 
-        let contant_profile = document.createElement("div");
+        const contant_profile = document.createElement("div");
         contant_profile.setAttribute("class", "form-floating mb-3");
         form_profile.append(contant_profile);
 
-        let input_profile = document.createElement("input");
+        const input_profile = document.createElement("input");
 
-        input_profile.setAttribute("for", head[i]["for"]);
-        input_profile.setAttribute("id", head[i]["id"]);
-        input_profile.setAttribute("placeholder", head[i]["place_holder"]);
-        input_profile.setAttribute("pattern", head[i]["pattern"]);
-        input_profile.setAttribute("type", head[i]["type"]);
-        input_profile.setAttribute("title", head[i]["tittle"]);
-        input_profile.setAttribute("aria", head[i]["aria"]);
+        input_profile.setAttribute("for", head[i].for);
+        input_profile.setAttribute("id", head[i].id);
+        input_profile.setAttribute("placeholder", head[i].place_holder);
+        input_profile.setAttribute("pattern", head[i].pattern);
+        input_profile.setAttribute("type", head[i].type);
+        input_profile.setAttribute("min", head[i].min)
+        input_profile.setAttribute("title", head[i].tittle);
+        input_profile.setAttribute("aria", head[i].aria);
         input_profile.setAttribute("class", "form-control input input1");
-        input_profile.setAttribute("required", head[i]["required"]);
+        input_profile.setAttribute("required", head[i].required);
+        input_profile.setAttribute("disabled", "")
+        if (head[i].max) {
+            input_profile.setAttribute("max", head[i].max);
+
+        }
 
         // input_profile.setAttribute.disabled = true;
         contant_profile.append(input_profile);
 
-        let label_profile = document.createElement("label");
-        label_profile.setAttribute("for", head[i]["for"]);
-        label_profile.innerText = head[i]["label"];
+        const label_profile = document.createElement("label");
+        label_profile.setAttribute("for", head[i].for);
+        label_profile.innerText = head[i].label;
 
         contant_profile.append(label_profile);
 
-
     }
 
-    let click_button = document.createElement("div");
+    const click_button = document.createElement("div");
     click_button.setAttribute("class", "click_button");
     edit_profile.append(click_button);
 
-
-    let back_button = document.createElement("a");
+    const back_button = document.createElement("a");
     back_button.setAttribute("class", "back_button");
     back_button.setAttribute("href", "./home.html")
     back_button.innerText = ("Back to home");
     click_button.append(back_button);
 
+    const save = document.createElement("a");
+    save.setAttribute("class", "back_button");
+    save.setAttribute("id", "edit_profiles");
+    save.innerText = ("Edit");
+    click_button.append(save);
 
+    // const show = JSON.parse(localStorage.getItem('array'));
 
-    let edit_button = document.createElement("button");
-    edit_button.setAttribute("class", "back_button1");
-    edit_button.innerText = ("Edit");
-    click_button.append(edit_button);
+    // const account_name = localStorage.getItem("first_name");
 
+    // const email_compare = localStorage.getItem("email");
 
+    // const balance_enquire = JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
 
+    // let current_user;
+    // show.find(e => { // parameterized e-->show[0],[1]
 
+    //     if (e.email === email_compare) {
 
+    //         return current_user = e
+    //         // console.log(e);
 
-    let show = JSON.parse(localStorage.getItem('array'));
+    //     }
+    // }
+    // )
+    // document.querySelectorAll("#fi_name")[0].innerText = current_user.fname //[0]
 
-    let account_name = localStorage.getItem("first_name");
+    // document.getElementById("fname").value = current_user.fname //show[0]["fname"] //dharun
+    // document.getElementById("phone").value = current_user.phone
+    // document.getElementById("email").value = current_user.email
+    // document.getElementById("dob").value = current_user.dob
+    // document.getElementById("district").value = current_user.district
+    // document.getElementById("state").value = current_user.state;
 
-    let email_compare = localStorage.getItem("email");
+    // const form_click = document.querySelector("form");
 
-    let balance_enquire = JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
+    // let change_value = document.querySelector("#edit_profiles");
 
+    // change_value.addEventListener("click", (e) => {
 
+    //     document.getElementById("dob").removeAttribute("disabled");
+    //     document.getElementById("district").removeAttribute("disabled");
+    //     document.getElementById("state").removeAttribute("disabled");
 
-    let current_user;
-    show.find(e => { // parameterized e-->show[0],[1]
+    //     const edit_button = document.createElement("button");
+    //     edit_button.setAttribute("class", "back_button1");
+    //     edit_button.innerText = ("Save");
+    //     click_button.append(edit_button);
 
-        if (e["email"] === email_compare) {
+    //     change_value.style.display = "none"
 
-            return current_user = e
-            // console.log(e);
+    // })
 
-        }
-    }
-    )
-    document.querySelectorAll("#fi_name")[0].innerText = current_user["fname"] //[0]
+    // form_click.addEventListener("submit", () => {
 
+    //     // console.log(current_user["fname"])
+    //     let correction;
 
-    document.getElementById("fname").value = current_user["fname"] //show[0]["fname"] //dharun
-    document.getElementById("phone").value = current_user["phone"]
-    document.getElementById("email").value = current_user["email"]
-    document.getElementById("dob").value = current_user["dob"]
-    document.getElementById("district").value = current_user["district"]
-    document.getElementById("state").value = current_user["state"];
+    //     for (let i = 0; i < show.length; i++) {
 
-    let form_click = document.querySelector("form");
+    //         if (document.getElementById("email").value == show[i].email) {
 
-    form_click.addEventListener("submit", () => {
+    //             if (document.getElementById("fname").value == current_user.fname && document.getElementById("email").value == current_user.email && document.getElementById("phone").value == current_user.phone) {
 
-        // console.log(current_user["fname"])
-        let correction;
+    //                 show[i].dob = document.getElementById("dob").value.trim()
+    //                 show[i].district = document.getElementById("district").value.trim();
+    //                 show[i].state = document.getElementById("state").value.trim();
+    //                 correction = 1;
+    //                 break;
+    //             }
 
-        for (let i = 0; i < show.length; i++) {
+    //         }
 
-            if (document.getElementById("email").value == show[i]["email"]) {
+    //     }
 
-                if (document.getElementById("fname").value == current_user["fname"] && document.getElementById("email").value == current_user["email"] && document.getElementById("phone").value == current_user["phone"]) {
+    //     if (correction == 1) {
 
-                    show[i].dob = document.getElementById("dob").value.trim()
-                    show[i].district = document.getElementById("district").value.trim();
-                    show[i].state = document.getElementById("state").value.trim();
-                    correction = 1;
-                    break;
-                }
+    //         localStorage.setItem('array', JSON.stringify(show));
+    //         alert("Successfully your profile updated")
 
-            }
+    //     }
+    //     else {
+    //         alert("Name , phone number , email_id you are  can't change the data");
+    //     }
 
-        }
+    // });
 
-        if (correction == 1) {
+    // let account_num;
 
-            localStorage.setItem('array', JSON.stringify(show));
-            alert("Successfully your profile updated")
+    // delete_button.addEventListener("click", () => {
 
-        }
-        else {
-            alert("Name , phone number , email_id you are  can't change the data");
-        }
+    //     for (let i = 0; i < show.length; i++) {
 
+    //         if (document.getElementById("email").value == show[i].email) {
 
+    //             show.splice(i, 1);
 
+    //             // primary_check();
 
+    //             // clear_balance();
 
+    //             localStorage.setItem("array", JSON.stringify(show));
 
-    });
+    //             window.location.href = "../index.html";
+    //         }
+    //     }
+    // })
 
+    // const input_img = document.querySelector("#simple_upload");
 
-    let account_num;
+    // const image = document.querySelector("#simple_image");
 
-    delete_button.addEventListener("click", () => {
+    // input_img.addEventListener("change", function () {
 
-        for (let i = 0; i < show.length; i++) {
+    //     const change_photo = this.files[0];
 
-            if (document.getElementById("email").value == show[i]["email"]) {
+    //     if (change_photo) {
+    //         const reader = new FileReader();
 
-                show.splice(i, 1);
+    //         reader.addEventListener("load", () => {
 
-                // primary_check();
+    //             image.setAttribute("src", reader.result);
+    //             const us1 = JSON.parse(localStorage.getItem("array"))
 
-                // clear_balance();
+    //             // us1.forEach(element => {
 
-                localStorage.setItem("array", JSON.stringify(show));
+    //             // });
 
-                window.location.href = "../index.html";
-            }
-        }
-    })
+    //             us1[0].image = image.getAttribute("src")
+    //             localStorage.setItem("array", JSON.stringify(us1))
+    //         })
 
+    //         reader.readAsDataURL(change_photo);
 
-    let input_img = document.querySelector("#simple_upload");
+    //     }
 
-    let image = document.querySelector("#simple_image");
+    // })
 
-
-    input_img.addEventListener("change", function () {
-
-
-
-        let change_photo = this.files[0];
-
-        if (change_photo) {
-            const reader = new FileReader();
-
-            reader.addEventListener("load", function () {
-
-                image.setAttribute("src", reader.result);
-                let us1 = JSON.parse(localStorage.getItem("array"))
-
-                // us1.forEach(element => {
-
-                // });
-
-                us1[0]["image"] = image.getAttribute("src")
-                localStorage.setItem("array", JSON.stringify(us1))
-            })
-
-            reader.readAsDataURL(change_photo);
-
-        }
-
-    })
-
-
-    let us1 = JSON.parse(localStorage.getItem("array"))
-    let new_src = us1[0]["image"]
-    image.setAttribute("src", new_src)
-
+    // const us1 = JSON.parse(localStorage.getItem("array"))
+    // const new_src = us1[0].image
+    // image.setAttribute("src", new_src)
 </script>
+<script src="../assets/js/date_time.js"></script>
+<script src="../assets/js/account_detail.js"></script>
 
 </html>

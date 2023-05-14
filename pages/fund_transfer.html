@@ -25,11 +25,9 @@
                 <a href="./home.html">Home</a>
             </div>
 
-
             <div>
                 <a class="current_page" href="#">Transfer</a>
             </div>
-
 
             <div>
                 <a href="./balance_enquire.html">Balance</a>
@@ -69,14 +67,15 @@
 
                     <option value="">Choose your account number</option>
 
-
                 </select>
 
                 <label for="to"> Reciver account number</label>
                 <input class="form-control input" type="text" id="to" name="to" required pattern="[0-9]{16,17}"
                     title="Remember !! Your bank account number should be 16 numbers" aria=" Reciver Account ">
 
-                <label for="ifsc"> Reciver IFSC code</label>
+                <label for="ifsc">
+                    Reciver IFSC <code></code>
+                </label>
                 <input class="form-control" type="text" id="ifsc" name="ifsc" required pattern="[0-9A-Za-z]{6,16}"
                     title="Are you sure !! minium Our ifsc number should be 12 numbers" aria="Reciver IFSC">
 
@@ -96,12 +95,11 @@
 
         </div>
 
-
         <div class="right_contant left_photo">
 
             <form>
 
-                <h1>Phone Number to Money Transfer</h1>
+                <h2>Phone Number to Money Transfer</h2>
 
                 <h5>Account Number</h5>
 
@@ -109,14 +107,12 @@
 
                     <option value="">Choose your account number</option>
 
-
                 </select>
 
                 <label for="to_num"> Reciver phone number </label>
                 <input class="form-control" type="tel" id="to_num" name="to_num" pattern="[0-9]{12}"
                     title="Country code ( 91 )+ Your correct phone number OR Your number should be 12 numbers"
                     aria="Phone number" placeholder="Phone No *" required>
-
 
                 <label for="amount"> Transfer amount </label>
                 <input class="form-control" type="number" id="to_amount" name="amount" required aria=" Transfer Amount"
@@ -147,56 +143,64 @@
 
             <div class="icon_social">
 
-                <a href="https://www.linkedin.com/"> <img src="../assets/img/icons8-linkedin-100 (1).png"
-                        alt="linked in"></a>
-                <a href="https://www.facebook.com/"><img src="../assets/img/icons8-facebook-100.png" alt="facebook"></a>
-                <a href="https://www.instagram.com/"><img src="../assets/img/icons8-instagram-100.png" alt="insta"></a>
-                <a href="https://twitter.com/"> <img src="../assets/img/icons8-twitter-100.png" alt="teitter"></a>
+                <a href="https://www.linkedin.com/">
+                    <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in">
+</a>
+                <a href="https://www.facebook.com/">
+                    <img src="../assets/img/icons8-facebook-100.png" alt="facebook">
+                </a>
+                <a href="https://mail.google.com/">
+                    <img src="../assets/img/icons8-google-100-removebg-preview.png" alt="google">
+                </a>
+                <a href="https://twitter.com/">
+                    <img src="../assets/img/icons8-twitter-100.png" alt="teitter">
+                </a>
 
             </div>
-
 
         </div>
 
     </footer>
 
-    <script>
+    <script src="../assets/js/common_function.js"></script>
 
-        let send_account = JSON.parse(localStorage.getItem("send_account")) ?? [];
+    <script src="../assets/js/fund_transfer.js"></script>
 
-        let history_table = JSON.parse(localStorage.getItem("history_table")) ?? [];
+    <!-- <script>        const send_account = JSON.parse(localStorage.getItem("send_account")) ?? [];
 
-        let account_check = JSON.parse(localStorage.getItem("account_details"));
+        const history_table = JSON.parse(localStorage.getItem("history_table")) ?? [];
 
-        let balance_page = JSON.parse(localStorage.getItem("bal_enquire"));
+        const account_check = JSON.parse(localStorage.getItem("account_details"));
 
-        let signup_array = JSON.parse(localStorage.getItem("array"));
+        const balance_page = JSON.parse(localStorage.getItem("bal_enquire"));
 
-        let email_compare = localStorage.getItem("email");
+        const signup_array = JSON.parse(localStorage.getItem("array"));
 
-        let current_date = new Date().toJSON().slice(0, 10);
+        const email_compare = localStorage.getItem("email");
 
-        let textAreaExample6 = document.querySelectorAll(".textAreaExample6")
+        const current_date = new Date().toJSON().slice(0, 10);
+
+        const textAreaExample6 = document.querySelectorAll(".textAreaExample6")
 
         option()
         function option() {
 
-            let current_ac = document.getElementById("from")
+            const current_ac = document.getElementById("from")
 
-            let phone_numbers = document.getElementById("from_num")
+            const phone_numbers = document.getElementById("from_num")
 
             for (let ac = 0; ac < account_check.length; ac++) {
 
-                if (account_check[ac]["email_compare"] == email_compare) {
+                if (account_check[ac].email_compare == email_compare) {
 
-                    let account_match = account_check[ac]["account"];
+                    const account_match = account_check[ac].account;
 
-                    let option = document.createElement("option");
+                    const option = document.createElement("option");
                     option.setAttribute("value", account_match);
                     option.innerHTML = (account_match);
                     current_ac.append(option);
 
-                    let phone_option = document.createElement("option");
+                    const phone_option = document.createElement("option");
                     phone_option.setAttribute("value", account_match);
                     phone_option.innerHTML = (account_match);
                     phone_numbers.append(phone_option)
@@ -207,7 +211,7 @@
 
         }
 
-        let send_button = document.querySelectorAll("form");
+        const send_button = document.querySelectorAll("form");
 
         send_button[0].addEventListener("submit", (j) => {
 
@@ -236,9 +240,9 @@
 
             balance_page.forEach((e) => {
 
-                if (e["ac_no"] == from_account) {
+                if (e.ac_no == from_account) {
 
-                    sender_balances = e["ac_balance"];
+                    sender_balances = e.ac_balance;
                     result = 1;
                 }
 
@@ -267,27 +271,25 @@
         let history;
         let backuphistory;
 
-
         function local_push(from_account, to_account, to_ifsc, send_amount, email_compare, current_date, remarks) {
 
-
             account_account = {
-                "from_account": from_account,
-                "to_account": to_account,
-                "to_ifsc": to_ifsc,
-                "send_amount": send_amount,
-                "email_compare": email_compare,
-                "remarks": remarks,
+                from_account,
+                to_account,
+                to_ifsc,
+                send_amount,
+                email_compare,
+                remarks,
 
             }
 
             history = {
                 "sender_account": from_account,
                 "reciver_account": to_account,
-                "send_amount": send_amount,
+                send_amount,
                 "sender_email": email_compare,
                 "date": current_date,
-                "remarks": remarks,
+                remarks,
                 "sender_type": "",
                 "sender_balance": "",
                 "sender_name": "",
@@ -321,27 +323,27 @@
         function balance_change(from_account, send_amount, to_account) {
             balance_page.forEach(element => {
 
-                if (element["email_compare"] == email_compare && element["ac_no"] == from_account) {
+                if (element.email_compare == email_compare && element.ac_no == from_account) {
 
-                    old_balance = element["ac_balance"];
+                    old_balance = element.ac_balance;
 
-                    sender_name = element["accounter_name"];
+                    sender_name = element.accounter_name;
 
                     old_balance = Number(old_balance) - Number(send_amount);
 
-                    element["ac_balance"] = old_balance;
+                    element.ac_balance = old_balance;
 
                     sender_type = "Money sent"
 
                     for (let di = 0; di < history_table.length; di++) {
 
-                        if (from_account == history_table[di]["sender_account"] && history_table[di]["sender_type"] == "" && history_table[di]["sender_balance"] == "" && history_table[di]["sender_name"] == "") {
+                        if (from_account == history_table[di].sender_account && history_table[di].sender_type == "" && history_table[di].sender_balance == "" && history_table[di].sender_name == "") {
 
-                            history_table[di]["sender_type"] = sender_type;
+                            history_table[di].sender_type = sender_type;
 
-                            history_table[di]["sender_balance"] = old_balance;
+                            history_table[di].sender_balance = old_balance;
 
-                            history_table[di]["sender_name"] = sender_name;
+                            history_table[di].sender_name = sender_name;
 
                             localStorage.setItem("history_table", JSON.stringify(history_table));
 
@@ -367,17 +369,17 @@
 
             balance_page.forEach(element => {
 
-                if (element["ac_no"] == to_account) {
+                if (element.ac_no == to_account) {
 
-                    recived_money = element["ac_balance"];
+                    recived_money = element.ac_balance;
 
-                    reciver_name = element["accounter_name"];
+                    reciver_name = element.accounter_name;
 
-                    receiver_email = element["email_compare"];
+                    receiver_email = element.email_compare;
 
                     recived_money = Number(recived_money) + Number(send_amount);
 
-                    element["ac_balance"] = recived_money;
+                    element.ac_balance = recived_money;
 
                     localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
 
@@ -385,15 +387,15 @@
 
                     for (let d = 0; d < history_table.length; d++) {
 
-                        if (to_account == history_table[d]["reciver_account"] && history_table[d]["reciver_balance"] == "" && history_table[d]["reciver_type"] == "" && history_table[d]["reciver_name"] == "" && history_table[d]["reciver_email"] == "") {
+                        if (to_account == history_table[d].reciver_account && history_table[d].reciver_balance == "" && history_table[d].reciver_type == "" && history_table[d].reciver_name == "" && history_table[d].reciver_email == "") {
 
-                            history_table[d]["reciver_balance"] = recived_money;
+                            history_table[d].reciver_balance = recived_money;
 
-                            history_table[d]["reciver_type"] = reciver_type;
+                            history_table[d].reciver_type = reciver_type;
 
-                            history_table[d]["reciver_name"] = reciver_name;
+                            history_table[d].reciver_name = reciver_name;
 
-                            history_table[d]["reciver_email"] = receiver_email;
+                            history_table[d].reciver_email = receiver_email;
 
                             localStorage.setItem("history_table", JSON.stringify(history_table));
 
@@ -404,13 +406,10 @@
 
             })
 
-        }
+        } -->
+    <!-- </script> -->
 
-    </script>
-
-<!-- This script have mobile number to money transfer functions -->
-
-    <script src="../assets/js/fund_transfer.js"></script> 
+    <!-- This script have mobile number to money transfer functions -->
 
 </body>
 

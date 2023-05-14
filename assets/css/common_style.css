@@ -2,6 +2,7 @@
     text-decoration: none;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    /* font-family: 'Open Sans', sans-serif; */
 
 }
 
@@ -82,7 +83,7 @@ header {
 footer .back_foot {
     background-color: #7086ff;
     width: 78%;
-    margin: 7% auto;
+    margin: 7% auto 2% auto;
     color: black;
     padding: 4%;
     display: flex;
@@ -100,7 +101,6 @@ footer .direct {
     display: flex;
     justify-content: space-around;
     margin: 0px auto;
-    /* border: 1px solid black; */
 }
 
 footer .back_foot .icon_social img {

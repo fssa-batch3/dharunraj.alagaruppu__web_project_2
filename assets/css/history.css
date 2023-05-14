@@ -1,5 +1,6 @@
 * {
     color: #1a237e;
+    letter-spacing: .2px;
 
 }
 
@@ -105,17 +106,24 @@ img {
     justify-content: start;
 }
 
-/* amount size */
 .transfer_type {
-    /* margin: 0% 1%; */
+    
     display: block;
 
 }
+/* 
+.amount h4{
+    width: 60%;
+    padding: 10px;
+    margin:10px;
+} */
 
 /* minus font color */
 .amount #minus {
     color: rgb(250, 99, 99);
     font-size: 20px;
+    /* width: 10%; */
+    /* border: 1px solid black; */
 }
 
 .history {

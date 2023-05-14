@@ -1,3 +1,13 @@
+const button_link = document.getElementById("button_link");
+
+const back_link = document.querySelector(".back_link");
+
+button_link.addEventListener("click", () => {
+  back_link.style.display = "flex";
+
+  button_link.style.display = "none";
+});
+
 const show = JSON.parse(localStorage.getItem("array"));
 
 const account_detail =
@@ -56,14 +66,13 @@ function link_bank() {
   balance = Math.floor(Math.random() * 10000);
   personal = document.getElementById("personal");
   business = document.getElementById("business");
-  zero = document.getElementById("zero")
+  zero = document.getElementById("zero");
 
   if (personal.checked) {
     account_type = "Savings account";
   } else if (business.checked) {
     account_type = "Current account";
-  }
-  else if (zero.checked) {
+  } else if (zero.checked) {
     account_type = "Zero balance account";
   }
 
@@ -93,7 +102,7 @@ function api() {
 
     if (result_ifsc.BRANCH === undefined && result_ifsc.BANK === undefined) {
       alert("Enter the correct IFSC code or recheck ");
-      alert_ifsc()
+      alert_ifsc();
     } else {
       branch = result_ifsc.BRANCH;
       bank_name = result_ifsc.BANK;
@@ -152,7 +161,7 @@ function add_local() {
 
     alert("Thanks for add account");
 
-    smoothScroll({ yPos: "end", duration: 1000 });
+    // smoothScroll({ yPos: "end", duration: 1000 });
 
     location.reload();
   }
@@ -422,16 +431,10 @@ function clear_balance() {
 
 let alert_str = "";
 
-let alert_value = document.getElementById("alert_icon");
-
+const alert_value = document.getElementById("alert_icon");
 
 function alert_ifsc() {
-
   alert_str = `<img id="error_home"
-src="../assets/img/images__2_-removebg-preview.png" alt="error"></img>`
-  alert_value.innerHTML = alert_str
+src="../assets/img/images__2_-removebg-preview.png" alt="error"></img>`;
+  alert_value.innerHTML = alert_str;
 }
-
-
-
-

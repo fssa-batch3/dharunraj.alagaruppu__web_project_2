@@ -9,7 +9,6 @@ function account_add() {
   const email_compare = localStorage.getItem("email");
 
   for (let o = 0; o < account_check.length; o++) {
-    
     if (account_check[o].email_compare === email_compare) {
       const account_match = account_check[o].account;
 

@@ -62,7 +62,11 @@ function account_to_account() {
   remarks = textAreaExample6[0].value.trim();
 
   balance_page.forEach((e) => {
-    if (Number(e.ac_no) === Number(from_account) && Number(from_account) !== Number(to_account) && (e.email_compare !== email_compare)) {
+    if (
+      Number(e.ac_no) === Number(from_account) &&
+      Number(from_account) !== Number(to_account) &&
+      e.email_compare !== email_compare
+    ) {
       sender_balances = e.ac_balance;
       result = 1;
     }
@@ -351,8 +355,6 @@ function balance_change_sender() {
           console.log(sender_name);
           history_table[di].sender_name = sender_name;
 
-
-
           localStorage.setItem("history_table", JSON.stringify(history_table));
         }
       }
@@ -363,7 +365,6 @@ function balance_change_sender() {
       reciver_amount();
       console.log("okk");
     }
-
   });
 }
 
@@ -389,7 +390,6 @@ function reciver_amount() {
 
       element.ac_balance = recived_money;
       console.log(element.ac_balance);
-
 
       localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
 

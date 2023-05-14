@@ -38,13 +38,18 @@ for (let p = 0; p < user_acc.length; p++) {
   user_acc[p].addEventListener("click", () => {
     document.querySelector(".container1").style.display = "block";
 
+    document.querySelector("footer").style.display = "block";
+
     document.querySelector("#balance_name").style.display = "none";
 
     document.querySelector(".bank_list").style.display = "none";
 
     ref_num = account_num[p].innerHTML;
+    // console.log(ref_num);
 
     check_balance();
+
+    bar_chart();
   });
 }
 
@@ -72,3 +77,57 @@ function check_balance() {
     }
   }
 }
+
+function bar_chart() {
+  const xValues = [];
+  const yValues = [];
+  const barColors = ["red", "green", "blue", "orange", "brown"];
+
+  for (let t = 0; t < balance_enquire.length; t++) {
+    if (
+      balance_enquire[t].email_compare === email &&
+      Number(ref_num) === Number(balance_enquire[t].ac_no)
+    ) {
+      // for (let v = 0; v < balance_enquire[t].monthly_balance.length; v++) {
+
+      const arr_obj = balance_enquire[t].monthly_balance;
+
+      for (let i = 0; i < arr_obj.length; i++) {
+        const today = arr_obj[i].day_balance;
+
+        xValues.push(`day${i + 1}`);
+
+        yValues.push(Number(today));
+      }
+      // }
+    }
+  }
+
+  new Chart("myChart", {
+    type: "bar",
+    data: {
+      labels: xValues,
+      datasets: [
+        {
+          backgroundColor: barColors,
+          data: yValues,
+        },
+      ],
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: "Daily mininum balance tracker",
+      },
+    },
+  });
+}
+
+// for (let v = 0; v < balance_enquire[v]["monthly_balance"].length; v++) {
+
+//   let arr_obj = balance_enquire[v]["monthly_balance"];
+
+//   console.log(arr_obj);
+
+// }

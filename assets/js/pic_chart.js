@@ -132,7 +132,6 @@ for (let i = 0; i < balance_enquire.length; i++) {
 }
 
 const daily_min = document.querySelectorAll(".daily_maintain");
-// console.log(daily_min)
 
 const ave_value = document.querySelectorAll(".value_avg");
 
@@ -219,8 +218,7 @@ result.addEventListener("click", () => {
   }
 });
 
-let footer = document.querySelector("footer");
-
+const footer = document.querySelector("footer");
 
 function block_account() {
   account_div.forEach((e, index) => {

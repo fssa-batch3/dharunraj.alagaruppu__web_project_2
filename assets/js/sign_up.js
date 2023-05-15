@@ -56,7 +56,7 @@ function emailcheck() {
 
   email_verification.open(
     "get",
-    `https://api.apilayer.com/email_verification/${email}?apikey=AQcZ7IxCjhBK10lW9u8Lx03MH378Kaci`,
+    `https://api.apilayer.com/email_verification/${email}?apikey=OiccdedKQZOIKrx0BNzCPwMyeG7KlK8K`,
     true
   );
   email_verification.send();
@@ -78,7 +78,7 @@ function phone_check() {
   };
   number_check.open(
     "get",
-    `https://api.apilayer.com/number_verification/validate?apikey=AQcZ7IxCjhBK10lW9u8Lx03MH378Kaci&number=${phone}`,
+    `https://api.apilayer.com/number_verification/validate?apikey=OiccdedKQZOIKrx0BNzCPwMyeG7KlK8K&number=${phone}`,
     true
   );
   number_check.send();

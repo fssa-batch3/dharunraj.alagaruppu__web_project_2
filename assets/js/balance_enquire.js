@@ -81,25 +81,32 @@ function check_balance() {
 function bar_chart() {
   const xValues = [];
   const yValues = [];
-  const barColors = ["red", "green", "blue", "orange", "brown"];
+  const barColors = [];
 
   for (let t = 0; t < balance_enquire.length; t++) {
-    if (
-      balance_enquire[t].email_compare === email &&
-      Number(ref_num) === Number(balance_enquire[t].ac_no)
-    ) {
-      // for (let v = 0; v < balance_enquire[t].monthly_balance.length; v++) {
+    if (balance_enquire[t].email_compare === email && Number(ref_num) === Number(balance_enquire[t].ac_no)) {
 
+      let compare_min = Number(balance_enquire[t].minium);
       const arr_obj = balance_enquire[t].monthly_balance;
 
       for (let i = 0; i < arr_obj.length; i++) {
-        const today = arr_obj[i].day_balance;
+        const today = Number(arr_obj[i].day_balance);
+
+        if (today >= compare_min) {
+          barColors.push(String("#ACF3AE"))
+
+        }
+
+        else{
+          barColors.push(String("#FA6B84"))
+
+        }
 
         xValues.push(`day${i + 1}`);
+        yValues.push(today);
 
-        yValues.push(Number(today));
       }
-      // }
+
     }
   }
 

@@ -2,15 +2,10 @@ now_day();
 
 const show = JSON.parse(localStorage.getItem("array"));
 
-// const account_name = localStorage.getItem("first_name");
-
 const email_compare = localStorage.getItem("email");
-
-// const balance_enquire = JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
 
 let current_user;
 show.find((e) => {
-  // parameterized e-->show[0],[1]
 
   if (e.email === email_compare) {
     return (current_user = e);
@@ -42,8 +37,8 @@ change_value.addEventListener("click", (e) => {
   change_value.style.display = "none";
 });
 
-form_click.addEventListener("submit", () => {
-  // console.log(current_user["fname"])
+form_click.addEventListener("submit", function() {
+  
   let correction;
 
   for (let i = 0; i < show.length; i++) {
@@ -73,8 +68,8 @@ form_click.addEventListener("submit", () => {
 
 // let account_num;
 
-const delete_button = document.querySelector(".delete_button");
-delete_button.addEventListener("click", () => {
+const delete_button_value = document.querySelector(".delete_button");
+delete_button_value.addEventListener("click", () => {
   for (let i = 0; i < show.length; i++) {
     if (document.getElementById("email").value === show[i].email) {
       show.splice(i, 1);

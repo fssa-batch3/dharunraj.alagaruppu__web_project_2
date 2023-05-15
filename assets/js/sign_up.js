@@ -31,9 +31,7 @@ function signup() {
     if (new_pass !== confirm_pass) {
       alert("Oops !! password and confirm password doesn't match.");
     } else {
-      console.log("crt");
       emailcheck();
-      console.log("err");
     }
   } else {
     alert("Recheck your values");
@@ -90,14 +88,14 @@ function add_local() {
   let res;
 
   for (let i = 0; i < store.length; i++) {
-    if (store[i].email === email) {
+    if (store[i].email === email || store[i].phone === phone) {
       res = 1;
       break;
     }
   }
 
   if (res === 1) {
-    alert("email already registered");
+    alert("email or phone number already regsister");
   } else {
     const obj = {};
 

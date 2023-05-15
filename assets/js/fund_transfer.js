@@ -54,35 +54,33 @@ let send_amount;
 let sender_balances;
 let remarks;
 
+let reciver_email_check;
+
 function account_to_account() {
   from_account = document.getElementById("from").value.trim();
   to_account = document.getElementById("to").value.trim();
+  console.log(document.getElementById("to").value);
   to_ifsc = document.getElementById("ifsc").value.trim();
   send_amount = document.getElementById("amount").value.trim();
   remarks = textAreaExample6[0].value.trim();
 
   balance_page.forEach((e) => {
-    if (
-      Number(e.ac_no) === Number(from_account) &&
-      Number(from_account) !== Number(to_account) &&
-      e.email_compare !== email_compare
-    ) {
+    if (Number(e.ac_no) === Number(from_account)) {
       sender_balances = e.ac_balance;
-      result = 1;
+      balance_page.forEach((e) => {
+        if (e.ac_no == to_account) {
+          reciver_email_check = e.email_compare;
+        }
+      });
+      if (reciver_email_check != email_compare) {
+        result = 1;
+      }
     }
   });
 
   if (result === 1) {
     if (sender_balances >= send_amount) {
-      local_push(
-        from_account,
-        to_account,
-        to_ifsc,
-        send_amount,
-        email_compare,
-        current_date,
-        remarks
-      );
+      local_push();
     } else {
       alert("Sorry!! You don't have money to send");
     }
@@ -95,7 +93,6 @@ function account_to_account() {
 
 let account_account;
 let history;
-// let backuphistory;
 
 function local_push() {
   account_account = {
@@ -131,7 +128,7 @@ function local_push() {
 
   localStorage.setItem("history_table", JSON.stringify(history_table));
 
-  balance_change(from_account, send_amount, to_account);
+  balance_change();
 
   window.location.href = "./history.html";
 
@@ -146,7 +143,7 @@ function balance_change() {
   balance_page.forEach((element) => {
     if (
       element.email_compare === email_compare &&
-      Number(element.ac_no) === Number(from_account)
+      String(element.ac_no) === String(from_account)
     ) {
       old_balance = element.ac_balance;
 
@@ -160,7 +157,7 @@ function balance_change() {
 
       for (let di = 0; di < history_table.length; di++) {
         if (
-          Number(from_account) === Number(history_table[di].sender_account) &&
+          String(from_account) === String(history_table[di].sender_account) &&
           history_table[di].sender_type === "" &&
           history_table[di].sender_balance === "" &&
           history_table[di].sender_name === ""
@@ -177,7 +174,7 @@ function balance_change() {
 
       localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
 
-      reciver(to_account, send_amount);
+      reciver();
     }
   });
 }
@@ -189,7 +186,7 @@ let receiver_email;
 
 function reciver() {
   balance_page.forEach((element) => {
-    if (Number(element.ac_no) === Number(to_account)) {
+    if (String(element.ac_no) === String(to_account)) {
       recived_money = element.ac_balance;
 
       reciver_name = element.accounter_name;
@@ -206,7 +203,7 @@ function reciver() {
 
       for (let d = 0; d < history_table.length; d++) {
         if (
-          Number(to_account) === Number(history_table[d].reciver_account) &&
+          String(to_account) === String(history_table[d].reciver_account) &&
           history_table[d].reciver_balance === "" &&
           history_table[d].reciver_type === "" &&
           history_table[d].reciver_name === "" &&
@@ -247,31 +244,21 @@ function phone_transaction() {
   remarks = textAreaExample6[1].value.trim();
 
   balance_page.forEach((e) => {
-    if (Number(e.ac_no) === Number(from_account)) {
+    if (String(e.ac_no) === String(from_account)) {
       sender_balances = e.ac_balance;
     }
   });
 
   signup_array.forEach((e) => {
-    if (Number(e.phone) === Number(ph_number) && e.email !== email_compare) {
+    if (String(e.phone) === String(ph_number) && String(e.email) !== String(email_compare)) {
       primary_ac = e.primary;
-      // reciver_ac_number =
-
       result = 1;
     }
   });
 
   if (result === 1) {
     if (sender_balances >= send_amount) {
-      push_local(
-        from_account,
-        ph_number,
-        send_amount,
-        email_compare,
-        current_date,
-        primary_ac,
-        remarks
-      );
+      push_local();
     } else {
       alert("Sorry!! You don't have money to send");
     }

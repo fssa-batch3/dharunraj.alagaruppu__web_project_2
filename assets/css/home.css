@@ -306,15 +306,12 @@ label {
     padding: 2%;
     background-color: #7086ff;
     color: white;
-    border: 1px dotted blue;
     border-radius: 15px;
     margin: 2%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    border: 0px;
 }
-
-
-.test{
-    height: 500px;
+.button_div{
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }

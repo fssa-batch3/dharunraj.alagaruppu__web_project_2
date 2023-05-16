@@ -87,18 +87,19 @@ function bar_chart() {
     if (balance_enquire[t].email_compare === email && Number(ref_num) === Number(balance_enquire[t].ac_no)) {
 
       let compare_min = Number(balance_enquire[t].minium);
+      console.log(compare_min);
       const arr_obj = balance_enquire[t].monthly_balance;
 
       for (let i = 0; i < arr_obj.length; i++) {
         const today = Number(arr_obj[i].day_balance);
 
         if (today >= compare_min) {
-          barColors.push(String("#ACF3AE"))
+          barColors.push(String("#C43D5A"))
 
         }
 
-        else{
-          barColors.push(String("#FA6B84"))
+        else {
+          barColors.push(String("#1F8343"))
 
         }
 

@@ -48,14 +48,14 @@ for (let i = 0; i < balance_enquire.length; i++) {
 </tr>
 
 <tr>
-<td class="first_td" id="table_label">Minimum maintenance balance</td>
+<td class="first_td" id="table_label">Minimum balance</td>
 
 <td class="sec_td">${`₹ ${balance_enquire[i].minium}`}</td>
 
 </tr>
 
 <tr>
-<td class="first_td" id="table_label"> Monthly maintenance balance</td>
+<td class="first_td" id="table_label"> Monthly average balance</td>
 
 <td class="sec_td mon">${`₹ ${balance_enquire[i].minium * 30}`}</td>
 
@@ -68,7 +68,7 @@ for (let i = 0; i < balance_enquire.length; i++) {
 </tr>
 
 <tr>
-<td class="first_td" id="table_label"> Until maintenance balance</td>
+<td class="first_td" id="table_label"> Current average balance</td>
 <td class="sec_td">${`₹ ${balance_enquire[i].minium * total_date}`}</td>
 <td class="range">
     <div class="min">
@@ -81,7 +81,7 @@ for (let i = 0; i < balance_enquire.length; i++) {
 </tr>
 
 <tr>
-<td class="first_td" id="table_label">Average maintain balance</td>
+<td class="first_td" id="table_label">Average balance</td>
 <td class="sec_td avg">${`₹ ${balance_enquire[i].average_value}`}</td>
 <td class="range">
 <div class="min ">
@@ -152,7 +152,14 @@ ave_value.forEach((e, i) => {
 
   const avg_month = arr[i].minium * 30;
 
-  const range_value = ((100 * average_num) / avg_month).toFixed(2);
+  let range_value = ((100 * average_num) / avg_month).toFixed(2);
+
+  // console.log(range_value);
+  if (range_value >= 100) {
+    range_value = 100
+    // console.log(range_value);
+  }
+  // console.log(range_value);
 
   e.style.width = `${range_value}%`;
 });
@@ -164,8 +171,12 @@ red_alert.forEach((e, i) => {
 
   const red_per = (100 * average_num) / avg_month;
 
-  const remaining = (100 - red_per).toFixed(2);
+  let remaining = (100 - red_per).toFixed(2);
 
+  if (remaining <= 0) {
+
+    remaining = 0
+  }
   e.style.width = `${remaining}%`;
   e.parentElement.parentElement.children[0].children[0].children[1].innerText = `${remaining}%`;
 });
@@ -209,7 +220,6 @@ const result = document.querySelector("button");
 
 result.addEventListener("click", () => {
   user_number = picchart_select.value;
-  console.log(user_number);
 
   if (user_number === "") {
     alert("recheck your value");

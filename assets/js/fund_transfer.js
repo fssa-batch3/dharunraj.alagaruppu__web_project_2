@@ -250,7 +250,10 @@ function phone_transaction() {
   });
 
   signup_array.forEach((e) => {
-    if (String(e.phone) === String(ph_number) && String(e.email) !== String(email_compare)) {
+    if (
+      String(e.phone) === String(ph_number) &&
+      String(e.email) !== String(email_compare)
+    ) {
       primary_ac = e.primary;
       result = 1;
     }

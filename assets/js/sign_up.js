@@ -1,5 +1,7 @@
 const form_check = document.querySelector("form");
 
+const store = JSON.parse(localStorage.getItem("array")) ?? []; // store = []
+
 form_check.addEventListener("submit", (e) => {
   e.preventDefault();
   signup();
@@ -20,21 +22,21 @@ function signup() {
   new_pass = document.getElementById("new_pass").value.trim();
   confirm_pass = document.getElementById("confirm").value.trim();
 
-  if (
-    first_name !== "" &&
-    last_name !== "" &&
-    email !== "" &&
-    phone !== "" &&
-    new_pass !== "" &&
-    confirm_pass !== ""
-  ) {
-    if (new_pass !== confirm_pass) {
-      alert("Oops !! password and confirm password doesn't match.");
-    } else {
-      emailcheck();
+  let res;
+
+  for (let i = 0; i < store.length; i++) {
+    if (store[i].email == email || store[i].phone == phone) {
+      res = 1;
+      break;
     }
+  }
+
+  if (res === 1) {
+    alert("email or phone number already regsister");
+  } else if (new_pass !== confirm_pass) {
+    alert("Oops !! password and confirm password doesn't match.");
   } else {
-    alert("Recheck your values");
+    emailcheck();
   }
 }
 
@@ -69,7 +71,7 @@ function phone_check() {
 
     if (got_number.carrier !== "" && phone !== "") {
       console.log("valid");
-      add_local(email, phone);
+      add_local();
     } else {
       alert("Recheck your phone number");
     }
@@ -83,40 +85,53 @@ function phone_check() {
 }
 
 function add_local() {
-  const store = JSON.parse(localStorage.getItem("array")) ?? []; // store = []
+  // let res;
 
-  let res;
+  // for (let i = 0; i < store.length; i++) {
+  //   if (store[i].email == email || store[i].phone == phone) {
+  //     res = 1;
+  //     break;
+  //   }
+  // }
 
-  for (let i = 0; i < store.length; i++) {
-    if (store[i].email === email || store[i].phone === phone) {
-      res = 1;
-      break;
-    }
-  }
+  // if (res === 1) {
+  //   alert("email or phone number already regsister");
+  // } else {
+  //   const obj = {};
 
-  if (res === 1) {
-    alert("email or phone number already regsister");
-  } else {
-    const obj = {};
+  //   obj.fname = first_name;
+  //   obj.lname = last_name;
+  //   obj.email = email;
+  //   obj.phone = Number(phone);
+  //   obj.confirm = confirm_pass;
+  //   obj.dob = "";
+  //   obj.state = "";
+  //   obj.district = "";
+  //   obj.pincode = "";
+  //   obj.image = "";
+  //   obj.primary = "";
+  // }
 
-    obj.fname = first_name;
-    obj.lname = last_name;
-    obj.email = email;
-    obj.phone = Number(phone);
-    obj.confirm = confirm_pass;
-    obj.dob = "";
-    obj.state = "";
-    obj.district = "";
-    obj.pincode = "";
-    obj.image = "";
-    obj.primary = "";
+  const obj = {};
 
-    store.push(obj); // [{name, email, pass}]
+  obj.fname = first_name;
+  obj.lname = last_name;
+  obj.email = email;
+  obj.phone = phone;
+  obj.confirm = confirm_pass;
+  obj.dob = "";
+  obj.state = "";
+  obj.district = "";
+  obj.pincode = "";
+  obj.image = "";
+  obj.primary = "";
 
-    localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
+  store.push(obj); // [{name, email, pass}]
 
-    alert("successfully signup");
+  localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
 
-    window.location.href = "./login_page.html";
-  }
+  alert("successfully signup");
+
+  window.location.href = "./login_page.html";
 }
+// }

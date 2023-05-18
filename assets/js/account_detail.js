@@ -6,12 +6,15 @@ const email_compare = localStorage.getItem("email");
 
 let current_user;
 show.find((e) => {
-
   if (e.email === email_compare) {
     return (current_user = e);
   }
 });
 document.querySelectorAll("#fi_name")[0].innerText = current_user.fname; // [0]
+
+document.getElementById("dob").removeAttribute("required");
+document.getElementById("district").removeAttribute("required");
+document.getElementById("state").removeAttribute("required");
 
 document.getElementById("fname").value = current_user.fname; // show[0]["fname"] //dharun
 document.getElementById("phone").value = current_user.phone;
@@ -37,8 +40,7 @@ change_value.addEventListener("click", (e) => {
   change_value.style.display = "none";
 });
 
-form_click.addEventListener("submit", function() {
-  
+form_click.addEventListener("submit", () => {
   let correction;
 
   for (let i = 0; i < show.length; i++) {

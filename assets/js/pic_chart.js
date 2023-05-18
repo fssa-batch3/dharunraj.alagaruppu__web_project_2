@@ -61,7 +61,9 @@ for (let i = 0; i < balance_enquire.length; i++) {
 
 <td class="range">
     <div class="min">
-        <div id="static_min"></div>
+    <div id="static_min">
+    <span>Total average balance : 100 %</span>
+        </div>
 
     </div>
 </td>
@@ -72,7 +74,9 @@ for (let i = 0; i < balance_enquire.length; i++) {
 <td class="sec_td">${`₹ ${balance_enquire[i].minium * total_date}`}</td>
 <td class="range">
     <div class="min">
-        <div class="daily_maintain"></div>
+        <div class="daily_maintain">
+        <span class="daliy_details"></span>
+        </div>
 
     </div>
 </div>
@@ -87,7 +91,7 @@ for (let i = 0; i < balance_enquire.length; i++) {
 <div class="min ">
 
     <div class="value_avg">
-
+    <span class="average_details">100 %</span>
     </div>
 </div>
 </td>
@@ -145,6 +149,7 @@ daily_min.forEach((e, i) => {
   const until = ((100 * maintenance) / avg_month).toFixed(2);
 
   e.style.width = `${until}%`;
+  e.children[0].innerHTML = `Maintanined:${until}%`;
 });
 
 ave_value.forEach((e, i) => {
@@ -156,12 +161,15 @@ ave_value.forEach((e, i) => {
 
   // console.log(range_value);
   if (range_value >= 100) {
-    range_value = 100
+    range_value = 100;
     // console.log(range_value);
   }
   // console.log(range_value);
 
   e.style.width = `${range_value}%`;
+
+  e.children[0].innerHTML = `Maintanined:${range_value}%`;
+  console.log(e.children[0]);
 });
 
 red_alert.forEach((e, i) => {
@@ -174,8 +182,7 @@ red_alert.forEach((e, i) => {
   let remaining = (100 - red_per).toFixed(2);
 
   if (remaining <= 0) {
-
-    remaining = 0
+    remaining = 0;
   }
   e.style.width = `${remaining}%`;
   e.parentElement.parentElement.children[0].children[0].children[1].innerText = `${remaining}%`;

@@ -69,7 +69,8 @@ function check_balance() {
 
       customer_type = balance_enquire[t].ac_type;
 
-      document.getElementById("balance").innerText = customer_balance;
+      document.getElementById("balance").innerText =
+        ` ₹` + ` ${customer_balance}`;
       document.getElementById("customer_ac").innerHTML = customer_number;
       document.getElementById("ac_type").innerText = customer_type;
 
@@ -84,9 +85,11 @@ function bar_chart() {
   const barColors = [];
 
   for (let t = 0; t < balance_enquire.length; t++) {
-    if (balance_enquire[t].email_compare === email && Number(ref_num) === Number(balance_enquire[t].ac_no)) {
-
-      let compare_min = Number(balance_enquire[t].minium);
+    if (
+      balance_enquire[t].email_compare === email &&
+      Number(ref_num) === Number(balance_enquire[t].ac_no)
+    ) {
+      const compare_min = Number(balance_enquire[t].minium);
       console.log(compare_min);
       const arr_obj = balance_enquire[t].monthly_balance;
 
@@ -94,20 +97,14 @@ function bar_chart() {
         const today = Number(arr_obj[i].day_balance);
 
         if (today >= compare_min) {
-          barColors.push(String("#C43D5A"))
-
-        }
-
-        else {
-          barColors.push(String("#1F8343"))
-
+          barColors.push(String("#1F8343"));
+        } else {
+          barColors.push(String("#C43D5A"));
         }
 
         xValues.push(`day${i + 1}`);
         yValues.push(today);
-
       }
-
     }
   }
 

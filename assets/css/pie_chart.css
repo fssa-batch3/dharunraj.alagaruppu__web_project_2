@@ -263,3 +263,15 @@ th {
 #restart {
     width: 10%;
 }
+
+.daliy_details , .average_details , #static_min span{
+
+  position: relative;
+  bottom:30px;
+  left: 80px;
+  visibility: hidden;
+}
+
+.min:hover .daliy_details, .min:hover .average_details, .min:hover #static_min span {
+    visibility: visible;
+}

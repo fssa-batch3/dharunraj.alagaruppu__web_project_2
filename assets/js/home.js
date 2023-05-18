@@ -219,6 +219,16 @@ function open_average() {
   localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
 }
 
+let alert_str = "";
+
+const alert_value = document.getElementById("alert_icon");
+
+function alert_ifsc() {
+  alert_str = `<img id="error_home"
+src="../assets/img/images__2_-removebg-preview.png" alt="error"></img>`;
+  alert_value.innerHTML = alert_str;
+}
+
 let k = 0;
 
 let selectvalue;
@@ -366,7 +376,7 @@ show.forEach((e) => {
 
       const news = document.createElement("span");
       news.setAttribute("id", "default");
-      news.innerText = "Default bank account";
+      news.innerText = "Primary bank account";
       unique_div.append(news);
 
       primary[ind].append(unique_div);
@@ -378,48 +388,122 @@ show.forEach((e) => {
 
 const btn1 = document.querySelectorAll(".remove_bk");
 
+const signup_arr = show.find((obj) => email_compare == obj.email);
+
 let account_num;
+
+const ac_arr = [];
+
+let ac_var;
+
+let control;
+
+let set_account;
+
+const count = 0;
+
+let user_primary;
 
 for (let ic = 0; ic < btn1.length; ic++) {
   btn1[ic].addEventListener("click", () => {
     account_num = document.getElementsByClassName("account_give")[ic].value;
 
-    for (let a = 0; a < account_detail.length; a++) {
-      if (
-        Number(account_detail[a].account) === Number(account_num) &&
-        email_compare === account_detail[a].email_compare
-      ) {
-        account_detail.splice(a, 1);
-
-        localStorage.setItem("account_details", JSON.stringify(account_detail));
-
-        primary_check();
-        clear_balance();
-
-        location.reload();
-      }
-    }
+    reuse();
+    // account_delete(account_num);
+    length_check();
   });
 }
 
-function primary_check() {
-  // console.log(account_num);
-
-  for (let kd = 0; kd < show.length; kd++) {
-    if (Number(show[kd].primary) === Number(account_num)) {
-      show[kd].primary = "";
-
-      localStorage.setItem("array", JSON.stringify(show));
-
-      location.reload();
+function reuse() {
+  for (let l = 0; l < account_detail.length; l++) {
+    if (account_detail[l].email_compare == email_compare) {
+      ac_var = account_detail[l];
+      ac_arr.push(ac_var);
+      console.log(ac_arr.length);
     }
   }
+}
+
+function length_check() {
+  for (let a = 0; a < ac_arr.length; a++) {
+    if (ac_arr.length > 1) {
+      if (
+        ac_arr[a].account == account_num &&
+        email_compare == ac_arr[a].email_compare
+      ) {
+        primary_check(a);
+        location.reload();
+
+        // localStorage.setItem("account_details", JSON.stringify(account_detail));
+      }
+    } else {
+      const confirm_value = confirm(
+        "This is your last account in  NETBLIZ . Can we remove your account ."
+      );
+
+      if (confirm_value == true) {
+        primary_check(a);
+        location.reload();
+      } else {
+        alert("You are safe to use this app");
+        location.reload();
+      }
+    }
+  }
+}
+
+function primary_check(a) {
+  if (signup_arr.primary == account_num) {
+    user_primary = signup_arr.primary;
+
+    if (ac_arr.length > 1) {
+      for (let m = 0; m < account_detail.length; m++) {
+        if (account_detail[m].account == user_primary) {
+          account_detail.splice(m, 1);
+        }
+      }
+
+      ac_arr.splice(a, 1);
+
+      user_primary = ac_arr[0].account;
+
+      signup_arr.primary = user_primary;
+    } else {
+      for (let m = 0; m < account_detail.length; m++) {
+        if (account_detail[m].account == user_primary) {
+          account_detail.splice(m, 1);
+        }
+      }
+
+      user_primary = "";
+
+      ac_arr.splice(a, 1);
+
+      signup_arr.primary = user_primary;
+
+      console.log("else", signup_arr.primary);
+    }
+  } else {
+    for (let m = 0; m < account_detail.length; m++) {
+      if (account_detail[m].account == account_num) {
+        account_detail.splice(m, 1);
+      }
+    }
+
+    ac_arr.splice(a, 1);
+  }
+
+  localStorage.setItem("account_details", JSON.stringify(account_detail));
+
+  localStorage.setItem("array", JSON.stringify(show));
+
+  clear_balance();
 }
 
 function clear_balance() {
   for (let b = 0; b < balance_enquire.length; b++) {
     if (
-      Number(balance_enquire[b].ac_no) === Number(account_num) &&
+      String(balance_enquire[b].ac_no) === String(account_num) &&
       email_compare === balance_enquire[b].email_compare
     ) {
       balance_enquire.splice(b, 1);
@@ -427,14 +511,4 @@ function clear_balance() {
       localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
     }
   }
-}
-
-let alert_str = "";
-
-const alert_value = document.getElementById("alert_icon");
-
-function alert_ifsc() {
-  alert_str = `<img id="error_home"
-src="../assets/img/images__2_-removebg-preview.png" alt="error"></img>`;
-  alert_value.innerHTML = alert_str;
 }

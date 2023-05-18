@@ -131,6 +131,7 @@
             "for": "district",
             "place_holder": "District",
             "pattern": "^[a-zA-Z]{3,20}$",
+            "keyup": "this.value=this.value.replace(/[^A-z]/g,'');",
             "type": "name",
             "tittle": "Your pattern minium length of 2 to 30 characters a_z or A_Z only",
             "aria": "District"
@@ -144,6 +145,7 @@
             "place_holder": "State",
             "pattern": "^[a-zA-Z]{3,20}$",
             "type": "name",
+            "keyup": "this.value=this.value.replace(/[^A-z]/g,'');",
             "tittle": "Your pattern minium length of 2 to 20 characters a_z or A_Z only",
             "aria": "State",
         },
@@ -184,6 +186,10 @@
         if (head[i].max) {
             input_profile.setAttribute("max", head[i].max);
 
+        }
+        if (head[i].keyup) {
+
+            input_profile.setAttribute("onkeyup", head[i].keyup)
         }
 
         // input_profile.setAttribute.disabled = true;

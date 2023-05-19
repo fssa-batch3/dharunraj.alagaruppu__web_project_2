@@ -2,7 +2,7 @@ Problem_statment : https://docs.google.com/document/d/1Pd_Vr5JCE_fCAsmLozY6B-8e9
 
 Market_research : https://docs.google.com/document/d/1yPs_HxGylre5W5KP73vrg6rRLLvlIQ_hda2WGTz5LOc/edit?usp=sharing
 
-Github_link : https://github.com/fssa-batch3/dharunraj.alagaruppu__web_project
+Github_link : https://github.com/fssa-batch3/dharunraj.alagaruppu__web_project_2
 
 Netlify link : https://deploy-preview-2--net-bliz.netlify.app
 

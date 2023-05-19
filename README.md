@@ -1,3 +1,7 @@
+Problem_statment : https://docs.google.com/document/d/1Pd_Vr5JCE_fCAsmLozY6B-8e9VC90pcJfIr5ve53BoQ/edit?usp=sharing
+
+Market_research : https://docs.google.com/document/d/1yPs_HxGylre5W5KP73vrg6rRLLvlIQ_hda2WGTz5LOc/edit?usp=sharing
+
 #  NET BLIZ
  Banking in your pocket
 
@@ -170,3 +174,5 @@ If you click the remove bank account button your bank account is deleted in the 
  - Expected Result:
    -  Click the the check button after you select the account number it's show the details of the last month details and pic chart.
    
+
+

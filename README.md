@@ -69,7 +69,7 @@
 
 
    ### Home page (Completed)
--Scenario 1: Successfully read the bank details
+-Scenario 2: Successfully read the bank details
 -steps : 
   1. Below the account link div you can read the bank account details.
   2. like Account number , Ifsc code , phone number , pin code and type of bank account.
@@ -79,14 +79,25 @@
 
 After all setup You can redirect to balance enquire page .
 
+   ### Home page (Completed)
+-Scenario 2: Successfully change your primary account
+-steps : 
+1. above the remove bank account  button you can see the set primary account
 
-### balance enquire page (Completed)
--Scenario 1: Successfully reasd the account balance
-- steps :
-   1. In the balance enquire page you can read your balance , account type and account number on this page 
- - Expected Result: 
-  -  If you click "account details" button you redirct from account detail page.
-   - If you click a "transfer" button You redirect from balance enquire page to fund transfer page.
+- Expected Result:
+
+   If you want to change your primary account you can click the set primary account button. It's automatically chance to primary account.
+   If you delete your primary account it's automatically change the first bank account to primary. 
+   Finally you delete the last account site ask to you want delete the last account in NETBLIZ.you click the ok button it's erase your bank account otherwise it will delete.
+
+ ### Home page (Completed)
+-Scenario 2: Successfully create a remove bank account button
+-steps : 
+1. In the bank account detail page you can see the remove bank account button
+
+- Expected Result:
+
+If you click the remove bank account button your bank account is deleted in the netbilz website.
 
 ### Money transfer  (Completed)
 -Scenario 1: Successfully fund transfer
@@ -100,12 +111,27 @@ After all setup You can redirect to balance enquire page .
    - After that you redirect to history page.
 
 ### Money transfer  (Completed)
--Scenario 2: Still progress fund transfer
+-Scenario 2: completed fund transfer
 - steps :
    1.One user can access multiple account
  - Expected Result: 
    - You can send money for using various type account to account money transation.
    - If you want 2nd account to send money your account number will be change after set primary account.
+
+   ### balance enquire page (Completed)
+-Scenario 1: Successfully read the account balance
+- steps :
+   1. In the balance enquire page you can read your balance , account type and account number on this page 
+ - Expected Result: 
+  -  If you click "account details" button you redirct from account detail page.
+   - If you click a "transfer" button You redirect from balance enquire page to fund transfer page.
+
+   ### balance enquire page (Completed)
+-Scenario 2: Successfully create a chart
+- steps :
+   1. In the balance enquire page you can read your daily balance chart.
+ - Expected Result: 
+  - In the admin page have a daily check button if you  click the button the another day count is increased in the balance enquire page.
    
 ### History (Completed)
 -Scenario 1: Successfully read the transation history
@@ -117,6 +143,30 @@ After all setup You can redirect to balance enquire page .
 ### History (Completed)
 -Scenario 2:  Successfully read the transation history
 - steps :
-1 . History page you have fund transation read the history in the page reciver page.
+1. History page you have fund transation read the history in the page reciver page.
  - Expected Result:
    - If you receive money transation also add history page.
+
+### History (Completed)
+-Scenario 3:  Successfully work in the filter button
+- steps :
+1. you click the fliter button drop down is come in the picture 
+ - Expected Result:
+   -  whatever you have account in netbilz it's coming in the dropdown button
+   - You can filter in the account number wise .
+
+   ### History (Completed)
+-Scenario 4:  Successfully created in the search box.
+- steps :
+1. In the history page there will be a search bar in which you can search whatever you want according to your searches like amount recieved and sent etc.,
+ - Expected Result:
+   -  What you search that only show to the reciver.
+   - Other div's will be doesn't show for users.
+
+    ### Chart (Completed)
+-Scenario 1:  Successfully created in the dropdown box.
+- steps :
+1. In dropdown you can see your account number
+ - Expected Result:
+   -  Click the the check button after you select the account number it's show the details of the last month details and pic chart.
+   

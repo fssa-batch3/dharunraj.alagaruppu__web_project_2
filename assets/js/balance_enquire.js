@@ -102,11 +102,12 @@ function bar_chart() {
           barColors.push(String("#C43D5A"));
         }
 
-        xValues.push(`day${i + 1}`);
+        xValues.push(`Day${i + 1}`);
         yValues.push(today);
       }
     }
   }
+let yvalue_max = Math.max(...yValues);
 
   new Chart("myChart", {
     type: "bar",
@@ -120,6 +121,16 @@ function bar_chart() {
       ],
     },
     options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            min: 0,
+            max: yvalue_max,
+            stepSize: 500,
+          }
+        }]
+      },
       legend: { display: false },
       title: {
         display: true,

@@ -149,7 +149,7 @@ daily_min.forEach((e, i) => {
   const until = ((100 * maintenance) / avg_month).toFixed(2);
 
   e.style.width = `${until}%`;
-  e.children[0].innerHTML = `Maintanined:${until}%`;
+  e.children[0].innerHTML = `Maintained:${until}%`;
 });
 
 ave_value.forEach((e, i) => {
@@ -168,7 +168,7 @@ ave_value.forEach((e, i) => {
 
   e.style.width = `${range_value}%`;
 
-  e.children[0].innerHTML = `Maintanined:${range_value}%`;
+  e.children[0].innerHTML = `Maintained:${range_value}%`;
   console.log(e.children[0]);
 });
 

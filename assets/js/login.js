@@ -19,9 +19,9 @@ function login() {
   password = document.getElementById("password").value.trim();
 
   if (
-    email == "netbliz2023@gmail.com" &&
-    fullname == "Admin" &&
-    password == "1234567890Aa"
+    String(email) === "netbliz2023@gmail.com" &&
+    String(fullname) === "Admin" &&
+    String(password) === "1234567890Aa"
   ) {
     alert("Admin Logged");
     window.location.href = "./admin.html";

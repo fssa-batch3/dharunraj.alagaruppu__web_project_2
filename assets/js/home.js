@@ -388,19 +388,15 @@ show.forEach((e) => {
 
 const btn1 = document.querySelectorAll(".remove_bk");
 
-const signup_arr = show.find((obj) => email_compare == obj.email);
+const signup_arr = show.find(
+  (obj) => String(email_compare) === String(obj.email)
+);
 
 let account_num;
 
 const ac_arr = [];
 
 let ac_var;
-
-let control;
-
-let set_account;
-
-const count = 0;
 
 let user_primary;
 
@@ -416,10 +412,9 @@ for (let ic = 0; ic < btn1.length; ic++) {
 
 function reuse() {
   for (let l = 0; l < account_detail.length; l++) {
-    if (account_detail[l].email_compare == email_compare) {
+    if (String(account_detail[l].email_compare) === String(email_compare)) {
       ac_var = account_detail[l];
       ac_arr.push(ac_var);
-      console.log(ac_arr.length);
     }
   }
 }
@@ -428,8 +423,8 @@ function length_check() {
   for (let a = 0; a < ac_arr.length; a++) {
     if (ac_arr.length > 1) {
       if (
-        ac_arr[a].account == account_num &&
-        email_compare == ac_arr[a].email_compare
+        String(ac_arr[a].account) === String(account_num) &&
+        String(email_compare) === String(ac_arr[a].email_compare)
       ) {
         primary_check(a);
         location.reload();
@@ -441,7 +436,7 @@ function length_check() {
         "This is your last account in  NETBLIZ . Can we remove your account ."
       );
 
-      if (confirm_value == true) {
+      if (confirm_value === true) {
         primary_check(a);
         location.reload();
       } else {
@@ -453,12 +448,12 @@ function length_check() {
 }
 
 function primary_check(a) {
-  if (signup_arr.primary == account_num) {
+  if (String(signup_arr.primary) === String(account_num)) {
     user_primary = signup_arr.primary;
 
     if (ac_arr.length > 1) {
       for (let m = 0; m < account_detail.length; m++) {
-        if (account_detail[m].account == user_primary) {
+        if (String(account_detail[m].account) === String(user_primary)) {
           account_detail.splice(m, 1);
         }
       }
@@ -470,7 +465,7 @@ function primary_check(a) {
       signup_arr.primary = user_primary;
     } else {
       for (let m = 0; m < account_detail.length; m++) {
-        if (account_detail[m].account == user_primary) {
+        if (String(account_detail[m].account) === String(user_primary)) {
           account_detail.splice(m, 1);
         }
       }
@@ -485,7 +480,7 @@ function primary_check(a) {
     }
   } else {
     for (let m = 0; m < account_detail.length; m++) {
-      if (account_detail[m].account == account_num) {
+      if (String(account_detail[m].account) === String(account_num)) {
         account_detail.splice(m, 1);
       }
     }

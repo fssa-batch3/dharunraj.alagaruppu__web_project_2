@@ -65,14 +65,14 @@ function account_to_account() {
   remarks = textAreaExample6[0].value.trim();
 
   balance_page.forEach((e) => {
-    if (Number(e.ac_no) === Number(from_account)) {
+    if (String(e.ac_no) === String(from_account)) {
       sender_balances = e.ac_balance;
-      balance_page.forEach((e) => {
-        if (e.ac_no == to_account) {
-          reciver_email_check = e.email_compare;
+      balance_page.forEach((el) => {
+        if (String(el.ac_no) === String(to_account)) {
+          reciver_email_check = el.email_compare;
         }
       });
-      if (reciver_email_check != email_compare) {
+      if (String(reciver_email_check) !== String(email_compare)) {
         result = 1;
       }
     }
@@ -232,7 +232,6 @@ send_button[1].addEventListener("submit", (p) => {
 
 let ph_number;
 let primary_ac;
-let reciver_ac_number;
 
 function phone_transaction() {
   from_account = document.getElementById("from_num").value.trim();

@@ -107,7 +107,7 @@ function bar_chart() {
       }
     }
   }
-let yvalue_max = Math.max(...yValues);
+  const yvalue_max = Math.max(...yValues);
 
   new Chart("myChart", {
     type: "bar",
@@ -122,14 +122,16 @@ let yvalue_max = Math.max(...yValues);
     },
     options: {
       scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true,
-            min: 0,
-            max: yvalue_max,
-            stepSize: 500,
-          }
-        }]
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+              min: 0,
+              max: yvalue_max,
+              stepSize: 500,
+            },
+          },
+        ],
       },
       legend: { display: false },
       title: {

@@ -25,7 +25,10 @@ function signup() {
   let res;
 
   for (let i = 0; i < store.length; i++) {
-    if (store[i].email == email || store[i].phone == phone) {
+    if (
+      String(store[i].email) === String(email) ||
+      String(store[i].phone) === String(phone)
+    ) {
       res = 1;
       break;
     }
@@ -85,33 +88,6 @@ function phone_check() {
 }
 
 function add_local() {
-  // let res;
-
-  // for (let i = 0; i < store.length; i++) {
-  //   if (store[i].email == email || store[i].phone == phone) {
-  //     res = 1;
-  //     break;
-  //   }
-  // }
-
-  // if (res === 1) {
-  //   alert("email or phone number already regsister");
-  // } else {
-  //   const obj = {};
-
-  //   obj.fname = first_name;
-  //   obj.lname = last_name;
-  //   obj.email = email;
-  //   obj.phone = Number(phone);
-  //   obj.confirm = confirm_pass;
-  //   obj.dob = "";
-  //   obj.state = "";
-  //   obj.district = "";
-  //   obj.pincode = "";
-  //   obj.image = "";
-  //   obj.primary = "";
-  // }
-
   const obj = {};
 
   obj.fname = first_name;

@@ -1,7 +1,5 @@
 const picchart_select = document.getElementById("from");
 
-console.log(picchart_select);
-
 const email = localStorage.getItem("email");
 
 const balance_enquire = JSON.parse(localStorage.getItem("bal_enquire"));
@@ -17,7 +15,8 @@ let total_date = date.innerHTML;
 total_date = total_date.slice(0, 2);
 
 for (let i = 0; i < balance_enquire.length; i++) {
-  if (email === balance_enquire[i].email_compare) {
+  if (String(email) === String(balance_enquire[i].email_compare)) {
+
     arr.push(balance_enquire[i]);
 
     chart = `<div class="full_chart" id="scroll">
@@ -32,7 +31,7 @@ for (let i = 0; i < balance_enquire.length; i++) {
 
     <tr>
         <td id="table_label">Account number</td>
-        <td class="user_account">${balance_enquire[i].ac_no} </td>
+        <td class="user_account">${balance_enquire[i].ac_no}</td>
 
         <td class="range">
             <div class="name">
@@ -159,17 +158,16 @@ ave_value.forEach((e, i) => {
 
   let range_value = ((100 * average_num) / avg_month).toFixed(2);
 
-  // console.log(range_value);
+
   if (range_value >= 100) {
     range_value = 100;
-    // console.log(range_value);
+    
   }
-  // console.log(range_value);
+
 
   e.style.width = `${range_value}%`;
 
   e.children[0].innerHTML = `Maintained:${range_value}%`;
-  console.log(e.children[0]);
 });
 
 red_alert.forEach((e, i) => {
@@ -189,7 +187,7 @@ red_alert.forEach((e, i) => {
 });
 
 for (let i = 0; i < balance_enquire.length; i++) {
-  if (email === balance_enquire[i].email_compare) {
+  if (String(email) === String(balance_enquire[i].email_compare)) {
     const xValues = [" Average balance", "Mininum balance", "Account balance"];
 
     const yValues = [
@@ -223,32 +221,42 @@ let user_number;
 
 const account_div = document.querySelectorAll(".full_chart");
 
-const result = document.querySelector("button");
+const result = document.querySelector("#result_button");
 
 result.addEventListener("click", () => {
   user_number = picchart_select.value;
 
-  if (user_number === "") {
+  if (String(user_number) === "") {
     alert("recheck your value");
   } else {
     block_account();
+    
   }
 });
 
 const footer = document.querySelector("footer");
 
-function block_account() {
-  account_div.forEach((e, index) => {
-    const value_ac = e.querySelector(".user_account").innerHTML;
+const content_item =  document.querySelector("#only_back")
 
-    if (Number(value_ac) !== Number(user_number)) {
-      e.style.display = "none";
-    } else {
+function block_account() {
+
+  account_div.forEach((e, index) => {
+
+    const value_ac = e.querySelector(".user_account");
+
+    if (String(value_ac.innerHTML) === String(user_number)) {
+
       e.style.display = "block";
 
       footer.style.display = "none";
 
-      smoothScroll({ yPos: "end", duration: 1000 });
+      content_item.style.display = "none"
+
+      smoothScroll({ yPos: "end", duration: 400 });
+    } 
+
+    else{
+      e.style.display = "none";
     }
   });
 }

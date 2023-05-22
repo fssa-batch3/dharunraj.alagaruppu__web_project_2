@@ -184,7 +184,7 @@ th {
     line-height: 1.2;
 }
 
-.calculation {
+/* .calculation {
     width: 70%;
     margin: 5% auto;
     color: rgba(0, 0, 0, 0.74);
@@ -227,11 +227,11 @@ th {
 
     text-align: left;
     width: 150px;
-}
+} */
 
 .select_div {
     height: 100px;
-    margin: 0% auto;
+    margin: 4% 2% 0% auto;
     text-align: center;
 }
 

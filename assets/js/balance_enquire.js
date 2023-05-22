@@ -5,7 +5,7 @@ const balance_enquire = JSON.parse(localStorage.getItem("bal_enquire"));
 const account_detail = JSON.parse(localStorage.getItem("account_details"));
 
 for (let ac = 0; ac < account_detail.length; ac++) {
-  if (email === account_detail[ac].email_compare) {
+  if (String(email) === String(account_detail[ac].email_compare)) {
     const welcome = document.createElement("div");
     welcome.setAttribute("class", "bank_no");
     document.querySelector(".bank_list").append(welcome);
@@ -60,8 +60,8 @@ let customer_type;
 function check_balance() {
   for (let t = 0; t < balance_enquire.length; t++) {
     if (
-      balance_enquire[t].email_compare === email &&
-      Number(ref_num) === Number(balance_enquire[t].ac_no)
+      String(balance_enquire[t].email_compare) === String(email) &&
+      String(ref_num) === String(balance_enquire[t].ac_no)
     ) {
       customer_balance = balance_enquire[t].ac_balance;
 
@@ -69,8 +69,7 @@ function check_balance() {
 
       customer_type = balance_enquire[t].ac_type;
 
-      document.getElementById("balance").innerText =
-        ` ₹` + ` ${customer_balance}`;
+      document.getElementById("balance").innerText = ` ${customer_balance}`;
       document.getElementById("customer_ac").innerHTML = customer_number;
       document.getElementById("ac_type").innerText = customer_type;
 
@@ -86,11 +85,11 @@ function bar_chart() {
 
   for (let t = 0; t < balance_enquire.length; t++) {
     if (
-      balance_enquire[t].email_compare === email &&
-      Number(ref_num) === Number(balance_enquire[t].ac_no)
+      String(balance_enquire[t].email_compare) === String(email) &&
+      String(ref_num) === String(balance_enquire[t].ac_no)
     ) {
       const compare_min = Number(balance_enquire[t].minium);
-      console.log(compare_min);
+
       const arr_obj = balance_enquire[t].monthly_balance;
 
       for (let i = 0; i < arr_obj.length; i++) {

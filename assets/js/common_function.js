@@ -9,12 +9,13 @@ function account_add() {
   const email_compare = localStorage.getItem("email");
 
   for (let o = 0; o < account_check.length; o++) {
-    if (account_check[o].email_compare === email_compare) {
+    if (String(account_check[o].email_compare) === String(email_compare)) {
       const account_match = account_check[o].account;
 
       const option = document.createElement("option");
       option.setAttribute("value", account_match);
       option.innerHTML = account_match;
+      // console.log(account_match.length,"ppp");
       if (current_ac) {
         current_ac.append(option);
       }

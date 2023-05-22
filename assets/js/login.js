@@ -28,9 +28,9 @@ function login() {
   } else {
     attach.forEach((element) => {
       if (
-        element.fname === fullname &&
-        element.email === email &&
-        element.confirm === password
+        String(element.fname) === String(fullname) &&
+        String(element.email) === String(email) &&
+        String(element.confirm) === String(password)
       ) {
         check = 1;
       }

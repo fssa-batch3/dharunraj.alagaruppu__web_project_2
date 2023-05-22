@@ -55,13 +55,13 @@
 
             <form>
 
-                <h1>Bank Account to fund transfer</h1>
+                <h1>Bank account to money transfer</h1>
 
                 <!-- <label for="from"> From Account Number </label>
                 <input class="form-control" type="text" id="from" name="from" required min="14" max="14"
                     aria="From Account Number"> -->
 
-                <h5>Account Number </h5>
+                <h5>Account number </h5>
 
                 <select class="form-select accounts" id="from" required>
 
@@ -69,12 +69,12 @@
 
                 </select>
 
-                <label for="to"> Reciver account number</label>
+                <label for="to"> Reciever account number</label>
                 <input class="form-control input" type="text" id="to" name="to" required pattern="[0-9]{16,17}"
-                    title="Remember !! Your bank account number should be 16 numbers" aria=" Reciver Account ">
+                    title="Remember !! Your bank account number should be 16 numbers" aria=" Reciever Account ">
 
                 <label for="ifsc">
-                    Reciver IFSC <code></code>
+                    Reciever IFSC code<code></code>
                 </label>
                 <input class="form-control" type="text" id="ifsc" name="ifsc" required pattern="[0-9A-Za-z]{6,16}"
                     title="Are you sure !! minium Our ifsc number should be 12 numbers" aria="Reciver IFSC">
@@ -99,9 +99,9 @@
 
             <form>
 
-                <h2>Phone Number to Money Transfer</h2>
+                <h2>Phone number to money transfer</h2>
 
-                <h5>Account Number</h5>
+                <h5>Account number</h5>
 
                 <select class="form-select accounts" id="from_num" required>
 
@@ -109,7 +109,7 @@
 
                 </select>
 
-                <label for="to_num"> Reciver phone number </label>
+                <label for="to_num"> Reciever phone number </label>
                 <input class="form-control" type="tel" id="to_num" name="to_num" pattern="[0-9]{12}"
                     title="Country code ( 91 )+ Your correct phone number OR Your number should be 12 numbers"
                     aria="Phone number" placeholder="Phone No *" required>
@@ -165,6 +165,8 @@
     <script src="../assets/js/common_function.js"></script>
 
     <script src="../assets/js/fund_transfer.js"></script>
+
+    <script src="../assets/js/date_time.js"></script>
 
     <!-- <script>        const send_account = JSON.parse(localStorage.getItem("send_account")) ?? [];
 

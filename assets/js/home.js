@@ -29,7 +29,7 @@ btn_submit.addEventListener("submit", (e) => {
 show.forEach((element) => {
   // [{0},{1},......]
 
-  if (element.email === email_compare) {
+  if (String(element.email) === String(email_compare)) {
     // e=arr[0]
 
     document.querySelectorAll(".fname")[0].innerText = `${element.fname},`; // [0,1]
@@ -63,7 +63,7 @@ function link_bank() {
   phone = document.getElementById("phone").value.trim();
   minium = document.getElementById("inputGroupSelect03").value.trim();
   email_compare = localStorage.getItem("email");
-  balance = Math.floor(Math.random() * 10000);
+  balance = Math.floor(Math.random() * 9999) + 1;
   personal = document.getElementById("personal");
   business = document.getElementById("business");
   zero = document.getElementById("zero");
@@ -79,8 +79,8 @@ function link_bank() {
   let succuess;
 
   show.find((element) => {
-    if (element.email === email_compare) {
-      if (Number(element.phone) === Number(phone)) {
+    if (String(element.email) === String(email_compare)) {
+      if (String(element.phone) === String(phone)) {
         succuess = 1;
       }
     }
@@ -140,7 +140,7 @@ function add_local() {
   let res;
 
   for (let i = 0; i < account_detail.length; i++) {
-    if (account_detail[i].account === account) {
+    if (String(account_detail[i].account) === String(account)) {
       res = 1;
       break;
     }
@@ -171,7 +171,7 @@ function add_local() {
 
 function open_primary() {
   for (let op = 0; op < show.length; op++) {
-    if (show[op].email === email_compare) {
+    if (String(show[op].email) === String(email_compare)) {
       // let start = show[op].primary;
 
       show[op].primary = account;
@@ -185,7 +185,7 @@ function open_primary() {
 
 function open_average() {
   for (let j = 0; j < balance_enquire.length; j++) {
-    if (Number(balance_enquire[j].ac_no) === Number(account)) {
+    if (String(balance_enquire[j].ac_no) === String(account)) {
       // console.log(account);
 
       balance = balance_enquire[j].ac_balance;
@@ -234,7 +234,7 @@ let k = 0;
 let selectvalue;
 
 account_detail.forEach((e) => {
-  if (e.email_compare === email_compare) {
+  if (String(e.email_compare) === String(email_compare)) {
     document.getElementById("bank_account").style.display = "flex";
 
     const bank_div = document.querySelector("#bank_account");
@@ -344,7 +344,7 @@ account_detail.forEach((e) => {
       selectvalue = primary.value;
 
       for (let ko = 0; ko < show.length; ko++) {
-        if (show[ko].email === email_compare) {
+        if (String(show[ko].email) === String(email_compare)) {
           show[ko].primary = selectvalue;
 
           localStorage.setItem("array", JSON.stringify(show));
@@ -362,7 +362,10 @@ const account_numbers = document.querySelectorAll(".account_give");
 
 show.forEach((e) => {
   account_numbers.forEach((el, ind) => {
-    if (Number(el.value) === Number(e.primary) && e.email === email_compare) {
+    if (
+      String(el.value) === String(e.primary) &&
+      String(e.email) === String(email_compare)
+    ) {
       const primary = document.querySelectorAll(".tick_append");
 
       const unique_div = document.createElement("div");
@@ -499,7 +502,7 @@ function clear_balance() {
   for (let b = 0; b < balance_enquire.length; b++) {
     if (
       String(balance_enquire[b].ac_no) === String(account_num) &&
-      email_compare === balance_enquire[b].email_compare
+      String(email_compare) === String(balance_enquire[b].email_compare)
     ) {
       balance_enquire.splice(b, 1);
 
@@ -507,3 +510,31 @@ function clear_balance() {
     }
   }
 }
+
+
+let home_search = document.querySelector("#search");
+
+let full_main = document.querySelector(".start_build");
+
+let content_cal = document.querySelector(".calculation");
+
+let button_search = document.querySelector("#button_link").innerHTML.toLowerCase();
+
+home_search.addEventListener("input", e=> {
+
+  const values = home_search.value.toLowerCase();
+
+  if (button_search.includes(values) && values != " " && values != "") {
+
+    full_main.style.display = "none";
+    content_cal.style.display = "none"
+
+  }
+
+  else {
+    full_main.style.display = "";
+    content_cal.style.display = ""
+  }
+
+
+})

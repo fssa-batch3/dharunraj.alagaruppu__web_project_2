@@ -2,8 +2,6 @@ const send_account = JSON.parse(localStorage.getItem("send_account")) ?? [];
 
 const history_table = JSON.parse(localStorage.getItem("history_table")) ?? [];
 
-// const account_check = JSON.parse(localStorage.getItem("account_details"));
-
 const balance_page = JSON.parse(localStorage.getItem("bal_enquire"));
 
 const signup_array = JSON.parse(localStorage.getItem("array"));
@@ -13,29 +11,6 @@ const email_compare = localStorage.getItem("email");
 const current_date = new Date().toJSON().slice(0, 10);
 
 const textAreaExample6 = document.querySelectorAll(".textAreaExample6");
-
-// option_phone()
-// function option_phone() {
-//   // const current_ac = document.getElementById("from");
-
-//   const phone_numbers = document.getElementById("from_num");
-
-//   for (let ac = 0; ac < account_check.length; ac++) {
-//     if (account_check[ac].email_compare === email_compare) {
-//       const account_match = account_check[ac].account;
-
-//       // const option = document.createElement("option");
-//       // option.setAttribute("value", account_match);
-//       // option.innerHTML = account_match;
-//       // current_ac.append(option);
-
-//       const phone_option = document.createElement("option");
-//       phone_option.setAttribute("value", account_match);
-//       phone_option.innerHTML = account_match;
-//       phone_numbers.append(phone_option);
-//     }
-//   }
-// }
 
 const send_button = document.querySelectorAll("form");
 
@@ -59,7 +34,6 @@ let reciver_email_check;
 function account_to_account() {
   from_account = document.getElementById("from").value.trim();
   to_account = document.getElementById("to").value.trim();
-  console.log(document.getElementById("to").value);
   to_ifsc = document.getElementById("ifsc").value.trim();
   send_amount = document.getElementById("amount").value.trim();
   remarks = textAreaExample6[0].value.trim();
@@ -142,7 +116,7 @@ let sender_name;
 function balance_change() {
   balance_page.forEach((element) => {
     if (
-      element.email_compare === email_compare &&
+      String(element.email_compare) === String(email_compare) &&
       String(element.ac_no) === String(from_account)
     ) {
       old_balance = element.ac_balance;
@@ -362,7 +336,7 @@ function reciver_amount() {
     console.log("ioii");
     // console.log(element.ac_no);
     console.log(primary_ac);
-    if (Number(element.ac_no) === Number(primary_ac)) {
+    if (String(element.ac_no) === String(primary_ac)) {
       recived_money = element.ac_balance;
 
       console.log(recived_money);
@@ -384,7 +358,7 @@ function reciver_amount() {
 
       for (let d = 0; d < history_table.length; d++) {
         if (
-          Number(primary_ac) === Number(history_table[d].reciver_account) &&
+          String(primary_ac) === String(history_table[d].reciver_account) &&
           history_table[d].reciver_balance === "" &&
           history_table[d].reciver_type === "" &&
           history_table[d].reciver_name === "" &&

@@ -31,7 +31,7 @@ function now_time() {
   let period = "AM";
   const railway_am = "00";
 
-  if (Number(hour) === Number(railway_am)) {
+  if (String(hour) === String(railway_am)) {
     hour = 12;
   }
 

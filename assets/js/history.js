@@ -33,7 +33,7 @@ let remark;
 active_user();
 function active_user() {
   for (let i = 0; i < signup_array.length; i++) {
-    if (signup_array[i].email === email) {
+    if (String(signup_array[i].email) === String(email)) {
       main();
     }
   }
@@ -56,8 +56,8 @@ function account_search(j) {
     account_value = account_details[k].account;
 
     if (
-      Number(sender_value) === Number(account_value) &&
-      sender_email === email
+      String(sender_value) === String(account_value) &&
+      String(sender_email) === String(email)
     ) {
       sender_name = history[j].sender_name;
 
@@ -75,12 +75,12 @@ function account_search(j) {
 
       create_div();
     } else if (
-      Number(reciver_value) === Number(account_value) &&
-      reciver_email === email
+      String(reciver_value) === String(account_value) &&
+      String(reciver_email) === String(email)
     ) {
-      sender_name = history[j].reciver_name;
+      sender_name = history[j].sender_name;
 
-      reciver_name = history[j].sender_name;
+      reciver_name = history[j].reciver_name;
 
       function_image = "../assets/img/hdfc_icon.png";
       type = history[j].reciver_type;
@@ -275,8 +275,8 @@ function search_account() {
       histroy_search[sa].querySelector(".send_account").innerHTML;
 
     if (
-      Number(select_account) === Number(sender_only) ||
-      Number(select_account) === Number(recive_only)
+      String(select_account) === String(sender_only) ||
+      String(select_account) === String(recive_only)
     ) {
       histroy_search[sa].style.display = "block";
     } else {

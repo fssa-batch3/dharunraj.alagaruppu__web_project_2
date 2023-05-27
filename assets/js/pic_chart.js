@@ -16,7 +16,6 @@ total_date = total_date.slice(0, 2);
 
 for (let i = 0; i < balance_enquire.length; i++) {
   if (String(email) === String(balance_enquire[i].email_compare)) {
-
     arr.push(balance_enquire[i]);
 
     chart = `<div class="full_chart" id="scroll">
@@ -42,21 +41,21 @@ for (let i = 0; i < balance_enquire.length; i++) {
 
 <tr>
 <td class="first_td" id="table_label">Your balance</td>
-<td class="sec_td">${`₹ ${balance_enquire[i].ac_balance}`}</td>
+<td class="sec_td">${`₹ ${balance_enquire[i].ac_balance} /-`}</td>
 
 </tr>
 
 <tr>
 <td class="first_td" id="table_label">Minimum balance</td>
 
-<td class="sec_td">${`₹ ${balance_enquire[i].minium}`}</td>
+<td class="sec_td">${`₹ ${balance_enquire[i].minium} /-`}</td>
 
 </tr>
 
 <tr>
 <td class="first_td" id="table_label"> Monthly average balance</td>
 
-<td class="sec_td mon">${`₹ ${balance_enquire[i].minium * 30}`}</td>
+<td class="sec_td mon">${`₹ ${balance_enquire[i].minium * 30} /-`}</td>
 
 <td class="range">
     <div class="min">
@@ -70,7 +69,7 @@ for (let i = 0; i < balance_enquire.length; i++) {
 
 <tr>
 <td class="first_td" id="table_label"> Current average balance</td>
-<td class="sec_td">${`₹ ${balance_enquire[i].minium * total_date}`}</td>
+<td class="sec_td">${`₹ ${balance_enquire[i].minium * total_date} /-`}</td>
 <td class="range">
     <div class="min">
         <div class="daily_maintain">
@@ -85,7 +84,7 @@ for (let i = 0; i < balance_enquire.length; i++) {
 
 <tr>
 <td class="first_td" id="table_label">Average balance</td>
-<td class="sec_td avg">${`₹ ${balance_enquire[i].average_value}`}</td>
+<td class="sec_td avg">${`₹ ${balance_enquire[i].average_value} /-`}</td>
 <td class="range">
 <div class="min ">
 
@@ -120,6 +119,7 @@ for (let i = 0; i < balance_enquire.length; i++) {
 <div class="cover">
 
 <div class="remaining_value">
+<span class="red_tool">jhjhb</span>
 
 </div>
 </div>
@@ -158,12 +158,9 @@ ave_value.forEach((e, i) => {
 
   let range_value = ((100 * average_num) / avg_month).toFixed(2);
 
-
   if (range_value >= 100) {
     range_value = 100;
-    
   }
-
 
   e.style.width = `${range_value}%`;
 
@@ -184,6 +181,11 @@ red_alert.forEach((e, i) => {
   }
   e.style.width = `${remaining}%`;
   e.parentElement.parentElement.children[0].children[0].children[1].innerText = `${remaining}%`;
+  e.children[0].innerHTML = `( ₹ ${avg_month - average_num} /- )`
+  console.log(average_num);
+  console.log(avg_month);
+
+
 });
 
 for (let i = 0; i < balance_enquire.length; i++) {
@@ -230,32 +232,26 @@ result.addEventListener("click", () => {
     alert("recheck your value");
   } else {
     block_account();
-    
   }
 });
 
 const footer = document.querySelector("footer");
 
-const content_item =  document.querySelector("#only_back")
+const content_item = document.querySelector("#only_back");
 
 function block_account() {
-
   account_div.forEach((e, index) => {
-
     const value_ac = e.querySelector(".user_account");
 
     if (String(value_ac.innerHTML) === String(user_number)) {
-
       e.style.display = "block";
 
       footer.style.display = "none";
 
-      content_item.style.display = "none"
+      content_item.style.display = "none";
 
       smoothScroll({ yPos: "end", duration: 400 });
-    } 
-
-    else{
+    } else {
       e.style.display = "none";
     }
   });

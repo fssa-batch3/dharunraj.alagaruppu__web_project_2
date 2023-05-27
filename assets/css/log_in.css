@@ -12,6 +12,12 @@ a{
     text-decoration: none;
 }
 
+
+button{
+    cursor: pointer;
+}
+
+
 .welcome {
 
     width: 22%;

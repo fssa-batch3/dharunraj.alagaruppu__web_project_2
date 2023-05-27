@@ -108,6 +108,7 @@ function bar_chart() {
   }
   const yvalue_max = Math.max(...yValues);
 
+  // let new_chart = 
   new Chart("myChart", {
     type: "bar",
     data: {

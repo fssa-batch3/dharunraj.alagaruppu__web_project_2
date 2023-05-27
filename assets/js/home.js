@@ -48,7 +48,7 @@ let minium;
 let balance;
 let personal;
 let business;
-let zero;
+// let zero;
 let account_type;
 
 let branch;
@@ -66,16 +66,16 @@ function link_bank() {
   balance = Math.floor(Math.random() * 9999) + 1;
   personal = document.getElementById("personal");
   business = document.getElementById("business");
-  zero = document.getElementById("zero");
+  // zero = document.getElementById("zero");
 
   if (personal.checked) {
     account_type = "Savings account";
   } else if (business.checked) {
     account_type = "Current account";
-  } else if (zero.checked) {
-    account_type = "Zero balance account";
-  }
-
+  } 
+  // else if (zero.checked) {
+  //   account_type = "Zero balance account";
+  // }
   let succuess;
 
   show.find((element) => {
@@ -383,6 +383,8 @@ show.forEach((e) => {
       unique_div.append(news);
 
       primary[ind].append(unique_div);
+
+      el.parentElement.parentElement.children[4].style.display = "none";
     }
   });
 });
@@ -511,30 +513,24 @@ function clear_balance() {
   }
 }
 
+const home_search = document.querySelector("#search");
 
-let home_search = document.querySelector("#search");
+const full_main = document.querySelector(".start_build");
 
-let full_main = document.querySelector(".start_build");
+const content_cal = document.querySelector(".calculation");
 
-let content_cal = document.querySelector(".calculation");
+const button_search = document
+  .querySelector("#button_link")
+  .innerHTML.toLowerCase();
 
-let button_search = document.querySelector("#button_link").innerHTML.toLowerCase();
-
-home_search.addEventListener("input", e=> {
-
+home_search.addEventListener("input", (e) => {
   const values = home_search.value.toLowerCase();
 
   if (button_search.includes(values) && values != " " && values != "") {
-
     full_main.style.display = "none";
-    content_cal.style.display = "none"
-
-  }
-
-  else {
+    content_cal.style.display = "none";
+  } else {
     full_main.style.display = "";
-    content_cal.style.display = ""
+    content_cal.style.display = "";
   }
-
-
-})
+});

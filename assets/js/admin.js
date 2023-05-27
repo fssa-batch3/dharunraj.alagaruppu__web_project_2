@@ -119,7 +119,7 @@ function monthly_once() {
                 Regards <br>
                 NETBLIZ <br>`;
 
-      goodEmail(accounter_email, subject, body);
+      goodEmail();
     } else if (balance_enquire[b].minium >= balance_enquire[b].average_value) {
       // console.log("bad");
 

@@ -111,8 +111,12 @@ form {
     border-radius: 20px;
     font-weight: bolder;
     margin: 20px;
-    cursor: pointer;
     transition: all 2s;
+}
+
+button{
+    cursor: pointer;
+
 }
 
 .bottom_button:hover {
@@ -154,4 +158,8 @@ input[type="date"] {
     margin: 30px;
     padding: 10px;
 
+}
+
+#welcome_button{
+    cursor: pointer;
 }

@@ -260,7 +260,7 @@ result_button.addEventListener("click", () => {
   select_account = document.getElementById("from").value.trim();
 
   if (select_account !== "") {
-    search_account(histroy_search, select_account);
+    search_account();
   } else {
     alert("click dropdown account number");
   }

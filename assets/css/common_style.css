@@ -175,5 +175,8 @@ footer .direct a {
     position: relative;
     right: 5%;
 }
+button{
+    cursor: pointer;
+}
 
 

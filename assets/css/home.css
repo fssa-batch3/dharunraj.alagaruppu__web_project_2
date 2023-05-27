@@ -60,7 +60,7 @@ th {
     /* background-color: #f5f6ff; */
     padding: 5% auto;
     margin: 5% auto;
-    display: flex;
+    /* display: flex; */
     justify-content: space-evenly;
     align-items: center;
     display: none;

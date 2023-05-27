@@ -52,7 +52,7 @@ function account_to_account() {
     }
   });
 
-  if (result === 1) {
+  if (Number(result) === 1) {
     if (sender_balances >= send_amount) {
       local_push();
     } else {
@@ -232,7 +232,7 @@ function phone_transaction() {
     }
   });
 
-  if (result === 1) {
+  if (Number(result) === 1) {
     if (sender_balances >= send_amount) {
       push_local();
     } else {
@@ -281,7 +281,7 @@ function push_local() {
 
   localStorage.setItem("history_table", JSON.stringify(history_table));
 
-  balance_change_sender(from_account, send_amount, primary_ac);
+  balance_change_sender();
 
   window.location.href = "./history.html";
 

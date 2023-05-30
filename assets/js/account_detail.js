@@ -1,8 +1,10 @@
-// now_day();
-
 const show = JSON.parse(localStorage.getItem("array"));
 
-const email_compare = localStorage.getItem("email");
+let email_compare = localStorage.getItem("email");
+
+const balance_enquire = JSON.parse(localStorage.getItem("bal_enquire"));
+
+const account_detail = JSON.parse(localStorage.getItem("account_details"));
 
 // let click_button = document.querySelector(".click_button");
 // console.log(click_button);
@@ -52,11 +54,11 @@ form_click.addEventListener("submit", () => {
     ) {
       if (
         String(document.getElementById("fname").value) ===
-          String(current_user.fname) &&
+        String(current_user.fname) &&
         String(document.getElementById("email").value) ===
-          String(current_user.email) &&
+        String(current_user.email) &&
         String(document.getElementById("phone").value) ===
-          String(current_user.phone)
+        String(current_user.phone)
       ) {
         show[i].dob = document.getElementById("dob").value.trim();
         show[i].district = document.getElementById("district").value.trim();
@@ -79,18 +81,53 @@ form_click.addEventListener("submit", () => {
 
 const delete_button_value = document.querySelector(".delete_button");
 delete_button_value.addEventListener("click", () => {
+
   for (let i = 0; i < show.length; i++) {
+    console.log(email_compare);
+    console.log(show[i].email);
     if (
-      String(document.getElementById("email").value) === String(show[i].email)
+      String(email_compare) == String(show[i].email)
     ) {
       show.splice(i, 1);
 
       localStorage.setItem("array", JSON.stringify(show));
 
+      clear_account()
+      clear_balance()
+
+      email_compare = ""
+
+      localStorage.setItem("email",email_compare)
+
       window.location.href = "../index.html";
     }
   }
 });
+
+function clear_balance() {
+
+  for (let cb = 0; cb < balance_enquire.length; cb++) {
+    if (String(email_compare) === String(balance_enquire[cb].email_compare)) {
+      balance_enquire.splice(cb, 1);
+
+      localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
+
+    }
+  }
+}
+
+function clear_account() {
+  
+  for (let ca = 0; ca < account_detail.length; ca++) {
+    if (String(email_compare) === String(account_detail[ca].email_compare)) {
+      account_detail.splice(ca, 1);
+
+      localStorage.setItem("account_details", JSON.stringify(account_detail));
+    
+  }
+}
+}
+
 
 const input_img = document.querySelector("#simple_upload");
 

@@ -104,7 +104,7 @@ function local_push() {
 
   balance_change();
 
-  window.location.href = "./history.html";
+  // window.location.href = "./history.html";
 
   // alert("Thanks for send money");
 }
@@ -190,6 +190,8 @@ function reciver() {
           history_table[d].reciver_name = reciver_name;
 
           history_table[d].reciver_email = receiver_email;
+
+          backup_history(d);
 
           localStorage.setItem("history_table", JSON.stringify(history_table));
         }
@@ -283,9 +285,9 @@ function push_local() {
 
   balance_change_sender();
 
-  window.location.href = "./history.html";
+  // window.location.href = "./history.html";
 
-  alert("Thanks for send money");
+  // alert("Thanks for send money");
 }
 
 function balance_change_sender() {
@@ -314,45 +316,36 @@ function balance_change_sender() {
           history_table[di].sender_type = sender_type;
 
           history_table[di].sender_balance = old_balance;
-
-          console.log(sender_name);
+          
           history_table[di].sender_name = sender_name;
 
           localStorage.setItem("history_table", JSON.stringify(history_table));
         }
       }
 
-      console.log("crt");
       localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
 
       reciver_amount();
-      console.log("okk");
+
     }
   });
 }
 
 function reciver_amount() {
   balance_page.forEach((element) => {
-    console.log("ioii");
-    // console.log(element.ac_no);
-    console.log(primary_ac);
+
     if (String(element.ac_no) === String(primary_ac)) {
       recived_money = element.ac_balance;
 
-      console.log(recived_money);
       reciver_name = element.accounter_name;
-      console.log(reciver_name);
 
       receiver_email = element.email_compare;
-
-      console.log(receiver_email);
 
       reciver_type = "Money received";
 
       recived_money = Number(recived_money) + Number(send_amount);
 
       element.ac_balance = recived_money;
-      console.log(element.ac_balance);
 
       localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
 
@@ -372,9 +365,22 @@ function reciver_amount() {
 
           history_table[d].reciver_email = receiver_email;
 
+          backup_history(d);
+
           localStorage.setItem("history_table", JSON.stringify(history_table));
         }
       }
     }
   });
+}
+
+function backup_history(d) {
+
+  let backup_array = JSON.parse(localStorage.getItem("history_backup")) ?? [];
+
+  let backup_obj = history_table[d]
+
+  backup_array.push(backup_obj);
+
+  localStorage.setItem("history_backup", JSON.stringify(backup_array));
 }

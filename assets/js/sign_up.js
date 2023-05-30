@@ -73,7 +73,6 @@ function phone_check() {
     console.log(got_number);
 
     if (got_number.carrier !== "" && phone !== "") {
-      console.log("valid");
       add_local();
     } else {
       alert("Recheck your phone number");

@@ -272,7 +272,7 @@ th {
   visibility: hidden;
 }
 
-.min:hover .daliy_details, .min:hover .average_details, .min:hover #static_min span , .remaining_value:hover .red_tool{
+.min:hover .daliy_details, .min:hover .average_details, .min:hover #static_min span , .cover:hover .red_tool{
     visibility: visible;
 }
 

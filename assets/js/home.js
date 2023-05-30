@@ -259,7 +259,6 @@ account_detail.forEach((e) => {
         class: "account_give form-control input_size",
         name: "account_give",
         place_holder: "Account no",
-        disable: "disable",
       },
 
       {
@@ -271,7 +270,7 @@ account_detail.forEach((e) => {
         class: "ifsc_give form-control input_size",
         name: "ifsc_give",
         place_holder: "IFSC Code",
-        disable: "disable",
+        
       },
 
       {
@@ -283,7 +282,7 @@ account_detail.forEach((e) => {
         class: "branch form-control input_size",
         name: "branch",
         place_holder: "Branch Name",
-        disable: "disable",
+       
       },
     ];
 
@@ -298,7 +297,9 @@ account_detail.forEach((e) => {
       input.setAttribute("class", data[i].class);
       input.setAttribute("name", data[i].name);
       input.setAttribute("placeholder", data[i].place_holder);
-      input.setAttribute("disable", data[i].disable);
+      // input.setAttribute("disable", data[i].disable);
+      input.setAttribute("disabled", "")
+
       contant.append(input);
 
       const label = document.createElement("label");

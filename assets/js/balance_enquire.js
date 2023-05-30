@@ -45,7 +45,6 @@ for (let p = 0; p < user_acc.length; p++) {
     document.querySelector(".bank_list").style.display = "none";
 
     ref_num = account_num[p].innerHTML;
-    // console.log(ref_num);
 
     check_balance();
 
@@ -141,11 +140,3 @@ function bar_chart() {
     },
   });
 }
-
-// for (let v = 0; v < balance_enquire[v]["monthly_balance"].length; v++) {
-
-//   let arr_obj = balance_enquire[v]["monthly_balance"];
-
-//   console.log(arr_obj);
-
-// }

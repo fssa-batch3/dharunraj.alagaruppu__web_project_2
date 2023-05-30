@@ -84,7 +84,7 @@ for (let i = 0; i < balance_enquire.length; i++) {
 
 <tr>
 <td class="first_td" id="table_label">Average balance</td>
-<td class="sec_td avg">${`₹ ${balance_enquire[i].average_value} /-`}</td>
+<td class="sec_td avg">${`₹ ${balance_enquire[i].average_value}`}</td>
 <td class="range">
 <div class="min ">
 
@@ -182,9 +182,6 @@ red_alert.forEach((e, i) => {
   e.style.width = `${remaining}%`;
   e.parentElement.parentElement.children[0].children[0].children[1].innerText = `${remaining}%`;
   e.children[0].innerHTML = `( ₹ ${avg_month - average_num} /- )`
-  console.log(average_num);
-  console.log(avg_month);
-
 
 });
 

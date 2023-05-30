@@ -1,18 +1,18 @@
 const balance_enquire = JSON.parse(localStorage.getItem("bal_enquire"));
 
-// const signup = JSON.parse(localStorage.getItem("array"));
+const signup = JSON.parse(localStorage.getItem("array"));
 
 const daily = document.getElementById("daily_check");
 
 let balance;
 
 daily.addEventListener("click", (e) => {
-  // console.log(balance_enquire.length);
+
+  delete_chart();
 
   for (let j = 0; j < balance_enquire.length; j++) {
-    balance = balance_enquire[j].ac_balance;
 
-    // console.log(balance);
+    balance = balance_enquire[j].ac_balance;
 
     const month = balance_enquire[j].monthly_balance ?? [];
 
@@ -39,8 +39,6 @@ function average() {
         average_value += balance_enquire[h].monthly_balance[r].day_balance;
       }
 
-      // let average_balance_length;
-
       const average_balance_length = (
         average_value / balance_enquire[h].monthly_balance.length
       ).toFixed(2);
@@ -50,6 +48,24 @@ function average() {
   }
 
   localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
+
+}
+
+function delete_chart() {
+
+  for (let dc = 0; dc < balance_enquire.length; dc++) {
+
+    if (balance_enquire[dc].monthly_balance.length == 29) {
+
+      delete balance_enquire[dc].monthly_balance;
+
+      delete balance_enquire[dc].average_value;
+
+      localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
+
+    }
+  }
+
 }
 
 const month = document.getElementById("monthly_check");
@@ -76,22 +92,11 @@ let body;
 
 let current_balance;
 
+let date_value = new Date().getDate();
+
 function monthly_once() {
-  // let index_one = date.innerHTML[0]
-  // console.log(index_one);
-  // let index_two = date.innerHTML[1]
-  // console.log(index_two);
-
-  // let twenty_five = index_one + index_two
-  // console.log(twenty_five);
-
-  // let time_one = time.innerHTML
-  // console.log(time_one)
-
-  // if (twenty_five == "03" && time_one == "07:56:30 PM") {
 
   for (let b = 0; b < balance_enquire.length; b++) {
-    // console.log(balance_enquire[b]);
 
     account = balance_enquire[b].ac_no;
 
@@ -108,8 +113,7 @@ function monthly_once() {
     accounter_email = balance_enquire[b].email_compare;
 
     if (balance_enquire[b].minium <= balance_enquire[b].average_value) {
-      // console.log("good");
-
+      console.log("crt");
       subject =
         " Congratulations!! This month you are maintained well your bank account  . ";
 
@@ -121,8 +125,8 @@ function monthly_once() {
 
       goodEmail();
     } else if (balance_enquire[b].minium >= balance_enquire[b].average_value) {
-      // console.log("bad");
 
+      console.log("err");
       subject = " Alert !! You are not maintaining your bank account well ";
 
       body = `Good morning ${accounter_name} <br><br>
@@ -136,15 +140,13 @@ function monthly_once() {
   }
 }
 
-// let crt;
-
 function goodEmail() {
   Email.send({
     Host: "smtp.elasticemail.com",
     Username: "manidharun2204@gmail.com",
     Password: "4D6FC23DC9C154060201E850106AFDAC2CBD",
     To: accounter_email,
-    From: "netbliz.freshproduct2023@gmail.com",
+    From: "netbliz2023@gmail.com",
     Subject: subject,
     Body: body,
 
@@ -163,13 +165,13 @@ function goodEmail() {
   // .catch((error) => {
   //   alert("error");
   // });
+
 }
 
 // if (crt == 1) {
 
 //     alert("Mail has been sent successfully");
 
-//     console.log("wertyu")
 // }
 
 // now_date(important, current_day)

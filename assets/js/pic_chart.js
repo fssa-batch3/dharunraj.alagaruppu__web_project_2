@@ -15,120 +15,121 @@ let total_date = date.innerHTML;
 total_date = total_date.slice(0, 2);
 
 for (let i = 0; i < balance_enquire.length; i++) {
+
   if (String(email) === String(balance_enquire[i].email_compare)) {
     arr.push(balance_enquire[i]);
 
     chart = `<div class="full_chart" id="scroll">
 
-<h1 id="pie">Pie chart :</h1>
+    <h1 id="pie">Pie chart :</h1>
 
-<div>
+    <div>
 
-<div class="total_table">
+        <div class="total_table">
 
-<table>
+            <table>
 
-    <tr>
-        <td id="table_label">Account number</td>
-        <td class="user_account">${balance_enquire[i].ac_no}</td>
+                <tr>
+                    <td id="table_label">Account number</td>
+                    <td class="user_account">${balance_enquire[i].ac_no}</td>
 
-        <td class="range">
-            <div class="name">
-                ${balance_enquire[i].accounter_name}
-        </td>
-</div>
-</tr>
+                    <td class="range">
+                        <div class="name">
+                            ${balance_enquire[i].accounter_name}
+                    </td>
 
-<tr>
-<td class="first_td" id="table_label">Your balance</td>
-<td class="sec_td">${`₹ ${balance_enquire[i].ac_balance} /-`}</td>
+                </tr>
 
-</tr>
+                <tr>
+                    <td class="first_td" id="table_label">Your balance</td>
+                    <td class="sec_td">${`₹ ${balance_enquire[i].ac_balance} /-`}</td>
 
-<tr>
-<td class="first_td" id="table_label">Minimum balance</td>
+                </tr>
 
-<td class="sec_td">${`₹ ${balance_enquire[i].minium} /-`}</td>
+                <tr>
+                    <td class="first_td" id="table_label">Minimum balance</td>
 
-</tr>
+                    <td class="sec_td">${`₹ ${balance_enquire[i].minium} /-`}</td>
 
-<tr>
-<td class="first_td" id="table_label"> Monthly average balance</td>
+                </tr>
 
-<td class="sec_td mon">${`₹ ${balance_enquire[i].minium * 30} /-`}</td>
+                <tr>
+                    <td class="first_td" id="table_label"> Monthly average balance</td>
 
-<td class="range">
-    <div class="min">
-    <div id="static_min">
-    <span>Total average balance : 100 %</span>
+                    <td class="sec_td mon">${`₹ ${balance_enquire[i].minium * 30} /-`}</td>
+
+                    <td class="range">
+                        <div class="min">
+                            <div id="static_min">
+                                <span>Total average balance : 100 %</span>
+                            </div>
+
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="first_td" id="table_label"> Current average balance</td>
+                    <td class="sec_td">${`₹ ${balance_enquire[i].minium * total_date} /-`}</td>
+                    <td class="range">
+                        <div class="min">
+                            <div class="daily_maintain">
+                                <span class="daliy_details"></span>
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td class="first_td" id="table_label">Average balance</td>
+                    <td class="sec_td avg">${`₹ ${balance_enquire[i].average_value}`}</td>
+                    <td class="range">
+                        <div class="min ">
+
+                            <div class="value_avg">
+                                <span class="average_details">100 %</span>
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+
+            </table>
         </div>
 
-    </div>
-</td>
-</tr>
+        <div class="chart_details">
 
-<tr>
-<td class="first_td" id="table_label"> Current average balance</td>
-<td class="sec_td">${`₹ ${balance_enquire[i].minium * total_date} /-`}</td>
-<td class="range">
-    <div class="min">
-        <div class="daily_maintain">
-        <span class="daliy_details"></span>
+            <div class="pie_chart_div">
+
+                <canvas id=piechart${i}></canvas>
+
+            </div>
+
+            <div class="details">
+
+                <div>
+                    <div class="remaining">
+                        <h4>Remaining</h4>
+                        <h1 class="remain_per">26.7%</h1>
+                    </div>
+                </div>
+
+                <div class="cover">
+
+                    <div class="remaining_value">
+                        <span class="red_tool">jhjhb</span>
+
+                    </div>
+                </div>
+
+            </div>
+
         </div>
-
     </div>
-</div>
-</td>
-
-</tr>
-
-<tr>
-<td class="first_td" id="table_label">Average balance</td>
-<td class="sec_td avg">${`₹ ${balance_enquire[i].average_value}`}</td>
-<td class="range">
-<div class="min ">
-
-    <div class="value_avg">
-    <span class="average_details">100 %</span>
-    </div>
-</div>
-</td>
-
-</tr>
-
-</table>
-</div>
-
-<div class="chart_details">
-
-<div class="pie_chart_div">
-
-<canvas id=piechart${i}></canvas>
-
-</div>
-
-<div class="details">
-
-<div>
-<div class="remaining">
-    <h4>Remaining</h4>
-    <h1 class="remain_per">26.7%</h1>
-</div>
-</div>
-
-<div class="cover">
-
-<div class="remaining_value">
-<span class="red_tool">jhjhb</span>
-
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-`;
+</div>`;
 
     charts_div.innerHTML += chart;
   }

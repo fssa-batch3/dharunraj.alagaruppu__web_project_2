@@ -104,9 +104,9 @@ function local_push() {
 
   balance_change();
 
-  // window.location.href = "./history.html";
+  window.location.href = "./history.html";
 
-  // alert("Thanks for send money");
+  alert("Thanks for send money");
 }
 
 let old_balance;
@@ -285,9 +285,9 @@ function push_local() {
 
   balance_change_sender();
 
-  // window.location.href = "./history.html";
+  window.location.href = "./history.html";
 
-  // alert("Thanks for send money");
+  alert("Thanks for send money");
 }
 
 function balance_change_sender() {
@@ -316,7 +316,7 @@ function balance_change_sender() {
           history_table[di].sender_type = sender_type;
 
           history_table[di].sender_balance = old_balance;
-          
+
           history_table[di].sender_name = sender_name;
 
           localStorage.setItem("history_table", JSON.stringify(history_table));

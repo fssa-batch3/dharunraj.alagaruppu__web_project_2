@@ -184,51 +184,6 @@ th {
     line-height: 1.2;
 }
 
-/* .calculation {
-    width: 70%;
-    margin: 5% auto;
-    color: rgba(0, 0, 0, 0.74);
-    font-style: initial;
-    font-family: 'Open Sans', sans-serif;
-    letter-spacing: 1px;
-    font-weight: 400;
-    line-height: 1.5;
-
-}
-
-.calculation p,
-ol {
-    margin-bottom: 1.65em;
-    font-size: 19px;
-    font-weight: 400;
-    letter-spacing: 1px;
-}
-
-.calculation table {
-    border-collapse: collapse;
-    width: 60%;
-    margin: 5% auto;
-    letter-spacing: .4px;
-
-}
-
-.calculation td,
-th {
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 12px;
-}
-
-.calculation tr:nth-child(even) {
-    background-color: #f1f1f1;
-}
-
-.calculation tr td:first-child {
-
-    text-align: left;
-    width: 150px;
-} */
-
 .select_div {
     height: 100px;
     margin: 4% 2% 0% auto;

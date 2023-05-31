@@ -70,9 +70,8 @@ function phone_check() {
   number_check.onload = function () {
     const got_number = JSON.parse(number_check.response);
 
-    console.log(got_number);
-
     if (got_number.carrier !== "" && phone !== "") {
+      
       add_local();
     } else {
       alert("Recheck your phone number");
@@ -80,7 +79,7 @@ function phone_check() {
   };
   number_check.open(
     "get",
-    `https://api.apilayer.com/number_verification/validate?apikey=OiccdedKQZOIKrx0BNzCPwMyeG7KlK8K&number=${phone}`,
+    `https://api.apilayer.com/number_verification/validate?apikey=OiccdedKQZOIKrx0BNzCPwMyeG7KlK8K&number=91${phone}`,
     true
   );
   number_check.send();

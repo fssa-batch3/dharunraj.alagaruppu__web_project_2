@@ -14,7 +14,7 @@
 
     <header>
         <div class="title">
-            <a href="">NET BANKING</a>
+            <a href="./home.html">NET BLIZ</a>
         </div>
 
         <div class="full_link">
@@ -22,11 +22,9 @@
                 <a href="./home.html">Home</a>
             </div>
 
-
             <div>
                 <a href="./fund_transfer.html">Transfer</a>
             </div>
-
 
             <div>
                 <a class="current_page" href="#">Balance</a>
@@ -36,58 +34,112 @@
                 <a href="./history.html">History</a>
             </div>
 
+            <div>
+                <a href="./pic_chart.html">Chart</a>
+            </div>
+
             <div class="logout">
                 <a href="../index.html">Log Out</a>
             </div>
         </div>
 
-
     </header>
 
     <main>
 
+        <h3 id="balance_name">Bank balance details</h3>
+
+        <div class="bank_list">
+
+        </div>
+
         <div class="container1">
 
             <div class="content1">
-                <h1> Good to see you !!</h1>
+                <h2> Successfully your balance is fetched !!</h2>
                 <img id="tick" src="../assets/img/tick_balance.png" alt="tick">
             </div>
 
-
             <div class="account">
-                <div class="heading">
-                    <span>Main account</span>
-                    <span>Available money</span>
-                </div>
-                <div class="type_account">
-                    <div class="type_value">
-                        <span>NetBliz <input type="text" id="type_account"></span>
-                        <input type="number" id="account_no" name="account_no">
+
+                <div class="balance_data">
+
+                    <div class="number_type">
+
+                        <div class="account_number">
+
+                            <span>Account Number :</span>
+                            <h2 id="customer_ac"></h2>
+                        </div>
+
+                        <div class="account_type">
+
+                            <span>Account Type :</span>
+                            <h2 id="ac_type"></h2>
+                        </div>
+
                     </div>
 
-                    <label for="balance">$</label>
-                    <input type="number" id="balance" name="balance">
-                </div>
-                <div class="back_button">
-                    <a href="./fund_transfer.html">Transfer money</a>
-                    <a href="./account_detail.html">Account Details</a>
+                    <div class="account_balance">
+
+                        <span>Available money :</span>
+                        <h1 id="balance"></h1>
+                    </div>
+
                 </div>
 
+                <div class="back_button">
+
+                    <a href="./fund_transfer.html">Transfer money</a>
+                    <a href="./balance_enquire.html">Back balance enquire</a>
+                </div>
 
             </div>
 
         </div>
+
     </main>
+
+    <div class="daliy_chart">
+
+        <canvas id="myChart" style="max-width:97%;height:100px;"></canvas>
+
+    </div>
+
+    <footer>
+
+        <div class="back_foot">
+
+            <h3>@ 2023 NET BLIZ</h3>
+
+            <div class="icon_social">
+
+                <a href="https://www.linkedin.com/">
+                    <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in">
+                </a>
+                <a href="https://www.facebook.com/">
+                    <img src="../assets/img/icons8-facebook-100.png" alt="facebook">
+                </a>
+                <a href="https://mail.google.com/">
+                    <img src="../assets/img/icons8-google-100-removebg-preview.png" alt="google">
+                </a>
+                <a href="https://twitter.com/">
+                    <img src="../assets/img/icons8-twitter-100.png" alt="teitter">
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script src="../assets/js/balance_enquire.js"></script>
+
 
 </body>
 
-<script>
 
-    let balance = document.getElementById("balance") ;
-    let balance_result = "" ;
-
-    balance.value = balance_result ;
-
-</script>
 
 </html>

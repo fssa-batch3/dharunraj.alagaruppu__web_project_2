@@ -1,23 +1,24 @@
 * {
-    list-style: none;
     text-decoration: none;
     box-sizing: border-box;
-    font-family: 'Libre Baskerville', sans-serif;
     scroll-behavior: smooth;
-    color: #1a237e;
+
 }
 
 header {
+    text-decoration: none;
+    list-style: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    font-family: 'Open Sans', sans-serif;
     align-items: center;
     padding: .5%;
     margin: 1% auto;
     width: 89%;
-    /* background-color:  #f5f6ff; */
-
-    /* border: 1px solid black; */
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #1a237e;
 }
 
 .title {
@@ -25,6 +26,8 @@ header {
 }
 
 .title a {
+    /* text-decoration: none; */
+
     font-size: 25px;
     font-weight: 600;
     color: #2241ed;
@@ -34,7 +37,6 @@ header {
 }
 
 .full_link {
-   
     margin: 1%;
     width: 65%;
     display: flex;
@@ -48,17 +50,20 @@ header {
     color: #1a237e;
     border: none;
     padding: 10% 1%;
+    text-decoration: none;
 
 }
 
-.full_link a:hover , .full_link .current_page{
+.full_link a:hover,
+.full_link .current_page {
 
     color: #2a48ee;
     border-bottom: 2px solid #2a48ee;
-    
+
 }
 
-.logout a {
+.logout a , .select_div button{
+    text-decoration: none;
     background-color: #2a48ee;
     color: white;
     padding: 13px;
@@ -66,10 +71,9 @@ header {
     font-size: 16px;
     font-weight: 500;
     letter-spacing: .5px;
-    font-family: 'Open Sans', sans-serif;
 }
 
-.logout a:hover {
+.logout a:hover , .select_div button {
     background-color: #2945d0;
     color: white;
     border: none;
@@ -78,7 +82,7 @@ header {
 footer .back_foot {
     background-color: #7086ff;
     width: 78%;
-    margin: 7% auto;
+    margin: 7% auto 2% auto;
     color: black;
     padding: 4%;
     display: flex;
@@ -86,6 +90,8 @@ footer .back_foot {
     justify-content: space-around;
     align-items: center;
     border-radius: 15px;
+    font-family: 'Open Sans', sans-serif;
+
 }
 
 footer .back_foot .icon_social,
@@ -94,7 +100,6 @@ footer .direct {
     display: flex;
     justify-content: space-around;
     margin: 0px auto;
-    /* border: 1px solid black; */
 }
 
 footer .back_foot .icon_social img {
@@ -115,6 +120,63 @@ footer .direct a {
     font-size: 16px;
     font-weight: 500;
     letter-spacing: .5px;
-    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Open Sans', sans-serif; */
 
 }
+
+.start_build {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 3% 0%;
+    padding: 5%;
+    border-radius: 20px;
+    font-weight: 500;
+    background-color: #f5f6ff;
+
+}
+
+.start_build img {
+    width: 50%;
+}
+
+.start_build .open_account {
+    width: 45%;
+    color: #1a237e;
+    padding: 3%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 25px;
+    background-color: white;
+
+}
+
+.start_build .open_account .heading {
+    font-size: 40px;
+    line-height: 65px;
+    font-weight: 500;
+    display: block;
+    text-align: justify;
+}
+
+.start_build .open_account .box_content {
+    display: flex;
+
+}
+
+.start_build .open_account .box_content .content_text {
+    padding: 5%;
+}
+
+.start_build .open_account .box_content span {
+    border-radius: 100%;
+    padding: 15px;
+    background-color: #e7f9f6;
+    font-size: 15px;
+    position: relative;
+    right: 5%;
+}
+button{
+    cursor: pointer;
+}
+
+

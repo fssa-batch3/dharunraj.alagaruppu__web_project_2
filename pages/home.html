@@ -8,18 +8,18 @@
     <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/gh/LieutenantPeacock/SmoothScroll@1.2.0/src/smoothscroll.min.js"
+        integrity="sha384-UdJHYJK9eDBy7vML0TvJGlCpvrJhCuOPGTc7tHbA+jHEgCgjWpPbmMvmd/2bzdXU"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/home.css">
     <link rel="stylesheet" href="../assets/css/common_style.css">
 </head>
 
 <body>
 
-
-
-
     <header>
         <div class="title">
-            <a href="">NET BANKING</a>
+            <a href="./home.html">NET BLIZ</a>
         </div>
 
         <div class="full_link">
@@ -27,11 +27,9 @@
                 <a class="current_page" href="#">Home</a>
             </div>
 
-
             <div>
                 <a href="./fund_transfer.html">Transfer</a>
             </div>
-
 
             <div>
                 <a href="./balance_enquire.html">Balance</a>
@@ -41,15 +39,14 @@
                 <a href="./history.html">History</a>
             </div>
 
-
-
-
+            <div>
+                <a href="./pic_chart.html">Chart</a>
+            </div>
 
             <div class="logout">
                 <a href="../index.html">Log Out</a>
             </div>
         </div>
-
 
     </header>
 
@@ -59,7 +56,7 @@
 
             <div class="welcome_sms">
                 <span>Welcome</span>
-                <span id="fname"></span>
+                <span class="fname"></span>
             </div>
 
             <div class="search">
@@ -73,12 +70,147 @@
                 <div class="profile">
                     <img src="../assets/img/icons8-user-100.png" alt="account">
                     <div class="detail">
-                        <span id="fname"></span>
+                        <span class="fname"></span>
                         <span>customer</span>
                     </div>
 
                 </div>
             </a>
+
+        </div>
+
+        <div class="start_build back" id="start_build">
+
+            <div class="open_account">
+
+                <span class="heading">Why do banks enforce the minimum balance account requirements?</span>
+
+                <div class="box_content">
+
+                    <div class="content_text">
+                        <p>
+                            Banks also use the cash deposited by account holders for different purposes,by urging
+                            account holders to maintain a minimum balance in their accounts.
+                        </p>
+
+                        <p>The bank ensures that a substantial volume of cash is always available at the bank for
+                            deployment in various investment avenues.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <img src="../assets/img/current-acc-PhotoRoom.png-PhotoRoom.png" alt="2nd image">
+
+        </div>
+
+        <div class="calculation">
+
+            <h2>
+                <strong>How is MAB calculated?</strong>
+            </h2>
+
+            <p>Banks use a very simple formula to calculate the accountholder’s MAB:</p>
+
+            <p>MAB = (The total of end-of-the-day closing balances) / (number of days in the month)</p>
+
+            <p>Hence, the monthly average balance will be calculated using two figures:</p>
+            <p>
+            <ol>
+                <li>Calculating the total sum of closing balances in the month</li>
+                <li>Number of days in the month</li>
+            </ol>
+            </p>
+
+            <p>The average monthly balance is then calculated by dividing the total closing balances by the number of
+                days in a month.</p>
+
+            <p>Let’s look at an example to understand this.</p>
+
+            <p> Alagar opened a current account in a bank. The bank required him to maintain a monthly average balance
+                of
+                Rs 10,000.</p>
+
+            <p>Let’s assume Alagar’s account had Rs 25,000 on June 1.</p>
+
+            <p>On June 5, he withdrew Rs 10,000, and on June 10, another Rs 10,000 was debited from his account to meet
+                some business expenses.</p>
+
+            <p>On June 15, Rs 5,000 was credited to his account. On June 29, another Rs 5,000 was credited to Alagar’s
+                account.</p>
+
+            <p>Therefore, Alagar’s monthly average balance will be:</p>
+
+            <table>
+                <caption>If you don't understand this table,please read again above the example</caption>
+                <tr>
+                    <th>
+                        <b>Days</b>
+                    </th>
+                    <th>
+                        <b>Total days (A)</b>
+                    </th>
+                    <th>
+                        <b>Amount in the account at end of the day (B)</b>
+                    </th>
+                    <th>
+                        <b>A x B</b>
+                    </th>
+                </tr>
+                <tr>
+                    <td> First 4 days </td>
+                    <td> 4</td>
+                    <td> Rs 25,000</td>
+                    <td>1,00,000</td>
+                </tr>
+                <tr>
+                    <td> 5th to 9th day</td>
+                    <td>5</td>
+                    <td>Rs 15,000</td>
+                    <td>75,000</td>
+
+                </tr>
+                <tr>
+                    <td> 10th to 14th day </td>
+                    <td>5</td>
+                    <td> Rs 5,000</td>
+                    <td>25,000</td>
+
+                </tr>
+                <tr>
+                    <td> 15th to 28th day </td>
+                    <td>14</td>
+                    <td>Rs 10,000</td>
+                    <td>1,40,000</td>
+
+                </tr>
+                <tr>
+                    <td> 29th to 30th day </td>
+                    <td>2</td>
+                    <td>Rs 20,000</td>
+                    <td> 40,000</td>
+
+                </tr>
+            </table>
+
+            <p> Using the formula, monthly average balance comes out to be:</p>
+
+            <p>= (1,00,000 + 75000 + 25000 + 1,40,000 + 40,000) / 30</p>
+
+            <p>= 3,80,000 / 30</p>
+
+            <p>= Rs 12,666.66</p>
+
+            <p>Hence, Alagar’s monthly average balance is much above the mandated Rs 10,000 and he will not be charged
+                any penalty.</p>
+
+            <p>Let’s look at your own account given below.</p>
+
+        </div>
+
+        <div class="button_div">
+            <button id="button_link">Link bank account</button>
 
         </div>
 
@@ -91,29 +223,55 @@
 
                 <h2>Link a bank account</h2>
                 <p>You'll need to link and confirm to our bank account before you can receive Payment with Banking.
-                    We'll automatically withdraw the funds in your netbanking account to the bank account </p>
+                    We'll automatically withdraw the funds in your NET BLIZ account to the bank account </p>
+
                 <form>
                     <label for="account"> Account number </label>
-                    <input class="form-control" type="text" id="account" name="account" required>
+                    <input class="form-control" type="text" id="account" name="account" required pattern="[0-9]{16,17}"
+                        onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+                        title="Remember !! Your bank account number should be 16 numbers">
 
                     <label for="ifsc"> IFSC code </label>
-                    <input class="form-control" type="text" id="ifsc" name="ifsc" required>
+                    <span id="alert_icon"> </span>
+                    <input class="form-control" type="text" id="ifsc" name="ifsc" required pattern="[0-9A-Za-z]{5,15}"
+                        title="Are you sure !! minium Your ifsc number should be 12 numbers">
 
                     <label for="phone">Phone number</label>
-                    <input class="form-control" type="number" id="phone" name="phone" required>
+                    <input class="form-control" type="tel" id="phone" name="phone" required pattern="[0-9]{10}"
+                        title=" Enter your correct phone number that you logged in">
 
-                    <label for="pincode"> Pin code</label>
-                    <input class="form-control" type="text" id="pincode" name="pincode" required>
+                    <h6>Choose minium balance</h6>
+                    <div class="input-group mb-3 drop_down">
 
+                        <select class="form-select" id="inputGroupSelect03"
+                            aria-label="Example select with button addon" required>
 
+                            <option value="">please select correctly amount *</option>
+                            <!-- <option value="0">₹ 0-/</option> -->
+                            <option value="500">₹ 500-/</option>
+                            <option value="1000">₹ 1,000-/</option>
+                            <option value="2500">₹ 2,500-/</option>
+                            <option value="5000">₹ 5,000-/</option>
+                            <option value="10000">₹ 10,000-/</option>
+                            <option value="25000">₹ 25,000-/</option>
+
+                        </select>
+                    </div>
 
                     <h5>Account name</h5>
 
-                    <input type="radio" name="detail" id="personal"> <label for="personal">Personal Account</label> <br>
-                    <input type="radio" name="detail" id="business"> <label for="business">Business Account</label> <br>
-                    <input type="radio" name="detail" id="savings"> <label for="savings">Savings Account</label> <br>
+                    <input type="radio" name="detail" id="personal" required>
+                    <label for="personal">Savings
+                        Account</label>
+                    <br>
+                    <input type="radio" name="detail" id="business">
+                    <label for="business">Current Account </label>
+                    <br>
+                    <!-- <input type="radio" name="detail" id="zero">
+                    <label for="zero">Zero Balance Account </label>
+                    <br> -->
 
-                    <p>Remember to double-check your account number . Banks may not flag wrrors untol you transfer funds
+                    <p>Remember to double-check your account number . Banks may not flag errors until you transfer funds
                     </p>
 
                     <button class="btn btn-primary">Link Your Bank</button>
@@ -123,16 +281,15 @@
 
         </div>
 
-        <div class="bank_account remove_hide" id="bank_account">
+        <div class="bank_account remove_hide " id="bank_account">
 
-            <!-- <div class="bank">
+            <!-- <div class="bank test">
                 <img src="../assets/img/account.png" alt="account">
 
                 <div>
                     <label for="account_give">Account Number </label>
                     <input class="form-control" type="text" id="account_give" name="account_give" required>
                 </div>
-
 
                 <div>
                     <label for="ifsc_give">IFSC Code</label> <br>
@@ -149,7 +306,7 @@
                     <input class="form-control" type="text" id="pincode_give" name="pincode_give" required>
                 </div>
 
-            </div> -->
+            </div>  -->
 
         </div>
 
@@ -159,305 +316,575 @@
 
         <div class="back_foot">
 
-            <div class="direct">
-
-                <a href="./pages/signup_page.html">Register</a>
-                <a href="./pages/login_page.html">Login</a>
-            </div>
-
-            <h3>@ 2023 Net Banking</h3>
-
-
+            <h3>@ 2023 NET BLIZ</h3>
 
             <div class="icon_social">
 
-                <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in">
-                <img src="../assets/img/icons8-facebook-100.png" alt="facebook">
-                <img src="../assets/img/icons8-instagram-100.png" alt="insta">
-                <img src="../assets/img/icons8-twitter-100.png" alt="teitter">
+                <a href="https://www.linkedin.com/">
+                    <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in">
+                </a>
+                <a href="https://www.facebook.com/">
+                    <img src="../assets/img/icons8-facebook-100.png" alt="facebook">
+                </a>
+                <a href="https://mail.google.com/">
+                    <img src="../assets/img/icons8-google-100-removebg-preview.png" alt="google">
+                </a>
+                <a href="https://twitter.com/">
+                    <img src="../assets/img/icons8-twitter-100.png" alt="teitter">
+                </a>
 
             </div>
-
 
         </div>
 
     </footer>
+    <!-- 
+    <script>        const show = JSON.parse(localStorage.getItem('array'));
 
-    <script>
+        const account_detail = JSON.parse(localStorage.getItem("account_details")) ?? [];
 
-
-        // Header name 
-
-        let show = JSON.parse(localStorage.getItem('array'));
-
-        let account_name = localStorage.getItem("first_name");
+        const balance_enquire = JSON.parse(localStorage.getItem("bal_enquire")) ?? [];
 
         let email_compare = localStorage.getItem("email");
 
-        let btn_submit = document.querySelector("form");
-        btn_submit.addEventListener("submit", () => {
+        let accounter_name;
 
+        const btn_submit = document.querySelector("form");
+
+        btn_submit.addEventListener("submit", (e) => {
+            e.preventDefault()
             link_bank();
-        })
-
-
-        let check;
+        });
 
         show.forEach(element => { //[{0},{1},......]
 
-            if (element["email"] === email_compare) { //e=arr[0]
+            if (element.email === email_compare) { //e=arr[0]
 
-                document.querySelectorAll("#fname")[0].innerText = element["fname"] + ","//[0,1]
-                document.querySelectorAll("#fname")[1].innerText = element["fname"]
+                document.querySelectorAll("#fname")[0].innerText = `${element.fname},`//[0,1]
+                document.querySelectorAll("#fname")[1].innerText = element.fname
+
+                accounter_name = element.fname;
 
                 localStorage.setItem("array", JSON.stringify(show));
             }
         })
 
+        let account;
+        let ifsc;
+        let phone;
+        let minium;
+        let balance;
+        let personal;
+        let business;
+        let account_type;
 
+        let branch;
+        let bank_name;
 
+        let account_store;
+        let table_obj;
 
         function link_bank() {
 
-            let account = document.getElementById("account").value.trim();
-            let ifsc = document.getElementById("ifsc").value.trim();
-            let phone = document.getElementById("phone").value.trim()
-            let pincode = document.getElementById("pincode").value.trim()
-            let email_compare = localStorage.getItem("email");
+            account = document.getElementById("account").value.trim();
+            ifsc = document.getElementById("ifsc").value.trim();
+            phone = document.getElementById("phone").value.trim();
+            minium = document.getElementById("inputGroupSelect03").value.trim()
+            email_compare = localStorage.getItem("email");
+            balance = Math.floor(Math.random() * 10000);
+            personal = document.getElementById("personal");
+            business = document.getElementById("business");
+            account_type;
 
+            if (personal.checked) {
+                account_type = "Savings Account"
 
-            if (account != "" && ifsc != "" && phone != "" && pincode != "") {
+            }
+            else if (business.checked) {
+                account_type = "Current Account"
+            }
 
-                let account_store = {
-                    "account": account,
-                    "ifsc": ifsc,
-                    "phone": phone,
-                    "pincode": pincode,
-                    "email_compare": email_compare
-                }
+            let succuess;
 
-                let add_account = JSON.parse(localStorage.getItem("account_details")) ?? []; //account = []
+            show.find(element => {
 
+                if (element.email === email_compare) {
 
-                let res = 0;
+                    if (element.phone === phone) {
 
-                for (let i = 0; i < add_account.length; i++) {
-
-                    if (add_account[i]["ifsc"] === ifsc && add_account[i]["account"] === account) {
-                        res = 1;
-                        break;
+                        succuess = 1;
                     }
                 }
 
-                if (res == 1) {
-                    alert(" Invalid IFSC")
+            });
 
+            if (succuess === 1) {
+
+                api();
+            }
+            else {
+
+                alert("Mobile number is not match with your regsistered data")
+            }
+
+        }
+        function api() {
+
+            fetch(`https://api.sandbox.co.in/bank/${ifsc}`)
+
+                .then((results) => results.json())
+
+                .then((data) => {
+
+                    if (data.BRANCH === undefined && data.BANK === undefined) {
+
+                        alert("Enter the correct IFSC code or recheck ")
+
+                    }
+                    else {
+                        console.log(data)
+                        branch = data.BRANCH
+                        bank_name = data.BANK
+                        add_local();
+
+                    }
+
+                });
+
+        }
+
+        function add_local() {
+
+            account_store = {
+                account,
+                ifsc,
+                phone,
+                email_compare,
+                balance,
+                "ac_type": account_type,
+                branch,
+                accounter_name,
+                bank_name,
+
+            }
+
+            table_obj = {
+                "ac_no": account,
+                "ac_type": account_type,
+                "ac_balance": balance,
+                email_compare,
+                accounter_name,
+                minium,
+                "ac_ifsc": ifsc,
+
+            }
+
+            let res;
+
+            for (let i = 0; i < account_detail.length; i++) {
+
+                if (account_detail[i].account === account) {
+                    res = 1;
+                    break;
                 }
+            }
 
-                else {
-
-                    add_account.push(account_store);//[{name, email, pass}]
-
-                    localStorage.setItem("account_details", JSON.stringify(add_account)); // account_details  :  [{name, email, pass}]
-
-
-                    alert("Thanks for add account");
-
-                    window.location.href = "#bank_account"
-
-                }
-
+            if (res === 1) {
+                alert(" This account number is already exited")
             }
 
             else {
-                alert("Sorry can't get a value")
-            }
-        }
 
+                account_detail.push(account_store);
 
-        // function link_account() {
+                balance_enquire.push(table_obj);
 
-        let account_detail = JSON.parse(localStorage.getItem("account_details"))
+                localStorage.setItem("account_details", JSON.stringify(account_detail));
 
+                localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
 
-        for (let i = 0; i < account_detail.length; i++) {
+                open_primary()
 
-            let account = document.getElementById("account").value.trim();
-            let ifsc = document.getElementById("ifsc").value.trim();
-            let phone = document.getElementById("phone").value.trim()
-            let pincode = document.getElementById("pincode").value.trim()
+                alert("Thanks for add account");
 
-            let bank_div = document.querySelector("#bank_account");
+                smoothScroll({ yPos: 'end', duration: 1000 });
 
-            let bank = document.createElement("div");
-            bank.setAttribute("class", "bank");
-            bank_div.append(bank);
-
-            let image = document.createElement("img");
-            image.setAttribute("src", "../assets/img/account.png")
-            image.setAttribute("alt", "hello");
-            bank.append(image);
-
-
-
-
-
-            let data = [
-
-                {
-                    "label": "Account no",
-                    "for": "account_give",
-
-
-                    "type": "text",
-                    "id": "account_give",
-                    "class": "account_give form-control input_size",
-                    "name": "account_give",
-                    "place_holder": "Account no",
-                    "disable": "disable",
-
-
-                },
-
-                {
-                    "label": "IFSC Code",
-                    "for": "ifsc_give",
-
-                    "type": "text",
-                    "id": "ifsc_give",
-                    "class": "ifsc_give form-control input_size",
-                    "name": "ifsc_give",
-                    "place_holder": "IFSC Code",
-                    "disable": "disable",
-
-
-                },
-
-                // {
-                //     "label": "Phone no",
-                //     "for": "phone_give",
-
-                //     "type": "number",
-                //     "id": "phone_give",
-                //     "name": "phone_give",
-                //     "place_holder": "phone_give",
-                //     "disable": "disable",
-
-
-                // },
-
-
-
-                // {
-                //     "label": "Pin code",
-                //     "for": "pincode_give",
-
-                //     "type": "number",
-                //     "id": "pincode_give",
-                //     "name": "pincode_give",
-                //     "place_holder": "Pin code",
-                //     "disable": "disable",
-
-
-
-                // },
-
-
-
-            ]
-
-
-
-            for (let i = 0; i < 2; i++) {
-
-
-                let contant = document.createElement("div");
-                contant.setAttribute("class", "form-floating mb-3");
-                bank.append(contant);
-
-                let input = document.createElement("input");
-                input.setAttribute("type", data[i]["type"]);
-                // input.setAttribute("class", "form-control input_size ")
-                input.setAttribute("id", data[i]["id"]);
-                input.setAttribute("class", data[i]["class"]);
-                input.setAttribute("name", data[i]["name"]);
-                input.setAttribute("placeholder", data[i]["place_holder"]);
-                input.setAttribute("disable", data[i]["disable"]);
-                contant.append(input);
-
-
-                let label = document.createElement("label");
-                label.innerText = data[i]["label"];
-                label.setAttribute("for", data[i]["for"]);
-                contant.append(label);
-
+                location.reload();
 
             }
 
-            let btn = document.createElement("a");
-            btn.setAttribute("href", "#");
-            btn.setAttribute("id","remove_bk")
-            btn.innerText = "Remove bank account"
-            bank.append(btn);
+        }
 
+        // In this function is used to when user is link new bank account that account number is set the primary account
 
+        function open_primary() {
+
+            for (let op = 0; op < show.length; op++) {
+
+                if (show[op].email === email_compare) {
+
+                    // let start = show[op].primary;
+
+                    show[op].primary = account;
+
+                    localStorage.setItem("array", JSON.stringify(show));
+
+                    open_average()
+                }
+
+            }
 
         }
 
+        function open_average() {
 
-let btn=document.getElementById("remove_bk")
+            console.log("trew")
 
-        function show1() {
+            for (let j = 0; j < balance_enquire.length; j++) {
 
-            let account_details = JSON.parse(localStorage.getItem("account_details"))
+                console.log(Number(account))
 
-            let email_compare = localStorage.getItem("email");
+                if (Number(balance_enquire[j].ac_no) === Number(account)) {
 
-            let k = 0
-            account_details.forEach(e => {
+                    // console.log(account);
 
-                if (email_compare == e["email_compare"]) {
+                    balance = balance_enquire[j].ac_balance;
 
-                    document.getElementsByClassName("account_give")[k].value = e["account"]
-                    document.getElementsByClassName("ifsc_give")[k].value = e["ifsc"]
+                    const month = balance_enquire[j].monthly_balance ?? [];
 
+                    const rotine = {
 
-                    // console.log(k);
+                        "day_balance": balance,
+                    }
 
-                    k++
+                    month.push(rotine);
+
+                    balance_enquire[j].monthly_balance = month
+
+                    localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
+
+                    let average_value = 0;
+
+                    for (let r = 0; r < balance_enquire[j].monthly_balance.length; r++) {
+
+                        console.log(average_value)
+
+                        average_value += balance_enquire[j].monthly_balance[r].day_balance
+
+                        console.log(average_value)
+
+                    }
+
+                    const average_balance = (average_value / balance_enquire[j].monthly_balance.length).toFixed(2);
+
+                    balance_enquire[j].average_value = average_balance
+
+                }
+
+            }
+
+            localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
+
+        }
+
+        // function average() {
+
+        //     for (let h = 0; h < balance_enquire.length; h++) {
+
+        //         let average_value = 0;
+
+        //         if (balance_enquire[h]["monthly_balance"]) {
+
+        //             for (let r = 0; r < balance_enquire[h]["monthly_balance"].length; r++) {
+
+        //                 average_value += balance_enquire[h]["monthly_balance"][r]["day_balance"]
+        //             }
+
+        //             let average_balance;
+
+        //             average_balance = (average_value / balance_enquire[h]["monthly_balance"].length).toFixed(2);
+
+        //             balance_enquire[h]["average_value"] = average_balance
+        //         }
+
+        //     }
+
+        //     localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
+
+        // }
+
+        let k = 0;
+
+        let selectvalue;
+
+        account_detail.forEach(e => {
+
+            if (e.email_compare === email_compare) {
+
+                document.getElementById("bank_account").style.display = "flex";
+
+                const bank_div = document.querySelector("#bank_account");
+
+                const bank = document.createElement("div");
+                bank.setAttribute("class", "bank");
+                bank_div.append(bank);
+
+                const image = document.createElement("img");
+                image.setAttribute("src", "../assets/img/account.png")
+                image.setAttribute("alt", "hello");
+                image.setAttribute("class", "bank_detail_image");
+                bank.append(image);
+
+                const data = [
+
+                    {
+                        "label": "Account no",
+                        "for": "account_give",
+
+                        "type": "text",
+                        "id": "account_give",
+                        "class": "account_give form-control input_size",
+                        "name": "account_give",
+                        "place_holder": "Account no",
+                        "disable": "disable",
+
+                    },
+
+                    {
+                        "label": "IFSC Code",
+                        "for": "ifsc_give",
+
+                        "type": "text",
+                        "id": "ifsc_give",
+                        "class": "ifsc_give form-control input_size",
+                        "name": "ifsc_give",
+                        "place_holder": "IFSC Code",
+                        "disable": "disable",
+
+                    },
+
+                    {
+                        "label": "Branch Name",
+                        "for": "branch",
+
+                        "type": "text",
+                        "id": "branch",
+                        "class": "branch form-control input_size",
+                        "name": "branch",
+                        "place_holder": "Branch Name",
+                        "disable": "disable"
+
+                    },
+
+                ]
+
+                for (let i = 0; i < data.length; i++) {
+
+                    const contant = document.createElement("div");
+                    contant.setAttribute("class", "form-floating mb-3");
+                    bank.append(contant);
+
+                    const input = document.createElement("input");
+                    input.setAttribute("type", data[i].type);
+                    input.setAttribute("id", data[i].id);
+                    input.setAttribute("class", data[i].class);
+                    input.setAttribute("name", data[i].name);
+                    input.setAttribute("placeholder", data[i].place_holder);
+                    input.setAttribute("disable", data[i].disable);
+                    contant.append(input);
+
+                    const label = document.createElement("label");
+                    label.innerText = data[i].label;
+                    label.setAttribute("for", data[i].for);
+                    contant.append(label);
+
+                }
+
+                const set_primary = document.createElement("div");
+                set_primary.setAttribute("class", "set_primary")
+                bank.append(set_primary);
+
+                const primary = document.createElement("input");
+                primary.setAttribute("type", "radio");
+                primary.setAttribute("id", e.account);
+                primary.setAttribute("class", "input-radio");
+                primary.setAttribute("value", e.account);
+                primary.setAttribute("name", "primary");
+                set_primary.append(primary);
+
+                const primary_label = document.createElement("label");
+                primary_label.setAttribute("for", e.account);
+                primary_label.innerHTML = ("Set primary account");
+                set_primary.append(primary_label);
+
+                const btn = document.createElement("button");
+                btn.setAttribute("id", "remove_bk");
+                btn.setAttribute("class", "btn btn-primary remove_bk");
+                btn.innerText = "Remove bank account !!"
+                bank.append(btn);
+
+                const symbal = document.createElement("div");
+                symbal.setAttribute("class", "tick_append");
+                bank.append(symbal);
+
+                document.getElementsByClassName("account_give")[k].value = e.account;
+                document.getElementsByClassName("ifsc_give")[k].value = e.ifsc;
+                document.getElementsByClassName("branch")[k].value = e.branch;
+
+                k++
+
+                primary.addEventListener('click', () => {
+
+                    selectvalue = primary.value;
+
+                    console.log(selectvalue)
+
+                    for (let ko = 0; ko < show.length; ko++) {
+
+                        if (show[ko].email === email_compare) {
+
+                            show[ko].primary = selectvalue;
+
+                            localStorage.setItem("array", JSON.stringify(show));
+
+                            window.location.href = "./balance_enquire.html"
+                        }
+
+                    }
+
+                });
+
+            }
+
+        });
+
+        // Bank account detail div append the tick symbal and the information message function   ****
+
+        const account_numbers = document.querySelectorAll(".account_give")
+
+        show.forEach(e => {
+
+            account_numbers.forEach((el, ind) => {
+
+                if (Number(el.value) === Number(e.primary) && e.email === email_compare) {
+
+                    const primary = document.querySelectorAll(".tick_append");
+
+                    const unique_div = document.createElement("div");
+                    unique_div.setAttribute("class", "unique_div")
+
+                    const primary_tick_image = document.createElement("img");
+                    primary_tick_image.setAttribute("src", "../assets/img/tick_balance.png")
+                    primary_tick_image.setAttribute("alt", "tick");
+                    primary_tick_image.setAttribute("id", "primary_tick")
+                    unique_div.append(primary_tick_image);
+
+                    const news = document.createElement("span");
+                    news.setAttribute("id", "default");
+                    news.innerText = "Default bank account";
+                    unique_div.append(news);
+
+                    primary[ind].append(unique_div);
+
+                }
+            })
+
+        });
+
+        // In this function used to remove bank account what account is linked in my website ( remove button )
+
+        const btn1 = document.querySelectorAll(".remove_bk");
+
+        let account_num;
+
+        for (let ic = 0; ic < btn1.length; ic++) {
+            btn1[ic].addEventListener("click", () => {
+
+                account_num = document.getElementsByClassName("account_give")[ic].value;
+
+                for (let a = 0; a < account_detail.length; a++) {
+
+                    if (Number(account_detail[a].account) === Number(account_num) && email_compare === account_detail[a].email_compare) {
+
+                        account_detail.splice(a, 1);
+
+                        localStorage.setItem("account_details", JSON.stringify(account_detail));
+
+                        primary_check();
+                        clear_balance();
+
+                        location.reload();
+                    }
                 }
 
             })
         }
 
-        show1();
+        function primary_check() {
 
+            console.log(account_num);
 
-        btn.addEventListener("click", () => {
+            for (let kd = 0; kd < show.length; kd++) {
 
-            let account_details = JSON.parse(localStorage.getItem("account_details"))
+                if (Number(show[kd].primary) === Number(account_num)) {
 
+                    show[kd].primary = "";
 
-            for (let i = 0; i < account_details.length; i++) {
-                if (document.getElementById("account_give").value == account_details[i]["account"] && document.getElementById("ifsc_give").value == account_details[i]["ifsc"]) {
-                    account_details.splice(i, 1)
-                    localStorage.setItem("account_details", JSON.stringify(account_details));
-                    // window.location.href = "../index.html";
+                    localStorage.setItem("array", JSON.stringify(show));
+
+                    location.reload();
+
                 }
+
             }
-        })
+        }
 
+        function clear_balance() {
 
-        let ifsc_search = document.getElementById("ifsc").value
-       
+            for (let b = 0; b < balance_enquire.length; b++) {
 
+                if (Number(balance_enquire[b].ac_no) === Number(account_num) && email_compare === balance_enquire[b].email_compare) {
 
+                    balance_enquire.splice(b, 1);
 
-    </script>
+                    localStorage.setItem("bal_enquire", JSON.stringify(balance_enquire));
 
+                }
+
+            }
+
+        }
+
+    </script> -->
+
+    <script type="text/javascript" src="../assets/js/home.js"></script>
+
+    <!-- <script type="text/javascript" src="../assets/js/common_function.js"></script> -->
+    <!-- <script src="../assets/js/admin.js"></script> -->
+
+    <!-- <script type="text/javascript" src="../assets/js/home.js"></script> -->
+
+    <!-- <script type="module" src="../assets/js/home.js"> </script> -->
+
+    <!-- <img src="../assets/img/tick_balance.png" alt="tick"> -->
+
+    <!-- function random() {
+    alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
+    "V", "W", "X", "Y", "Z"]
+    let random = Number(Math.floor(Math.random() * 26))
+    alpha_random = alpha[random]
+    console.log(random);
+    alpha.splice(random, 1)
+    } -->
+
+    <!-- // let alpha
+    // let alpha_random
+    // random()
+
+    // console.log(alpha_random); -->
 
 </body>
 
-
+<!-- <img src="../assets/img/canara.png" alt=""> -->
 
 </html>

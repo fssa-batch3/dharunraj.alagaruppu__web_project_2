@@ -9,90 +9,71 @@
     <title>Log In page</title>
     <link rel="stylesheet" href="../assets/css/log_in.css">
 
-
 </head>
 
 <body>
 
     <div class="main">
-        <a href=></a>
+
     </div>
-    <script>
+    <script>        // right main divider
 
-        // right main divider
-
-        let content_of_log_in = document.createElement("div");
+        const content_of_log_in = document.createElement("div");
         content_of_log_in.setAttribute("class", "sign_in");
         document.querySelector(".main").append(content_of_log_in);
 
         //left side start...
 
-        let welcome = document.createElement("div");
+        const welcome = document.createElement("div");
         welcome.setAttribute("class", "welcome");
         document.querySelector(".main").append(welcome);
 
-        let image = document.createElement("img");
+        const image = document.createElement("img");
         image.setAttribute("src", "../assets/img/log_in.gif");
         image.setAttribute("alt", "Net Bliz");
         document.querySelector(".welcome").append(image);
 
-        let heading = document.createElement("h1");
+        const heading = document.createElement("h1");
         heading.innerText = "Let us help you to run your bank account on Net Bliz";
         welcome.append(heading);
 
-        let pickup = document.createElement("h3");
-        pickup.innerText = "You are 30 seconds away to experiencing your new Banking World ";
+        const pickup = document.createElement("h3");
+        pickup.innerText = "You are 30 seconds away to experiencing your new banking World ";
         welcome.append(pickup);
 
-        // let account= document.createElement("div");
-        // account.setAttribute("class","full_account");
-        // welcome.append(account);
-
-        let a = document.createElement("a");
+        const a = document.createElement("a");
         a.setAttribute("href", "./signup_page.html");
         welcome.append(a)
 
-
-        let button = document.createElement("button");
+        const button = document.createElement("button");
         button.setAttribute("class", "welcome_button");
         // button.setAttribute("")
         button.innerText = ("Have an account ?");
         a.append(button);
 
-
-
         // left side was end.....
-
 
         //Right side main divider
 
-
-        let start = document.createElement("div");
+        const start = document.createElement("div");
         start.setAttribute("class", "start");
         content_of_log_in.append(start);
 
-
-        let heading1 = document.createElement("h1");
+        const heading1 = document.createElement("h1");
         heading1.setAttribute("class", "tag_h1");
         heading1.innerText = ("Get Statred");
         start.append(heading1);
 
-        let heading2 = document.createElement("h2");
+        const heading2 = document.createElement("h2");
         heading2.setAttribute("class", "tag_h3");
         heading2.innerText = ("Login your account now");
         start.append(heading2);
 
-
-
-        let right_container = document.createElement("div");
+        const right_container = document.createElement("div");
         right_container.setAttribute("class", "right_container");
         content_of_log_in.append(right_container);
 
-
-
-        let form = document.createElement("form");
-        // form.setAttribute("method", "post");
-        // form.setAttribute("id", "singupform")
+        const form = document.createElement("form");
 
         right_container.append(form);
 
@@ -101,16 +82,19 @@
             {
 
                 "for": "fullname",
-                "text": "Full name",
+                "text": "First name",
 
                 "type": "text",
                 "name": "fullname",
                 "id": "fullname",
-                "placeholder": "",
-                "required": "required"
+                "placeholder": "Enter your name",
+                // "keyup": "this.value=this.value.replace(/[^A-z]/g,'');",
+
+                "tittle": "Please enter correct 'First name' when you signup in this website or a_z && A_Z only accepted",
+                "aria": "First name",
+                "pattern": "^[a-zA-Z ]{3,50}$",
 
             },
-
 
             {
 
@@ -120,11 +104,12 @@
                 "type": "email",
                 "name": "email",
                 "id": "email",
-                "placeholder": "",
-                "required": "required",
+                "placeholder": "Enter your email.id",
+                "tittle": "You must put the email what you signup in this website",
+                "aria": "Email id",
+                "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+[a-zA-Z]{2,}$",
 
             },
-
 
             {
 
@@ -134,154 +119,105 @@
                 "type": "password",
                 "name": "password",
                 "id": "password",
-                "placeholder": "",
-                "required": "required",
+                "placeholder": "Enter your correct password",
+                "tittle": "You must put the password when you signup in this website",
+                "aria": "Password",
+                "pattern": "(?=.*)(?=.*[a-z])(?=.*[A-Z]).{8,20}",
 
             },
         ]
 
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < obj.length; i++) {
 
-
-            let label_text = document.createElement("label");
-            label_text.setAttribute("for", obj[i]["for"]);
-            label_text.innerText = obj[i]["text"] + ":";
+            const label_text = document.createElement("label");
+            label_text.setAttribute("for", obj[i].for);
+            label_text.innerText = `${obj[i].text}:`;
             form.append(label_text);
 
-            let input_box = document.createElement("input");
-            input_box.setAttribute("type", obj[i]["type"]);
-            input_box.setAttribute("name", obj[i]["name"]);
-            input_box.setAttribute("id", obj[i]["id"]);
-            input_box.setAttribute("placeholder", obj[i]["placeholder"]);
-            input_box.setAttribute("required", "");
+            const input_box = document.createElement("input");
+            input_box.setAttribute("type", obj[i].type);
+            input_box.setAttribute("name", obj[i].name);
+            input_box.setAttribute("id", obj[i].id);
+            input_box.setAttribute("placeholder", obj[i].placeholder);
+            input_box.setAttribute("pattern", obj[i].pattern);
+            input_box.setAttribute("title", obj[i].tittle);
+            input_box.setAttribute("aria", obj[i].aria);
+            input_box.setAttribute("required","");
+            if(obj[i].keyup){
+
+            input_box.setAttribute("onkeyup",obj[i].keyup);
+
+            }
+
             form.append(input_box);
 
         }
 
-        let next = document.createElement("button");
-        next.setAttribute("type", "submit");
+        const next = document.createElement("button");
         next.setAttribute("class", "bottom_button");
         next.setAttribute("id", "button_1")
-        // next.setAttribute("onclick", "login()")
         next.innerText = ("Login");
         form.append(next);
 
-        let gif = document.createElement("img");
+        const gif = document.createElement("img");
         gif.setAttribute("src", "../assets/img/Online-Bank-Account-Zil.gif");
         gif.setAttribute("alt", "give and back");
         right_container.append(gif);
 
-        let bottom_button = document.createElement("div");
+        const bottom_button = document.createElement("div");
         bottom_button.setAttribute("class", "btm_btn");
         content_of_log_in.append(bottom_button);
 
-        //ridht side main divider end
+        // Functions Starts***
 
+        // form.addEventListener("submit", (e) => {
 
-        // Function is started............
+        //     e.preventDefault()
+        //     login()
 
-        // function login() 
+        // });
 
-
-        //     let fullname = document.getElementById("fullname").value
-        //     let email = document.getElementById("email").value
-        //     let password = document.getElementById("password").value
-
+        // function login() {
 
         //     const attach = JSON.parse(localStorage.getItem("array"))
 
-        //     let check;
+        //     const fullname = document.getElementById("fullname").value.trim()
+        //     const email = document.getElementById("email").value.trim()
+        //     const password = document.getElementById("password").value.trim()
 
+        //     console.log(password);
+        //     let check;
         //     attach.forEach(element => {
 
-        //         if (element["fname"] == fullname && element["email"] == email && element["new_pass"] == password) {
+        //         if (element.fname === fullname && element.email === email && element.confirm === password) {
 
-        //             return check = 1
-        //             alert("logged");
-        //         }
-
-        //         else {
-        //             console.log(element);
-        //             console.log(fullname, email, password);
-
-        //             return check = 0
-        //             alert("invalid");
+        //             console.log(element.confirm_pass);
+        //             check = 1;
         //         }
 
         //     });
 
-        //     if (check == 1) {
-        //         let first_name;
+        //     if (check === 1) {
 
-        //         first_name = fullname;
-        //         console.log(first_name);
+        //         localStorage.setItem("email", email); //login user email details
 
+        //         alert(" Successfully login");
 
-        //         localStorage.setItem("first_name", first_name);
-
-        //         window.location.href = "account_detail.html"
+        //         window.location.href = "home.html"
 
         //     }
 
+        //     else {
+
+        //         alert("Some thing went increate .Please recheck your details !!");
+        //     }
 
         // }
+            </script>
 
+<script src="../assets/js/login.js"></script>
 
-        let button_click = document.getElementById("button_1")
-        button_click.addEventListener("click",
-            function (e) {
-
-                e.preventDefault()
-
-                let fullname = document.getElementById("fullname").value.trim()
-                let email = document.getElementById("email").value.trim()
-                let password = document.getElementById("password").value.trim()
-
-
-                const attach = JSON.parse(localStorage.getItem("array"))
-
-                let check;
-                // 
-                attach.forEach(element => {
-
-                    if (element["fname"] === fullname && element["email"] === email && element["new_pass"] === password) {//a[0];a[1]
-                        // console.log(element)
-
-
-                        return check = 1; //
-
-
-                    }
-
-                });
-
-                if (check == 1) {
-
-                    let first_name = fullname;
-
-                    // let email = email;
-
-                    console.log(first_name);
-
-
-                    localStorage.setItem("first_name", first_name); //login user details
-
-                    localStorage.setItem("email", email); //login user details
-
-
-                    alert("logged");
-                    window.location.href = "home.html"
-
-                }
-                else {
-                    alert("invalid");
-                }
-
-
-            })
-    </script>
-
-
+<!-- <a href=></a> -->
 </body>
 
 </html>

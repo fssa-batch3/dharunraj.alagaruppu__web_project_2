@@ -1,0 +1,148 @@
+.full_calender {
+
+    background-color: #f5f6ff;
+
+}
+
+.no_day {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 5%;
+    color: gray;
+}
+
+.total_back {
+
+    color: #1a237e;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+    margin: 0% auto;
+    width: 100%;
+}
+
+.days {
+
+    width: 10%;
+    background-color: white;
+    height: 150px;
+    border-radius: 15px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: .7% 1.5%;
+}
+
+
+
+.full_click {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.sent {
+
+    width: 80%;
+    margin: 5% auto;
+    background-color: rgba(249, 223, 238, 255);
+    border-radius: 5px;
+    padding: 1.3%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: black;
+
+}
+
+.sent_value {
+
+    background-color: rgba(242, 136, 180, 255);
+    color: white;
+    padding: 1.5% 4%;
+    border-radius: 5px;
+
+}
+
+.recive {
+    width: 80%;
+    margin: auto;
+    background-color: rgba(232, 234, 251, 255);
+    border-radius: 5px;
+    padding: 1.3%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: black;
+}
+
+.receive_value {
+    background-color: rgba(178, 190, 246, 255);
+    color: white;
+    padding: 1.5% 4%;
+    border-radius: 5px;
+
+}
+
+.date {
+
+    font-size: 20px;
+    margin: auto 75% 20%;
+
+}
+
+.pie_chart{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5% 0%;
+}
+
+.details{
+
+    width: 60%;
+}
+
+.mininum,.current,.average{
+
+    display: flex;
+    align-items: center;
+    /* border: 1px solid black; */
+}
+
+#min,#current,#average{
+
+    margin: 0% 3%;
+
+}
+
+.mininum,.current,.average span{
+
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.pie_chart_div , .total_pie{
+
+    width: 40%;
+}
+
+.pie_chart_div canvas{
+
+    width:100%;
+    max-width:600px
+}
+
+.div_flex{
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

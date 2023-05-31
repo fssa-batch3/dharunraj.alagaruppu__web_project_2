@@ -1,59 +1,180 @@
-.content1 img {
-    width: 15%;
+* {
+    color: #1a237e;
+    letter-spacing: .2px;
+
+}
+
+.welcome {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0% auto;
+    background-color: #f5f6ff;
+    font-size: 18px;
+    padding: 1% 0%;
+    /* font-family: 'Libre Baskerville', sans-serif; */
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.welcome #fname {
+    font-size: 22px;
+}
+
+.welcome .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid black; */
+    width: 20%;
+
+}
+
+.welcome .search input {
+
+    /* border: 0px; */
+    width: 100%;
+    border: 1px solid #131854;
+    padding: 5%;
+    border-radius: 20px;
+    background-color: #f5f6ff;
+}
+
+input:focus {
+    outline: none;
+}
+
+.background {
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    font-weight: 500;
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 15px;
+    padding: 0.5%;
+    cursor: pointer;
+}
+
+.filter_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+    font-size: 19px;
+}
+
+
+.type_fund img {
+    width: 7%;
     border-radius: 50%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     margin-right: 15px;
 }
 
- body a {
+body a {
     text-decoration: none;
 }
 
-.parent,
-.parent2 {
+.send_data,
+.type_fund,
+.balance_data {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-
-#math {
+img {
     width: 25px;
     margin: 5px;
 }
 
 
-.parent .amount,
-.content1,
+.send_data .amount,
+.type_fund,
 .amount1 {
     display: flex;
     align-items: center;
+    justify-content: start;
 }
 
-/* amount size */
-.fund {
-    margin: 1%;
+.transfer_type {
+    
+    display: block;
+
 }
+/* 
+.amount h4{
+    width: 60%;
+    padding: 10px;
+    margin:10px;
+} */
 
 /* minus font color */
-.amount {
-    color: rgb(203, 20, 20);
-}
-
-/* plus amount color */
-.amount1 {
-    color: rgb(8, 54, 8);
-}
-
-
-#minus,
-#plus {
+.amount #minus {
+    color: rgb(250, 99, 99);
     font-size: 20px;
+    /* width: 10%; */
+    /* border: 1px solid black; */
 }
 
-/* inbetween dotted line */
 .history {
     border-bottom: 2px dotted black;
     width: 75%;
     margin: 0% auto;
 }
+
+main {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Libre Baskerville', sans-serif;
+    font-weight: 400;
+}
+
+#plus {
+    color: rgb(60, 188, 60);
+    font-size: 20px;
+}
+
+.select_div {
+    display: none;
+}
+
+.reciver_num,
+.send_account {
+    display: none;
+}
+
+.remark {
+
+    font-weight: 500;
+}
+
+.select_div .accounts {
+
+    /* margin: 5% auto; */
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    background-color: #f5f6ff;
+    color: rgb(94, 93, 93);
+}
+
+.select_div .accounts:focus {
+    outline: none;
+    background-color: #f5f6ff;
+   
+}
+

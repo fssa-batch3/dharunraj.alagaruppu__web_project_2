@@ -11,101 +11,62 @@
 
 <body>
     <div class="main">
-
-
     </div>
 
-    <script>
+    <script>        // left page is start
 
-        // left page is start
-
-        let welcome = document.createElement("div");
+        const welcome = document.createElement("div");
         welcome.setAttribute("class", "welcome");
         document.querySelector(".main").append(welcome);    //main 1st child is start
 
-
-        let image = document.createElement("img");
+        const image = document.createElement("img");
         image.setAttribute("src", "../assets/img/image_processing20201202-31245-1hyedqz.gif");
         image.setAttribute("alt", "Net Bliz");
         document.querySelector(".welcome").append(image);
 
-        let heading = document.createElement("h1");
-        heading.innerText = "welcome!!";
+        const heading = document.createElement("h1");
+        heading.innerText = "Welcome!!";
         welcome.append(heading);
 
-        let pickup = document.createElement("h3");
-        pickup.innerText = "You are 30 seconds away to experiencing your new Banking World ";
+        const pickup = document.createElement("h3");
+        pickup.innerText = "After fill all correct data once you click a register button it's take some time to verify your details.";
         welcome.append(pickup);
 
-        let a = document.createElement("a");
+        const a = document.createElement("a");
+        a.setAttribute("id","welcome_button");
         a.setAttribute("href", "./login_page.html");
         welcome.append(a);
 
-        let button = document.createElement("button");
+        const button = document.createElement("button");
         button.setAttribute("class", "welcome_button");
         button.innerText = "Login";
         a.append(button);
 
         // left half page is end
 
-
-
         //container for button , form , button
 
-        let content_of_singnup = document.createElement("div");
+        const content_of_singnup = document.createElement("div");
         content_of_singnup.setAttribute("class", "sing_up");
         document.querySelector(".main").append(content_of_singnup);     //main 2st child is start
-
-
-        // Nice buttons start
-
-
-        // let for_button = document.createElement("div");
-        // for_button.setAttribute("class", "for_button");
-        // content_of_singnup.append(for_button);
-
-        // let back_blue = document.createElement("div");
-        // back_blue.setAttribute("class", "back_blue");
-        // for_button.append(back_blue);
-
-        // let Personal_a = document.createElement("a");
-        // a.setAttribute("href", "#");
-        // back_blue.append(Personal_a);
-
-        // let Address_a = document.createElement("a");
-        // a.setAttribute("href", "./login_page.html");
-        // back_blue.append(Address_a);
-
-        // let input_button = document.createElement("button");
-        // input_button.setAttribute("class", "top_button");
-        // input_button.setAttribute("id", "hover");
-        // input_button.innerText = ("Personal");
-        // Personal_a.append(input_button);
-
-        // let input_button2 = document.createElement("button");
-        // input_button2.setAttribute("class", "top_button");
-        // input_button2.innerText = ("Address");
-        // Address_a.append(input_button2);
-
-
-
 
         const obj = [
 
             {
 
                 "for": "fname",
-                "text": "",
+                "text": "", //label
 
                 "type": "text",
                 "name": "fname",
                 "id": "fname",
                 "placeholder": "First Name *",
-                "required": "required",
+                // "keyup": "this.value=this.value.replace(/[^A-z]/g,'');",
 
-                "pattern": "[A-Za-z]{2,10}",
-                "tittle": "Your pattern un acceptable",
-                "aria": "First name"
+                "pattern": "^[a-zA-Z ]{3,50}$",
+                "tittle": "Your pattern minium length of 3 characters a_z or A_Z only",
+                "aria": "First name",
+                "required": "true"
 
             },
 
@@ -118,9 +79,11 @@
                 "name": "lname",
                 "id": "lname",
                 "placeholder": "Last Name *",
+                // "keyup": "this.value=this.value.replace(/[^A-z]/g,'');",
 
-                "pattern": "[a-zA-Z]{1,15}",
-                "tittle": "Your pattern un accectable",
+                "pattern": "^[a-zA-Z ]{1,50}$",
+                "tittle": "Your pattern is minium 1 to 20 character a_z or A_Z only",
+                "aria": "Last Name"
 
             },
 
@@ -133,10 +96,9 @@
                 "name": "email",
                 "id": "email",
                 "placeholder": "Email.Id *",
-                "tittle": "Your pattern un accectable",
-
-
-
+                "tittle": "Check your email format ",
+                "aria": "Email.Id ",
+                // "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+[a-zA-Z]{2,}$",
 
             },
 
@@ -145,45 +107,14 @@
                 "for": "phone",
                 "text": "",
 
-                "type": "number",
+                "type": "tel",
                 "name": "phone",
                 "id": "phone",
-                "placeholder": "Phone No *",
-
-                "pattern": "[0-9]{10,10}",
-                "tittle": "Your pattern un accectable",
-
-            },
-
-
-            {
-
-                "for": "aadhar",
-                "text": "",
-
-                "type": "number",
-                "name": "aadhar",
-                "id": "aadhar",
-                "placeholder": "Aadhar Number *",
-
-                "pattern": "[0-9]{12,12}",
-                "tittle": "Your pattern un accectable",
-
-            },
-
-            {
-
-                "for": "pan",
-                "text": "",
-
-                "type": "text",
-                "name": "pan",
-                "id": "pan",
-                "placeholder": "PAN Number *",
-
-                "pattern": "[0-9a-zA-Z]{8,11}",
-                "tittle": "Your pattern un accectable",
-
+                "placeholder": "Phone number *",
+                // "keyup": "this.value=this.value.replace(/[^0-9]/g,'');",
+                "pattern": "[0-9]{10}",
+                "tittle": "Your number should be 10 numbers",
+                "aria": "Phone No"
             },
 
             {
@@ -196,9 +127,9 @@
                 "id": "new_pass",
                 "placeholder": "Create password *",
 
-                "pattern": "[0-9a-zA-Z]{8,20}",
-                "tittle": "Your pattern un accectable",
-
+                "pattern": "(?=.*)(?=.*[a-z])(?=.*[A-Z]).{8,20}",
+                "tittle": "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters",
+                "aria": "Create password "
             },
 
             {
@@ -211,46 +142,44 @@
                 "id": "confirm",
                 "placeholder": "Confirm password *",
 
-                "pattern": "[0-9A-Za-z]{8,20}",
-                "tittle": "Your pattern un accectable",
-
+                // "pattern": "(?=.*)(?=.*[a-z])(?=.*[A-Z]).{8,20}",
+                "tittle": "Must be Confirm password and New password should be equal",
+                "aria": "Confirm password"
             }
 
         ]
 
-
         // Form is started this point
 
-        let form = document.createElement("form");
+        const page_name = document.createElement("h1");
+        page_name.innerText = ("Register here !!");
+        content_of_singnup.append(page_name);
+
+        const form = document.createElement("form");
         content_of_singnup.append(form);
 
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < obj.length; i++) {
 
-            let label_text = document.createElement("label");
-            label_text.setAttribute("for", obj[i]["for"]);
-            label_text.innerText = obj[i]["text"];
+            const label_text = document.createElement("label");
+            label_text.setAttribute("for", obj[i].for);
+            label_text.innerText = obj[i].text;
             form.append(label_text);
 
-            let input_box = document.createElement("input");
-            input_box.setAttribute("type", obj[i]["type"]);
-            input_box.setAttribute("name", obj[i]["name"]);
-            input_box.setAttribute("id", obj[i]["id"]);
-            input_box.setAttribute("placeholder", obj[i]["placeholder"]);
-            input_box.setAttribute("title", obj[i]["tittle"]);
+            const input_box = document.createElement("input");
+            input_box.setAttribute("type", obj[i].type);
+            input_box.setAttribute("name", obj[i].name);
 
-            // input_box.setAttribute("min-length", obj[i]["min"]);
-            // input_box.setAttribute("max-length", obj[i]["max"]);
-            if (i < 2) {
-                input_box.setAttribute("pattern", obj[i]["pattern"]);
+            input_box.setAttribute("id", obj[i].id);
+            input_box.setAttribute("placeholder", obj[i].placeholder);
+            input_box.setAttribute("title", obj[i].tittle);
+            input_box.setAttribute("required","")
+            if (obj[i].pattern) {
+                input_box.setAttribute("pattern", obj[i].pattern);
             }
-            else if (i == 2) {
-                console.log("none");
+            if (obj[i].keyup) {
+
+                input_box.setAttribute("onkeyup",obj[i].keyup)
             }
-            else {
-                input_box.setAttribute("pattern", obj[i]["pattern"]);
-            }
-            input_box.setAttribute("required", "");
-            // input_box.setAttribute("pattern", obj[i]["pattern"]);
 
             form.append(input_box);
 
@@ -258,213 +187,150 @@
 
         //gender radio over....
 
-        let bottom_button = document.createElement("div");
+        const bottom_button = document.createElement("div");
         bottom_button.setAttribute("class", "btm_btn");
         form.append(bottom_button);
 
-        let next = document.createElement("button");
+        const next = document.createElement("button");
         next.setAttribute("class", "bottom_button");
         next.innerText = ("Register");
-        // next.setAttribute("onclick", "signup()");
         bottom_button.append(next);
 
+        // Functions Start here*****
 
+        // const form_check = document.querySelector("form");
 
-        let form_check = document.querySelector("form");
-        form_check.addEventListener("submit", e => {
-            e.preventDefault()
-            signup()
+        // form_check.addEventListener("submit", e => {
+        //     e.preventDefault()
+        //     signup()
 
-        })
+        // });
 
-        function signup() {
+        // let first_name;
+        // let last_name;
+        // let email;
+        // let phone;
+        // let new_pass;
+        // let confirm;
 
-            let first_name = document.getElementById("fname").value.trim()
-            let last_name = document.getElementById("lname").value.trim()
-            let email = document.getElementById("email").value.trim()
-            let phone = document.getElementById("phone").value.trim()
-            let aadhar = document.getElementById("aadhar").value.trim()
-            let pan = document.getElementById("pan").value.trim()
-            let new_pass = document.getElementById("new_pass").value.trim()
-            let confirm = document.getElementById("confirm").value.trim()
+        // function signup() {
 
+        //     first_name = document.getElementById("fname").value.trim();
+        //     last_name = document.getElementById("lname").value.trim();
+        //     email = document.getElementById("email").value.trim();
+        //     phone = document.getElementById("phone").value.trim();
+        //     new_pass = document.getElementById("new_pass").value.trim();
+        //     confirm_pass = document.getElementById("confirm").value.trim();
 
-            if (first_name != "" && last_name != "" && email !== "" && new_pass != "" && confirm != "" && phone != "") {
+        //     if (first_name != "" && last_name != "" && email != "" && phone != "" && new_pass != "" && confirm_pass != "") {
 
+        //         if (new_pass != confirm_pass) {
 
-                if (new_pass != confirm) {
-                    alert("Oops !! password and confirm password doesn't match.")
-                }
+        //             alert("Oops !! password and confirm password doesn't match.");
+        //         }
 
-                else {
-                   
+        //         else {
+        //             emailcheck(email, phone);
+        //         }
 
-                    let store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
+        //     }
 
-                    let res;
-                    for (let i = 0; i < store.length; i++) {
+        //     else {
+        //         alert("Recheck your values")
+        //     }
 
-                        if (store[i]["email"] === email) {
-                            res = 1;
-                            break;
-                        }
-                    }
+        // }
 
-                    if (res == 1) {
-                        alert("email already registered")
+        // function emailcheck(email, phone) {
 
-                    }
+        //     console.log(email)
 
-                    else {
-                        let obj = {};
+        //     fetch(`https://api.apilayer.com/email_verification/${email}?apikey=AQcZ7IxCjhBK10lW9u8Lx03MH378Kaci`)
 
-                        obj["fname"] = first_name
-                        obj["lname"] = last_name
-                        obj["email"] = email
-                        obj["phone"] = phone
-                        obj["aadhar"] = aadhar
-                        obj["pan"] = pan
-                        obj["new_pass"] = new_pass
-                        obj["confirm"] = confirm
-                        obj["dob"] = ""
-                        obj["state"] = ""
-                        obj["district"] = ""
-                        obj["pincode"] = ""
-                        obj["image"] = ""
-                        
+        //         .then((response) => response.json())
 
-                        store.push(obj);//[{name, email, pass}]
+        //         .then((data) => {
 
-                        localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
+        //             if (data.can_connect_smtp == true) {
 
-                        alert("successfully signup");
+        //                 console.log(data);
+        //                 phone_check(email, phone);
+        //             }
 
-                        window.location.href = "./login_page.html"
+        //             else {
+        //                 alert("User email id is not valid");
+        //             }
 
-                    }
-                }
+        //         });
+        // }
 
-            }
+        // function phone_check(email, phone) {
 
-            else {
-                alert("Can't get a data.Please give a value")
-            }
-        }
+        //     fetch(`https://api.apilayer.com/number_verification/validate?apikey=AQcZ7IxCjhBK10lW9u8Lx03MH378Kaci&number=${phone}`)
 
+        //         .then((response) => response.json())
 
+        //         .then((data) => {
+
+        //             if (data.carrier != "" && phone != "") {
+        //                 console.log("valid");
+        //                 add_local(email, phone);
+
+        //             }
+        //             else {
+        //                 alert("Recheck your phone number");
+        //             }
+        //         });
+        // }
+
+        // function add_local(email, phone) {
+
+        //     const store = JSON.parse(localStorage.getItem("array")) ?? []; //store = []
+
+        //     let res;
+
+        //     for (let i = 0; i < store.length; i++) {
+
+        //         if (store[i].email === email) {
+        //             res = 1;
+        //             break;
+        //         }
+        //     }
+
+        //     if (res == 1) {
+        //         alert("email already registered");
+
+        //     }
+
+        //     else {
+        //         const obj = {};
+
+        //         obj.fname = first_name
+        //         obj.lname = last_name
+        //         obj.email = email
+        //         obj.phone = Number(phone)
+        //         obj.confirm = confirm_pass
+        //         obj.dob = ""
+        //         obj.state = ""
+        //         obj.district = ""
+        //         obj.pincode = ""
+        //         obj.image = ""
+        //         obj.primary = ""
+
+        //         store.push(obj);//[{name, email, pass}]
+
+        //         localStorage.setItem("array", JSON.stringify(store)); // array :  [{name, email, pass}]
+
+        //         alert("successfully signup");
+
+        //         window.location.href = "./login_page.html"
+
+        //     }
+        // }
     </script>
+
+    <script src="../assets/js/sign_up.js"></script>
 
 </body>
 
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- // localStorage.setItem("fname", first_name)
-// localStorage.setItem("lname", last_name)
-// localStorage.setItem("email", email)
-// localStorage.setItem("phone", phone)
-// localStorage.setItem("aadhar", aadhar)
-// localStorage.setItem("pan", pan)
-// localStorage.setItem("new_pass", new_pass)
-// localStorage.setItem("confirm", confirm)
-
-// let btn = document.querySelector(".bottom_button");
-// btn.addEventListener(
-//     "onSubmit", function (e) {
-//         e.target.preventDefault();
-//         signup();
-//     }
-// )
-
-
-//date of birth
-
-// let bottom_form = document.createElement("div");
-// bottom_form.setAttribute("class", "bottom_form");
-// content_of_singnup.append(bottom_form);
-
-// let dob_child = document.createElement("div");
-// dob_child.setAttribute("class", "dob_child");
-
-// bottom_form.append(dob_child);
-
-// let dob_label = document.createElement("label");
-// dob_label.setAttribute("for", "dob");
-// dob_child.append(dob_label);
-
-// let dob = document.createElement("input");
-// dob.setAttribute("type", "date");
-// dob.setAttribute("name", "dob");
-// dob.setAttribute("id", "dob");
-// dob_child.append(dob);
-
-
-//Gender label and input
-
-// let div_of_gender = document.createElement("div");
-// div_of_gender.setAttribute("class", "gender");
-// bottom_form.append(div_of_gender);
-
-// let heading_gender = document.createElement("h4");
-// heading_gender.innerText = "Gender:";
-// div_of_gender.append(heading_gender);
-
-// let require = document.createElement("div");
-// require.setAttribute("class", "require");
-// div_of_gender.append(require);
-
-
-// let gen_div = document.createElement("div");
-// gen_div.setAttribute("class", "align_gen");
-// require.append(gen_div);
-
-// let ladi_div = document.createElement("div");
-// ladi_div.setAttribute("class", "align_gen");
-// div_of_gender.append(ladi_div);
-
-
-// let gender_input = document.createElement("input");
-// gender_input.setAttribute("type", "radio");
-// gender_input.setAttribute("name", "gender");
-// gender_input.setAttribute("id", "gender");
-// gen_div.append(gender_input);
-
-// let gen_label = document.createElement("label");
-// gen_label.setAttribute("for", "gender");
-// gen_label.innerText = "Male";
-// gen_div.append(gen_label);
-
-// let gender_input2 = document.createElement("input");
-// gender_input2.setAttribute("type", "radio");
-// gender_input2.setAttribute("name", "gender");
-// gender_input2.setAttribute("id", "gend");
-// ladi_div.append(gender_input2);
-
-// let gen_label2 = document.createElement("label");
-// gen_label2.setAttribute("for", "gend");
-// gen_label2.innerText = "Female";
-// // gen_label2.innerText=("Female")
-// ladi_div.append(gen_label2); -->

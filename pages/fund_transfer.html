@@ -17,7 +17,7 @@
 
     <header>
         <div class="title">
-            <a href="">NET BANKING</a>
+            <a href="./home.html">NET BLIZ</a>
         </div>
 
         <div class="full_link">
@@ -25,11 +25,9 @@
                 <a href="./home.html">Home</a>
             </div>
 
-
             <div>
                 <a class="current_page" href="#">Transfer</a>
             </div>
-
 
             <div>
                 <a href="./balance_enquire.html">Balance</a>
@@ -37,6 +35,10 @@
 
             <div>
                 <a href="./history.html">History</a>
+            </div>
+
+            <div>
+                <a href="./pic_chart.html">Chart</a>
             </div>
 
             <div class="logout">
@@ -53,48 +55,75 @@
 
             <form>
 
-                <h1>Bank Account to fund transfer</h1>
+                <h1>Bank account to money transfer</h1>
 
-                <label for="from"> From Account Number </label>
-                <input class="form-control" type="text" id="from" name="from" required>
+                <!-- <label for="from"> From Account Number </label>
+                <input class="form-control" type="text" id="from" name="from" required min="14" max="14"
+                    aria="From Account Number"> -->
 
-                <label for="to"> Benificiary Account </label>
-                <input class="form-control input" type="text" id="to" name="to" required placeholder="asdf">
+                <h5>Account number </h5>
 
-                <label for="ifsc"> Benificiary IFSC </label>
-                <input class="form-control" type="text" id="ifsc" name="ifsc" required>
+                <select class="form-select accounts" id="from" required>
 
-                <label for="amount"> Transfer Amount </label>
-                <input class="form-control" type="number" id="amount" name="amount" required min="1"> <br>
+                    <option value="">Choose your account number</option>
 
-                <button type="button" class="btn btn-primary">Send</button>
+                </select>
+
+                <label for="to"> Reciever account number</label>
+                <input class="form-control input" type="text" id="to" name="to" required pattern="[0-9]{16,17}"
+                    title="Remember !! Your bank account number should be 16 numbers" aria=" Reciever Account ">
+
+                <label for="ifsc">
+                    Reciever IFSC code<code></code>
+                </label>
+                <input class="form-control" type="text" id="ifsc" name="ifsc" required pattern="[0-9A-Za-z]{6,16}"
+                    title="Are you sure !! minium Our ifsc number should be 12 numbers" aria="Reciver IFSC">
+
+                <label for="amount"> Transfer amount </label>
+                <input class="form-control" type="number" id="amount" name="amount" required aria=" Transfer Amount"
+                    min="1" max="49999" title="You can only share amount between 50000 per day">
+
+                <div class="form-outline w-75 mb-4">
+                    <label class="form-label" for="textAreaExample6">Remarks</label>
+                    <textarea class="form-control textAreaExample6" id="textAreaExample6" rows="2"></textarea>
+                </div>
+                <br>
+
+                <button class="btn btn-primary" id="send" aria="Send button">Send</button>
 
             </form>
 
         </div>
 
-
         <div class="right_contant left_photo">
 
             <form>
 
-                <h1>Phone Number to Money Transfer</h1>
+                <h2>Phone number to money transfer</h2>
 
-                <!-- <p>This content fully consider Benificiary Details</p> -->
+                <h5>Account number</h5>
 
-                <label for="phone"> Phone number </label>
-                <input class="form-control" type="number" id="phone" name="phone" required>
+                <select class="form-select accounts" id="from_num" required>
 
-                <label for="to_num"> Benificiary Ph.No </label>
-                <input class="form-control" type="number" id="to_num" name="to_num" required>
+                    <option value="">Choose your account number</option>
 
-                <label for="to_email"> Benificiary Email id</label>
-                <input class="form-control" type="email" id="to_email" name="to_email" required>
+                </select>
 
-                <label for="to_amount"> Transfer Amount </label>
-                <input class="form-control" type="number" id="to_amount" name="to_amount" required min="1"> <br>
+                <label for="to_num"> Reciever phone number </label>
+                <input class="form-control" type="tel" id="to_num" name="to_num" pattern="[0-9]{10}"
+                    title="Enter your correct phone number OR Your number should be 10 numbers"
+                    aria="Phone number" placeholder="Phone No *" required>
 
-                <button type="button" class="btn btn-primary">Send</button>
+                <label for="amount"> Transfer amount </label>
+                <input class="form-control" type="number" id="to_amount" name="amount" required aria=" Transfer Amount"
+                    min="1" max="49999" title="You can only share amount between 50000 per day">
+
+                <div class="form-outline w-75 mb-4 ">
+                    <label class="form-label" for="textAreaExample">Remarks</label>
+                    <textarea class="form-control textAreaExample6" id="textAreaExample" rows="2"></textarea>
+                </div>
+
+                <button class="btn btn-primary">Send</button>
 
             </form>
 
@@ -108,29 +137,281 @@
 
         <div class="back_foot">
 
-            <div class="direct">
+            <a href="./admin.html">Admin</a>
 
-                <a href="./pages/signup_page.html">Register</a>
-                <a href="./pages/login_page.html">Login</a>
-            </div>
-
-            <h3>@ 2023 Net Banking</h3>
-
-
+            <h3>@ 2023 NET BLIZ</h3>
 
             <div class="icon_social">
 
-                <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in">
-                <img src="../assets/img/icons8-facebook-100.png" alt="facebook">
-                <img src="../assets/img/icons8-instagram-100.png" alt="insta">
-                <img src="../assets/img/icons8-twitter-100.png" alt="teitter">
+                <a href="https://www.linkedin.com/">
+                    <img src="../assets/img/icons8-linkedin-100 (1).png" alt="linked in">
+                </a>
+                <a href="https://www.facebook.com/">
+                    <img src="../assets/img/icons8-facebook-100.png" alt="facebook">
+                </a>
+                <a href="https://mail.google.com/">
+                    <img src="../assets/img/icons8-google-100-removebg-preview.png" alt="google">
+                </a>
+                <a href="https://twitter.com/">
+                    <img src="../assets/img/icons8-twitter-100.png" alt="teitter">
+                </a>
 
             </div>
-
 
         </div>
 
     </footer>
+
+    <script src="../assets/js/common_function.js"></script>
+
+    <script src="../assets/js/fund_transfer.js"></script>
+
+    <script src="../assets/js/date_time.js"></script>
+
+    <!-- <script>        const send_account = JSON.parse(localStorage.getItem("send_account")) ?? [];
+
+        const history_table = JSON.parse(localStorage.getItem("history_table")) ?? [];
+
+        const account_check = JSON.parse(localStorage.getItem("account_details"));
+
+        const balance_page = JSON.parse(localStorage.getItem("bal_enquire"));
+
+        const signup_array = JSON.parse(localStorage.getItem("array"));
+
+        const email_compare = localStorage.getItem("email");
+
+        const current_date = new Date().toJSON().slice(0, 10);
+
+        const textAreaExample6 = document.querySelectorAll(".textAreaExample6")
+
+        option()
+        function option() {
+
+            const current_ac = document.getElementById("from")
+
+            const phone_numbers = document.getElementById("from_num")
+
+            for (let ac = 0; ac < account_check.length; ac++) {
+
+                if (account_check[ac].email_compare == email_compare) {
+
+                    const account_match = account_check[ac].account;
+
+                    const option = document.createElement("option");
+                    option.setAttribute("value", account_match);
+                    option.innerHTML = (account_match);
+                    current_ac.append(option);
+
+                    const phone_option = document.createElement("option");
+                    phone_option.setAttribute("value", account_match);
+                    phone_option.innerHTML = (account_match);
+                    phone_numbers.append(phone_option)
+
+                }
+
+            }
+
+        }
+
+        const send_button = document.querySelectorAll("form");
+
+        send_button[0].addEventListener("submit", (j) => {
+
+            j.preventDefault()
+
+            account_to_account();
+
+        });
+
+        let result;
+
+        let from_account;
+        let to_account;
+        let to_ifsc;
+        let send_amount;
+        let sender_balances;
+        let remarks;
+
+        function account_to_account() {
+
+            from_account = document.getElementById("from").value.trim();
+            to_account = document.getElementById("to").value.trim();
+            to_ifsc = document.getElementById("ifsc").value.trim();
+            send_amount = document.getElementById("amount").value.trim();
+            remarks = textAreaExample6[0].value.trim();
+
+            balance_page.forEach((e) => {
+
+                if (e.ac_no == from_account) {
+
+                    sender_balances = e.ac_balance;
+                    result = 1;
+                }
+
+            })
+
+            if (result == 1) {
+
+                if (sender_balances >= send_amount) {
+
+                    local_push(from_account, to_account, to_ifsc, send_amount, email_compare, current_date, remarks);
+                }
+
+                else {
+                    alert("Sorry!! You don't have money to send")
+                }
+
+            }
+
+            else {
+                alert("Sorry!! Reciver is not there or recheck your benificary account number")
+            }
+
+        }
+
+        let account_account;
+        let history;
+        let backuphistory;
+
+        function local_push(from_account, to_account, to_ifsc, send_amount, email_compare, current_date, remarks) {
+
+            account_account = {
+                from_account,
+                to_account,
+                to_ifsc,
+                send_amount,
+                email_compare,
+                remarks,
+
+            }
+
+            history = {
+                "sender_account": from_account,
+                "reciver_account": to_account,
+                send_amount,
+                "sender_email": email_compare,
+                "date": current_date,
+                remarks,
+                "sender_type": "",
+                "sender_balance": "",
+                "sender_name": "",
+                "reciver_balance": "",
+                "reciver_type": "",
+                "reciver_name": "",
+                "reciver_email": "",
+
+            }
+
+            send_account.push(account_account);
+
+            history_table.push(history);
+
+            localStorage.setItem("send_account", JSON.stringify(send_account));
+
+            localStorage.setItem("history_table", JSON.stringify(history_table));
+
+            balance_change(from_account, send_amount, to_account);
+
+            window.location.href = ("./history.html");
+
+            // alert("Thanks for send money");
+
+        }
+
+        let old_balance;
+        let sender_type;
+        let sender_name;
+
+        function balance_change(from_account, send_amount, to_account) {
+            balance_page.forEach(element => {
+
+                if (element.email_compare == email_compare && element.ac_no == from_account) {
+
+                    old_balance = element.ac_balance;
+
+                    sender_name = element.accounter_name;
+
+                    old_balance = Number(old_balance) - Number(send_amount);
+
+                    element.ac_balance = old_balance;
+
+                    sender_type = "Money sent"
+
+                    for (let di = 0; di < history_table.length; di++) {
+
+                        if (from_account == history_table[di].sender_account && history_table[di].sender_type == "" && history_table[di].sender_balance == "" && history_table[di].sender_name == "") {
+
+                            history_table[di].sender_type = sender_type;
+
+                            history_table[di].sender_balance = old_balance;
+
+                            history_table[di].sender_name = sender_name;
+
+                            localStorage.setItem("history_table", JSON.stringify(history_table));
+
+                        }
+                    }
+
+                    localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
+
+                    reciver(to_account, send_amount)
+
+                }
+
+            })
+
+        }
+
+        let recived_money;
+        let reciver_type;
+        let reciver_name;
+        let receiver_email;
+
+        function reciver(to_account, send_amount) {
+
+            balance_page.forEach(element => {
+
+                if (element.ac_no == to_account) {
+
+                    recived_money = element.ac_balance;
+
+                    reciver_name = element.accounter_name;
+
+                    receiver_email = element.email_compare;
+
+                    recived_money = Number(recived_money) + Number(send_amount);
+
+                    element.ac_balance = recived_money;
+
+                    localStorage.setItem("bal_enquire", JSON.stringify(balance_page));
+
+                    reciver_type = "Money received";
+
+                    for (let d = 0; d < history_table.length; d++) {
+
+                        if (to_account == history_table[d].reciver_account && history_table[d].reciver_balance == "" && history_table[d].reciver_type == "" && history_table[d].reciver_name == "" && history_table[d].reciver_email == "") {
+
+                            history_table[d].reciver_balance = recived_money;
+
+                            history_table[d].reciver_type = reciver_type;
+
+                            history_table[d].reciver_name = reciver_name;
+
+                            history_table[d].reciver_email = receiver_email;
+
+                            localStorage.setItem("history_table", JSON.stringify(history_table));
+
+                        }
+                    }
+
+                }
+
+            })
+
+        } -->
+    <!-- </script> -->
+
+    <!-- This script have mobile number to money transfer functions -->
 
 </body>
 

@@ -163,3 +163,9 @@ input[type="date"] {
 #welcome_button{
     cursor: pointer;
 }
+
+.welcome h3{
+     /* margin: 5%; */
+     padding: 3%;
+}
+

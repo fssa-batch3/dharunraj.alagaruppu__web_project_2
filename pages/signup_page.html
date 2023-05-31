@@ -29,7 +29,7 @@
         welcome.append(heading);
 
         const pickup = document.createElement("h3");
-        pickup.innerText = "You are 30 seconds away to experiencing your new Banking World ";
+        pickup.innerText = "Once you click a register button it's take some time to verify your details.You are 30 seconds away to experiencing your new Banking World.";
         welcome.append(pickup);
 
         const a = document.createElement("a");
@@ -61,7 +61,7 @@
                 "name": "fname",
                 "id": "fname",
                 "placeholder": "First Name *",
-                "keyup": "this.value=this.value.replace(/[^A-z]/g,'');",
+                // "keyup": "this.value=this.value.replace(/[^A-z]/g,'');",
 
                 "pattern": "^[a-zA-Z ]{3,50}$",
                 "tittle": "Your pattern minium length of 3 characters a_z or A_Z only",
@@ -79,7 +79,7 @@
                 "name": "lname",
                 "id": "lname",
                 "placeholder": "Last Name *",
-                "keyup": "this.value=this.value.replace(/[^A-z]/g,'');",
+                // "keyup": "this.value=this.value.replace(/[^A-z]/g,'');",
 
                 "pattern": "^[a-zA-Z ]{1,50}$",
                 "tittle": "Your pattern is minium 1 to 20 character a_z or A_Z only",
@@ -96,9 +96,9 @@
                 "name": "email",
                 "id": "email",
                 "placeholder": "Email.Id *",
-                "tittle": "This is not a email format ",
+                "tittle": "Check your email format ",
                 "aria": "Email.Id ",
-                "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+[a-zA-Z]{2,}$",
+                // "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+[a-zA-Z]{2,}$",
 
             },
 
@@ -111,7 +111,7 @@
                 "name": "phone",
                 "id": "phone",
                 "placeholder": "Phone number *",
-                "keyup": "this.value=this.value.replace(/[^0-9]/g,'');",
+                // "keyup": "this.value=this.value.replace(/[^0-9]/g,'');",
                 "pattern": "[0-9]{10}",
                 "tittle": "Your number should be 10 numbers",
                 "aria": "Phone No"
@@ -142,8 +142,8 @@
                 "id": "confirm",
                 "placeholder": "Confirm password *",
 
-                "pattern": "(?=.*)(?=.*[a-z])(?=.*[A-Z]).{8,20}",
-                "tittle": "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters",
+                // "pattern": "(?=.*)(?=.*[a-z])(?=.*[A-Z]).{8,20}",
+                "tittle": "Must be Confirm password and New password should be equal",
                 "aria": "Confirm password"
             }
 

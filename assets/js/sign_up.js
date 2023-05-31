@@ -35,15 +35,24 @@ function signup() {
   }
 
   if (res === 1) {
-    alert("email or phone number already regsister");
-  } else if (new_pass !== confirm_pass) {
-    alert("Oops !! password and confirm password doesn't match.");
-  } else {
-    emailcheck();
+    alert("email or phone number already regsistered");
   }
+  else {
+
+    if (new_pass !== confirm_pass) {
+      alert("Oops !! password and confirm password doesn't match.");
+    }
+
+    else {
+      emailcheck();
+    }
+  }
+
+
 }
 
 function emailcheck() {
+  console.log(email);
   const email_verification = new XMLHttpRequest();
 
   email_verification.onload = function () {
@@ -59,19 +68,22 @@ function emailcheck() {
 
   email_verification.open(
     "get",
-    `https://api.apilayer.com/email_verification/${email}?apikey=OiccdedKQZOIKrx0BNzCPwMyeG7KlK8K`,
+    `https://api.apilayer.com/email_verification/${email}?apikey=npaElc3Z5cJvChCNKfUzBBQLZQFYJ01u`,
     true
   );
   email_verification.send();
+
 }
 
 function phone_check() {
+
   const number_check = new XMLHttpRequest();
   number_check.onload = function () {
     const got_number = JSON.parse(number_check.response);
-
+    console.log(got_number);
+    
     if (got_number.carrier !== "" && phone !== "") {
-      
+
       add_local();
     } else {
       alert("Recheck your phone number");
